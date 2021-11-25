@@ -2,15 +2,15 @@ import {
   createRouter,
   createWebHashHistory,
   createWebHistory
-} from "vue-router";
-import { ElLoading } from "element-plus";
+} from 'vue-router';
+import { ElLoading } from 'element-plus';
 
-import menuCreator from "./creator";
-import { MisSchema } from "../components/entry";
-import frameSchema from "../data/frame";
+import menuCreator from './creator';
+import { MisSchema } from '../components/entry';
+import frameSchema from '../data/frame';
 
 const history =
-  process.env.NODE_ENV === "development"
+  import.meta.env.MODE === 'dev'
     ? createWebHistory()
     : createWebHashHistory();
 
@@ -27,8 +27,8 @@ const createMenus = menus => {
     history,
     routes: [
       {
-        path: "/",
-        name: "UmisWebsite",
+        path: '/',
+        name: 'UmisWebsite',
         component: MisSchema,
         props: {
           initSchema: frameSchema,
@@ -47,20 +47,20 @@ const createMenus = menus => {
     }
   });
   dyRouter.forEach(item => {
-    router.addRoute("UmisWebsite", item);
+    router.addRoute('UmisWebsite', item);
   });
   router.beforeEach((to, from, next) => {
     if (to.path !== from.path) {
       routerMask = ElLoading.service({
         fullscreen: true,
-        customClass: "umis-website__router__loader"
+        customClass: 'umis-website__router__loader'
       });
     }
     next();
   });
   router.afterEach((route, from) => {
     const timer = setTimeout(() => {
-      if (routerMask && typeof routerMask.close === "function") {
+      if (routerMask && typeof routerMask.close === 'function') {
         routerMask.close();
         clearTimeout(timer);
       }
