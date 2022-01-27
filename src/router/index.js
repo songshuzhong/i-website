@@ -4,6 +4,7 @@ import {
   // createWebHistory
 } from 'vue-router';
 import { ElLoading } from 'element-plus';
+import {MisSchema} from 'umis-renderer/dist/js/renderer';
 
 import menuCreator from './creator';
 import frameSchema from '../data/frame';
@@ -28,7 +29,7 @@ const createMenus = menus => {
       {
         path: '/',
         name: 'UmisWebsite',
-        component: () => import('@umis-renderer/packages/renderer/component/schema.vue'),
+        component: MisSchema,
         props: {
           initSchema: frameSchema,
           classname: 'umis-website-schema__container',
