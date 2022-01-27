@@ -14,11 +14,6 @@ module.exports = {
       filename: 'js/[name].[contenthash:6].js',
       chunkFilename: 'chunk/[name].[contenthash:6].js',
     },
-    resolve: {
-      alias: {
-        '@umis-renderer': '../../../umis-renderer'
-      }
-    },
     optimization: {
       minimize: !isDev
     },
