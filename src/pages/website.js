@@ -4,6 +4,7 @@ import IRenderer, {api} from '../../../i-renderer/packages/index';
 import createRoutes from '../router/website';
 import ToMobile from '../component/ToMobile.vue';
 import Ai from '../component/Ai.vue';
+import Download from '../component/Download.vue';
 import Application from '../apps/Website.vue';
 import registrySw from '../registerServiceWorker';
 import Verify from '../component/Verify';
@@ -21,7 +22,7 @@ const config = {
     }));
   },
   domains: [process.env.VUE_APP_API_BASE],
-  renderers: [ToMobile, Verify, Ai],
+  renderers: [ToMobile, Verify, Ai, Download],
   actions: {
     logout: function(proxy, config, context, onActionFeedback) {
       localStorage.removeItem('token');
@@ -49,7 +50,7 @@ const config = {
 registrySw(process.env.VUE_APP_SERVICE_WORKER);
 
 api()
-  .dynamicApi('', {headers: {Authorization: localStorage.getItem('token')}})
+  .useApi({headers: {Authorization: localStorage.getItem('token')}})
   .get(`${process.env.VUE_APP_API_BASE}/api/user`)
   .then(res => {
     const routers = createRoutes();

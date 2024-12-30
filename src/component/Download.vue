@@ -574,14 +574,18 @@ export default defineComponent({
     const white = () => {
       new Promise(resolve => {
         let page = pages.pop();
-        let data = page.data;
+        let data = {
+          status: 0,
+          message: 'success',
+          data: page.data
+        };
         const jsonString = JSON.stringify(data, null, 2);
         const blob = new Blob([jsonString], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.style.display = 'none';
         a.href = url;
-        a.download = `${data.pageId}.json`;
+        a.download = `${data.data.pageId}.json`;
         document.body.appendChild(a);
         const timer = setTimeout(() => {
           a.click();

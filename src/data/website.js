@@ -148,6 +148,9 @@ export default {
               "renderer": "wrapper",
               "body": [
                 {
+                  "renderer": "download"
+                },
+                {
                   "renderer": "action",
                   "text": "可视化编辑器",
                   "plain": true,
