@@ -262,9 +262,25 @@
                 }
               },
               {
+                "renderer": "avatar",
+                "src": "https://songshuzhong.github.io/i-website/dist/img/icons/favicon-32x32.png",
+                "title": "令狐瓜子",
+                "subTitle": "sshuzhong@outlook.com"
+              },
+              {
                 "renderer": "action",
-                "text": "退出登录",
+                "text": " github",
                 "type": "primary",
+                "isText": true,
+                "divided": true,
+                "icon": "Files",
+                "actionType": "url"
+              },
+              {
+                "renderer": "action",
+                "text": " 退出登录",
+                "type": "primary",
+                "isText": true,
                 "icon": "SwitchButton",
                 "actionType": "logout",
                 "actionApi": {
