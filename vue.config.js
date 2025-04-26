@@ -52,13 +52,6 @@ module.exports = {
       filename: 'js/[name].[contenthash:6].js',
       chunkFilename: 'chunk/[name].[contenthash:6].js',
     },
-    resolve: {
-      alias: {
-        '@element-plus/icons-vue': path.resolve(process.cwd(), 'node_modules', '@element-plus/icons-vue'),
-        'element-plus': path.resolve(process.cwd(), 'node_modules', 'element-plus'),
-        lodash: path.resolve(process.cwd(), 'node_modules', 'lodash')
-      }
-    },
     plugins: [
       new MonacoWebpackPlugin({
         filename: 'worker/[name].worker.js',
