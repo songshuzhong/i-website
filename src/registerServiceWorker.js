@@ -10,7 +10,7 @@ const registrySw = contextPath => {
     updatefound() {
       ElNotification({
         title: '温馨提示',
-        message: '检测到新版本，正在下载中，请稍后...',
+        message: '检测到新版本，正在下载中，请稍后。',
         type: 'info',
         position: 'bottom-right',
         offset: 50
