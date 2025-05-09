@@ -1,5 +1,4 @@
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
-const {GenerateSW} = require('workbox-webpack-plugin');
 const path = require('path');
 const glob = require('glob');
 const fs = require('fs');
@@ -29,13 +28,7 @@ glob.sync('./src/pages/*.js').forEach(entry => {
     skeletonStyle: pageConfig.skeletonStyle || '',
     preload: false,
     prefetch: false,
-    minify: isDev ? {} : {
-      minifyJS: true,
-      minifyCSS: true,
-      removeComments: true,
-      collapseWhitespace: true,
-      removeAttributeQuotes: true,
-    },
+    minify: {}
   };
 });
 
@@ -52,21 +45,10 @@ module.exports = {
       filename: 'js/[name].[contenthash:6].js',
       chunkFilename: 'chunk/[name].[contenthash:6].js',
     },
-    resolve: {
-      alias: {
-        '@element-plus/icons-vue': path.resolve(process.cwd(), 'node_modules', '@element-plus/icons-vue'),
-        'element-plus': path.resolve(process.cwd(), 'node_modules', 'element-plus'),
-        lodash: path.resolve(process.cwd(), 'node_modules', 'lodash')
-      }
-    },
     plugins: [
       new MonacoWebpackPlugin({
         filename: 'worker/[name].worker.js',
-        languages: ['json', 'less', 'javascript', 'html'],
-      }),
-      new GenerateSW ({
-        clientsClaim: true,
-        skipWaiting: true
+        languages: ['json', 'less', 'javascript', 'html', 'css', 'typescript']
       })
     ]
   },
@@ -77,8 +59,6 @@ module.exports = {
     });
   },
   devServer: {
-    port: 80,
-    disableHostCheck: true,
     proxy: {
       '/api': {
         target: 'http://0.0.0.0:9000',

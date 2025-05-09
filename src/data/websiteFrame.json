@@ -134,7 +134,8 @@
             "actionType": "drawer",
             "trustOn": [
               -1,
-              -5
+              -5,
+              8
             ],
             "body": {
               "width": 100,
@@ -245,7 +246,8 @@
                 "actionType": "drawer",
                 "trustOn": [
                   -1,
-                  -5
+                  -5,
+                  8
                 ],
                 "body": {
                   "width": 100,
