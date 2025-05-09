@@ -2,7 +2,6 @@ const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const path = require('path');
 const glob = require('glob');
 const fs = require('fs');
-const isDev = process.env.NODE_ENV === 'dev';
 const rewrites = [];
 const pages = {};
 
@@ -34,16 +33,13 @@ glob.sync('./src/pages/*.js').forEach(entry => {
 
 module.exports = {
   pages,
-  publicPath: isDev ? '' : '/i-website',
+  publicPath: '',
   transpileDependencies: ['element-plus'],
   productionSourceMap: false,
   configureWebpack: {
-    output: isDev? {
+    output: {
       filename: 'js/[name].[hash:6].js',
       chunkFilename: 'chunk/[name].[hash:6].js',
-    }: {
-      filename: 'js/[name].[contenthash:6].js',
-      chunkFilename: 'chunk/[name].[contenthash:6].js',
     },
     plugins: [
       new MonacoWebpackPlugin({
