@@ -68,6 +68,7 @@
     "stylelint-scss": "3.3.x",
     "video.js": "^8.0.4",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "workbox-webpack-plugin": "^7.3.0"
   }
 }

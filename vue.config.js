@@ -2,7 +2,6 @@ const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const path = require('path');
 const glob = require('glob');
 const fs = require('fs');
-const isDev = process.env.NODE_ENV === 'dev';
 const rewrites = [];
 const pages = {};
 
@@ -28,7 +27,7 @@ glob.sync('./src/pages/*.js').forEach(entry => {
     skeletonStyle: pageConfig.skeletonStyle || '',
     preload: false,
     prefetch: false,
-    minify: isDev ? {} : {
+    minify: {
       minifyJS: true,
       minifyCSS: true,
       removeComments: true,
@@ -40,14 +39,11 @@ glob.sync('./src/pages/*.js').forEach(entry => {
 
 module.exports = {
   pages,
-  publicPath: isDev ? '' : process.env.PUBLIC_PATH,
+  publicPath: process.env.PUBLIC_PATH,
   transpileDependencies: ['element-plus'],
   productionSourceMap: false,
   configureWebpack: {
-    output: isDev? {
-      filename: 'js/[name].[hash:6].js',
-      chunkFilename: 'chunk/[name].[hash:6].js',
-    }: {
+    output: {
       filename: 'js/[name].[contenthash:6].js',
       chunkFilename: 'chunk/[name].[contenthash:6].js',
     },
