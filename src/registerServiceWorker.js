@@ -27,7 +27,7 @@ const registrySw = contextPath => {
       });
       const timer = setTimeout(() => {
         clearTimeout(timer);
-        window.location.reload();
+        // window.location.reload();
       }, 10000);
     }
   });
