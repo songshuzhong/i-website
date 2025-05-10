@@ -55,6 +55,9 @@ module.exports = {
     });
   },
   devServer: {
+    client: {
+      overlay: false
+    },
     proxy: {
       '/api': {
         target: 'http://0.0.0.0:9000',
