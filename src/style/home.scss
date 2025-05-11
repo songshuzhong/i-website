@@ -221,7 +221,7 @@ html {
       }
     }
     .el-button {
-      color: #409EFF;
+      color: var(--el-color-primary);
     }
   }
   .i-home__banner__container {
@@ -240,10 +240,10 @@ html {
       margin-top: 50px;
       text-align: center;
       font-size: 60px;
-      color: #1890ff;
+      color: var(--el-color-primary);
       line-height: 60px;
       font-weight: 900;
-      background: linear-gradient(120deg, rgb(64,158,255) 30%, #41d1ff);
+      background: linear-gradient(120deg, var(--el-color-primary-light-9) 30%, var(--el-color-primary));
       -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
       -webkit-box-reflect: below 0 -webkit-linear-gradient(transparent, transparent 50%, rgba(255, 255, 255, 0.3));
@@ -318,7 +318,7 @@ html {
       display: block;
       font-size: 20px;
       font-weight: bolder;
-      color: #409EFF;
+      color: var(--el-color-primary);
     }
     .i-action {
       position: absolute;
@@ -372,7 +372,7 @@ html {
   font-size: 16px;
   margin: 10px 0 20px 0;
   padding: 0 25px;
-  color: #99a9bf;
+  color: var(--el-text-color-secondary);
   line-height: 20px;
   text-align: center;
 }
@@ -479,7 +479,7 @@ html {
     padding-bottom: 10%;
     border-radius: 100%;
     animation: i-home-ball-updown 4s 0s infinite alternate;
-    background: radial-gradient(rgba(64,158,255,0.8), white);
+    background: radial-gradient(circle, var(--el-color-primary-light-1), white);
   }
   &:nth-of-type(4n + 2) {
     top: -100px;
@@ -492,7 +492,7 @@ html {
     position: absolute;
     border-radius: 100%;
     animation: i-home-ball-updown 4s 0s infinite alternate;
-    background: radial-gradient(rgba(64,158,255,0.8), white);
+    background: radial-gradient(circle, var(--el-color-primary-light-1), white);
   }
   &:nth-of-type(4n + 3) {
     right: 200px;
@@ -504,7 +504,7 @@ html {
     position: absolute;
     border-radius: 100%;
     animation: i-home-ball-updown 4s 0s infinite alternate;
-    background: radial-gradient(rgba(64,158,255,0.8), white);
+    background: radial-gradient(circle, var(--el-color-primary-light-1), white);
   }
   &:nth-of-type(4n + 4) {
     top: 400px;
@@ -515,7 +515,7 @@ html {
     position: absolute;
     border-radius: 100%;
     animation: i-home-ball-updown 3s 0s infinite alternate;
-    background: radial-gradient(rgba(64,158,255,0.8), white);
+    background: radial-gradient(circle, var(--el-color-primary-light-1), white);
   }
 }
 .i-home__logs {
@@ -552,7 +552,7 @@ html {
     padding-left: 12px;
     font-size: 14px;
     font-weight: 400;
-    color: #606266;
+    color: var(--el-text-color-regular);
   }
 }
 .i-website__router__loader {
