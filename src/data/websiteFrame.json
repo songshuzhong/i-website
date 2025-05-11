@@ -1,4 +1,5 @@
 {
+  "renderer": "admin",
   "name": "IWebsiteContainer",
   "classname": "i-website__container",
   "title": "百搭云平台",

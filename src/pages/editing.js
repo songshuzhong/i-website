@@ -1,4 +1,5 @@
 import {createApp} from 'vue';
+import {createRouter, createWebHashHistory} from 'vue-router';
 import ElementPlus from 'element-plus';
 import IRenderer from  '../../../i-renderer/packages/index';
 import Application from '../apps/Editing.vue';
@@ -15,4 +16,8 @@ registrySw(process.env.VUE_APP_SERVICE_WORKER);
 app
   .use(ElementPlus)
   .use(IRenderer)
+  .use(createRouter({
+    history: createWebHashHistory(process.env.VUE_APP_CONTEXT_PATH_WEBSITE),
+    routes: []
+  }))
   .mount('.i-website-app__container');

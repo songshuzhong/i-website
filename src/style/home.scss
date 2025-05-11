@@ -122,9 +122,22 @@ html {
       border-bottom: unset;
     }
   }
-}
-.i-renderer-website-schema__container {
-  background: var(--el-color-white);
+  &.dark {
+    .i-header__container {
+      border-bottom: unset;
+      background-image: linear-gradient(to bottom, transparent, rgb(252, 252, 252)) !important;
+      background-size: unset;
+    }
+    .i-avatar__title {
+      color: var(--el-color-white);
+    }
+    .el-menu {
+      backdrop-filter: unset;
+      .el-menu-item {
+        color: var(--el-color-white);
+      }
+    }
+  }
 }
 .i-home__page {
   position: relative;

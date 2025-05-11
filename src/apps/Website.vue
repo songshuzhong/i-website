@@ -86,10 +86,7 @@ export default defineComponent({
     });
 
     return {
-      frameSchema: {
-        renderer: 'admin',
-        ...frameSchema
-      }
+      frameSchema
     };
   }
 });

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import {defineComponent, onBeforeMount} from 'vue';
+import {defineComponent, getCurrentInstance, onBeforeMount} from 'vue';
 import {Editor} from '../../../i-renderer/packages/canvas/index';
 
 export default defineComponent({
@@ -16,8 +16,9 @@ export default defineComponent({
     IEditor: Editor
   },
   setup() {
+    const {proxy} = getCurrentInstance();
     onBeforeMount(() => {
-      window.IRenderer = {
+      proxy.$.appContext.$IRenderer = {
         pageInfo: {
           assets: []
         },
