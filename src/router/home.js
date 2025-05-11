@@ -25,28 +25,28 @@ const router = createRouter({
           path: '/index',
           component: Schema,
           props: {
-            url: `${process.env.VUE_APP_PUBLIC_PATH_HOME}/page/home.json`,
+            initSchema: `${process.env.VUE_APP_PUBLIC_PATH_HOME}/page/home.json`,
           },
         },
         {
           path: '/logs',
           component: Schema,
           props: {
-            url: `${process.env.VUE_APP_PUBLIC_PATH_HOME}/page/logs.json`,
+            initSchema: `${process.env.VUE_APP_PUBLIC_PATH_HOME}/page/logs.json`,
           },
         },
         {
           path: '/me',
           component: Schema,
           props: {
-            url: `${process.env.VUE_APP_PUBLIC_PATH_HOME}/page/me.json`,
+            initSchema: `${process.env.VUE_APP_PUBLIC_PATH_HOME}/page/me.json`,
           },
         },
         {
           path: '/quality',
           component: Schema,
           props: {
-            url: 'https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/page/me',
+            initSchema: `${process.env.VUE_APP_PUBLIC_PATH_HOME}/page/me.json`,
           },
           meta: {
             permission: 'quality'
@@ -57,7 +57,7 @@ const router = createRouter({
           component: Schema,
           classname: 'i-renderer-website-schema__playground',
           props: {
-            url: 'https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/page/playground',
+            initSchema: `${process.env.VUE_APP_PUBLIC_PATH_HOME}/page/playground.json`,
           },
           beforeEnter: () => {
             document.documentElement.classList.add('playground');

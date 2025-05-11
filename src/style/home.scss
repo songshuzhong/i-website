@@ -128,6 +128,7 @@ html {
 }
 .i-home__page {
   position: relative;
+  height: 100%;
   .el-menu {
     backdrop-filter: saturate(50%) blur(4px);
     background: transparent;
@@ -186,7 +187,6 @@ html {
       padding: 0;
       overflow: unset;
     }
-
     padding: 0;
   }
   .el-card__header {
@@ -281,6 +281,10 @@ html {
         border-right-color: #fafafa;
       }
     }
+  }
+  .i-layout__container,
+  .i-page__container {
+    height: 100%;
   }
 }
 .i-carousel__container {

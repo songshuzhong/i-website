@@ -1,5 +1,6 @@
 {
   "renderer": "page",
+  "classname": "playground-page",
   "body": [
     {
       "renderer": "wrapper",

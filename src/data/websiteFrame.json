@@ -267,7 +267,14 @@
                 "renderer": "avatar",
                 "src": "https://songshuzhong.github.io/i-website/dist/img/icons/favicon-32x32.png",
                 "title": "令狐瓜子",
-                "subTitle": "sshuzhong@outlook.com"
+                "subTitle": "sshuzhong@outlook.com",
+                "actions": [
+                  {
+                    "renderer": "action",
+                    "actionType": "url",
+                    "url": "/system/profile"
+                  }
+                ]
               },
               {
                 "renderer": "action",
