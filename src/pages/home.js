@@ -6,6 +6,7 @@ import Application from '../apps/Home.vue';
 import registrySw from '../registerServiceWorker';
 
 import 'element-plus/dist/index.css';
+import 'element-plus/theme-chalk/dark/css-vars.css';
 import 'i-renderer/dist/css/index.css';
 import '../style/home.scss';
 

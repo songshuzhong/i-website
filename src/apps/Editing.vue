@@ -8,13 +8,14 @@
 </template>
 
 <script>
-import {defineComponent, onBeforeMount} from 'vue';
+import {defineComponent, onBeforeMount, getCurrentInstance} from 'vue';
 
 export default defineComponent({
   name: 'ToEditor',
   setup() {
+    const {proxy} = getCurrentInstance();
     onBeforeMount(() => {
-      window.IRenderer = {
+      proxy.$.appContext.$IRenderer = {
         pageInfo: {
           assets: []
         },
