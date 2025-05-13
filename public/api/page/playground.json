@@ -10,7 +10,7 @@
     "assets": [],
     "visible": [],
     "pageDesc": null,
-    "pageSchema": "{\"renderer\":\"page\",\"body\":[{\"renderer\":\"frame\",\"src\":\"http://www.i-renderer.love/playground.html\"}],\"innerStyle\":\".i-frame__container {\\n  height: 737px;\\n}\"}",
+    "pageSchema": "{\"renderer\":\"page\",\"body\":[{\"renderer\":\"frame\",\"src\":\"https://songshuzhong.github.io/i-website/dist/playground.html\"}],\"innerStyle\":\".i-frame__container {\\n  height: 737px;\\n}\"}",
     "createdAt": "2023-03-16T02:22:54.000Z",
     "updatedAt": "2023-04-20T04:51:25.000Z"
   },
