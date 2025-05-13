@@ -3,8 +3,6 @@ import {ElLoading, ElMessageBox} from 'element-plus';
 import {Schema, checkPermission} from 'i-renderer/dist/js/renderer';
 import frameSchema from '../data/homeFrame.json';
 import uaManager from '../utils/ua';
-// const isGp = process.env.NODE_ENV === 'gp'; createWebHistory
-// const isDev = process.env.NODE_ENV === 'dev';
 let routerMask;
 const router = createRouter({
   history: createWebHashHistory(process.env.VUE_APP_CONTEXT_PATH_HOME),
@@ -25,28 +23,28 @@ const router = createRouter({
           path: '/index',
           component: Schema,
           props: {
-            initSchema: `${process.env.VUE_APP_PUBLIC_PATH_HOME}/page/home.json`,
+            initSchema: '/page/home.json',
           },
         },
         {
           path: '/logs',
           component: Schema,
           props: {
-            initSchema: `${process.env.VUE_APP_PUBLIC_PATH_HOME}/page/logs.json`,
+            initSchema: '/page/logs.json',
           },
         },
         {
           path: '/me',
           component: Schema,
           props: {
-            initSchema: `${process.env.VUE_APP_PUBLIC_PATH_HOME}/page/me.json`,
+            initSchema: '/page/me.json'
           },
         },
         {
           path: '/quality',
           component: Schema,
           props: {
-            initSchema: `${process.env.VUE_APP_PUBLIC_PATH_HOME}/page/me.json`,
+            initSchema: '/page/me.json'
           },
           meta: {
             permission: 'quality'
@@ -57,7 +55,7 @@ const router = createRouter({
           component: Schema,
           classname: 'i-renderer-website-schema__playground',
           props: {
-            initSchema: `${process.env.VUE_APP_PUBLIC_PATH_HOME}/page/playground.json`,
+            initSchema: '/page/playground.json'
           },
           beforeEnter: () => {
             document.documentElement.classList.add('playground');

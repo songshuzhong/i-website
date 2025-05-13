@@ -22,7 +22,7 @@ export default defineComponent({
       return new Promise((resolve, reject) => {
         const script = document.createElement('script');
         script.type = 'text/javascript';
-        script.src = '/vue3-sfc-loader.js';
+        script.src = '/i-website/dist/js/vue3-sfc-loader.js';
         script.onload = script.onreadystatechange = function() {
           if (
             !script.readyState ||
