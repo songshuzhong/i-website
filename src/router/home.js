@@ -23,28 +23,28 @@ const router = createRouter({
           path: '/index',
           component: Schema,
           props: {
-            initSchema: '/api/page/home.json',
+            initSchema: '/api/page/home',
           },
         },
         {
           path: '/logs',
           component: Schema,
           props: {
-            initSchema: '/api/page/logs.json',
+            initSchema: '/api/page/logs',
           },
         },
         {
           path: '/me',
           component: Schema,
           props: {
-            initSchema: '/api/page/me.json'
+            initSchema: '/api/page/me'
           },
         },
         {
           path: '/quality',
           component: Schema,
           props: {
-            initSchema: '/api/page/me.json'
+            initSchema: '/api/page/me'
           },
           meta: {
             permission: 'quality'
@@ -55,7 +55,7 @@ const router = createRouter({
           component: Schema,
           classname: 'i-renderer-website-schema__playground',
           props: {
-            initSchema: '/api/page/playground.json'
+            initSchema: '/api/page/playground'
           },
           beforeEnter: () => {
             document.documentElement.classList.add('playground');
