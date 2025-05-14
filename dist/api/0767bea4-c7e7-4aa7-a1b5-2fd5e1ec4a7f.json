@@ -128,7 +128,7 @@
             "title": "服务",
             "icon": "",
             "pageId": "2cfb7da9-b9fc-42e5-b3c6-412b913a2804",
-            "groupBy": "",
+            "groupBy": "other",
             "hidden": null,
             "visible": [
               0
@@ -342,7 +342,7 @@
             "title": "内置动画",
             "icon": "",
             "pageId": "419c3641-a47d-44b8-9c97-2c06dbd1d2b3",
-            "groupBy": "",
+            "groupBy": "other",
             "hidden": null,
             "visible": [
               0

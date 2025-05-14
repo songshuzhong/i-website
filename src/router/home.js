@@ -30,21 +30,21 @@ const router = createRouter({
           path: '/logs',
           component: Schema,
           props: {
-            initSchema: '/api/page/logs',
+            initSchema: () => import('../data/logs.js')
           },
         },
         {
           path: '/me',
           component: Schema,
           props: {
-            initSchema: '/api/page/me'
+            initSchema: () => import('../data/me.js')
           },
         },
         {
           path: '/quality',
           component: Schema,
           props: {
-            initSchema: '/api/page/me'
+            initSchema: () => import('../data/me.js')
           },
           meta: {
             permission: 'quality'
@@ -55,7 +55,7 @@ const router = createRouter({
           component: Schema,
           classname: 'i-renderer-website-schema__playground',
           props: {
-            initSchema: '/api/page/playground'
+            initSchema: () => import('../data/playground.js')
           },
           beforeEnter: () => {
             document.documentElement.classList.add('playground');

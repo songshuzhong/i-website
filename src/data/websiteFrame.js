@@ -13,7 +13,7 @@ export default {
     target: 'IWebsiteContainer',
     title: '',
     initApi: {
-      url: `${process.env.VUE_APP_API_BASE}/api/menu/0767bea4-c7e7-4aa7-a1b5-2fd5e1ec4a7f${process.env.VUE_APP_API_NODE_ENV === 'gp'? '.json': ''}`
+      url: `${process.env.VUE_APP_API_BASE}/api/0767bea4-c7e7-4aa7-a1b5-2fd5e1ec4a7f${process.env.VUE_APP_API_NODE_ENV === 'gp'? '.json': ''}`
     },
     body: []
   },
@@ -135,7 +135,7 @@ export default {
             trustOn: [
               -1,
               -5,
-              8
+              0
             ],
             body: {
               width: 100,
@@ -247,7 +247,7 @@ export default {
                 trustOn: [
                   -1,
                   -5,
-                  8
+                  0
                 ],
                 body: {
                   width: 100,
