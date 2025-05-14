@@ -18,7 +18,7 @@ app
   .use(ElementPlus)
   .use(IRenderer, {
     adaptor: {
-      req: 'if (url.includes("/api/page")) {\n  req.url += ".json";console.log(req.url);\n}',
+      req: 'if (url.includes("/api/page")) {\n  req.url += ".json";\n}',
     }
   })
   .use(routers)
