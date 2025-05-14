@@ -544,6 +544,9 @@ html {
     border-right: 4px solid white;
     background-color: whitesmoke;
   }
+  .i-home__me__aside {
+    --el-aside-width: 320px !important;
+  }
   .i-chart__container {
     margin-left: -20px;
   }
