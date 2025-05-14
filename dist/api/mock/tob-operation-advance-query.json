@@ -9,7 +9,7 @@
     "namespace": "联通",
     "description": "代投下单",
     "delay": null,
-    "schema": "function({_req}) {\n    const count = (Math.ceil(Math.random() * 10000));\n    let mid = _req.query.mid;\n    let amount = _req.query.amount || 5;\n    return {\n      \"mid\": mid,\n      \"payerUid\": \"38848\",\n      \"commodities\": [{\n        \"comodityId\": \"30001\",\n        \"amount\": count,\n        \"count\": count\n      }]\n    };\n  }",
+    "schema": "({_req}) => {\n    const count = (Math.ceil(Math.random() * 10000));\n    let mid = _req.query.mid;\n    let amount = _req.query.amount || 5;\n    return {\n      \"mid\": mid,\n      \"payerUid\": \"38848\",\n      \"commodities\": [{\n        \"comodityId\": \"30001\",\n        \"amount\": count,\n        \"count\": count\n      }]\n    };\n  }",
     "createdBy": "admin",
     "createdAt": "2024-03-30T00:26:43.000Z",
     "updatedAt": "2024-03-30T01:34:53.000Z"

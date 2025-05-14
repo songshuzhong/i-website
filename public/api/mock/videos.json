@@ -1,0 +1,17 @@
+{
+  "status": 0,
+  "message": "success",
+  "data": {
+    "id": 52,
+    "title": "视频",
+    "method": "get",
+    "path": "/videos",
+    "namespace": "联通",
+    "description": "视频",
+    "delay": 300,
+    "createdBy": "admin",
+    "createdAt": "2024-03-30T08:26:51.000Z",
+    "updatedAt": "2024-04-08T01:45:10.000Z",
+    "schema": "() => {\r\n  return {\r\n    \"rows\": [\r\n      {\r\n        \"name\": \"普通直播\",\r\n        \"id\": 786,\r\n        \"cover\": \"https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/ironMan.jpg\",\r\n        \"length\": \"普通直播\"\r\n      },\r\n      {\r\n        \"name\": \"控流直播\",\r\n        \"id\": 787,\r\n        \"cover\": \"https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/ironMan.jpg\",\r\n        \"length\": \"00:05:17\"\r\n      },\r\n      {\r\n        \"name\": \"视频直播\",\r\n        \"id\": 788,\r\n        \"cover\": \"https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/ironMan.jpg\",\r\n        \"length\": \"00:05:17\"\r\n      },\r\n      {\r\n        \"name\": \"网页开播\",\r\n        \"id\": 789,\r\n        \"cover\": \"https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/ironMan.jpg\",\r\n        \"length\": \"00:05:19\"\r\n      }\r\n    ],\r\n    \"count\": 4\r\n  }\r\n}"
+  }
+}

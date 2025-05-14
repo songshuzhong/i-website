@@ -9,7 +9,7 @@
     "namespace": "联通",
     "description": "动态参数",
     "delay": null,
-    "schema": "function({_req}) {\n  return {\"response\": {..._req.query}}\n}",
+    "schema": "({_req}) => {\n  return {\"response\": {..._req.query}}\n}",
     "createdBy": "admin",
     "createdAt": "2024-03-29T14:25:18.000Z",
     "updatedAt": "2024-03-30T01:18:50.000Z"

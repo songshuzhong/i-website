@@ -47,6 +47,12 @@ html {
       height: calc(100vh - 60px);
     }
   }
+  .i-editor__container__tools {
+    display: none;
+  }
+  .i-editor__container__tools+.i-toolmaker-wrapper {
+    padding-top: 0;
+  }
 }
 .i-website-app__container {
   padding: 0 10px;
