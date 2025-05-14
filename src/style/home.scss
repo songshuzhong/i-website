@@ -308,6 +308,7 @@ html {
   }
 }
 .i-carousel__container {
+  margin-top: -20px;
   .i-wrapper__container {
     height: 100%;
   }
@@ -320,18 +321,31 @@ html {
     height: 100%;
     .i-html__container {
       position: absolute;
-      bottom: 40px;
-      right: 60px;
+      bottom: 0;
+      right: 34px;
+      width: 617px;
       display: block;
-      font-size: 20px;
+      font-size: 0.53333rem;
       font-weight: bolder;
       color: var(--el-color-primary);
     }
     .i-action {
       position: absolute;
-      bottom: 0;
+      bottom: -6px;
       right: 60px;
+      width: 130px;
+      height: 0;
       display: block;
+      border-radius: 0;
+      border-top: 30px solid var(--el-color-success);
+      border-left: 31px solid transparent;
+      border-right: 30px solid transparent;
+      border-bottom: 0;
+      background: transparent;
+      transform: rotate(-45deg) translate(72px, 15px);
+      span {
+        transform: translate(-15px, -28px);
+      }
     }
   }
   .el-carousel__item {
@@ -343,8 +357,8 @@ html {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 512px;
-      height: 260px;
+      width: 90%;
+      height: 86%;
       transform: translate(-50%, -50%);
     }
   }
@@ -502,6 +516,7 @@ html {
     background: radial-gradient(circle, var(--el-color-primary-light-3), white);
   }
   &:nth-of-type(4n + 3) {
+    top: 100px;
     right: 200px;
     width: 5%;
     padding-bottom: 5%;

@@ -84,6 +84,9 @@
               "classname": "i-home__carousel",
               "autoplay": true,
               "loop": true,
+              "motionBlur": true,
+              "arrow": "hover",
+              "indicatorPosition": "none",
               "body": [
                 {
                   "renderer": "wrapper",
@@ -91,7 +94,7 @@
                   "body": [
                     {
                       "renderer": "image",
-                      "src": "http://www.i-renderer.love/images/f51d8338a344b5e356aa382db8c75e6b.png",
+                      "src": "/img/case1.png",
                       "previews": [
                         "https://songshuzhong.github.io/i-assets/public/img/action.png",
                         "https://songshuzhong.github.io/i-assets/public/img/initApi.png",
@@ -116,7 +119,7 @@
                   "body": [
                     {
                       "renderer": "image",
-                      "src": "http://www.i-renderer.love/images/c5a361eb0b4da37778426f713e33fa9c.png",
+                      "src": "/img/case2.png",
                       "previews": [
                         "https://songshuzhong.github.io/i-assets/public/img/action.png"
                       ]
@@ -139,7 +142,7 @@
                   "body": [
                     {
                       "renderer": "image",
-                      "src": "http://www.i-renderer.love/images/ddb946d21a59a2ce7d176ec2cada130d.png",
+                      "src": "/img/case3.png",
                       "previews": [
                         "https://songshuzhong.github.io/i-assets/public/img/errors.png"
                       ]
