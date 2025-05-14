@@ -13,7 +13,7 @@ export default {
     target: 'IWebsiteContainer',
     title: '',
     initApi: {
-      url: `${process.env.PUBLIC_PATH || ''}/api/0767bea4-c7e7-4aa7-a1b5-2fd5e1ec4a7f${process.env.VUE_APP_API_NODE_ENV === 'gp'? '.json': ''}`
+      url: `${process.env.PUBLIC_PATH || ''}/api/0767bea4-c7e7-4aa7-a1b5-2fd5e1ec4a7f`
     },
     body: []
   },
@@ -27,7 +27,7 @@ export default {
         classname: 'i-website__header__service',
         silentLoading: true,
         initApi: {
-          url: `${process.env.PUBLIC_PATH || ''}/api/user${process.env.VUE_APP_API_NODE_ENV === 'gp'? '.json': ''}`,
+          url: `${process.env.PUBLIC_PATH || ''}/api/user`,
           cached: true
         },
         body: [
