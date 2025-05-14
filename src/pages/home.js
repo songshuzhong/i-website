@@ -16,6 +16,10 @@ registrySw(process.env.VUE_APP_SERVICE_WORKER);
 
 app
   .use(ElementPlus)
-  .use(IRenderer)
+  .use(IRenderer, {
+    adaptor: {
+      req: 'if (url.includes("/api/page")) {\n  req.url += ".json";\n}',
+    }
+  })
   .use(routers)
   .mount('.i-website-app__container');

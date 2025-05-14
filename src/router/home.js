@@ -1,7 +1,7 @@
 import {createRouter, createWebHashHistory} from 'vue-router';
 import {ElLoading, ElMessageBox} from 'element-plus';
 import {Schema, checkPermission} from 'i-renderer/dist/js/renderer';
-import frameSchema from '../data/homeFrame.json';
+import frameSchema from '../data/homeFrame.js';
 import uaManager from '../utils/ua';
 let routerMask;
 const router = createRouter({
