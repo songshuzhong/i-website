@@ -1,4 +1,5 @@
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const {GenerateSW} = require('workbox-webpack-plugin');
 const path = require('path');
 const glob = require('glob');
 const fs = require('fs');
@@ -52,6 +53,10 @@ module.exports = {
         filename: 'worker/[name].worker.js',
         languages: ['json', 'less', 'javascript', 'html', 'css', 'typescript'],
       }),
+      /*new GenerateSW ({
+        clientsClaim: true,
+        skipWaiting: true
+      })*/
     ]
   },
   chainWebpack: config => {
@@ -59,5 +64,10 @@ module.exports = {
       config.plugins.delete(`prefetch-${entryName}`);
       config.plugins.delete(`preload-${entryName}`);
     });
-  }
+  },
+  devServer: {
+    client: {
+      overlay: false
+    },
+  },
 };

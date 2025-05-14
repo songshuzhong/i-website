@@ -8,8 +8,8 @@
     "groupBy": "",
     "hidden": false,
     "assets": [
-      "/i-website/dist/js/Issues.177a4b.min.js",
-      "/i-website/dist/js/Particle.6d8915.min.js"
+      "https://songshuzhong.github.io/i-website/dist/js/Issues.177a4b.min.js",
+      "https://songshuzhong.github.io/i-website/dist/js/Particle.6d8915.min.js"
     ],
     "visible": [],
     "pageDesc": null,
