@@ -486,7 +486,7 @@ html {
     padding-bottom: 10%;
     border-radius: 100%;
     animation: i-home-ball-updown 4s 0s infinite alternate;
-    background: radial-gradient(circle, var(--el-color-primary-light-1), white);
+    background: radial-gradient(circle, var(--el-color-primary-light-3), white);
   }
   &:nth-of-type(4n + 2) {
     top: -100px;
@@ -499,7 +499,7 @@ html {
     position: absolute;
     border-radius: 100%;
     animation: i-home-ball-updown 4s 0s infinite alternate;
-    background: radial-gradient(circle, var(--el-color-primary-light-1), white);
+    background: radial-gradient(circle, var(--el-color-primary-light-3), white);
   }
   &:nth-of-type(4n + 3) {
     right: 200px;
@@ -511,7 +511,7 @@ html {
     position: absolute;
     border-radius: 100%;
     animation: i-home-ball-updown 4s 0s infinite alternate;
-    background: radial-gradient(circle, var(--el-color-primary-light-1), white);
+    background: radial-gradient(circle, var(--el-color-primary-light-3), white);
   }
   &:nth-of-type(4n + 4) {
     top: 400px;
@@ -522,7 +522,7 @@ html {
     position: absolute;
     border-radius: 100%;
     animation: i-home-ball-updown 3s 0s infinite alternate;
-    background: radial-gradient(circle, var(--el-color-primary-light-1), white);
+    background: radial-gradient(circle, var(--el-color-primary-light-3), white);
   }
 }
 .i-home__logs {
