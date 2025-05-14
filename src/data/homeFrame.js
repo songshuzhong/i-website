@@ -35,7 +35,7 @@ export default {
                 icon: 'LocationInformation'
               },
               {
-                name: 'https://songshuzhong.github.io/i-website/dist/index.html',
+                name: 'https://songshuzhong.github.io/i-website/dist/website.html',
                 title: ' 案例合集',
                 renderer: 'menuitem',
                 icon: 'DataBoard',
