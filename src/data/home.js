@@ -86,7 +86,7 @@ export default {
               body: [
                 {
                   renderer: 'image',
-                  src: '/img/case1.png',
+                  src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case1.png`,
                   previews: [
                     'https://songshuzhong.github.io/i-assets/public/img/action.png',
                     'https://songshuzhong.github.io/i-assets/public/img/initApi.png',
@@ -111,7 +111,7 @@ export default {
               body: [
                 {
                   renderer: 'image',
-                  src: '/img/case2.png',
+                  src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case2.png`,
                   previews: [
                     'https://songshuzhong.github.io/i-assets/public/img/action.png'
                   ]
@@ -134,7 +134,7 @@ export default {
               body: [
                 {
                   renderer: 'image',
-                  src: '/img/case3.png',
+                  src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case3.png`,
                   previews: [
                     'https://songshuzhong.github.io/i-assets/public/img/errors.png'
                   ]
