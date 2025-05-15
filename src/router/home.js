@@ -1,6 +1,6 @@
 import {createRouter, createWebHashHistory} from 'vue-router';
 import {ElLoading, ElMessageBox} from 'element-plus';
-import {Schema, checkPermission} from 'i-renderer/dist/js/renderer';
+import {Schema, checkPermission} from  '../utils/lib.js';
 import frameSchema from '../data/homeFrame.js';
 import uaManager from '../utils/ua';
 let routerMask;

@@ -1,6 +1,6 @@
 import {createApp} from 'vue';
 import ElementPlus, {ElNotification} from 'element-plus';
-import IRenderer, {api} from 'i-renderer/dist/js/renderer';
+import {IRenderer, api} from  '../utils/lib.js';
 import Application from '../apps/Login.vue';
 import Sendemail from '../component/Sendemail';
 import Verify from '../component/Verify';

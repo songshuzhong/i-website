@@ -1,6 +1,6 @@
 import {createApp} from 'vue';
 import ElementPlus from 'element-plus';
-import IRenderer from 'i-renderer/dist/js/renderer';
+import {IRenderer} from  '../utils/lib.js';
 import routers from '../router/home';
 import Application from '../apps/Home.vue';
 import registrySw from '../registerServiceWorker';

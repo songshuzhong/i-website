@@ -9,6 +9,7 @@
 <script>
 import {defineComponent, onBeforeMount, onMounted, getCurrentInstance} from 'vue';
 import frameSchema from '../data/websiteFrame.js';
+import {loadEditor} from '../utils/lib.js';
 
 export default defineComponent({
   name: 'Application',
@@ -67,7 +68,7 @@ export default defineComponent({
     });
     onMounted(() => {
       const timer = setTimeout(() => {
-        import(/* webpackChunkName:"editor",webpackPrefetch:false,webpackMode:"lazy" */'i-renderer/dist/js/editor')
+        loadEditor()
           .then(res => {
             const {Editor} = res;
             proxy.$.appContext.components[Editor.name] = Editor;

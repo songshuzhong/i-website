@@ -1,6 +1,6 @@
 import {createApp} from 'vue';
 import ElementPlus from 'element-plus';
-import IRenderer from 'i-renderer/dist/js/renderer';
+import {IRenderer} from  '../utils/lib.js';
 import Application from '../apps/Mobile.vue';
 import registrySw from '../registerServiceWorker';
 

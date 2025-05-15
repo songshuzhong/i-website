@@ -1,6 +1,6 @@
 import {createRouter, createWebHashHistory} from 'vue-router';
 import {ElLoading} from 'element-plus';
-import {Schema, checkPermission} from 'i-renderer/dist/js/renderer';
+import {Schema, checkPermission} from  '../utils/lib.js';
 import indexSchema from '../data/website.js';
 
 const createRoutes = () => {

@@ -1,7 +1,7 @@
 import {createApp} from 'vue';
 import {createRouter, createWebHashHistory} from 'vue-router';
 import ElementPlus from 'element-plus';
-import IRenderer from  'i-renderer/dist/js/renderer';
+import {IRenderer} from  '../utils/lib.js';
 import Application from '../apps/Editing.vue';
 import registrySw from '../registerServiceWorker';
 
