@@ -1,5 +1,5 @@
 <template>
-  <schema
+  <i-schema
     :init-schema="frameSchema"
     :canSchemaUpdate="false"
     classname="i-renderer-website-schema__container"
@@ -8,14 +8,10 @@
 
 <script>
 import {defineComponent, onBeforeMount, onMounted, getCurrentInstance} from 'vue';
-import {Schema} from 'i-renderer/dist/js/renderer';
 import frameSchema from '../data/websiteFrame.js';
 
 export default defineComponent({
   name: 'Application',
-  components: {
-    Schema
-  },
   setup() {
     const { proxy } = getCurrentInstance();
     const appendAssets = () => {
