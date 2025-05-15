@@ -48,7 +48,7 @@ const config = {
 const API_MOCK = process.env.VUE_APP_API_MOCK;
 const isGp = process.env.NODE_ENV === 'gp';
 config.adaptor = {
-  req: `if (${isGp} && url.includes("/api/page")) {\n  req.url = "${API_MOCK}" + req.url + ".json";\n}\n else if (url.includes("/api/mock")) {\n  let l = url.split("/api/mock")[1].split("/").filter(i => i).join("-") + ".json";\n  req.url = "${API_MOCK}" + l;\n} else if (url.includes("/api")) {\n  req.url += ".json";\n}`,
+  req: `if (${isGp} && url.includes("/api/page")) {\n  req.url = req.url + ".json";\n}\n else if (url.includes("/api/mock")) {\n  let l = url.split("/api/mock")[1].split("/").filter(i => i).join("-") + ".json";\n  req.url = "${API_MOCK}" + l;\n} else if (url.includes("/api")) {\n  req.url += ".json";\n}`,
   res: 'if (url.includes("/api/mock")) {\n  let exp = res.data.schema;\n  const regex =\n    /^\\s*(?:\\(([^)]*)\\)|([^=\\s]+))\\s*=>\\s*(?:\\{([\\s\\S]*?)\\}|([^\\n]*))\\s*$/;\n  const match = exp.match && exp.match(regex);\n  let functionBody = exp;\n  if (match && match.length > 1) {\n    functionBody = match[3].trim();\n    try {\n      const fun = new Function("_req", "_res", functionBody);\n      res.data = fun({ params, query: params }, res);\n    } catch (error) {\n      res.data = error;\n    }\n  }\n}'
 };
 let user = `${process.env.VUE_APP_API_BASE}/api/user.json`;
