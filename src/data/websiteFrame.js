@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "IWebsiteContainer",
   "classname": "i-website__container",
@@ -66,22 +67,102 @@
                         "body": {
                           "renderer": "html",
                           "html": "<div class=\"border-top padding-10\"><%=data.title%></div>"
+=======
+export default {
+  name: 'IWebsiteContainer',
+  classname: 'i-website__container',
+  title: '百搭云平台',
+  logo: '/shuttle.png',
+  menu: {
+    renderer: 'menu',
+    name: 'IWebsiteNav',
+    classname: 'i-website_menu-vertical',
+    router: true,
+    discolor: true,
+    defaultActive: '',
+    target: 'IWebsiteContainer',
+    title: '',
+    initApi: {
+      url: `${process.env.PUBLIC_PATH || ''}/api/0767bea4-c7e7-4aa7-a1b5-2fd5e1ec4a7f`
+    },
+    body: []
+  },
+  header: {
+    renderer: 'header',
+    classname: 'i-website__header',
+    tags: true,
+    body: [
+      {
+        renderer: 'service',
+        classname: 'i-website__header__service',
+        silentLoading: true,
+        initApi: {
+          url: `${process.env.PUBLIC_PATH || ''}/api/user`,
+          cached: true
+        },
+        body: [
+          {
+            renderer: 'action',
+            icon: 'HomeFilled',
+            actionType: 'url',
+            name: 'IWebsiteHome',
+            category: 'icon',
+            size: 18,
+            url: 'localhost/home'
+          },
+          {
+            renderer: 'tomobile'
+          },
+          {
+            renderer: 'action',
+            icon: 'Bell',
+            category: 'icon',
+            size: 18,
+            name: 'iWebsiteBell',
+            popupType: 'over',
+            popperWidth: '300px',
+            body: {
+              renderer: 'tabs',
+              stretch: true,
+              panels: [
+                {
+                  label: '通知',
+                  body: [
+                    {
+                      renderer: 'mapping',
+                      value: 'todos',
+                      body: {
+                        renderer: 'each',
+                        body: {
+                          renderer: 'html',
+                          html: '<div class="border-top padding-10"><%=data.title%></div>'
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
                         }
                       }
                     }
                   ]
                 },
                 {
+<<<<<<< HEAD
                   "label": "待办",
                   "icon": "",
                   "body": [
                     {
                       "renderer": "html",
                       "html": "<div class=\"text-center\">空</div>"
+=======
+                  label: '待办',
+                  icon: '',
+                  body: [
+                    {
+                      renderer: 'html',
+                      html: '<div class="text-center">空</div>'
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
                     }
                   ]
                 }
               ],
+<<<<<<< HEAD
               "activeTab": 1,
               "tabPosition": "top"
             }
@@ -121,11 +202,53 @@
               "body": [
                 {
                   "renderer": "setting"
+=======
+              activeTab: 1,
+              tabPosition: 'top'
+            }
+          },
+          {
+            renderer: 'action',
+            icon: 'FullScreen',
+            name: 'IWebsiteFullScreen',
+            category: 'icon',
+            size: 18,
+            actionType: 'fullscreen'
+          },
+          {
+            renderer: 'action',
+            icon: 'Refresh',
+            category: 'icon',
+            size: 18,
+            name: 'IWebsiteRefresh',
+            actionType: 'reload',
+            reload: 'AdminRouterView'
+          },
+          {
+            renderer: 'action',
+            icon: 'Setting',
+            category: 'icon',
+            size: 18,
+            actionType: 'drawer',
+            body: {
+              width: 30,
+              appendToBody: true,
+              classname: 'i-website__setting__container',
+              header: {
+                renderer: 'notice',
+                title: '菜单背景色修改后需刷新浏览器',
+                type: 'info'
+              },
+              body: [
+                {
+                  renderer: 'setting'
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
                 }
               ]
             }
           },
           {
+<<<<<<< HEAD
             "renderer": "action",
             "icon": "Edit",
             "category": "icon",
@@ -133,10 +256,20 @@
             "name": "IWebsiteEdit",
             "actionType": "drawer",
             "trustOn": [
+=======
+            renderer: 'action',
+            icon: 'Edit',
+            category: 'icon',
+            size: 18,
+            name: 'IWebsiteEdit',
+            actionType: 'drawer',
+            trustOn: [
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
               -1,
               -5,
               0
             ],
+<<<<<<< HEAD
             "body": {
               "width": 100,
               "appendToBody": true,
@@ -155,11 +288,32 @@
                   "category": "icon",
                   "size": 18,
                   "classname": "i-website__editor__close"
+=======
+            body: {
+              width: 100,
+              appendToBody: true,
+              classname: 'i-website__drawer',
+              body: [
+                {
+                  renderer: 'editor',
+                  editable: true,
+                  nimble: true,
+                  isJson: false,
+                  classname: 'i-website__json-editor'
+                },
+                {
+                  renderer: 'action',
+                  icon: 'Close',
+                  category: 'icon',
+                  size: 18,
+                  classname: 'i-website__editor__close'
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
                 }
               ]
             }
           },
           {
+<<<<<<< HEAD
             "renderer": "action",
             "category": "image",
             "icon": "${avatar}",
@@ -194,11 +348,48 @@
                   "label": "",
                   "data": {},
                   "requiredOn": "true"
+=======
+            renderer: 'action',
+            category: 'image',
+            icon: '${avatar}',
+            popupType: 'over',
+            popperWidth: '210px',
+            popperClass: 'i-website__header__upload',
+            body: {
+              renderer: 'form',
+              controls: [
+                {
+                  renderer: 'upload',
+                  name: 'avatar',
+                  preview: true,
+                  validType: 'normal',
+                  listType: 'picture-card',
+                  rules: [
+                    {
+                      required: false
+                    }
+                  ],
+                  autoUpload: false,
+                  actionUrl: '/api/user/avatar',
+                  limit: 1,
+                  feedbackConfig: [],
+                  accept: '.webp,.jpg,.png',
+                  spliced: false,
+                  astrict: {
+                    maxByte: '2',
+                    maxWidth: '32',
+                    maxHeight: '32'
+                  },
+                  label: '',
+                  data: {},
+                  requiredOn: 'true'
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
                 }
               ]
             }
           },
           {
+<<<<<<< HEAD
             "renderer": "dropdown",
             "text": "<%=data.username%>",
             "popperClass": "i-website__header__dropdown",
@@ -234,21 +425,68 @@
                   "body": [
                     {
                       "renderer": "setting"
+=======
+            renderer: 'dropdown',
+            text: '<%=data.username%>',
+            popperClass: 'i-website__header__dropdown',
+            name: 'IWebsiteDropdown',
+            body: [
+              {
+                renderer: 'action',
+                icon: 'HomeFilled',
+                actionType: 'url',
+                name: 'IWebsiteHome',
+                text: '官网',
+                url: 'localhost/home'
+              },
+              {
+                renderer: 'action',
+                icon: 'Refresh',
+                text: '刷新',
+                name: 'IWebsiteRefresh',
+                actionType: 'reload',
+                reload: 'AdminRouterView'
+              },
+              {
+                renderer: 'action',
+                icon: 'Setting',
+                text: '设置',
+                category: 'icon',
+                size: 18,
+                actionType: 'drawer',
+                body: {
+                  width: 30,
+                  appendToBody: true,
+                  title: '菜单背景色修改后需刷新浏览器',
+                  body: [
+                    {
+                      renderer: 'setting'
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
                     }
                   ]
                 }
               },
               {
+<<<<<<< HEAD
                 "renderer": "action",
                 "icon": "Edit",
                 "text": "编辑",
                 "name": "IWebsiteEdit",
                 "actionType": "drawer",
                 "trustOn": [
+=======
+                renderer: 'action',
+                icon: 'Edit',
+                text: '编辑',
+                name: 'IWebsiteEdit',
+                actionType: 'drawer',
+                trustOn: [
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
                   -1,
                   -5,
                   0
                 ],
+<<<<<<< HEAD
                 "body": {
                   "width": 100,
                   "appendToBody": true,
@@ -259,11 +497,24 @@
                       "editable": true,
                       "isJson": false,
                       "classname": "i-website__json-editor"
+=======
+                body: {
+                  width: 100,
+                  appendToBody: true,
+                  classname: 'i-website__drawer',
+                  body: [
+                    {
+                      renderer: 'editor',
+                      editable: true,
+                      isJson: false,
+                      classname: 'i-website__json-editor'
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
                     }
                   ]
                 }
               },
               {
+<<<<<<< HEAD
                 "renderer": "avatar",
                 "src": "https://songshuzhong.github.io/i-website/dist/img/icons/favicon-32x32.png",
                 "title": "令狐瓜子",
@@ -273,10 +524,22 @@
                     "renderer": "action",
                     "actionType": "url",
                     "url": "/system/profile"
+=======
+                renderer: 'avatar',
+                src: 'https://songshuzhong.github.io/i-website/dist/img/icons/favicon-32x32.png',
+                title: '令狐瓜子',
+                subTitle: 'sshuzhong@outlook.com',
+                actions: [
+                  {
+                    renderer: 'action',
+                    actionType: 'url',
+                    url: '/system/profile'
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
                   }
                 ]
               },
               {
+<<<<<<< HEAD
                 "renderer": "action",
                 "text": " github",
                 "type": "primary",
@@ -294,6 +557,25 @@
                 "actionType": "logout",
                 "actionApi": {
                   "url": "/logout"
+=======
+                renderer: 'action',
+                text: ' github',
+                type: 'primary',
+                isText: true,
+                divided: true,
+                icon: 'Files',
+                actionType: 'url'
+              },
+              {
+                renderer: 'action',
+                text: ' 退出登录',
+                type: 'primary',
+                isText: true,
+                icon: 'SwitchButton',
+                actionType: 'logout',
+                actionApi: {
+                  url: '/logout'
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
                 }
               }
             ]
@@ -302,6 +584,7 @@
       }
     ]
   },
+<<<<<<< HEAD
   "body": {
     "name": "IWebsiteNav",
     "classname": "i-website__aside",
@@ -329,12 +612,42 @@
                       "actionApi": {
                         "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ads_click?order=1",
                         "method": "get"
+=======
+  body: {
+    name: 'IWebsiteNav',
+    classname: 'i-website__aside',
+    body: [
+      {
+        renderer: 'wrapper',
+        classname: 'i-website__ads',
+        body: [
+          {
+            renderer: 'carousel',
+            classname: 'i-home__carousel',
+            autoplay: true,
+            loop: true,
+            body: [
+              {
+                renderer: 'render',
+                body: [
+                  {
+                    innerHTML: '招租广告位1',
+                    tag: 'span',
+                    classname: 'i-render__container',
+                    action: {
+                      renderer: 'action',
+                      actionType: 'ajax',
+                      actionApi: {
+                        url: 'https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ads_click?order=1',
+                        method: 'get'
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
                       }
                     }
                   }
                 ]
               },
               {
+<<<<<<< HEAD
                 "renderer": "render",
                 "body": [
                   {
@@ -347,12 +660,27 @@
                       "actionApi": {
                         "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ads_click?order=2",
                         "method": "get"
+=======
+                renderer: 'render',
+                body: [
+                  {
+                    innerHTML: '招租广告位2',
+                    tag: 'span',
+                    classname: 'i-render__container',
+                    action: {
+                      renderer: 'action',
+                      actionType: 'ajax',
+                      actionApi: {
+                        url: 'https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ads_click?order=2',
+                        method: 'get'
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
                       }
                     }
                   }
                 ]
               },
               {
+<<<<<<< HEAD
                 "renderer": "render",
                 "body": [
                   {
@@ -365,23 +693,52 @@
                       "actionApi": {
                         "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ads_click?order=3",
                         "method": "get"
+=======
+                renderer: 'render',
+                body: [
+                  {
+                    innerHTML: '招租广告位3',
+                    tag: 'span',
+                    classname: 'i-render__container',
+                    action: {
+                      renderer: 'action',
+                      actionType: 'ajax',
+                      actionApi: {
+                        url: 'https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ads_click?order=3',
+                        method: 'get'
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
                       }
                     }
                   }
                 ]
               }
             ],
+<<<<<<< HEAD
             "height": 140,
             "indicatorPosition": "none",
             "arrow": "always"
+=======
+            height: 140,
+            indicatorPosition: 'none',
+            arrow: 'always'
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e
           }
         ]
       }
     ]
   },
+<<<<<<< HEAD
   "footer": {
     "renderer": "footer",
     "classname": "i-website__footer",
     "body": "copyright © 2022 sshuzhong@outlook.com"
   }
 }
+=======
+  footer: {
+    renderer: 'footer',
+    classname: 'i-website__footer',
+    body: 'copyright © 2022 sshuzhong@outlook.com'
+  }
+};
+>>>>>>> a17f904e108f633ea521efbfee62fea254339b3e

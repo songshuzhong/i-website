@@ -1,7 +1,7 @@
 import {createRouter, createWebHashHistory} from 'vue-router';
 import {ElLoading, ElMessageBox} from 'element-plus';
 import {Schema, checkPermission} from 'i-renderer/dist/js/renderer';
-import frameSchema from '../data/homeFrame.json';
+import frameSchema from '../data/homeFrame.js';
 import uaManager from '../utils/ua';
 let routerMask;
 const router = createRouter({
@@ -16,35 +16,34 @@ const router = createRouter({
         initSchema: frameSchema,
         classname: 'i-renderer-website-schema__container',
         canSchemaUpdate: false,
-        iProtal: true
       },
       children: [
         {
           path: '/index',
           component: Schema,
           props: {
-            initSchema: '/api/page/home',
+            initSchema: () => import('../data/home.js'),
           },
         },
         {
           path: '/logs',
           component: Schema,
           props: {
-            initSchema: '/api/page/logs',
+            initSchema: () => import('../data/logs.js')
           },
         },
         {
           path: '/me',
           component: Schema,
           props: {
-            initSchema: '/api/page/me'
+            initSchema: () => import('../data/me.js')
           },
         },
         {
           path: '/quality',
           component: Schema,
           props: {
-            initSchema: '/api/page/me'
+            initSchema: () => import('../data/me.js')
           },
           meta: {
             permission: 'quality'
@@ -55,19 +54,11 @@ const router = createRouter({
           component: Schema,
           classname: 'i-renderer-website-schema__playground',
           props: {
-            initSchema: '/api/page/playground'
+            initSchema: () => import('../data/playground.js')
           },
           beforeEnter: () => {
             document.documentElement.classList.add('playground');
             return true;
-          }
-        },
-        {
-          path: '/:pathMatch(.*)*',
-          name: 'NotFound',
-          component: () => import('../Error.vue'),
-          props: {
-            status: 404
           }
         },
         {
@@ -78,6 +69,14 @@ const router = createRouter({
             status: 403
           }
         },
+        {
+          path: '/:pathMatch(.*)*',
+          name: 'NotFound',
+          component: () => import('../Error.vue'),
+          props: {
+            status: 404
+          }
+        }
       ]
     }
   ],
