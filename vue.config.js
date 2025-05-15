@@ -46,17 +46,19 @@ module.exports = {
   configureWebpack: {
     output: {
       filename: 'js/[name].[contenthash:6].js',
-      chunkFilename: 'chunk/[name].[contenthash:6].js',
+      chunkFilename: 'js/chunk/[name].[contenthash:6].js',
     },
     plugins: [
       new MonacoWebpackPlugin({
-        filename: 'worker/[name].worker.js',
+        filename: 'js/worker/[name].worker.js',
         languages: ['json', 'less', 'javascript', 'html', 'css', 'typescript'],
       }),
-      /*new GenerateSW ({
+      new GenerateSW ({
+        swDest: 'service-workbox.js',
         clientsClaim: true,
-        skipWaiting: true
-      })*/
+        skipWaiting: true,
+        cleanupOutdatedCaches: true
+      })
     ]
   },
   chainWebpack: config => {
