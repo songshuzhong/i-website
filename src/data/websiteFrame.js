@@ -13,7 +13,7 @@
     "target": "IWebsiteContainer",
     "title": "",
     "initApi": {
-      "url": "/api/mock/0767bea4-c7e7-4aa7-a1b5-2fd5e1ec4a7f"
+      "url": "/api/0767bea4-c7e7-4aa7-a1b5-2fd5e1ec4a7f"
     },
     "body": []
   },
@@ -27,7 +27,7 @@
         "classname": "i-website__header__service",
         "silentLoading": true,
         "initApi": {
-          "url": "/api/mock/user",
+          "url": "/api/user",
           "cached": true
         },
         "body": [
