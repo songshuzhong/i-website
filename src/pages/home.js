@@ -17,6 +17,8 @@ registrySw(process.env.VUE_APP_SERVICE_WORKER);
 app
   .use(ElementPlus)
   .use(IRenderer, {
+    permissions: [],
+    roles: [],
     adaptor: {
       req: 'if (url.includes("/api/page")) {\n  req.url += ".json";\n}',
     }

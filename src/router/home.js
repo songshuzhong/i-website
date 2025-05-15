@@ -47,7 +47,7 @@ const router = createRouter({
             initSchema: () => import('../data/me.js')
           },
           meta: {
-            permission: 'quality'
+            roles: 'quality'
           }
         },
         {
@@ -63,19 +63,19 @@ const router = createRouter({
           }
         },
         {
-          path: '/:pathMatch(.*)*',
-          name: 'NotFound',
-          component: () => import('../Error.vue'),
-          props: {
-            status: 404
-          }
-        },
-        {
           path: '/forbidden',
           name: 'Forbidden',
           component: () => import('../Error.vue'),
           props: {
             status: 403
+          }
+        },
+        {
+          path: '/:pathMatch(.*)*',
+          name: 'NotFound',
+          component: () => import('../Error.vue'),
+          props: {
+            status: 404
           }
         },
       ]
@@ -96,10 +96,10 @@ router.beforeEach((to, from, next) => {
       customClass: 'i-website__router__loader'
     });
   }
-  if (to?.meta?.permission) {
-    const hasPermission = checkPermission(to.meta.permission);
+  if (to?.meta?.roles) {
+    const hasPermission = checkPermission(to.meta.roles);
     if (!hasPermission) {
-      return next('/home/forbidden');
+      return next('/forbidden');
     }
   }
   next();
