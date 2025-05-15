@@ -16,14 +16,13 @@ const router = createRouter({
         initSchema: frameSchema,
         classname: 'i-renderer-website-schema__container',
         canSchemaUpdate: false,
-        iProtal: true
       },
       children: [
         {
           path: '/index',
           component: Schema,
           props: {
-            initSchema: '/api/page/home',
+            initSchema: () => import('../data/home.js'),
           },
         },
         {
@@ -47,7 +46,7 @@ const router = createRouter({
             initSchema: () => import('../data/me.js')
           },
           meta: {
-            roles: 'quality'
+            permission: 'quality'
           }
         },
         {
@@ -77,7 +76,7 @@ const router = createRouter({
           props: {
             status: 404
           }
-        },
+        }
       ]
     }
   ],
@@ -96,10 +95,10 @@ router.beforeEach((to, from, next) => {
       customClass: 'i-website__router__loader'
     });
   }
-  if (to?.meta?.roles) {
-    const hasPermission = checkPermission(to.meta.roles);
+  if (to?.meta?.permission) {
+    const hasPermission = checkPermission(to.meta.permission);
     if (!hasPermission) {
-      return next('/forbidden');
+      return next('/home/forbidden');
     }
   }
   next();

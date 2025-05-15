@@ -18,23 +18,23 @@
       "direction": "vertical",
       "body": [
         {
+          "renderer": "wrapper",
+          "classname": "i-home__ball"
+        },
+        {
+          "renderer": "wrapper",
+          "classname": "i-home__ball"
+        },
+        {
+          "renderer": "wrapper",
+          "classname": "i-home__ball"
+        },
+        {
           "renderer": "Particle",
           "lazy": true,
           "r": 15,
           "height": 509,
           "classname": "i-home__particle"
-        },
-        {
-          "renderer": "wrapper",
-          "classname": "i-home__ball"
-        },
-        {
-          "renderer": "wrapper",
-          "classname": "i-home__ball"
-        },
-        {
-          "renderer": "wrapper",
-          "classname": "i-home__ball"
         },
         {
           "renderer": "grid",
