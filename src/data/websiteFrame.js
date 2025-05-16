@@ -2,7 +2,7 @@ export default {
   name: 'IWebsiteContainer',
   classname: 'i-website__container',
   title: '百搭云平台',
-  logo: '/shuttle.png',
+  logo: `${process.env.VUE_APP_PUBLIC_PATH}/shuttle.png`,
   menu: {
     renderer: 'menu',
     name: 'IWebsiteNav',
