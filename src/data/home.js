@@ -1,6 +1,6 @@
 const assets = [
-  'https://songshuzhong.github.io/i-website/dist/js/Issues.177a4b.min.js',
-  'https://songshuzhong.github.io/i-website/dist/js/Particle.6d8915.min.js'
+  `${process.env.VUE_APP_PUBLIC_PATH}/js/Issues.177a4b.min.js`,
+  `${process.env.VUE_APP_PUBLIC_PATH}/js/Particle.6d8915.min.js`
 ];
 export {
   assets
