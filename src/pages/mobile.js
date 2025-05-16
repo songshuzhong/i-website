@@ -10,9 +10,9 @@ import '../style/mobile.scss';
 
 const app = createApp(Application);
 
-registrySw(process.env.VUE_APP_SERVICE_WORKER);
-
 app
   .use(ElementPlus)
   .use(IRenderer)
   .mount('.i-website-app__container');
+
+registrySw(process.env.VUE_APP_SERVICE_WORKER, app);

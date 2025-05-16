@@ -1,5 +1,5 @@
 import {createApp} from 'vue';
-import ElementPlus, {ElNotification} from 'element-plus';
+import ElementPlus from 'element-plus';
 import {IRenderer, api} from  '../utils/lib.js';
 import Application from '../apps/Login.vue';
 import Sendemail from '../component/Sendemail';
@@ -22,13 +22,17 @@ const onLogin = (proxy, config, context, onActionFeedback, formdata, options) =>
     })
     .catch((e) => {
       options.refs.verify.handleDraw();
-      ElNotification({
-        title: `错误${e?.data?.code || e?.response?.data?.code || e.code}`,
-        message: e?.data?.message || e?.response?.data?.message || e.message,
-        type: 'error',
-        duration: 10000,
-        offset: 50
-      });
+      app
+        .config
+        .globalProperties
+        .createMessage(app._instance.proxy, {
+          type: 'error',
+          title: `错误${e?.data?.code || e?.response?.data?.code || e.code}`,
+          message: e?.data?.message || e?.response?.data?.message || e.message,
+          position: 'bottom-right',
+          duration: 10000,
+          offset: 50
+        });
     })
     .finally(() => {
       onActionFeedback&&onActionFeedback('CANCEL_LOADING');
@@ -70,9 +74,9 @@ const options = {
   }
 };
 
-registrySw(process.env.VUE_APP_SERVICE_WORKER);
-
 app
   .use(ElementPlus)
   .use(IRenderer, options)
   .mount('.i-website-app__container');
+
+registrySw(process.env.VUE_APP_SERVICE_WORKER, app);

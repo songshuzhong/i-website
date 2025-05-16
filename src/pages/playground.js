@@ -12,8 +12,6 @@ import '../style/playground.scss';
 
 const app = createApp(Playground);
 
-registrySw(process.env.VUE_APP_SERVICE_WORKER);
-
 app.component(Schema);
 app
   .use(ElementPlus)
@@ -30,3 +28,5 @@ app
     ]
   }))
   .mount('.i-website-app__container');
+
+registrySw(process.env.VUE_APP_SERVICE_WORKER, app);

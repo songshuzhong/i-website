@@ -11,8 +11,6 @@ import 'i-renderer/dist/css/index.css';
 
 const app = createApp(Application);
 
-registrySw(process.env.VUE_APP_SERVICE_WORKER);
-
 app
   .use(ElementPlus)
   .use(IRenderer)
@@ -21,3 +19,5 @@ app
     routes: []
   }))
   .mount('.i-website-app__container');
+
+registrySw(process.env.VUE_APP_SERVICE_WORKER, app);

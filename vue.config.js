@@ -57,7 +57,37 @@ module.exports = {
         swDest: 'service-workbox.js',
         clientsClaim: true,
         skipWaiting: true,
-        cleanupOutdatedCaches: true
+        cleanupOutdatedCaches: true,
+        runtimeCaching: [
+          {
+            urlPattern: /\/api\/.*/, // 匹配 API 请求
+            handler: 'NetworkFirst', // 优先使用网络请求
+            options: {
+              cacheName: 'api-cache',
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg)$/, // 匹配图片资源
+            handler: 'CacheFirst', // 优先使用缓存
+            options: {
+              cacheName: 'image-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 30 * 24 * 60 * 60,
+              },
+            },
+          },
+          {
+            urlPattern: new RegExp('\\.html$'), // 匹配 HTML 页面
+            handler: 'StaleWhileRevalidate', // 快速返回缓存，后台更新
+            options: {
+              cacheName: 'html-cache',
+            },
+          },
+        ],
       })
     ]
   },
