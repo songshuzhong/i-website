@@ -7,3 +7,4 @@ VUE_APP_CONTEXT_PATH_WEBSITE=/website
 VUE_APP_API_BASE=/i-website/dist
 VUE_APP_API_MOCK=/api/mock/
 VUE_APP_PUBLIC_PATH=/i-website/dist
+VUE_APP_PUBLIC_ASSETS=https://songshuzhong.github.io/i-website/dist
