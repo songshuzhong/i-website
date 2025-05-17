@@ -49,7 +49,7 @@ config.adaptor = {
   req: `if (${isGPOrDev} && url.includes("/api/page")) {\n  req.url = req.url + ".json";\n}\n else if (${isGPOrDev} && url.includes("/api/mock")) {\n  let l = url.split("/api/mock")[1].split("/").filter(i => i).join("-") + ".json";\n  req.url = "/api/mock/" + l;\n} else if (${isGPOrDev} && url.includes("/api")) {\n  req.url = req.url + ".json";\n}`,
   res: `if (${isGPOrDev} && url.includes("/api/mock")) {\n  let exp = res.data.schema;\n  const regex =\n    /^\\s*(?:\\(([^)]*)\\)|([^=\\s]+))\\s*=>\\s*(?:\\{([\\s\\S]*?)\\}|([^\\n]*))\\s*$/;\n  const match = exp.match && exp.match(regex);\n  let functionBody = exp;\n  if (match && match.length > 1) {\n    functionBody = match[3].trim();\n    try {\n      const fun = new Function("_req", "_res", functionBody);\n      res.data = fun({ params, query: params }, res);\n    } catch (error) {\n      res.data = error;\n    }\n  }\n}`
 };
-let user = `${process.env.VUE_APP_API_BASE}/api/user.json`;
+let user = `${process.env.VUE_APP_API_BASE}/api/user${isGPOrDev? '.json': ''}`;
 
 api()
   .useApi({headers: {Authorization: localStorage.getItem('token')}})
@@ -69,7 +69,6 @@ api()
     if (e.data && (e.data.code === 401 || e.data.code === 400)) {
       window.location.href = process.env.NODE_ENV === 'dev'? 'login.html': 'login';
     }
-    console.log(e);
     let proxy = {
       $notify: app.config.globalProperties.$notify,
       $iRenderConfig: app.config.globalProperties.$iRenderConfig,

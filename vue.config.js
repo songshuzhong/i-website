@@ -101,5 +101,11 @@ module.exports = {
     client: {
       overlay: false
     },
+    proxy: process.env.NODE_ENV === 'local'? {
+      '/api': {
+        target: 'http://0.0.0.0:9000',
+        changeOrigin: true
+      }
+    }: {}
   },
 };

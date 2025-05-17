@@ -17,7 +17,7 @@ const onLogin = (proxy, config, context, onActionFeedback, formdata, options) =>
     .post(`${process.env.VUE_APP_API_BASE}/api/auth/login`, formdata)
     .then((res) => {
       localStorage.setItem('token', `Bearer ${res.data}`);
-      const url = process.env.NODE_ENV === 'dev'? 'localhost/website.html': 'localhost/website';
+      const url = process.env.VUE_APP_PAGE_WEBSITE;
       proxy.$dispatchAction(proxy, {url, actionType: 'url'}, {}, () => {});
     })
     .catch((e) => {
@@ -54,7 +54,7 @@ const options = {
   renderers: [Sendemail, Verify],
   actions: {
     visitor: function(proxy, config, context, onActionFeedback) {
-      onLogin(proxy, config, context, onActionFeedback, process.env.NODE_ENV === 'dev'? {
+      onLogin(proxy, config, context, onActionFeedback, process.env.NODE_ENV === 'local'? {
         namespace: '联通',
         username: 'admin',
         password: 'admin',

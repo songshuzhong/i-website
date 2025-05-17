@@ -13,7 +13,7 @@ export default {
     target: 'IWebsiteContainer',
     title: '',
     initApi: {
-      url: '/api/0767bea4-c7e7-4aa7-a1b5-2fd5e1ec4a7f'
+      url: '/api/menu'
     },
     body: []
   },
