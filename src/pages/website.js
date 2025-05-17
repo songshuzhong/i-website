@@ -72,6 +72,7 @@ api()
     console.log(e);
     let proxy = {
       $notify: app.config.globalProperties.$notify,
+      $iRenderConfig: app.config.globalProperties.$iRenderConfig,
       $: {
         appContext: app._context
       }
