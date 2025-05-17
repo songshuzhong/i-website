@@ -1,66 +1,131 @@
 export default {
   renderer: 'page',
-  body: {
-    renderer: 'service',
-    classname: 'i-home__logs',
-    initApi: {
-      url: '/api/logs.json'
-    },
-    body: [
-      {
-        renderer: 'divider',
-        text: '更新日志'
+  initData: {
+    selectedVersion: '1.0.1-bata.61'
+  },
+  body: [
+    {
+      renderer: 'html',
+      html: '更新日志',
+      style: {
+        width: '60%',
+        margin: 'auto',
+        padding: '40px 20px 0 20px',
+        fontSize: '24px',
+        fontWeight: 'bold'
       },
-      {
-        renderer: 'timeline',
-        placement: 'top',
-        body: [
-          {
-            renderer: 'wrapper',
-            header: [
-              {
-                renderer: 'html',
-                html: '版本：<%=data.version%>'
-              }
-            ],
-            body: [
-              {
-                renderer: 'html',
-                html: '<h3><%=data?.features?.length? "Features": ""%></h3>',
-                inline: true
-              },
-              {
-                renderer: 'each',
-                name: 'features',
-                body: '<%=$%>'
-              },
-              {
-                renderer: 'html',
-                html: '<h3><%=data?.bugs?.length? "bugs": ""%></h3>',
-                inline: true
-              },
-              {
-                renderer: 'each',
-                name: 'bugs',
-                body: '<%=$%>'
-              },
-              {
-                renderer: 'html',
-                html: '<h3><%=data?.refactors?.length? "refactors": ""%></h3>',
-                inline: true
-              },
-              {
-                renderer: 'each',
-                name: 'refactors',
-                body: '<%=$%>'
-              }
-            ],
-            footer: []
+    },
+    {
+      renderer: 'service',
+      style: {
+        width: '60%',
+        margin: 'auto',
+        padding: '30px 20px 0 20px'
+      },
+      body: [
+        {
+          renderer: 'html',
+          html: '<strong>IRenderer</strong>在正常情况下使用<strong>每周</strong>发布策略，但关键的bug修复将需要热修复，所以实际发布版本<strong>可能</strong>每周超过1次。',
+          style: {
+            fontSize: '16px',
+            marginBottom: '20px'
           }
-        ],
-        size: 'large',
-        hollow: true
+        },
+        {
+          renderer: 'card',
+          name: 'VersionDetails',
+          visibleOn: '$.rows',
+          header: [
+            {
+              renderer: 'form',
+              controls: [
+                {
+                  renderer: 'select',
+                  name: 'selectedVersion',
+                  label: '选择版本:',
+                  multiple: false,
+                  target: 'VersionDetails',
+                  initApi: {
+                    url: '/api/version.json',
+                    method: 'get',
+                    cached: false,
+                    debounce: 0,
+                    params: {}
+                  }
+                }
+              ]
+            }
+          ],
+          body: [
+            {
+              renderer: 'computed',
+              useWorker: true,
+              name: 'selectedDetails',
+              deps: [
+                'selectedVersion',
+                'rows'
+              ]
+            },
+            {
+              renderer: 'wrapper',
+              header: [
+                {
+                  renderer: 'html',
+                  html: '时间：<%=data.timestamp%>'
+                }
+              ],
+              body: [
+                {
+                  renderer: 'html',
+                  html: '<h3><%=$?.features?.length? "Features": ""%></h3>',
+                  inline: true
+                },
+                {
+                  renderer: 'each',
+                  name: 'features',
+                  body: '<%=$%>'
+                },
+                {
+                  renderer: 'html',
+                  html: '<h3><%=$?.bugs?.length? "bugs": ""%></h3>',
+                  inline: true
+                },
+                {
+                  renderer: 'each',
+                  name: 'bugs',
+                  body: '<%=$%>'
+                },
+                {
+                  renderer: 'html',
+                  html: '<h3><%=$?.refactors?.length? "refactors": ""%></h3>',
+                  inline: true
+                },
+                {
+                  renderer: 'each',
+                  name: 'refactors',
+                  body: '<%=$%>'
+                }
+              ],
+              footer: [],
+              inherit: {
+                type: 'deconstruct',
+                value: [
+                  'selectedDetails'
+                ]
+              },
+              initData: {}
+            }
+          ],
+        }
+      ],
+      initApi: {
+        url: '/api/logs.json',
+        method: 'get',
+        cached: false,
+        debounce: 0,
+        params: {}
       }
-    ]
-  }
+    }
+  ],
+  worker: 'e => {\n  if (e.track === \'/page/body/1/body/1/body/0\') {\n    let details = null;\n    for (let i = 0; i < e.data.rows.length; i++) {\n      if (e.data.rows[i].version === e.data.selectedVersion) {\n        details = e.data.rows[i];\n      }\n    }\n    return Promise.resolve(details);\n  }\n}'
 };
