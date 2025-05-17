@@ -21,11 +21,17 @@ const onLogin = (proxy, config, context, onActionFeedback, formdata, options) =>
       proxy.$dispatchAction(proxy, {url, actionType: 'url'}, {}, () => {});
     })
     .catch((e) => {
+      let proxy = {
+        $notify: app.config.globalProperties.$notify,
+        $: {
+          appContext: app._context
+        }
+      };
       options.refs.verify.handleDraw();
       app
         .config
         .globalProperties
-        .createMessage(app._instance.proxy, {
+        .createMessage(proxy, {
           type: 'error',
           title: `错误${e?.data?.code || e?.response?.data?.code || e.code}`,
           message: e?.data?.message || e?.response?.data?.message || e.message,
@@ -33,6 +39,7 @@ const onLogin = (proxy, config, context, onActionFeedback, formdata, options) =>
           duration: 10000,
           offset: 50
         });
+      proxy = null;
     })
     .finally(() => {
       onActionFeedback&&onActionFeedback('CANCEL_LOADING');

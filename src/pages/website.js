@@ -70,10 +70,16 @@ api()
       window.location.href = process.env.NODE_ENV === 'dev'? 'login.html': 'login';
     }
     console.log(e);
+    let proxy = {
+      $notify: app.config.globalProperties.$notify,
+      $: {
+        appContext: app._context
+      }
+    };
     app
       .config
       .globalProperties
-      .createMessage(app._instance.proxy, {
+      .createMessage(proxy, {
         type: 'error',
         title: `错误${e?.data?.code || e?.response?.data?.code || e.code}`,
         message: e?.data?.message || e?.response?.data?.message || e.message,
@@ -81,4 +87,5 @@ api()
         duration: 10000,
         offset: 50
       });
+    proxy = null;
   });
