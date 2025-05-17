@@ -10,7 +10,7 @@ const registrySw = (contextPath, app) => {
       app
         .config
         .globalProperties
-        .createMessage(app._instance.proxy, {
+        .createMessage(app.config.globalProperties, {
           type: 'warning',
           message: '检测到新版本，正在下载中，请稍后。',
           title: '温馨提示',
@@ -22,7 +22,7 @@ const registrySw = (contextPath, app) => {
       app
         .config
         .globalProperties
-        .createMessage(app._instance.proxy, {
+        .createMessage(app.config.globalProperties, {
           type: 'success',
           message: '版本更新完成，10s后刷新项目。',
           title: '温馨提示',
