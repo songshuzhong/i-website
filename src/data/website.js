@@ -23,7 +23,7 @@ export default {
             "body": [
               {
                 "renderer": "image",
-                "src": "/img/teacher20240603202012.png",
+                "src": `${process.env.VUE_APP_PUBLIC_PATH}/img/teacher20240603202012.png`,
                 "classname": "i-website-intro__teacher",
                 "previews": []
               },
@@ -52,7 +52,7 @@ export default {
             "body": [
               {
                 "renderer": "image",
-                "src": "/img/teacher20240603202001.png",
+                "src": `${process.env.VUE_APP_PUBLIC_PATH}/img/teacher20240603202001.png`,
                 "classname": "i-website-intro__teacher",
                 "previews": []
               },
@@ -74,7 +74,7 @@ export default {
             "body": [
               {
                 "renderer": "image",
-                "src": "/img/teacher20240604070713.png",
+                "src": `${process.env.VUE_APP_PUBLIC_PATH}/img/teacher20240604070713.png`,
                 "classname": "i-website-intro__teacher",
                 "previews": []
               },
