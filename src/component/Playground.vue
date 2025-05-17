@@ -19,6 +19,7 @@
 import {defineComponent, getCurrentInstance, onBeforeMount, onMounted, ref} from 'vue';
 import PLAYGROUND_SCHEMA from '../data/demo';
 import uaManager from '../utils/ua';
+import {loadEditor} from '../utils/lib';
 
 const DEFAULT_SCHEMA = PLAYGROUND_SCHEMA;
 export default defineComponent({
@@ -35,7 +36,7 @@ export default defineComponent({
       notice = proxy.$message.success('编辑器加载中，请稍等...');
     });
     onMounted(() => {
-      import(/* webpackChunkName:"editor",webpackPrefetch:false,webpackMode:"lazy" */ 'i-renderer/dist/js/editor').then(res => {
+      loadEditor().then(res => {
         const {Editor} = res;
         proxy.$.appContext.components[Editor.name] = Editor;
         isEditorReady.value = true;

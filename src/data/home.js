@@ -50,6 +50,15 @@ export default {
             },
             {
               renderer: 'action',
+              type: 'success',
+              plain: true,
+              round: true,
+              text: '登录',
+              actionType: 'url',
+              url: process.env.VUE_APP_PAGE_LOGIN
+            },
+            {
+              renderer: 'action',
               round: true,
               text: '即刻体验',
               actionType: 'url',
@@ -58,15 +67,13 @@ export default {
             },
             {
               renderer: 'action',
-              type: 'success',
+              type: 'danger',
               plain: true,
               round: true,
-              text: '登录',
+              text: '编辑器',
               actionType: 'url',
-              url: 'localhost/login',
-              params: {
-                blank: true
-              }
+              classname: 'i-breathe-border',
+              url: process.env.VUE_APP_PAGE_EDITING
             }
           ]
         },

@@ -38,7 +38,7 @@ export default {
             name: 'IWebsiteHome',
             category: 'icon',
             size: 18,
-            url: 'localhost/home'
+            url: process.env.VUE_APP_PAGE_HOME
           },
           {
             renderer: 'tomobile'

@@ -16,7 +16,14 @@ app
   .use(IRenderer)
   .use(createRouter({
     history: createWebHashHistory(process.env.VUE_APP_CONTEXT_PATH_WEBSITE),
-    routes: []
+    routes: [
+      {
+        path: '/',
+        name: 'IWebsite',
+        title: '零代码-百搭云平台案例',
+        component: () => import('../component/ToEditing.vue')
+      }
+    ]
   }))
   .mount('.i-website-app__container');
 

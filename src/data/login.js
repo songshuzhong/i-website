@@ -4,7 +4,7 @@ export default {
   "body": [
     {
       "renderer": "avatar",
-      "src": `${process.env.PUBLIC_PATH}/shuttle.png`,
+      "src": `${process.env.VUE_APP_PUBLIC_PATH}/shuttle.png`,
       "classname": "i-login__logo",
       "previews": [],
       "title": "百搭云平台",
@@ -15,7 +15,7 @@ export default {
     },
     {
       "renderer": "image",
-      "src": `${process.env.PUBLIC_PATH}/img/qqb.png`,
+      "src": `${process.env.VUE_APP_PUBLIC_PATH}/img/qqb.png`,
       "classname": "i-login__browser-star",
       "previews": []
     },
@@ -264,7 +264,7 @@ export default {
           "body": [
             {
               "renderer": "image",
-              "src": `${process.env.PUBLIC_PATH}/img/attitude.jpg`
+              "src": `${process.env.VUE_APP_PUBLIC_PATH}/img/attitude.jpg`
             },
             {
               "renderer": "html",

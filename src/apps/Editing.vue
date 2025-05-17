@@ -1,32 +1,3 @@
 <template>
-  <component
-    v-bind:is="'editor'"
-    :editable="true"
-    :nimble="true"
-    :is-json="false"
-  />
+  <router-view />
 </template>
-
-<script>
-import {defineComponent, onBeforeMount, getCurrentInstance} from 'vue';
-
-export default defineComponent({
-  name: 'ToEditor',
-  setup() {
-    const {proxy} = getCurrentInstance();
-    onBeforeMount(() => {
-      proxy.$.appContext.$IRenderer = {
-        pageInfo: {
-          assets: []
-        },
-        scripts: {},
-        links: [],
-        pageSchema: {
-          renderer: 'page',
-          body: []
-        }
-      };
-    });
-  }
-});
-</script>

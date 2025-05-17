@@ -28,7 +28,6 @@ const onLogin = (proxy, config, context, onActionFeedback, formdata, options) =>
           appContext: app._context
         }
       };
-      options.refs.verify.handleDraw();
       app
         .config
         .globalProperties
@@ -36,7 +35,7 @@ const onLogin = (proxy, config, context, onActionFeedback, formdata, options) =>
           type: 'error',
           title: `错误${e?.data?.code || e?.response?.data?.code || e.code}`,
           message: e?.data?.message || e?.response?.data?.message || e.message,
-          position: 'bottom-right',
+          position: 'top-right',
           duration: 10000,
           offset: 50
         });
@@ -44,6 +43,7 @@ const onLogin = (proxy, config, context, onActionFeedback, formdata, options) =>
         clearTimeout(timer);
         proxy = null;
       }, 12000);
+      options&&options.refs.verify.handleDraw();
     })
     .finally(() => {
       onActionFeedback&&onActionFeedback('CANCEL_LOADING');
