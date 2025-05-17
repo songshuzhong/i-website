@@ -1,7 +1,6 @@
 import {createRouter, createWebHashHistory} from 'vue-router';
 import {ElLoading, ElMessageBox} from 'element-plus';
 import {Schema, checkPermission} from  '../utils/lib.js';
-import frameSchema from '../data/homeFrame.js';
 import uaManager from '../utils/ua';
 let routerMask;
 const router = createRouter({
@@ -10,74 +9,64 @@ const router = createRouter({
     {
       path: '/',
       name: 'IHome',
-      redirect: '/index',
+      redirect: '/index'
+    },
+    {
+      path: '/index',
       component: Schema,
       props: {
-        initSchema: frameSchema,
-        classname: 'i-renderer-website-schema__container',
-        canSchemaUpdate: false,
+        initSchema: () => import('../data/home.js'),
       },
-      children: [
-        {
-          path: '/index',
-          component: Schema,
-          props: {
-            initSchema: () => import('../data/home.js'),
-          },
-        },
-        {
-          path: '/logs',
-          component: Schema,
-          props: {
-            initSchema: () => import('../data/logs.js')
-          },
-        },
-        {
-          path: '/me',
-          component: Schema,
-          props: {
-            initSchema: () => import('../data/me.js')
-          },
-        },
-        {
-          path: '/quality',
-          component: Schema,
-          props: {
-            initSchema: () => import('../data/me.js')
-          },
-          meta: {
-            permission: 'quality'
-          }
-        },
-        {
-          path: '/playground',
-          component: Schema,
-          classname: 'i-renderer-website-schema__playground',
-          props: {
-            initSchema: () => import('../data/playground.js')
-          },
-          beforeEnter: () => {
-            document.documentElement.classList.add('playground');
-            return true;
-          }
-        },
-        {
-          path: '/forbidden',
-          name: 'Forbidden',
-          component: () => import('../Error.vue'),
-          props: {
-            status: 403
-          }
-        },
-        {
-          path: '/:pathMatch(.*)*',
-          name: 'NotFound',
-          component: () => import('../Error.vue'),
-          props: {
-            status: 404
-          }
-        }
-      ]
+    },
+    {
+      path: '/logs',
+      component: Schema,
+      props: {
+        initSchema: () => import('../data/logs.js')
+      },
+    },
+    {
+      path: '/me',
+      component: Schema,
+      props: {
+        initSchema: () => import('../data/me.js')
+      },
+    },
+    {
+      path: '/quality',
+      component: Schema,
+      props: {
+        initSchema: () => import('../data/me.js')
+      },
+      meta: {
+        permission: 'quality'
+      }
+    },
+    {
+      path: '/playground',
+      component: Schema,
+      classname: 'i-renderer-website-schema__playground',
+      props: {
+        initSchema: () => import('../data/playground.js')
+      },
+      beforeEnter: () => {
+        document.documentElement.classList.add('playground');
+        return true;
+      }
+    },
+    {
+      path: '/forbidden',
+      component: () => import('../component/Error.vue'),
+      props: {
+        status: 403
+      }
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      component: () => import('../component/Error.vue'),
+      props: {
+        status: 404
+      }
     }
   ],
   scrollBehavior(to, from, savedPosition) {
@@ -98,7 +87,7 @@ router.beforeEach((to, from, next) => {
   if (to?.meta?.permission) {
     const hasPermission = checkPermission(to.meta.permission);
     if (!hasPermission) {
-      return next('/home/forbidden');
+      return next('/forbidden');
     }
   }
   next();

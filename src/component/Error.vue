@@ -37,12 +37,12 @@
 <script>
 import {defineComponent, computed} from 'vue';
 import {useRouter} from 'vue-router';
-import ERRORS from './data/error';
+import ERRORS from '../data/error.js';
 
-import './style/error.scss';
+import '../style/error.scss';
 
 export default defineComponent({
-  name: 'ErrorPage',
+  name: 'Error',
   props: {
     status: {
       type: [String, Number],

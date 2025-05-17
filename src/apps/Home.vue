@@ -1,20 +1,18 @@
 <template>
-  <el-config-provider :locale="locale">
-    <router-view/>
-  </el-config-provider>
+  <i-schema
+    :init-schema="frameSchema"
+    :canSchemaUpdate="false"
+    classname="i-renderer-website-schema__container"
+  />
 </template>
 
 <script>
 import {defineComponent, getCurrentInstance, onMounted} from 'vue';
-import {ElConfigProvider} from 'element-plus';
-import zhCn from 'element-plus/es/locale/lang/zh-cn';
+import frameSchema from '../data/homeFrame.js';
 import uaManager from '../utils/ua';
 
 export default defineComponent({
   name: 'Application',
-  components: {
-    [ElConfigProvider.name]: ElConfigProvider
-  },
   setup() {
     const {proxy} = getCurrentInstance();
     const notice = () => {
@@ -32,7 +30,7 @@ export default defineComponent({
       }
     });
     return {
-      locale: zhCn
+      frameSchema
     };
   }
 });
