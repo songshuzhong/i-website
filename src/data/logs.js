@@ -4,7 +4,7 @@ export default {
     renderer: 'service',
     classname: 'i-home__logs',
     initApi: {
-      url: `${process.env.VUE_APP_PUBLIC_PATH}/api/logs.json`
+      url: '/api/logs.json'
     },
     body: [
       {
