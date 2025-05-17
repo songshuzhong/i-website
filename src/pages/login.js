@@ -39,7 +39,10 @@ const onLogin = (proxy, config, context, onActionFeedback, formdata, options) =>
           duration: 10000,
           offset: 50
         });
-      proxy = null;
+      const timer = setTimeout(() => {
+        clearTimeout(timer);
+        proxy = null;
+      }, 12000);
     })
     .finally(() => {
       onActionFeedback&&onActionFeedback('CANCEL_LOADING');

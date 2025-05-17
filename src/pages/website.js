@@ -87,5 +87,8 @@ api()
         duration: 10000,
         offset: 50
       });
-    proxy = null;
+    const timer = setTimeout(() => {
+      clearTimeout(timer);
+      proxy = null;
+    }, 12000);
   });
