@@ -7,22 +7,35 @@ const registrySw = (contextPath, app) => {
 
   register(sw, {
     updatefound() {
+      let proxy = {
+        $notify: app.config.globalProperties.$notify,
+        $: {
+          appContext: app._context
+        }
+      };
       app
         .config
         .globalProperties
-        .createMessage(app.config.globalProperties, {
+        .createMessage(proxy, {
           type: 'warning',
           message: '检测到新版本，正在下载中，请稍后。',
           title: '温馨提示',
           position: 'bottom-right',
           offset: 50
         });
+      proxy = null;
     },
     updated() {
+      let proxy = {
+        $notify: app.config.globalProperties.$notify,
+        $: {
+          appContext: app._context
+        }
+      };
       app
         .config
         .globalProperties
-        .createMessage(app.config.globalProperties, {
+        .createMessage(proxy, {
           type: 'success',
           message: '版本更新完成，10s后刷新项目。',
           title: '温馨提示',
@@ -34,6 +47,7 @@ const registrySw = (contextPath, app) => {
         clearTimeout(timer);
         window.location.reload();
       }, 10000);
+      proxy = null;
     }
   });
 };
