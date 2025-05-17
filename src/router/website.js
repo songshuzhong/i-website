@@ -20,19 +20,19 @@ const createRoutes = () => {
         }
       },
       {
-        path: '/:pathMatch(.*)*',
-        name: 'NotFound',
-        component: () => import('../component/Error.vue'),
-        props: {
-          status: 404
-        }
-      },
-      {
         path: '/forbidden',
         name: 'Forbidden',
         component: () => import('../component/Error.vue'),
         props: {
           status: 403
+        }
+      },
+      {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: () => import('../component/Error.vue'),
+        props: {
+          status: 404
         }
       },
     ]

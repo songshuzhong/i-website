@@ -133,9 +133,7 @@ export default {
             name: 'IWebsiteEdit',
             actionType: 'drawer',
             trustOn: [
-              -1,
-              -5,
-              0
+              8
             ],
             body: {
               width: 100,

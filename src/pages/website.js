@@ -39,7 +39,7 @@ const config = {
   },
   response: function(res) {
     if (res.data && [400, 401].includes(res.data.code)) {
-      window.location.href = process.env.NODE_ENV === 'dev'? 'login.html': 'login';
+      window.location.href = process.env.VUE_APP_PAGE_LOGIN;
     }
     return res;
   }
@@ -67,7 +67,7 @@ api()
   })
   .catch((e) => {
     if (e.data && (e.data.code === 401 || e.data.code === 400)) {
-      window.location.href = process.env.NODE_ENV === 'dev'? 'login.html': 'login';
+      window.location.href = process.env.VUE_APP_PAGE_LOGIN;
     }
     let proxy = {
       $notify: app.config.globalProperties.$notify,
