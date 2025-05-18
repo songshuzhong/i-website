@@ -532,6 +532,12 @@ html {
 .i-home__logs {
   padding: 20px 40px;
 }
+.i-home-logs__wrapper {
+  .i-each__container__item {
+    font-size: 15px;
+    color: var(--el-text-color-regular);
+  }
+}
 .i-home__me {
   position: relative;
   width: 1050px;

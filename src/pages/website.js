@@ -25,7 +25,7 @@ const config = {
     logout: function(proxy, config, context, onActionFeedback) {
       localStorage.removeItem('token');
       onActionFeedback&&onActionFeedback('CANCEL_LOADING');
-      proxy.$dispatchAction(proxy, {url: process.env.NODE_ENV === 'dev'? 'localhost/login.html': 'localhost/login', actionType: 'url'}, {}, () => {});
+      proxy.$dispatchAction(proxy, {url: process.env.VUE_APP_PAGE_LOGIN, actionType: 'url'}, {}, () => {});
     },
   },
   request: function(req) {

@@ -1,5 +1,873 @@
 const logs = [
   {
+    bugs: [
+      '• 修复keepalive缓存异常',
+    ],
+    timestamp: '2025-05-18',
+    version: '1.0.2-beta.30'
+  },
+  {
+    bugs: [
+      '• darkness',
+      '• action renderer ajax',
+      '• table renderer',
+      '• schema renderer refresh'
+    ],
+    refactors: [
+      '• create message'
+    ],
+    features: [],
+    timestamp: '2025-05-16',
+    version: '1.0.2-beta.28'
+  },
+  {
+    bugs: [
+      '• renderer error'
+    ],
+    refactors: [
+      '• schema renderer init'
+    ],
+    features: [
+    ],
+    timestamp: '2025-05-15',
+    version: '1.0.2-beta.27'
+  },
+  {
+    bugs: [
+      '• popup zindex',
+      '• config'
+    ],
+    refactors: [
+      '• setting',
+      '• monaco renderer'
+    ],
+    features: [
+      '• schema renderer support function',
+      '• form renderer expose merge method',
+      '• avatar actions'
+    ],
+    timestamp: '2025-05-14',
+    version: '1.0.2-beta.26'
+  },
+  {
+    bugs: [
+      '• monaco renderer',
+      '• text renderer'
+    ],
+    refactors: [
+      '• monaco renderer',
+      '• monaco renderer',
+      '• permission'
+    ],
+    features: [
+      '• config'
+    ],
+    timestamp: '2025-05-09',
+    version: '1.0.2-beta.25'
+  },
+  {
+    bugs: [],
+    refactors: [],
+    features: [],
+    timestamp: '2025-04-30',
+    version: '1.0.2-beta.24'
+  },
+  {
+    bugs: [
+      '• renderer page query',
+      '• linkage target valid',
+      '• menu item router',
+      '• deep copy'
+    ],
+    refactors: [
+      '• es'
+    ],
+    features: [
+      '• es'
+    ],
+    timestamp: '2025-04-30',
+    version: '1.0.2-beta.23'
+  },
+  {
+    bugs: [],
+    refactors: [],
+    features: [
+    ],
+    timestamp: '2025-04-26',
+    version: '1.0.2-beta.22'
+  },
+  {
+    bugs: [
+      '• list renderer css',
+      '• schema renderer loading',
+      '• notify countdown',
+      '• renderer combo key',
+      '• form renderer linkage',
+      '• drop placeholder',
+      '• editor initdata',
+      '• upload renderer autoupload',
+      '• monaco renderer valid',
+      '• uplaod renderer',
+      '• text renderer',
+      '• api notify progress',
+      '• attrs editor css',
+      '• list renderer active css',
+      '• renderer switch linkage',
+      '• renderer switch',
+      '• api progress'
+    ],
+    refactors: [
+      '• lodash',
+      '• schema renderer page data',
+      '• progress notify'
+    ],
+    features: [
+      '• table renderer add size prop',
+      '• alert renderer border',
+      '• form renderer divider action',
+      '• setting theme',
+      '• setting color',
+      '• notify add countdown progress'
+    ],
+    timestamp: '2025-04-26',
+    version: '1.0.2-beta.21'
+  },
+  {
+    bugs: [
+      '• renderer switch triggered',
+      '• renderer column action',
+      '• renderer switch triggered',
+      '• init data',
+      '• data scope',
+      '• cached api',
+      '• renderer action trigger tasks',
+      '• renderer form idem',
+      '• renderer form idem',
+      '• form renderer idem',
+      '• renderer field rendering',
+      '• alive cached',
+      '• refresh',
+      '• delete tdpicker',
+      '• editor search',
+      '• canvas',
+      '• renderer input maxlength',
+      '• renderer column add classname props',
+      '• renderer style',
+      '• renderer autocomplete options',
+      '• editor analyze',
+      '• canvas',
+      '• renderer search addOn',
+      '• renderer input maxlength',
+      '• renderer column add classname props',
+      '• renderer style',
+      '• renderer autocomplete options',
+      '• editor analyze',
+      '• renderer field',
+      '• table deep scope',
+      '• linkage',
+      '• static field',
+      '• renderer action popover',
+      '• renderer action editable popover',
+      '• renderer editor ruler',
+      '• renderer editor ruler',
+      '• renderer action body attrs'
+    ],
+    refactors: [
+      '• renderer table merge cell',
+      '• merge cell',
+      '• renderer mapping',
+      '• field',
+      '• hooks sw',
+      '• renderer popup feedback',
+      '• renderer table merge cell',
+      '• merge cell',
+      '• renderer mapping',
+      '• field',
+      '• hooks',
+      '• theme',
+      '• renderer action popover',
+      '• renderer computed',
+      '• renderer computed watch',
+      '• renderer visible',
+      '• packages',
+      '• props'
+    ],
+    features: [
+      '• renderer admin add quick menu',
+      '• renderer admin add quick menu',
+      '• renderer main add keepalive',
+      '• keepalive',
+      '• renderer action add sw type',
+      '• add tooltip renderer',
+      '• renderer column add header dnd',
+      '• add tooltip renderer',
+      '• column tooltip',
+      '• renderer column add header dnd',
+      '• renderer table add sort method',
+      '• static field',
+      '• renderer form item add editableOn props',
+    ],
+    timestamp: '2025-03-24',
+    version: '1.0.2-beta.20'
+  },
+  {
+    bugs: [
+      '• combo trigger click',
+      '• column init data',
+      '• icon action message box',
+      '• form item deep watch',
+      '• split',
+      '• renderer attr missed'
+    ],
+    refactors: [],
+    features: [
+      '• component editor add indicator line',
+      '• renderer [table] add summary props',
+      '• popover hidden',
+      '• select teleported',
+      '• replace init data',
+      '• table support before click',
+      '• form table'
+    ],
+    timestamp: '2025-02-09',
+    version: '1.0.2-beta.19'
+  },
+  {
+    bugs: [
+      '• split resize',
+      '• vertical avatar',
+      '• dynamic table column',
+      '• column selectable',
+      '• content tree'
+    ],
+    refactors: [
+      '• worker'
+    ],
+    features: [
+      '• split min',
+      '• add split panel',
+      '• form desc',
+      '• add column',
+      '• column',
+      '• table column',
+      '• dropdown slots'
+    ],
+    timestamp: '2025-01-25',
+    version: '1.0.2-beta.18'
+  },
+  {
+    bugs: [
+      '• notice',
+      '• toolmaker tree',
+      '• schema change event',
+      '• dnd placeholder'
+    ],
+    refactors: [],
+    features: [
+      '• actionType notify',
+      '• add notify action type'
+    ],
+    timestamp: '2025-01-21',
+    version: '1.0.2-beta.17'
+  },
+  {
+    bugs: [
+      '• render dnd',
+      '• attrs search input',
+      '• dnd placeholder',
+      '• combo',
+      '• dnd shadow'
+    ],
+    refactors: [
+      '• dnd',
+      '• dnd',
+      '• dnd'
+    ],
+    features: [
+      '• service style'
+    ],
+    timestamp: '2025-01-17',
+    version: '1.0.2-beta.16'
+  },
+  {
+    bugs: [
+      '• table form'
+    ],
+    refactors: [],
+    features: [
+      '• dnd',
+      '• combo actions',
+      '• icon active',
+      '• input style'
+    ],
+    timestamp: '2025-01-11',
+    version: '1.0.2-beta.15'
+  },
+  {
+    bugs: [],
+    refactors: [],
+    features: [],
+    timestamp: '2024-12-30',
+    version: '1.0.1-beta.14'
+  },
+  {
+    bugs: [],
+    refactors: [
+      '• api'
+    ],
+    features: [],
+    timestamp: '2024-12-30',
+    version: '1.0.2-beta.14'
+  },
+  {
+    bugs: [],
+    refactors: [],
+    features: [],
+    timestamp: '2024-12-29',
+    version: '1.0.2-beta.13'
+  },
+  {
+    bugs: [
+      '• adaptor'
+    ],
+    refactors: [],
+    features: [],
+    timestamp: '2024-12-28',
+    version: '1.0.2-beta.12'
+  },
+  {
+    bugs: [
+      '• combo loading',
+      '• form valid',
+      '• task submit',
+      '• field css',
+      '• action loading',
+      '• form loading',
+      '• editor',
+      '• init data',
+      '• valid',
+      '• shcema',
+      '• actions',
+      '• tabs type',
+      '• form disabled',
+      '• purify json',
+      '• invisibleField',
+      '• editor',
+      '• tour'
+    ],
+    refactors: [
+      '• form item linkage',
+      '• valid',
+      '• init schema',
+      '• debug context',
+      '• form loading',
+      '• linkage',
+      '• tabs',
+      '• init data',
+      '• purify json',
+      '• init data',
+      '• init data'
+    ],
+    features: [
+      '• countdown trigger',
+      '• table scroll to',
+      '• add badge',
+      '• input trigger',
+      '• input tag',
+      '• intersection observer',
+      '• lazy icon',
+      '• icons'
+    ],
+    timestamp: '2024-12-27',
+    version: '1.0.2-beta.11'
+  },
+  {
+    bugs: [
+      '• on',
+      '• combo css'
+    ],
+    refactors: [],
+    features: [
+      'feat: action slot'
+    ],
+    timestamp: '2024-11-26',
+    version: '1.0.2-beta.10'
+  },
+  {
+    bugs: [
+      '• combo array css',
+      '• crud reload',
+      '• libs'
+    ],
+    refactors: [
+      '• renderer',
+      '• hooks',
+      '• renderer',
+      '• component',
+      '• use init data'
+    ],
+    features: [
+      '• analyze'
+    ],
+    timestamp: '2024-11-25',
+    version: '1.0.2-beta.9'
+  },
+  {
+    bugs: [
+      '• chart'
+    ],
+    refactors: [
+      '• dnd'
+    ],
+    features: [
+      '• segmented',
+      '• segmented',
+      '• attrs editor'
+    ],
+    timestamp: '2024-11-09',
+    version: '1.0.2-beta.8'
+  },
+  {
+    bugs: [
+      '• form init value',
+      '• action before click'
+    ],
+    refactors: [
+      '• chain',
+      '• delete form defaultValue',
+      '• form item default value',
+      '• chain'
+    ],
+    features: [
+      '• upload video',
+      '• upload video'
+    ],
+    timestamp: '2024-10-26',
+    version: '1.0.2-beta.7'
+  },
+  {
+    bugs: [
+      '• render track',
+      '• table switch action'
+    ],
+    refactors: [
+      '• action type extends'
+    ],
+    features: [
+      '• computed deps',
+      '• computed deps',
+      '• add datepicker slot',
+      '• cards sync location',
+      '• datepicker valid',
+      'delete: page-header'
+    ],
+    timestamp: '2024-10-13',
+    version: '1.0.2-beta.6'
+  },
+  {
+    bugs: [
+      '• debug',
+      '• debug'
+    ],
+    refactors: [],
+    features: [
+      '• use events',
+      '• cards animation',
+      '• add useEvents',
+      '• input slot',
+      '• service add update action',
+      '• action extends',
+      '• select actions',
+      '• combo trigger'
+    ],
+    timestamp: '2024-10-02',
+    version: '1.0.2-beta.5'
+  },
+  {
+    bugs: [
+      '• tour warning',
+      '• table form',
+      '• popup close',
+      '• crud attrs'
+    ],
+    refactors: [
+      '• action triggers',
+      '• table form'
+    ],
+    features: [
+      '• add style props',
+      '• valid'
+    ],
+    timestamp: '2024-09-22',
+    version: '1.0.2-beta.4'
+  },
+  {
+    bugs: [],
+    refactors: [
+      '• input valid'
+    ],
+    features: [
+      '• sw'
+    ],
+    timestamp: '2024-09-02',
+    version: '1.0.2-beta.3'
+  },
+  {
+    bugs: [
+      '• combo valid',
+      '• qa',
+      '• qa',
+      '• tags'
+    ],
+    refactors: [
+      '• theme'
+    ],
+    features: [
+      '• service worker',
+      '• add page worker',
+      '• header tags',
+      '• admin'
+    ],
+    timestamp: '2024-08-28',
+    version: '1.0.2-beta.2'
+  },
+  {
+    bugs: [],
+    refactors: [],
+    features: [
+      '• theme',
+      '• admin',
+      '• table title'
+    ],
+    timestamp: '2024-08-17',
+    version: '1.0.2-beta.1'
+  },
+  {
+    bugs: [],
+    refactors: [],
+    features: [
+      '• menu'
+    ],
+    timestamp: '2024-08-07',
+    version: '1.0.2-beta'
+  },
+  {
+    bugs: [],
+    refactors: [],
+    features: [
+      '• menu group title',
+      '• monaco html',
+      '• editor',
+      '• editor'
+    ],
+    timestamp: '2024-08-03',
+    version: '1.0.1-beta.100'
+  },
+  {
+    bugs: [],
+    refactors: [],
+    features: [
+      '• render',
+    ],
+    timestamp: '2024-07-28',
+    version: '1.0.1-beta.99'
+  },
+  {
+    bugs: [
+      '• reset',
+      '• popup'
+    ],
+    refactors: [],
+    features: [
+      '• table multilevel header',
+      '• viewer'
+    ],
+    timestamp: '2024-07-27',
+    version: '1.0.1-beta.98'
+  },
+  {
+    bugs: [],
+    refactors: [],
+    features: [],
+    timestamp: '2024-07-24',
+    version: '1.0.1-beta.97'
+  },
+  {
+    bugs: [],
+    refactors: [],
+    features: [],
+    timestamp: '2024-07-23',
+    version: '1.0.1-beta.96'
+  },
+  {
+    bugs: [
+      '• setting',
+      'feature: fix chart',
+      '• select td'
+    ],
+    refactors: [
+      '• slot',
+      '• slot'
+    ],
+    features: [
+      '• status map',
+      '• segmented',
+      '• table combo',
+      '• collapse',
+      '• add collapse',
+      '• table scrollTo',
+      '• table scroll',
+      '• add anchor'
+    ],
+    timestamp: '2024-07-23',
+    version: '1.0.1-beta.95'
+  },
+  {
+    bugs: [
+      '• table data columns',
+      '• table',
+      '• upload',
+      '• upload',
+      '• useUpload',
+      '• upload',
+      '• worker',
+      '• form visible'
+    ],
+    refactors: [],
+    features: [
+      '• icon picker'
+    ],
+    timestamp: '2024-06-23',
+    version: '1.0.1-beta.94'
+  },
+  {
+    bugs: [
+      '• action print'
+    ],
+    refactors: [],
+    features: [
+      '• view animation',
+      '• upload'
+    ],
+    timestamp: '2024-06-16',
+    version: '1.0.1-beta.93'
+  },
+  {
+    bugs: [
+      '• select td',
+      '• popover',
+      '• autocomplete'
+    ],
+    refactors: [],
+    features: [
+      '• upload reload',
+      '• animation countdown'
+    ],
+    timestamp: '2024-06-15',
+    version: '1.0.1-beta.92'
+  },
+  {
+    bugs: [],
+    refactors: [],
+    features: [],
+    timestamp: '2024-06-09',
+    version: '1.0.1-beta.91'
+  },
+  {
+    bugs: [
+      '• wrapper',
+      '• editor',
+      '• setting'
+    ],
+    refactors: [
+      '• component slot'
+    ],
+    features: [
+      '• autocomplete'
+    ],
+    timestamp: '2024-06-09',
+    version: '1.0.1-beta.90'
+  },
+  {
+    bugs: [
+      '• upload url'
+    ],
+    refactors: [],
+    features: [],
+    timestamp: '2024-06-01',
+    version: '1.0.1-beta.89'
+  },
+  {
+    bugs: [
+      '• tour',
+      '• table header',
+      '• static attrs',
+      '• frame computed src'
+    ],
+    refactors: [
+      '• remove path attr'
+    ],
+    features: [],
+    timestamp: '2024-06-01',
+    version: '1.0.1-beta.88'
+  },
+  {
+    bugs: [
+      '• upload'
+    ],
+    refactors: [],
+    features: [
+      '• back in time'
+    ],
+    timestamp: '2024-05-26',
+    version: '1.0.1-beta.86'
+  },
+  {
+    bugs: [
+      '• static span'
+    ],
+    refactors: [],
+    features: [],
+    timestamp: '2024-05-12',
+    version: '1.0.1-beta.85'
+  },
+  {
+    bugs: [],
+    refactors: [],
+    features: [],
+    timestamp: '2024-05-12',
+    version: '1.0.1-beta.84'
+  },
+  {
+    bugs: [],
+    refactors: [],
+    features: [
+      '• deep mapping name',
+      '• chart click',
+      '• table form'
+    ],
+    timestamp: '2024-05-05',
+    version: '1.0.1-bate.83'
+  },
+  {
+    bugs: [],
+    refactors: [
+      '• [renderer]combo',
+      '• combo'
+    ],
+    features: [
+      '• [renderer]mapping',
+      '• syntax protection'
+    ],
+    timestamp: '2024-04-18',
+    version: '1.0.1-bate.82'
+  },
+  {
+    bugs: [
+      '• [renderer]carousel',
+      '• [renderer]tour'
+    ],
+    refactors: [
+      '• action'
+    ],
+    features: [
+      '• [renderer]picker',
+      '• [datepicker]sooner later'
+    ],
+    timestamp: '2024-04-13',
+    version: '1.0.1-beta.81'
+  },
+  {
+    bugs: [
+      '• css',
+      '• props',
+      '• [renderer]combo',
+      '• [renderer]form blur',
+      '• [renderer]action style',
+      '• [renderer]combo valid',
+      '• breadcrumb',
+      '• [renderer]form fold',
+      '• animation.scss',
+      '• [renderer]static',
+      '• hooks useInitData',
+      '• editor inhert',
+      '• [renderer]tour'
+    ],
+    refactors: [
+      '• popup'
+    ],
+    features: [
+      '• [renderer]upload icon',
+      'update:[renderer]radio',
+      '• [renderer]alert',
+      '• [renderer]switch add icon type',
+      '• [renderer]html array'
+    ],
+    timestamp: '2024-04-06',
+    version: '1.0.1-bate.80'
+  },
+  {
+    bugs: [
+      '• [editor]monaco',
+      '• [renderer]form',
+      '• monaco',
+      '• [renderer]calendar',
+      '• [renderer]step',
+      '• [renderer]form',
+      '• [renderer]steps',
+      '• [renderer]input idem',
+      '• form',
+      '• list css',
+      '• en',
+      '• [renderer]dropdown',
+      '• [renderer]dropdown',
+      '• [renderer]calendar修复拖拽'
+    ],
+    refactors: [],
+    features: [
+      '• [renderer]tour',
+      '• [renderer]add monaco'
+    ],
+    timestamp: '2024-02-04',
+    version: '1.0.1-beta.79'
+  },
+  {
+    bugs: [
+      '• [renderer]combo width',
+      '• [renderer]input valid',
+      '• [renderer]form valid',
+      '• [renderer]input append refactor:[renderer]input tags',
+      '• [editor]isH5'
+    ],
+    refactors: [],
+    features: [],
+    timestamp: '2024-01-17',
+    version: '1.0.1-beta.77'
+  },
+  {
+    bugs: [
+      '• [hooks]useComponentMap',
+      '• [renderer]data复制'
+    ],
+    refactors: [],
+    features: [
+      '• [renderer]添加transfer'
+    ],
+    timestamp: '2024-01-09',
+    version: '1.0.1-beta.76'
+  },
+  {
+    bugs: [
+      '• [renderer]action复制功能',
+      'refactor:优化引用计数 •[renderer]avatar修复样式问题',
+      '• [renderer]action修复静态按钮loading fix:[renderer]table修复列保存'
+    ],
+    refactors: [],
+    features: [],
+    timestamp: '2024-01-03',
+    version: '1.0.1-beta.75'
+  },
+  {
     timestamp: '2023-10-27',
     version: '1.0.1-bata.61',
     features: [
@@ -183,13 +1051,11 @@ const logs = [
 ];
 const options = logs.map(i => ({text: i.version, value: i.version}));
 
-export const pageData = {
-  rows: logs
-};
+export const pageData = {rows: logs};
 export default {
   renderer: 'page',
   initData: {
-    selectedVersion: '1.0.1-bata.61'
+    selectedVersion: logs[0].version
   },
   body: [
     {
@@ -250,6 +1116,7 @@ export default {
             },
             {
               renderer: 'wrapper',
+              classname: 'i-home-logs__wrapper',
               header: [
                 {
                   renderer: 'html',
@@ -269,7 +1136,7 @@ export default {
                 },
                 {
                   renderer: 'html',
-                  html: '<h3><%=$?.bugs?.length? "bugs": ""%></h3>',
+                  html: '<h3><%=$?.bugs?.length? "Bug fixes": ""%></h3>',
                   inline: true
                 },
                 {
@@ -279,7 +1146,7 @@ export default {
                 },
                 {
                   renderer: 'html',
-                  html: '<h3><%=$?.refactors?.length? "refactors": ""%></h3>',
+                  html: '<h3><%=$?.refactors?.length? "Refactors": ""%></h3>',
                   inline: true
                 },
                 {
