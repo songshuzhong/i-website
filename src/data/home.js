@@ -51,10 +51,10 @@ export default {
             {
               renderer: 'action',
               type: 'success',
-              plain: true,
               round: true,
               text: '登录',
               actionType: 'url',
+              classname: 'i-breathe-border3',
               url: process.env.VUE_APP_PAGE_LOGIN
             },
             {
@@ -68,11 +68,10 @@ export default {
             {
               renderer: 'action',
               type: 'danger',
-              plain: true,
               round: true,
               text: '编辑器',
               actionType: 'url',
-              classname: 'i-breathe-border',
+              classname: 'i-breathe-border2',
               url: process.env.VUE_APP_PAGE_EDITING
             }
           ]

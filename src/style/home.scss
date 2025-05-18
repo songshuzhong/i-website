@@ -534,6 +534,7 @@ html {
 }
 .i-home-logs__wrapper {
   .i-each__container__item {
+    line-height: 24px;
     font-size: 15px;
     color: var(--el-text-color-regular);
   }
@@ -600,6 +601,12 @@ html {
 .i-breathe-border {
   animation: breathe 1500ms 0s ease-in-out infinite alternate;
 }
+.i-breathe-border2 {
+  animation: breathe2 1500ms 0s ease-in-out infinite alternate;
+}
+.i-breathe-border3 {
+  animation: breathe3 1500ms 0s ease-in-out infinite alternate;
+}
 .i-home__particle {
   position: absolute;
   width: 100% !important;
@@ -650,5 +657,27 @@ html {
     opacity: 1;
     border: 1px solid rgba(59, 235, 235, 0.7);
     box-shadow: 0 1px 30px #0093df, 0 1px 20px #0093df inset;
+  }
+}
+@keyframes breathe2 {
+  0% {
+    opacity: .4;
+    box-shadow: 0 1px 2px var(--el-color-error-light-9), 0 1px 1px var(--el-color-error-light-9) inset;
+  }
+  100% {
+    opacity: 1;
+    border: 1px solid var(--el-color-danger);
+    box-shadow: 0 1px 30px var(--el-color-danger-light-5), 0 1px 20px var(--el-color-danger-light-5) inset;
+  }
+}
+@keyframes breathe3 {
+  0% {
+    opacity: .4;
+    box-shadow: 0 1px 2px var(--el-color-success-light-9), 0 1px 1px var(--el-color-success-light-9) inset;
+  }
+  100% {
+    opacity: 1;
+    border: 1px solid var(--el-color-success);
+    box-shadow: 0 1px 30px var(--el-color-success-light-5), 0 1px 20px var(--el-color-success-light-5) inset;
   }
 }
