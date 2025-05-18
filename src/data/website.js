@@ -45,7 +45,7 @@ export default {
         {
           "target": "/admin/header/0/body/6",
           "title": "新手指引",
-          "placement": "top",
+          "placement": "bottom-end",
           "body": {
             "renderer": "wrapper",
             "classname": "i-website-intro info2",

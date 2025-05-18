@@ -19,6 +19,8 @@
         var menuBgColor = IRENDERER_ENV.menuBgColor;
         var menuTextColor = IRENDERER_ENV.menuTextColor;
         var layout = IRENDERER_ENV.layout;
+        var showHeaderNav = IRENDERER_ENV.showHeaderNav;
+        showHeaderNav?document.documentElement.classList.add('nav'):document.documentElement.classList.remove('nav');
         document.documentElement.classList.add(layout);
         document.documentElement.style.setProperty('--i-menu-text-color', menuTextColor);
         document.documentElement.style.setProperty('--i-menu-background-color', menuBgColor);
