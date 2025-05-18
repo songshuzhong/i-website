@@ -80,7 +80,7 @@ export default {
           renderer: 'carousel',
           height: 400,
           classname: 'i-home__carousel',
-          autoplay: true,
+          autoplay: false,
           loop: true,
           motionBlur: true,
           arrow: 'hover',
@@ -92,7 +92,8 @@ export default {
               body: [
                 {
                   renderer: 'image',
-                  src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case1.png`,
+                  fit: 'contain',
+                  src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case5.png`,
                   previews: [
                     'https://songshuzhong.github.io/i-assets/public/img/action.png',
                     'https://songshuzhong.github.io/i-assets/public/img/initApi.png',
@@ -117,6 +118,7 @@ export default {
               body: [
                 {
                   renderer: 'image',
+                  fit: 'contain',
                   src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case2.png`,
                   previews: [
                     'https://songshuzhong.github.io/i-assets/public/img/action.png'
@@ -140,7 +142,8 @@ export default {
               body: [
                 {
                   renderer: 'image',
-                  src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case3.png`,
+                  fit: 'contain',
+                  src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case6.png`,
                   previews: [
                     'https://songshuzhong.github.io/i-assets/public/img/errors.png'
                   ]

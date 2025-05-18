@@ -307,6 +307,10 @@ html {
     padding: 20px;
   }
 }
+.i-home__carousel__item {
+  width: 100%;
+  height: 100%;
+}
 .i-carousel__container {
   margin-top: -20px;
   .i-wrapper__container {
@@ -317,7 +321,6 @@ html {
   height: 460px;
   .i-wrapper__container__body {
     position: relative;
-    padding: 0 160px;
     height: 100%;
     .i-html__container {
       position: absolute;
@@ -342,7 +345,7 @@ html {
       border-right: 30px solid transparent;
       border-bottom: 0;
       background: transparent;
-      transform: rotate(-45deg) translate(72px, 15px);
+      transform: rotate(-45deg) translate(103px, 33px);
       span {
         transform: translate(-15px, -28px);
       }
@@ -351,15 +354,7 @@ html {
   .el-carousel__item {
     .i-image__container {
       position: relative;
-      height: 100%;
-    }
-    .el-image {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 90%;
-      height: 86%;
-      transform: translate(-50%, -50%);
+      width: 100%;
     }
   }
 }
