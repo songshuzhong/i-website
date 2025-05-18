@@ -18,6 +18,8 @@
         var IRENDERER_ENV = JSON.parse(localStorage.getItem('RENDERER_ENV'));
         var menuBgColor = IRENDERER_ENV.menuBgColor;
         var menuTextColor = IRENDERER_ENV.menuTextColor;
+        var layout = IRENDERER_ENV.layout;
+        document.documentElement.classList.add(layout);
         document.documentElement.style.setProperty('--i-menu-text-color', menuTextColor);
         document.documentElement.style.setProperty('--i-menu-background-color', menuBgColor);
       } catch(e) {}
