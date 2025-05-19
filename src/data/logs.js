@@ -1,7 +1,14 @@
 const logs = [
   {
     bugs: [
-      '• 修复keepalive缓存异常',
+      '• Renderers[main] fix keepalive error page',
+      '• Renderers[computed] fix watch loop',
+    ],
+    refactors: [
+      '• create message'
+    ],
+    features: [
+      '• Hooks[useInitData] inherit type support deconstruct',
     ],
     timestamp: '2025-05-18',
     version: '1.0.2-beta.30'
