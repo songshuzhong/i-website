@@ -644,7 +644,7 @@ html {
   position: absolute;
   width: 100% !important;
   height: 509px !important;
-  background: linear-gradient(180deg,#fff,rgba(64,158,255,.4));
+  background: linear-gradient(180deg, var(--el-color-white), var(--el-color-primary-light-7));
 }
 @keyframes grow {
   from {
