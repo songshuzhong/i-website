@@ -80,7 +80,7 @@ export default {
           renderer: 'carousel',
           height: 400,
           classname: 'i-home__carousel',
-          autoplay: true,
+          autoplay: false,
           loop: true,
           motionBlur: true,
           arrow: 'hover',
