@@ -136,12 +136,30 @@ export default {
                       fit: 'contain',
                       src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case6.png`,
                       previews: [
+                        'https://songshuzhong.github.io/i-assets/public/img/action.png'
+                      ]
+                    },
+                    {
+                      renderer: 'html',
+                      html: '丰富的插件商城，共创共享'
+                    }
+                  ]
+                },
+                {
+                  renderer: 'wrapper',
+                  classname: 'i-home__carousel__item',
+                  body: [
+                    {
+                      renderer: 'image',
+                      fit: 'contain',
+                      src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case8.png`,
+                      previews: [
                         'https://songshuzhong.github.io/i-assets/public/img/errors.png'
                       ]
                     },
                     {
                       renderer: 'html',
-                      html: '让开发体验更贴心、美好'
+                      html: '让开发体验如德芙般丝滑、美好'
                     }
                   ]
                 }
