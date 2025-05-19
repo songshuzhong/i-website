@@ -42,7 +42,7 @@ const logs = [
   },
   {
     bugs: [
-      '• Renderers[Popup] update popup zindex',
+      '• Renderers[popup] update popup zindex',
       '• Renderers[setting] fix config exception'
     ],
     refactors: [
