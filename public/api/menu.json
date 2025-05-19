@@ -272,6 +272,22 @@
             "pageDesc": null,
             "schemaUrl": "/api/page/fa5efa68-8e4f-4eb6-a633-cff9cda9c407"
           },
+
+          {
+            "renderer": "menuitem",
+            "name": "antdUsers",
+            "title": "蚂蚁列表",
+            "icon": "",
+            "pageId": "1f149d6d-5b2b-4f9b-a2f2-054dd75a831e",
+            "groupBy": "crud",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/1f149d6d-5b2b-4f9b-a2f2-054dd75a831e"
+          },
           {
             "renderer": "menuitem",
             "name": "activities",

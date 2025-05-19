@@ -139,7 +139,7 @@ export default {
                     },
                     {
                       renderer: 'html',
-                      html: '丰富的插件商城，共创共享'
+                      html: '开放的插件商城，共创共享'
                     }
                   ]
                 },
