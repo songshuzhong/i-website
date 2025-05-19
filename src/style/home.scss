@@ -587,19 +587,42 @@ html {
   }
 }
 .i-website__router__loader {
-  height: 3px;
-  z-index: 20 !important;
+  height: 0;
   &::before {
-    content: "";
+    content: '';
     display: block;
     width: 100%;
-    height: 100%;
-    background: #409eff;
+    height: 4px;
+    background: linear-gradient(to right, #c6e2ff, #1677ff);
     transform-origin: 0 50%;
     animation: grow 1s ease-out;
   }
   .el-loading-spinner {
-    display: none;
+    top: 30px;
+    cursor: not-allowed;
+    .circular {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: unset;
+      height: 25px !important;
+      width: 25px !important;
+      display: inline;
+      background-image: url('../../public/circle.svg');
+      background-position: center;
+      background-size: cover;
+      animation: loading-rotate 2s linear infinite;
+      transform: unset;
+    }
+    .path {
+      display: block;
+      animation: loading-dash 1.5s ease-in-out infinite;
+      stroke-dasharray: 90,150;
+      stroke-dashoffset: 0;
+      stroke-width: 4;
+      stroke: var(--el-color-primary);
+      stroke-linecap: round;
+    }
   }
 }
 .i-icon__container {
