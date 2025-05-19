@@ -1104,6 +1104,7 @@ export default {
                   name: 'selectedVersion',
                   label: '选择版本:',
                   multiple: false,
+                  clearable: false,
                   target: 'VersionDetails',
                   options
                 }

@@ -98,9 +98,7 @@ export default {
                       fit: 'contain',
                       src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case5.png`,
                       previews: [
-                        'https://songshuzhong.github.io/i-assets/public/img/action.png',
-                        'https://songshuzhong.github.io/i-assets/public/img/initApi.png',
-                        'https://songshuzhong.github.io/i-assets/public/img/columns.png'
+                        `${process.env.VUE_APP_PUBLIC_PATH}/img/case5.png`,
                       ]
                     },
                     {
@@ -118,7 +116,7 @@ export default {
                       fit: 'contain',
                       src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case7.png`,
                       previews: [
-                        'https://songshuzhong.github.io/i-assets/public/img/action.png'
+                        `${process.env.VUE_APP_PUBLIC_PATH}/img/case7.png`,
                       ]
                     },
                     {
@@ -136,7 +134,7 @@ export default {
                       fit: 'contain',
                       src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case6.png`,
                       previews: [
-                        'https://songshuzhong.github.io/i-assets/public/img/action.png'
+                        `${process.env.VUE_APP_PUBLIC_PATH}/img/case6.png`,
                       ]
                     },
                     {
@@ -154,7 +152,7 @@ export default {
                       fit: 'contain',
                       src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case8.png`,
                       previews: [
-                        'https://songshuzhong.github.io/i-assets/public/img/errors.png'
+                        `${process.env.VUE_APP_PUBLIC_PATH}/img/case8.png`,
                       ]
                     },
                     {
