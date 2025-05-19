@@ -171,6 +171,10 @@ html {
       background: transparent;
     }
   }
+  .i-component-loading {
+    position: absolute;
+    top: 0;
+  }
   .i-grid__container {
     margin: 0 !important;
     padding: 50px 50px;
@@ -323,10 +327,8 @@ html {
     position: relative;
     height: 100%;
     .i-html__container {
-      position: absolute;
-      bottom: 0;
-      right: 34px;
       width: 575px;
+      margin-top: -32px;
       display: block;
       font-size: 0.53333rem;
       font-weight: bolder;
@@ -335,6 +337,8 @@ html {
     .i-action {
       width: 130px;
       height: 0;
+      margin-top: -80px;
+      margin-right: -35px;
       display: block;
       border-radius: 0;
       border-top: 30px solid var(--el-color-success);
@@ -343,8 +347,6 @@ html {
       border-bottom: 0;
       background: transparent;
       transform: rotate(-45deg);
-      margin-top: -86px;
-      margin-right: -35px;
       float: right;
       span {
         transform: translate(-15px, -28px);
