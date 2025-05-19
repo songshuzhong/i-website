@@ -1,38 +1,39 @@
 const logs = [
   {
     bugs: [
-      '• Renderers[main] fix keepalive error page',
-      '• Renderers[computed] fix watch loop',
+      '• Renderers[main] fix incorrect route cached',
+      '• Renderers[computed] fix cycle calculation',
     ],
     refactors: [
-      '• create message'
+      '• Renderers[action] modify the input parameters of the notification behavior configuration'
     ],
     features: [
-      '• Hooks[useInitData] inherit type support deconstruct',
+      '• Hooks[useInitData] data inheritance supports deconstructing types',
     ],
     timestamp: '2025-05-18',
     version: '1.0.2-beta.30'
   },
   {
     bugs: [
-      '• darkness',
-      '• action renderer ajax',
-      '• table renderer',
-      '• schema renderer refresh'
+      '• Renderers[action] fix action ajax callback exception',
+      '• Renderers[table] fix double click linkage',
+      '• Renderers[schema] fix refresh'
     ],
     refactors: [
-      '• create message'
+      '• Hooks[createMessage] support progress bar'
     ],
-    features: [],
+    features: [
+      '• Theme add automatic night mode'
+    ],
     timestamp: '2025-05-16',
     version: '1.0.2-beta.28'
   },
   {
     bugs: [
-      '• renderer error'
+      '• Renderers[error] modify error message'
     ],
     refactors: [
-      '• schema renderer init'
+      '• Renderers[schema] support deconstruction function init schema'
     ],
     features: [
     ],
@@ -41,17 +42,16 @@ const logs = [
   },
   {
     bugs: [
-      '• popup zindex',
-      '• config'
+      '• Renderers[Popup] update popup zindex',
+      '• Renderers[setting] fix config exception'
     ],
     refactors: [
-      '• setting',
-      '• monaco renderer'
+      '• Renderers[monaco] support syntax validation'
     ],
     features: [
-      '• schema renderer support function',
-      '• form renderer expose merge method',
-      '• avatar actions'
+      '• Renderers[schema] init schema support function type',
+      '• Renderers[form] expose merge method',
+      '• Renderers[avatar] add actions props'
     ],
     timestamp: '2025-05-14',
     version: '1.0.2-beta.26'
@@ -62,7 +62,6 @@ const logs = [
       '• text renderer'
     ],
     refactors: [
-      '• monaco renderer',
       '• monaco renderer',
       '• permission'
     ],
