@@ -77,91 +77,85 @@ export default {
           ]
         },
         {
-          renderer: 'carousel',
-          height: 400,
-          classname: 'i-home__carousel',
-          autoplay: false,
-          loop: true,
-          motionBlur: true,
-          arrow: 'hover',
-          indicatorPosition: 'none',
+          renderer: 'wrapper',
           body: [
             {
-              renderer: 'wrapper',
-              classname: 'i-home__carousel__item',
+              renderer: 'carousel',
+              height: 400,
+              classname: 'i-home__carousel',
+              autoplay: false,
+              loop: true,
+              motionBlur: true,
+              arrow: 'hover',
+              indicatorPosition: 'none',
               body: [
                 {
-                  renderer: 'image',
-                  fit: 'contain',
-                  src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case5.png`,
-                  previews: [
-                    'https://songshuzhong.github.io/i-assets/public/img/action.png',
-                    'https://songshuzhong.github.io/i-assets/public/img/initApi.png',
-                    'https://songshuzhong.github.io/i-assets/public/img/columns.png'
+                  renderer: 'wrapper',
+                  classname: 'i-home__carousel__item',
+                  body: [
+                    {
+                      renderer: 'image',
+                      fit: 'contain',
+                      src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case5.png`,
+                      previews: [
+                        'https://songshuzhong.github.io/i-assets/public/img/action.png',
+                        'https://songshuzhong.github.io/i-assets/public/img/initApi.png',
+                        'https://songshuzhong.github.io/i-assets/public/img/columns.png'
+                      ]
+                    },
+                    {
+                      renderer: 'html',
+                      html: '丰富的组件选择、强大的功能支持，更加自由的搭配组合网页',
+                    }
                   ]
                 },
                 {
-                  renderer: 'html',
-                  html: '自带编辑器与文档，了解css、javascript即可上手'
+                  renderer: 'wrapper',
+                  classname: 'i-home__carousel__item',
+                  body: [
+                    {
+                      renderer: 'image',
+                      fit: 'contain',
+                      src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case7.png`,
+                      previews: [
+                        'https://songshuzhong.github.io/i-assets/public/img/action.png'
+                      ]
+                    },
+                    {
+                      renderer: 'html',
+                      html: '自带可视化编辑器、说明文档，了解css、javascript即可上手'
+                    }
+                  ]
                 },
                 {
-                  renderer: 'action',
-                  text: '了解详情',
-                  actionType: 'url',
-                  url: 'https://songshuzhong.github.io/i-website/dist/index.html#/demo/inputValid'
+                  renderer: 'wrapper',
+                  classname: 'i-home__carousel__item',
+                  body: [
+                    {
+                      renderer: 'image',
+                      fit: 'contain',
+                      src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case6.png`,
+                      previews: [
+                        'https://songshuzhong.github.io/i-assets/public/img/errors.png'
+                      ]
+                    },
+                    {
+                      renderer: 'html',
+                      html: '让开发体验更贴心、美好'
+                    }
+                  ]
                 }
               ]
             },
             {
-              renderer: 'wrapper',
-              classname: 'i-home__carousel__item',
-              body: [
-                {
-                  renderer: 'image',
-                  fit: 'contain',
-                  src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case2.png`,
-                  previews: [
-                    'https://songshuzhong.github.io/i-assets/public/img/action.png'
-                  ]
-                },
-                {
-                  renderer: 'html',
-                  html: '丰富的组件库支持，更加自由的搭配组合网页'
-                },
-                {
-                  renderer: 'action',
-                  text: '了解详情',
-                  actionType: 'url',
-                  url: 'https://songshuzhong.github.io/i-website/dist/index.html#/market/plugins'
-                }
-              ]
-            },
-            {
-              renderer: 'wrapper',
-              classname: 'i-home__carousel__item',
-              body: [
-                {
-                  renderer: 'image',
-                  fit: 'contain',
-                  src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case6.png`,
-                  previews: [
-                    'https://songshuzhong.github.io/i-assets/public/img/errors.png'
-                  ]
-                },
-                {
-                  renderer: 'html',
-                  html: '让开发体验更贴心、美好'
-                },
-                {
-                  renderer: 'action',
-                  text: '了解详情',
-                  actionType: 'url',
-                  url: 'https://songshuzhong.github.io/i-website/dist/index.html#/demo/inputValid'
-                }
-              ]
+              renderer: 'action',
+              text: '了解详情',
+              actionType: 'url',
+              classname: 'i-home__details-action',
+              url: process.env.VUE_APP_PAGE_WEBSITE
             }
           ]
-        }
+        },
       ]
     },
     {

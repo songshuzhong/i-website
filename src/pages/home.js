@@ -11,7 +11,6 @@ import 'i-renderer/dist/css/index.css';
 import '../style/home.scss';
 
 const app = createApp(Application);
-
 app
   .use(ElementPlus)
   .use(IRenderer, {

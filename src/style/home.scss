@@ -312,7 +312,7 @@ html {
   }
 }
 .i-home__carousel__item {
-  width: 100%;
+  width: 686px;
   height: 100%;
 }
 .i-carousel__container {
@@ -321,8 +321,36 @@ html {
     height: 100%;
   }
 }
+.i-home__details-action {
+  position: relative;
+  display: block;
+  width: 130px;
+  height: 0;
+  margin-top: -79px;
+  margin-right: -35px;
+  border-radius: 0;
+  border-top: 30px solid var(--el-color-success);
+  border-left: 31px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 0;
+  background: transparent;
+  transform: rotate(-45deg);
+  z-index: 10;
+  float: right;
+  &:hover {
+    border-top: 30px solid var(--el-color-success);
+    border-left: 31px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 0;
+    background: transparent;
+  }
+  span {
+    transform: translate(-10px, -28px);
+  }
+}
 .el-carousel__container {
   height: 460px;
+  z-index: 3;
   .i-wrapper__container__body {
     position: relative;
     height: 100%;
@@ -335,22 +363,6 @@ html {
       color: var(--el-color-primary);
     }
     .i-action {
-      width: 130px;
-      height: 0;
-      margin-top: -80px;
-      margin-right: -35px;
-      display: block;
-      border-radius: 0;
-      border-top: 30px solid var(--el-color-success);
-      border-left: 31px solid transparent;
-      border-right: 30px solid transparent;
-      border-bottom: 0;
-      background: transparent;
-      transform: rotate(-45deg);
-      float: right;
-      span {
-        transform: translate(-15px, -28px);
-      }
     }
   }
   .el-carousel__item {
@@ -524,6 +536,7 @@ html {
     border-radius: 100%;
     animation: i-home-ball-updown 4s 0s infinite alternate;
     background: radial-gradient(circle, var(--el-color-primary-light-3), white);
+    z-index: 100;
   }
 }
 .i-home__logs {
