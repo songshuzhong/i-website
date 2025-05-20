@@ -222,10 +222,11 @@ html {
     padding: 8px 20px;
     text-align: center;
     cursor: pointer;
+    transition: background-color 0.3s ease-in, transform 0.2s ease-out;
     &:hover {
-      color: var(--el-color-primary);
+      background-color: var(--el-color-primary);
       .el-button {
-        color: white;
+        color: var(--el-color-white);
       }
     }
     .el-button {
