@@ -218,13 +218,29 @@ html {
       border-radius: 100%;
     }
   }
+
   .i-card__footer {
+    position: relative;
     padding: 8px 20px;
     text-align: center;
     cursor: pointer;
-    transition: background-color 0.3s ease-in, transform 0.2s ease-out;
-    &:hover {
+    z-index: 1;
+    &:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 100%;
       background-color: var(--el-color-primary);
+      transition: all 0.3s ease-in-out;
+      content: '';
+      z-index: -1;
+    }
+    &:hover {
+      &:after {
+        left: 0;
+        width: 100%;
+      }
       .el-button {
         color: var(--el-color-white);
       }
@@ -317,7 +333,7 @@ html {
   height: 100%;
 }
 .i-carousel__container {
-  margin-top: -20px;
+  margin-top: -10px;
   .i-wrapper__container {
     height: 100%;
   }
