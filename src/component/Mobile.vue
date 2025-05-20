@@ -12,7 +12,7 @@
   <i-schema
     v-else
     :init-schema="url"
-    :can-schema-update="false"
+    :updatable="false"
     ref="schema"
     path="/mobile"
     classname="i-mobile__container i-website__main i-main__container"

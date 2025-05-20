@@ -7,7 +7,7 @@
       <el-divider direction="vertical" />
       <i-schema
         :init-schema="initSchema"
-        :can-schema-update="false"
+        :updatable="false"
         track="/editor"
         classname="i-home__playground__preview"
       />

@@ -1,7 +1,7 @@
 <template>
   <i-schema
     :init-schema="loginSchema"
-    :canSchemaUpdate="false"
+    :updatable="false"
   />
 </template>
 

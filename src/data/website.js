@@ -89,7 +89,7 @@ export default {
     },
     {
       "renderer": "action",
-      "immediateOn": "1===1",
+      "immediateOn": !['dev', 'local'].includes(process.env.VUE_APP_API_NODE_ENV),
       "visibleOn": "1===2",
       "actionType": "trigger",
       "triggered": "Tour"
@@ -458,7 +458,7 @@ export default {
               "body": [
                 {
                   "renderer": "html",
-                  "html": "Hi,欢迎使用<%=data.name%>"
+                  "html": "Hi,欢迎使用<%=$.name%>"
                 }
               ]
             }

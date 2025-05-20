@@ -1,7 +1,7 @@
 <template>
   <i-schema
     :init-schema="frameSchema"
-    :canSchemaUpdate="false"
+    :updatable="false"
     classname="i-renderer-website-schema__container"
   />
 </template>
