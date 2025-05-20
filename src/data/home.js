@@ -96,6 +96,7 @@ export default {
                     {
                       renderer: 'image',
                       fit: 'contain',
+                      previewTeleported: true,
                       src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case5.png`,
                       previews: [
                         `${process.env.VUE_APP_PUBLIC_PATH}/img/case5.png`,
@@ -114,6 +115,7 @@ export default {
                     {
                       renderer: 'image',
                       fit: 'contain',
+                      previewTeleported: true,
                       src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case7.png`,
                       previews: [
                         `${process.env.VUE_APP_PUBLIC_PATH}/img/case7.png`,
@@ -132,6 +134,7 @@ export default {
                     {
                       renderer: 'image',
                       fit: 'contain',
+                      previewTeleported: true,
                       src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case6.png`,
                       previews: [
                         `${process.env.VUE_APP_PUBLIC_PATH}/img/case6.png`,
@@ -150,6 +153,7 @@ export default {
                     {
                       renderer: 'image',
                       fit: 'contain',
+                      previewTeleported: true,
                       src: `${process.env.VUE_APP_PUBLIC_PATH}/img/case8.png`,
                       previews: [
                         `${process.env.VUE_APP_PUBLIC_PATH}/img/case8.png`,
