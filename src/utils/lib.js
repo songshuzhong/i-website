@@ -1,5 +1,5 @@
-import IRenderer from 'i-renderer/dist/js/renderer';
+import IRenderer from '../../../i-renderer/packages/renderer/index';
 
-export const loadEditor = () => import('i-renderer/dist/js/editor');
+export const loadEditor = () => import('../../../i-renderer/packages/canvas/index');
 export {IRenderer};
-export {Schema, checkPermission, api} from 'i-renderer/dist/js/renderer';
+export {Schema, checkPermission, api} from '../../../i-renderer/packages/renderer/index';

@@ -35,7 +35,7 @@ export default {
                 icon: 'LocationInformation'
               },
               {
-                name: 'https://songshuzhong.github.io/i-website/dist/website.html',
+                name: process.env.VUE_APP_PAGE_WEBSITE,
                 title: ' 案例合集',
                 renderer: 'menuitem',
                 icon: 'DataBoard',
