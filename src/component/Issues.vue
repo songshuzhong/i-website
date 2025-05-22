@@ -4,10 +4,12 @@
   </div>
 </template>
 <script>
-import {defineComponent, onMounted, ref} from 'vue';
+import {defineComponent, onMounted, ref, getCurrentInstance} from 'vue';
 export default defineComponent({
   name: 'Issues',
   props: {
+    initData: Object,
+    action: Function,
     repo: {
       type: String,
       required: false,
@@ -17,14 +19,16 @@ export default defineComponent({
   setup(props) {
     const isMounted = ref(false);
     onMounted(() => {
+      const {proxy} = getCurrentInstance();
       const comments = document.getElementById('comments');
       const script = document.createElement('script');
       script.type = 'text/javascript';
       script.src = 'https://utteranc.es/client.js';
       script.setAttribute('repo', props.repo);
       script.setAttribute('issue-term', 1);
-      script.setAttribute('theme', 'github-light');
+      script.setAttribute('theme', `github-${proxy.$iRenderConfig.isDarkness? 'dark': 'light'}`);
       script.setAttribute('crossorigin', 'anonymous');
+      script.setAttribute('async', 'true');
       script.onload = script.onreadystatechange = function() {
         if (
           !script.readyState ||
