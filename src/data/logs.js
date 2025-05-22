@@ -1,72 +1,93 @@
 const logs = [
   {
     bugs: [
-      '• Renderers[main] fix incorrect route cached',
-      '• Renderers[computed] fix cycle calculation',
+      '- Renderers[action] fix image button not popping up',
+      '- Renderers[image] fix click event',
+      '- Renderers[component] fix loading background color hard coded',
+      '- Editor fix dnd dom loop',
+      '- Editor fix layer anomalies',
+      '- Editor fix refresh delay after editing',
+      '- Theme fix auto night mode issue'
     ],
     refactors: [
-      '• Renderers[action] modify the input parameters of the notification behavior configuration'
+      '- Renderers[image] delete url props',
+      '- Renderers[form] validation'
     ],
     features: [
-      '• Hooks[useInitData] data inheritance supports deconstructing types',
+      '- Renderers[image] add preview teleported props',
+      '- Renderers[dialog] add top props',
+      '- Renderers[select] add collapse tags props'
+    ],
+    timestamp: '2025-05-22',
+    version: '1.0.2-bata.31'
+  },
+  {
+    bugs: [
+      '- Renderers[main] fix incorrect route cached',
+      '- Renderers[computed] fix cycle calculation',
+    ],
+    refactors: [
+      '- Renderers[action] modify the input parameters of the notification behavior configuration'
+    ],
+    features: [
+      '- Hooks[useInitData] data inheritance supports deconstructing types',
     ],
     timestamp: '2025-05-18',
     version: '1.0.2-beta.30'
   },
   {
     bugs: [
-      '• Renderers[action] fix action ajax callback exception',
-      '• Renderers[table] fix double click linkage',
-      '• Renderers[schema] fix refresh'
+      '- Renderers[action] fix action ajax callback exception',
+      '- Renderers[table] fix double click linkage',
+      '- Renderers[schema] fix refresh'
     ],
     refactors: [
-      '• Hooks[createMessage] support progress bar'
+      '- Hooks[createMessage] support progress bar'
     ],
     features: [
-      '• Theme add automatic night mode'
+      '- Theme add automatic night mode'
     ],
     timestamp: '2025-05-16',
     version: '1.0.2-beta.28'
   },
   {
     bugs: [
-      '• Renderers[error] modify error message'
+      '- Renderers[error] modify error message'
     ],
     refactors: [
-      '• Renderers[schema] support deconstruction function init schema'
+      '- Renderers[schema] support deconstruction function init schema'
     ],
-    features: [
-    ],
+    features: [],
     timestamp: '2025-05-15',
     version: '1.0.2-beta.27'
   },
   {
     bugs: [
-      '• Renderers[popup] update popup zindex',
-      '• Renderers[setting] fix config exception'
+      '- Renderers[popup] update popup zindex',
+      '- Renderers[setting] fix config exception'
     ],
     refactors: [
-      '• Renderers[monaco] support syntax validation'
+      '- Renderers[monaco] support syntax validation'
     ],
     features: [
-      '• Renderers[schema] init schema support function type',
-      '• Renderers[form] expose merge method',
-      '• Renderers[avatar] add actions props'
+      '- Renderers[schema] init schema support function type',
+      '- Renderers[form] expose merge method',
+      '- Renderers[avatar] add actions props'
     ],
     timestamp: '2025-05-14',
     version: '1.0.2-beta.26'
   },
   {
     bugs: [
-      '• monaco renderer',
-      '• text renderer'
+      '- monaco renderer',
+      '- text renderer'
     ],
     refactors: [
-      '• monaco renderer',
-      '• permission'
+      '- monaco renderer',
+      '- permission'
     ],
     features: [
-      '• config'
+      '- config'
     ],
     timestamp: '2025-05-09',
     version: '1.0.2-beta.25'
@@ -80,16 +101,16 @@ const logs = [
   },
   {
     bugs: [
-      '• renderer page query',
-      '• linkage target valid',
-      '• menu item router',
-      '• deep copy'
+      '- renderer page query',
+      '- linkage target valid',
+      '- menu item router',
+      '- deep copy'
     ],
     refactors: [
-      '• es'
+      '- es'
     ],
     features: [
-      '• es'
+      '- es'
     ],
     timestamp: '2025-04-30',
     version: '1.0.2-beta.23'
@@ -97,214 +118,213 @@ const logs = [
   {
     bugs: [],
     refactors: [],
-    features: [
-    ],
+    features: [],
     timestamp: '2025-04-26',
     version: '1.0.2-beta.22'
   },
   {
     bugs: [
-      '• list renderer css',
-      '• schema renderer loading',
-      '• notify countdown',
-      '• renderer combo key',
-      '• form renderer linkage',
-      '• drop placeholder',
-      '• editor initdata',
-      '• upload renderer autoupload',
-      '• monaco renderer valid',
-      '• uplaod renderer',
-      '• text renderer',
-      '• api notify progress',
-      '• attrs editor css',
-      '• list renderer active css',
-      '• renderer switch linkage',
-      '• renderer switch',
-      '• api progress'
+      '- list renderer css',
+      '- schema renderer loading',
+      '- notify countdown',
+      '- renderer combo key',
+      '- form renderer linkage',
+      '- drop placeholder',
+      '- editor initdata',
+      '- upload renderer autoupload',
+      '- monaco renderer valid',
+      '- uplaod renderer',
+      '- text renderer',
+      '- api notify progress',
+      '- attrs editor css',
+      '- list renderer active css',
+      '- renderer switch linkage',
+      '- renderer switch',
+      '- api progress'
     ],
     refactors: [
-      '• lodash',
-      '• schema renderer page data',
-      '• progress notify'
+      '- lodash',
+      '- schema renderer page data',
+      '- progress notify'
     ],
     features: [
-      '• table renderer add size prop',
-      '• alert renderer border',
-      '• form renderer divider action',
-      '• setting theme',
-      '• setting color',
-      '• notify add countdown progress'
+      '- table renderer add size prop',
+      '- alert renderer border',
+      '- form renderer divider action',
+      '- setting theme',
+      '- setting color',
+      '- notify add countdown progress'
     ],
     timestamp: '2025-04-26',
     version: '1.0.2-beta.21'
   },
   {
     bugs: [
-      '• renderer switch triggered',
-      '• renderer column action',
-      '• renderer switch triggered',
-      '• init data',
-      '• data scope',
-      '• cached api',
-      '• renderer action trigger tasks',
-      '• renderer form idem',
-      '• renderer form idem',
-      '• form renderer idem',
-      '• renderer field rendering',
-      '• alive cached',
-      '• refresh',
-      '• delete tdpicker',
-      '• editor search',
-      '• canvas',
-      '• renderer input maxlength',
-      '• renderer column add classname props',
-      '• renderer style',
-      '• renderer autocomplete options',
-      '• editor analyze',
-      '• canvas',
-      '• renderer search addOn',
-      '• renderer input maxlength',
-      '• renderer column add classname props',
-      '• renderer style',
-      '• renderer autocomplete options',
-      '• editor analyze',
-      '• renderer field',
-      '• table deep scope',
-      '• linkage',
-      '• static field',
-      '• renderer action popover',
-      '• renderer action editable popover',
-      '• renderer editor ruler',
-      '• renderer editor ruler',
-      '• renderer action body attrs'
+      '- renderer switch triggered',
+      '- renderer column action',
+      '- renderer switch triggered',
+      '- init data',
+      '- data scope',
+      '- cached api',
+      '- renderer action trigger tasks',
+      '- renderer form idem',
+      '- renderer form idem',
+      '- form renderer idem',
+      '- renderer field rendering',
+      '- alive cached',
+      '- refresh',
+      '- delete tdpicker',
+      '- editor search',
+      '- canvas',
+      '- renderer input maxlength',
+      '- renderer column add classname props',
+      '- renderer style',
+      '- renderer autocomplete options',
+      '- editor analyze',
+      '- canvas',
+      '- renderer search addOn',
+      '- renderer input maxlength',
+      '- renderer column add classname props',
+      '- renderer style',
+      '- renderer autocomplete options',
+      '- editor analyze',
+      '- renderer field',
+      '- table deep scope',
+      '- linkage',
+      '- static field',
+      '- renderer action popover',
+      '- renderer action editable popover',
+      '- renderer editor ruler',
+      '- renderer editor ruler',
+      '- renderer action body attrs'
     ],
     refactors: [
-      '• renderer table merge cell',
-      '• merge cell',
-      '• renderer mapping',
-      '• field',
-      '• hooks sw',
-      '• renderer popup feedback',
-      '• renderer table merge cell',
-      '• merge cell',
-      '• renderer mapping',
-      '• field',
-      '• hooks',
-      '• theme',
-      '• renderer action popover',
-      '• renderer computed',
-      '• renderer computed watch',
-      '• renderer visible',
-      '• packages',
-      '• props'
+      '- renderer table merge cell',
+      '- merge cell',
+      '- renderer mapping',
+      '- field',
+      '- hooks sw',
+      '- renderer popup feedback',
+      '- renderer table merge cell',
+      '- merge cell',
+      '- renderer mapping',
+      '- field',
+      '- hooks',
+      '- theme',
+      '- renderer action popover',
+      '- renderer computed',
+      '- renderer computed watch',
+      '- renderer visible',
+      '- packages',
+      '- props'
     ],
     features: [
-      '• renderer admin add quick menu',
-      '• renderer admin add quick menu',
-      '• renderer main add keepalive',
-      '• keepalive',
-      '• renderer action add sw type',
-      '• add tooltip renderer',
-      '• renderer column add header dnd',
-      '• add tooltip renderer',
-      '• column tooltip',
-      '• renderer column add header dnd',
-      '• renderer table add sort method',
-      '• static field',
-      '• renderer form item add editableOn props',
+      '- renderer admin add quick menu',
+      '- renderer admin add quick menu',
+      '- renderer main add keepalive',
+      '- keepalive',
+      '- renderer action add sw type',
+      '- add tooltip renderer',
+      '- renderer column add header dnd',
+      '- add tooltip renderer',
+      '- column tooltip',
+      '- renderer column add header dnd',
+      '- renderer table add sort method',
+      '- static field',
+      '- renderer form item add editableOn props',
     ],
     timestamp: '2025-03-24',
     version: '1.0.2-beta.20'
   },
   {
     bugs: [
-      '• combo trigger click',
-      '• column init data',
-      '• icon action message box',
-      '• form item deep watch',
-      '• split',
-      '• renderer attr missed'
+      '- combo trigger click',
+      '- column init data',
+      '- icon action message box',
+      '- form item deep watch',
+      '- split',
+      '- renderer attr missed'
     ],
     refactors: [],
     features: [
-      '• component editor add indicator line',
-      '• renderer [table] add summary props',
-      '• popover hidden',
-      '• select teleported',
-      '• replace init data',
-      '• table support before click',
-      '• form table'
+      '- component editor add indicator line',
+      '- renderer [table] add summary props',
+      '- popover hidden',
+      '- select teleported',
+      '- replace init data',
+      '- table support before click',
+      '- form table'
     ],
     timestamp: '2025-02-09',
     version: '1.0.2-beta.19'
   },
   {
     bugs: [
-      '• split resize',
-      '• vertical avatar',
-      '• dynamic table column',
-      '• column selectable',
-      '• content tree'
+      '- split resize',
+      '- vertical avatar',
+      '- dynamic table column',
+      '- column selectable',
+      '- content tree'
     ],
     refactors: [
-      '• worker'
+      '- worker'
     ],
     features: [
-      '• split min',
-      '• add split panel',
-      '• form desc',
-      '• add column',
-      '• column',
-      '• table column',
-      '• dropdown slots'
+      '- split min',
+      '- add split panel',
+      '- form desc',
+      '- add column',
+      '- column',
+      '- table column',
+      '- dropdown slots'
     ],
     timestamp: '2025-01-25',
     version: '1.0.2-beta.18'
   },
   {
     bugs: [
-      '• notice',
-      '• toolmaker tree',
-      '• schema change event',
-      '• dnd placeholder'
+      '- notice',
+      '- toolmaker tree',
+      '- schema change event',
+      '- dnd placeholder'
     ],
     refactors: [],
     features: [
-      '• actionType notify',
-      '• add notify action type'
+      '- actionType notify',
+      '- add notify action type'
     ],
     timestamp: '2025-01-21',
     version: '1.0.2-beta.17'
   },
   {
     bugs: [
-      '• render dnd',
-      '• attrs search input',
-      '• dnd placeholder',
-      '• combo',
-      '• dnd shadow'
+      '- render dnd',
+      '- attrs search input',
+      '- dnd placeholder',
+      '- combo',
+      '- dnd shadow'
     ],
     refactors: [
-      '• dnd',
-      '• dnd',
-      '• dnd'
+      '- dnd',
+      '- dnd',
+      '- dnd'
     ],
     features: [
-      '• service style'
+      '- service style'
     ],
     timestamp: '2025-01-17',
     version: '1.0.2-beta.16'
   },
   {
     bugs: [
-      '• table form'
+      '- table form'
     ],
     refactors: [],
     features: [
-      '• dnd',
-      '• combo actions',
-      '• icon active',
-      '• input style'
+      '- dnd',
+      '- combo actions',
+      '- icon active',
+      '- input style'
     ],
     timestamp: '2025-01-11',
     version: '1.0.2-beta.15'
@@ -319,7 +339,7 @@ const logs = [
   {
     bugs: [],
     refactors: [
-      '• api'
+      '- api'
     ],
     features: [],
     timestamp: '2024-12-30',
@@ -334,7 +354,7 @@ const logs = [
   },
   {
     bugs: [
-      '• adaptor'
+      '- adaptor'
     ],
     refactors: [],
     features: [],
@@ -343,54 +363,54 @@ const logs = [
   },
   {
     bugs: [
-      '• combo loading',
-      '• form valid',
-      '• task submit',
-      '• field css',
-      '• action loading',
-      '• form loading',
-      '• editor',
-      '• init data',
-      '• valid',
-      '• shcema',
-      '• actions',
-      '• tabs type',
-      '• form disabled',
-      '• purify json',
-      '• invisibleField',
-      '• editor',
-      '• tour'
+      '- combo loading',
+      '- form valid',
+      '- task submit',
+      '- field css',
+      '- action loading',
+      '- form loading',
+      '- editor',
+      '- init data',
+      '- valid',
+      '- shcema',
+      '- actions',
+      '- tabs type',
+      '- form disabled',
+      '- purify json',
+      '- invisibleField',
+      '- editor',
+      '- tour'
     ],
     refactors: [
-      '• form item linkage',
-      '• valid',
-      '• init schema',
-      '• debug context',
-      '• form loading',
-      '• linkage',
-      '• tabs',
-      '• init data',
-      '• purify json',
-      '• init data',
-      '• init data'
+      '- form item linkage',
+      '- valid',
+      '- init schema',
+      '- debug context',
+      '- form loading',
+      '- linkage',
+      '- tabs',
+      '- init data',
+      '- purify json',
+      '- init data',
+      '- init data'
     ],
     features: [
-      '• countdown trigger',
-      '• table scroll to',
-      '• add badge',
-      '• input trigger',
-      '• input tag',
-      '• intersection observer',
-      '• lazy icon',
-      '• icons'
+      '- countdown trigger',
+      '- table scroll to',
+      '- add badge',
+      '- input trigger',
+      '- input tag',
+      '- intersection observer',
+      '- lazy icon',
+      '- icons'
     ],
     timestamp: '2024-12-27',
     version: '1.0.2-beta.11'
   },
   {
     bugs: [
-      '• on',
-      '• combo css'
+      '- on',
+      '- combo css'
     ],
     refactors: [],
     features: [
@@ -401,70 +421,70 @@ const logs = [
   },
   {
     bugs: [
-      '• combo array css',
-      '• crud reload',
-      '• libs'
+      '- combo array css',
+      '- crud reload',
+      '- libs'
     ],
     refactors: [
-      '• renderer',
-      '• hooks',
-      '• renderer',
-      '• component',
-      '• use init data'
+      '- renderer',
+      '- hooks',
+      '- renderer',
+      '- component',
+      '- use init data'
     ],
     features: [
-      '• analyze'
+      '- analyze'
     ],
     timestamp: '2024-11-25',
     version: '1.0.2-beta.9'
   },
   {
     bugs: [
-      '• chart'
+      '- chart'
     ],
     refactors: [
-      '• dnd'
+      '- dnd'
     ],
     features: [
-      '• segmented',
-      '• segmented',
-      '• attrs editor'
+      '- segmented',
+      '- segmented',
+      '- attrs editor'
     ],
     timestamp: '2024-11-09',
     version: '1.0.2-beta.8'
   },
   {
     bugs: [
-      '• form init value',
-      '• action before click'
+      '- form init value',
+      '- action before click'
     ],
     refactors: [
-      '• chain',
-      '• delete form defaultValue',
-      '• form item default value',
-      '• chain'
+      '- chain',
+      '- delete form defaultValue',
+      '- form item default value',
+      '- chain'
     ],
     features: [
-      '• upload video',
-      '• upload video'
+      '- upload video',
+      '- upload video'
     ],
     timestamp: '2024-10-26',
     version: '1.0.2-beta.7'
   },
   {
     bugs: [
-      '• render track',
-      '• table switch action'
+      '- render track',
+      '- table switch action'
     ],
     refactors: [
-      '• action type extends'
+      '- action type extends'
     ],
     features: [
-      '• computed deps',
-      '• computed deps',
-      '• add datepicker slot',
-      '• cards sync location',
-      '• datepicker valid',
+      '- computed deps',
+      '- computed deps',
+      '- add datepicker slot',
+      '- cards sync location',
+      '- datepicker valid',
       'delete: page-header'
     ],
     timestamp: '2024-10-13',
@@ -472,37 +492,37 @@ const logs = [
   },
   {
     bugs: [
-      '• debug',
-      '• debug'
+      '- debug',
+      '- debug'
     ],
     refactors: [],
     features: [
-      '• use events',
-      '• cards animation',
-      '• add useEvents',
-      '• input slot',
-      '• service add update action',
-      '• action extends',
-      '• select actions',
-      '• combo trigger'
+      '- use events',
+      '- cards animation',
+      '- add useEvents',
+      '- input slot',
+      '- service add update action',
+      '- action extends',
+      '- select actions',
+      '- combo trigger'
     ],
     timestamp: '2024-10-02',
     version: '1.0.2-beta.5'
   },
   {
     bugs: [
-      '• tour warning',
-      '• table form',
-      '• popup close',
-      '• crud attrs'
+      '- tour warning',
+      '- table form',
+      '- popup close',
+      '- crud attrs'
     ],
     refactors: [
-      '• action triggers',
-      '• table form'
+      '- action triggers',
+      '- table form'
     ],
     features: [
-      '• add style props',
-      '• valid'
+      '- add style props',
+      '- valid'
     ],
     timestamp: '2024-09-22',
     version: '1.0.2-beta.4'
@@ -510,29 +530,29 @@ const logs = [
   {
     bugs: [],
     refactors: [
-      '• input valid'
+      '- input valid'
     ],
     features: [
-      '• sw'
+      '- sw'
     ],
     timestamp: '2024-09-02',
     version: '1.0.2-beta.3'
   },
   {
     bugs: [
-      '• combo valid',
-      '• qa',
-      '• qa',
-      '• tags'
+      '- combo valid',
+      '- qa',
+      '- qa',
+      '- tags'
     ],
     refactors: [
-      '• theme'
+      '- theme'
     ],
     features: [
-      '• service worker',
-      '• add page worker',
-      '• header tags',
-      '• admin'
+      '- service worker',
+      '- add page worker',
+      '- header tags',
+      '- admin'
     ],
     timestamp: '2024-08-28',
     version: '1.0.2-beta.2'
@@ -541,9 +561,9 @@ const logs = [
     bugs: [],
     refactors: [],
     features: [
-      '• theme',
-      '• admin',
-      '• table title'
+      '- theme',
+      '- admin',
+      '- table title'
     ],
     timestamp: '2024-08-17',
     version: '1.0.2-beta.1'
@@ -552,7 +572,7 @@ const logs = [
     bugs: [],
     refactors: [],
     features: [
-      '• menu'
+      '- menu'
     ],
     timestamp: '2024-08-07',
     version: '1.0.2-beta'
@@ -561,10 +581,10 @@ const logs = [
     bugs: [],
     refactors: [],
     features: [
-      '• menu group title',
-      '• monaco html',
-      '• editor',
-      '• editor'
+      '- menu group title',
+      '- monaco html',
+      '- editor',
+      '- editor'
     ],
     timestamp: '2024-08-03',
     version: '1.0.1-beta.100'
@@ -573,20 +593,20 @@ const logs = [
     bugs: [],
     refactors: [],
     features: [
-      '• render',
+      '- render',
     ],
     timestamp: '2024-07-28',
     version: '1.0.1-beta.99'
   },
   {
     bugs: [
-      '• reset',
-      '• popup'
+      '- reset',
+      '- popup'
     ],
     refactors: [],
     features: [
-      '• table multilevel header',
-      '• viewer'
+      '- table multilevel header',
+      '- viewer'
     ],
     timestamp: '2024-07-27',
     version: '1.0.1-beta.98'
@@ -607,67 +627,67 @@ const logs = [
   },
   {
     bugs: [
-      '• setting',
+      '- setting',
       'feature: fix chart',
-      '• select td'
+      '- select td'
     ],
     refactors: [
-      '• slot',
-      '• slot'
+      '- slot',
+      '- slot'
     ],
     features: [
-      '• status map',
-      '• segmented',
-      '• table combo',
-      '• collapse',
-      '• add collapse',
-      '• table scrollTo',
-      '• table scroll',
-      '• add anchor'
+      '- status map',
+      '- segmented',
+      '- table combo',
+      '- collapse',
+      '- add collapse',
+      '- table scrollTo',
+      '- table scroll',
+      '- add anchor'
     ],
     timestamp: '2024-07-23',
     version: '1.0.1-beta.95'
   },
   {
     bugs: [
-      '• table data columns',
-      '• table',
-      '• upload',
-      '• upload',
-      '• useUpload',
-      '• upload',
-      '• worker',
-      '• form visible'
+      '- table data columns',
+      '- table',
+      '- upload',
+      '- upload',
+      '- useUpload',
+      '- upload',
+      '- worker',
+      '- form visible'
     ],
     refactors: [],
     features: [
-      '• icon picker'
+      '- icon picker'
     ],
     timestamp: '2024-06-23',
     version: '1.0.1-beta.94'
   },
   {
     bugs: [
-      '• action print'
+      '- action print'
     ],
     refactors: [],
     features: [
-      '• view animation',
-      '• upload'
+      '- view animation',
+      '- upload'
     ],
     timestamp: '2024-06-16',
     version: '1.0.1-beta.93'
   },
   {
     bugs: [
-      '• select td',
-      '• popover',
-      '• autocomplete'
+      '- select td',
+      '- popover',
+      '- autocomplete'
     ],
     refactors: [],
     features: [
-      '• upload reload',
-      '• animation countdown'
+      '- upload reload',
+      '- animation countdown'
     ],
     timestamp: '2024-06-15',
     version: '1.0.1-beta.92'
@@ -681,22 +701,22 @@ const logs = [
   },
   {
     bugs: [
-      '• wrapper',
-      '• editor',
-      '• setting'
+      '- wrapper',
+      '- editor',
+      '- setting'
     ],
     refactors: [
-      '• component slot'
+      '- component slot'
     ],
     features: [
-      '• autocomplete'
+      '- autocomplete'
     ],
     timestamp: '2024-06-09',
     version: '1.0.1-beta.90'
   },
   {
     bugs: [
-      '• upload url'
+      '- upload url'
     ],
     refactors: [],
     features: [],
@@ -705,13 +725,13 @@ const logs = [
   },
   {
     bugs: [
-      '• tour',
-      '• table header',
-      '• static attrs',
-      '• frame computed src'
+      '- tour',
+      '- table header',
+      '- static attrs',
+      '- frame computed src'
     ],
     refactors: [
-      '• remove path attr'
+      '- remove path attr'
     ],
     features: [],
     timestamp: '2024-06-01',
@@ -719,18 +739,18 @@ const logs = [
   },
   {
     bugs: [
-      '• upload'
+      '- upload'
     ],
     refactors: [],
     features: [
-      '• back in time'
+      '- back in time'
     ],
     timestamp: '2024-05-26',
     version: '1.0.1-beta.86'
   },
   {
     bugs: [
-      '• static span'
+      '- static span'
     ],
     refactors: [],
     features: [],
@@ -748,9 +768,9 @@ const logs = [
     bugs: [],
     refactors: [],
     features: [
-      '• deep mapping name',
-      '• chart click',
-      '• table form'
+      '- deep mapping name',
+      '- chart click',
+      '- table form'
     ],
     timestamp: '2024-05-05',
     version: '1.0.1-bate.83'
@@ -758,92 +778,92 @@ const logs = [
   {
     bugs: [],
     refactors: [
-      '• [renderer]combo',
-      '• combo'
+      '- [renderer]combo',
+      '- combo'
     ],
     features: [
-      '• [renderer]mapping',
-      '• syntax protection'
+      '- [renderer]mapping',
+      '- syntax protection'
     ],
     timestamp: '2024-04-18',
     version: '1.0.1-bate.82'
   },
   {
     bugs: [
-      '• [renderer]carousel',
-      '• [renderer]tour'
+      '- [renderer]carousel',
+      '- [renderer]tour'
     ],
     refactors: [
-      '• action'
+      '- action'
     ],
     features: [
-      '• [renderer]picker',
-      '• [datepicker]sooner later'
+      '- [renderer]picker',
+      '- [datepicker]sooner later'
     ],
     timestamp: '2024-04-13',
     version: '1.0.1-beta.81'
   },
   {
     bugs: [
-      '• css',
-      '• props',
-      '• [renderer]combo',
-      '• [renderer]form blur',
-      '• [renderer]action style',
-      '• [renderer]combo valid',
-      '• breadcrumb',
-      '• [renderer]form fold',
-      '• animation.scss',
-      '• [renderer]static',
-      '• hooks useInitData',
-      '• editor inhert',
-      '• [renderer]tour'
+      '- css',
+      '- props',
+      '- [renderer]combo',
+      '- [renderer]form blur',
+      '- [renderer]action style',
+      '- [renderer]combo valid',
+      '- breadcrumb',
+      '- [renderer]form fold',
+      '- animation.scss',
+      '- [renderer]static',
+      '- hooks useInitData',
+      '- editor inhert',
+      '- [renderer]tour'
     ],
     refactors: [
-      '• popup'
+      '- popup'
     ],
     features: [
-      '• [renderer]upload icon',
+      '- [renderer]upload icon',
       'update:[renderer]radio',
-      '• [renderer]alert',
-      '• [renderer]switch add icon type',
-      '• [renderer]html array'
+      '- [renderer]alert',
+      '- [renderer]switch add icon type',
+      '- [renderer]html array'
     ],
     timestamp: '2024-04-06',
     version: '1.0.1-bate.80'
   },
   {
     bugs: [
-      '• [editor]monaco',
-      '• [renderer]form',
-      '• monaco',
-      '• [renderer]calendar',
-      '• [renderer]step',
-      '• [renderer]form',
-      '• [renderer]steps',
-      '• [renderer]input idem',
-      '• form',
-      '• list css',
-      '• en',
-      '• [renderer]dropdown',
-      '• [renderer]dropdown',
-      '• [renderer]calendar修复拖拽'
+      '- [editor]monaco',
+      '- [renderer]form',
+      '- monaco',
+      '- [renderer]calendar',
+      '- [renderer]step',
+      '- [renderer]form',
+      '- [renderer]steps',
+      '- [renderer]input idem',
+      '- form',
+      '- list css',
+      '- en',
+      '- [renderer]dropdown',
+      '- [renderer]dropdown',
+      '- [renderer]calendar修复拖拽'
     ],
     refactors: [],
     features: [
-      '• [renderer]tour',
-      '• [renderer]add monaco'
+      '- [renderer]tour',
+      '- [renderer]add monaco'
     ],
     timestamp: '2024-02-04',
     version: '1.0.1-beta.79'
   },
   {
     bugs: [
-      '• [renderer]combo width',
-      '• [renderer]input valid',
-      '• [renderer]form valid',
-      '• [renderer]input append refactor:[renderer]input tags',
-      '• [editor]isH5'
+      '- [renderer]combo width',
+      '- [renderer]input valid',
+      '- [renderer]form valid',
+      '- [renderer]input append refactor:[renderer]input tags',
+      '- [editor]isH5'
     ],
     refactors: [],
     features: [],
@@ -852,21 +872,21 @@ const logs = [
   },
   {
     bugs: [
-      '• [hooks]useComponentMap',
-      '• [renderer]data复制'
+      '- [hooks]useComponentMap',
+      '- [renderer]data复制'
     ],
     refactors: [],
     features: [
-      '• [renderer]添加transfer'
+      '- [renderer]添加transfer'
     ],
     timestamp: '2024-01-09',
     version: '1.0.1-beta.76'
   },
   {
     bugs: [
-      '• [renderer]action复制功能',
+      '- [renderer]action复制功能',
       'refactor:优化引用计数 •[renderer]avatar修复样式问题',
-      '• [renderer]action修复静态按钮loading fix:[renderer]table修复列保存'
+      '- [renderer]action修复静态按钮loading fix:[renderer]table修复列保存'
     ],
     refactors: [],
     features: [],
@@ -877,177 +897,177 @@ const logs = [
     timestamp: '2023-10-27',
     version: '1.0.1-bata.61',
     features: [
-      '• 新增slider渲染器',
-      '• combo延迟渲染'
+      '- 新增slider渲染器',
+      '- combo延迟渲染'
     ],
     bugs: [
-      '• 修复combo数据回填问题'
+      '- 修复combo数据回填问题'
     ],
     refactors: [
-      '• page渲染器移除联动配置',
-      '• 优化夜间模式、编辑器切换动画',
-      '• 优化联动报错信息'
+      '- page渲染器移除联动配置',
+      '- 优化夜间模式、编辑器切换动画',
+      '- 优化联动报错信息'
     ]
   },
   {
     timestamp: '2023-10-27',
     version: '1.0.1-bata.60',
     features: [
-      '• table新增sticky属性',
-      '• video、chart延迟渲染',
-      '• 新增sfc远程组件渲染能力'
+      '- table新增sticky属性',
+      '- video、chart延迟渲染',
+      '- 新增sfc远程组件渲染能力'
     ],
     bugs: [
-      '• action修复确认弹层上下文丢失'
+      '- action修复确认弹层上下文丢失'
     ],
     refactors: [
-      '• 优化数据链逻辑',
-      '• 优化数据监听'
+      '- 优化数据链逻辑',
+      '- 优化数据监听'
     ]
   },
   {
     timestamp: '2023-09-24',
     version: '1.0.1-bata.48',
     features: [
-      '• service支持配置多个api',
-      '• switch增添button、checkbox类型',
-      '• table增添异步展开行配置'
+      '- service支持配置多个api',
+      '- switch增添button、checkbox类型',
+      '- table增添异步展开行配置'
     ],
     refactors: [
-      '• 优化cards骨架屏动画'
+      '- 优化cards骨架屏动画'
     ]
   },
   {
     timestamp: '2023-08-10',
     version: '1.0.1-bata.32',
     refactors: [
-      '• 优化each、mapping、quickedit，统一name与keyword'
+      '- 优化each、mapping、quickedit，统一name与keyword'
     ]
   },
   {
     timestamp: '2022-06-03',
     version: '1.0.1-bata.12',
     features: [
-      '• 编辑器新增theme属性配置'
+      '- 编辑器新增theme属性配置'
     ],
     bugs: [
-      '• 修复请求拦截器参数获取不到问题',
-      '• 修复tabs文字浮动问题'
+      '- 修复请求拦截器参数获取不到问题',
+      '- 修复tabs文字浮动问题'
     ]
   },
   {
     timestamp: '2022-05-27',
     version: '1.0.1-bata.9',
     features: [
-      '• 图表组件支持联动配置'
+      '- 图表组件支持联动配置'
     ],
     bugs: [
-      '• 修复弹层按钮图片属性配置',
-      '• 修复外部组件找不到问题'
+      '- 修复弹层按钮图片属性配置',
+      '- 修复外部组件找不到问题'
     ],
     refactors: [
-      '• 删除无用样式代码',
-      '• 优化表单事件透传逻辑',
-      '• 优化@vueuse引用方式'
+      '- 删除无用样式代码',
+      '- 优化表单事件透传逻辑',
+      '- 优化@vueuse引用方式'
     ]
   },
   {
     timestamp: '2022-05-13',
     version: '1.0.1-bata.8',
     features: [
-      '• 添加权限管理指令',
-      '• switch渲染器添加confirm配置'
+      '- 添加权限管理指令',
+      '- switch渲染器添加confirm配置'
     ],
     bugs: [
-      '• 修复table渲染器索引异常',
-      '• 修复tabs图标大小异常',
-      '• 修复steps组件可视化编辑异常'
+      '- 修复table渲染器索引异常',
+      '- 修复tabs图标大小异常',
+      '- 修复steps组件可视化编辑异常'
     ],
     refactors: [
-      '• 优化属性编辑面板',
-      '• 优化设置面板布局样式',
-      '• 优化域名选择器',
-      '• 优化quickedit校验逻辑',
-      '• 删除插件渲染器，直接渲染库组件'
+      '- 优化属性编辑面板',
+      '- 优化设置面板布局样式',
+      '- 优化域名选择器',
+      '- 优化quickedit校验逻辑',
+      '- 删除插件渲染器，直接渲染库组件'
     ]
   },
   {
     timestamp: '2022-05-06',
     version: '1.0.1-bata.7',
     bugs: [
-      '• 修复表单requiredOn重复回填',
-      '• 修复菜单icon颜色异常',
-      '• 修复可视化编辑器组件移动异常'
+      '- 修复表单requiredOn重复回填',
+      '- 修复菜单icon颜色异常',
+      '- 修复可视化编辑器组件移动异常'
     ]
   },
   {
     timestamp: '2022-04-29',
     version: '1.0.1-bata.6',
     features: [
-      '• 编辑器添加debug模块、数据分析模块',
-      '• 添加iframe渲染器',
-      '• 添加插件渲染器，以cdn引入第三方库组件'
+      '- 编辑器添加debug模块、数据分析模块',
+      '- 添加iframe渲染器',
+      '- 添加插件渲染器，以cdn引入第三方库组件'
     ],
     refactors: [
-      '• 优化弹层实现逻辑',
-      '• 优化Schema渲染器实现逻辑',
-      '• 优化icon渲染器实现逻辑以支持font-awesome'
+      '- 优化弹层实现逻辑',
+      '- 优化Schema渲染器实现逻辑',
+      '- 优化icon渲染器实现逻辑以支持font-awesome'
     ]
   },
   {
     timestamp: '2022-04-22',
     version: '1.0.1-bata.5',
     bugs: [
-      '• 修复可视化编辑器表单面板行为限制'
+      '- 修复可视化编辑器表单面板行为限制'
     ],
     refactors: [
-      '• 重构样式以部分适配移动端',
-      '• 统一表单行为',
-      '• 统一行为回调处理',
-      '• 补充可视化编辑器提示信息'
+      '- 重构样式以部分适配移动端',
+      '- 统一表单行为',
+      '- 统一行为回调处理',
+      '- 补充可视化编辑器提示信息'
     ]
   },
   {
     timestamp: '2022-03-25',
     version: '1.0.1-bata.4',
     bugs: [
-      '• 修复卡片列表行更新问题',
-      '• 修复表格分页适配异常',
-      '• 修复图表循环更新问题'
+      '- 修复卡片列表行更新问题',
+      '- 修复表格分页适配异常',
+      '- 修复图表循环更新问题'
     ],
     features: [
-      '• 添加通用样式库',
-      '• 添加邮件行为',
-      '• 菜单组件支持接口配置',
-      '• 单选框、分割线支持样式配置项',
-      '• crud支持自动下一个功能'
+      '- 添加通用样式库',
+      '- 添加邮件行为',
+      '- 菜单组件支持接口配置',
+      '- 单选框、分割线支持样式配置项',
+      '- crud支持自动下一个功能'
     ]
   },
   {
     timestamp: '2022-03-18',
     version: '1.0.1-bata.3',
     bugs: [
-      '• 视频渲染器支持刷新源'
+      '- 视频渲染器支持刷新源'
     ],
     refactors: [
-      '• 优化弹层加载逻辑',
-      '• 优化表格、描述列表移动端适配',
-      '• 优化事件处理',
-      '• 优化表单校验',
-      '• 优化输入框失焦触发表单请求逻辑',
-      '• 优化可视化编辑器性能'
+      '- 优化弹层加载逻辑',
+      '- 优化表格、描述列表移动端适配',
+      '- 优化事件处理',
+      '- 优化表单校验',
+      '- 优化输入框失焦触发表单请求逻辑',
+      '- 优化可视化编辑器性能'
     ]
   },
   {
     timestamp: '2022-03-11',
     version: '1.0.1-bata.2',
     features: [
-      '• 更新表单视图渲染器',
-      '• 添加分片上传功能',
-      '• 添加tree组件',
-      '• combo渲染器支持选项卡模式',
-      '• 菜单组件支持分组配置',
-      '• 添加诺干常用案例'
+      '- 更新表单视图渲染器',
+      '- 添加分片上传功能',
+      '- 添加tree组件',
+      '- combo渲染器支持选项卡模式',
+      '- 菜单组件支持分组配置',
+      '- 添加诺干常用案例'
     ]
   },
   {
