@@ -1,0 +1,398 @@
+{
+  "status": 0,
+  "message": "success",
+  "data": {
+    "pageId": "3381e12c-a587-47bb-8874-71055f0f11df",
+    "id": 5,
+    "projectId": "4",
+    "pageTitle": "校验",
+    "pageName": "inputValid",
+    "namespace": "联通",
+    "pageIcon": "",
+    "groupBy": "form",
+    "updatedBy": "admin",
+    "updatedCause": null,
+    "hidden": null,
+    "assets": [],
+    "visible": null,
+    "pageDesc": null,
+    "pageSchema": {
+      "renderer": "page",
+      "body": [
+        {
+          "renderer": "form",
+          "actionApi": {
+            "params": {
+              "*": "*"
+            },
+            "url": "/api/submit",
+            "method": "post"
+          },
+          "initApi": {
+            "url": "/api/mock/valid/comment",
+            "method": "post",
+            "params": {
+              "*": "*"
+            }
+          },
+          "controls": [
+            {
+              "renderer": "divider",
+              "text": "校验示例",
+              "visibleOn": false
+            },
+            {
+              "renderer": "tabs",
+              "activeTab": 1,
+              "tabPosition": "top",
+              "panels": [
+                {
+                  "label": "资源",
+                  "icon": "",
+                  "body": [
+                    {
+                      "renderer": "static",
+                      "columns": [
+                        {
+                          "label": "电话",
+                          "name": "isPhone",
+                          "align": "",
+                          "body": []
+                        },
+                        {
+                          "label": "地址",
+                          "name": "url",
+                          "align": "",
+                          "body": []
+                        },
+                        {
+                          "label": "邮箱",
+                          "name": "isMail",
+                          "align": "",
+                          "body": []
+                        }
+                      ],
+                      "border": true,
+                      "direction": "vertical"
+                    }
+                  ]
+                },
+                {
+                  "label": "合同",
+                  "icon": "",
+                  "body": []
+                }
+              ]
+            },
+            {
+              "renderer": "divider",
+              "text": "校验示例"
+            },
+            {
+              "renderer": "input",
+              "name": "requiredOn",
+              "label": "必填",
+              "placeholder": "占位符",
+              "type": "text",
+              "requiredOn": "1",
+              "rules": []
+            },
+            {
+              "renderer": "input",
+              "name": "engAndNum",
+              "label": "字母数字",
+              "placeholder": "占位符",
+              "type": "text",
+              "validType": "normal",
+              "requiredOn": "1",
+              "rules": [
+                {
+                  "exp": "!/^[A-Za-z0-9]+$/.test(data.engAndNum)",
+                  "message": "必须是字母和数字",
+                  "trigger": "blur",
+                  "type": "exp"
+                }
+              ]
+            },
+            {
+              "renderer": "datepicker",
+              "name": "date",
+              "label": "可选日期",
+              "readonly": false,
+              "availableDates": "${available}",
+              "rules": [],
+              "requiredOn": "true"
+            },
+            {
+              "renderer": "datepicker",
+              "name": "start",
+              "label": "开始日期",
+              "readonly": false,
+              "rules": [
+                {
+                  "type": "exp",
+                  "exp": "!data.start.$later('$')",
+                  "message": "开始日期应大于当前日期",
+                  "trigger": "blur"
+                }
+              ],
+              "requiredOn": "true"
+            },
+            {
+              "renderer": "datepicker",
+              "name": "end",
+              "label": "结束日期",
+              "readonly": false,
+              "rules": [
+                {
+                  "type": "exp",
+                  "exp": "!data.end.$later(data.start)",
+                  "message": "结束日期应大于开始日期",
+                  "trigger": "blur"
+                }
+              ],
+              "requiredOn": "true"
+            },
+            {
+              "renderer": "input",
+              "name": "isCha",
+              "label": "中文",
+              "placeholder": "占位符",
+              "type": "text",
+              "validType": "normal",
+              "requiredOn": "1",
+              "rules": [
+                {
+                  "exp": "!/^[\\u4E00-\\u9FA5]{1,5}$/.test(data.isCha)",
+                  "message": "必须是汉字",
+                  "trigger": "blur",
+                  "type": "exp"
+                }
+              ]
+            },
+            {
+              "renderer": "input",
+              "name": "isMail",
+              "label": "邮箱",
+              "required": false,
+              "placeholder": "占位符",
+              "type": "text",
+              "validType": "normal",
+              "requiredOn": "1",
+              "rules": [
+                {
+                  "exp": "!/^([a-zA-Z0-9]+[_|\\_|\\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\\_|\\.]?)*[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}$/.test(data.isMail)",
+                  "message": "邮箱格式不正确",
+                  "trigger": "blur",
+                  "type": "exp"
+                }
+              ]
+            },
+            {
+              "renderer": "input",
+              "name": "isPhone",
+              "label": "电话",
+              "placeholder": "占位符",
+              "type": "text",
+              "validType": "normal",
+              "requiredOn": "1",
+              "rules": [
+                {
+                  "exp": "!/^((1\\d{10})|((00)\\d{6,30}))$/.test(data.isPhone)",
+                  "message": "电话号码格式不正确",
+                  "trigger": "blur",
+                  "type": "exp"
+                }
+              ]
+            },
+            {
+              "renderer": "input",
+              "name": "url",
+              "label": "地址",
+              "placeholder": "占位符",
+              "type": "text",
+              "validType": "normal",
+              "requiredOn": "1",
+              "rules": [
+                {
+                  "type": "url",
+                  "message": "地址不符合规范"
+                }
+              ]
+            },
+            {
+              "renderer": "input",
+              "name": "range",
+              "label": "[20,80)",
+              "placeholder": "占位符",
+              "type": "text",
+              "validType": "normal",
+              "requiredOn": "1",
+              "rules": [
+                {
+                  "exp": "data.range<20||data.range>=80",
+                  "message": "范围在[20,80)之间",
+                  "trigger": "blur",
+                  "type": "exp"
+                }
+              ]
+            },
+            {
+              "renderer": "input",
+              "name": "asyncValid",
+              "label": "异步",
+              "required": false,
+              "placeholder": "占位符",
+              "type": "text",
+              "validType": "async",
+              "requiredOn": "1",
+              "rules": [
+                {
+                  "type": "api",
+                  "exp": "/api/mock/form/verify?asyncValid=${asyncValid}",
+                  "trigger": "blur"
+                }
+              ]
+            },
+            {
+              "renderer": "input",
+              "name": "enter",
+              "label": "换行校验",
+              "placeholder": "占位符",
+              "type": "textarea",
+              "validType": "normal",
+              "requiredOn": "1",
+              "rules": [
+                {
+                  "exp": "/(\\r\\n)|(\\n)/g.test(data.enter)",
+                  "message": "含有非法换行",
+                  "trigger": "blur",
+                  "type": "exp"
+                }
+              ]
+            },
+            {
+              "renderer": "combo",
+              "name": "comments",
+              "controls": [
+                {
+                  "renderer": "input",
+                  "name": "comment",
+                  "label": "评论",
+                  "placeholder": "请输入",
+                  "type": "text",
+                  "idem": true,
+                  "rules": [],
+                  "requiredOn": "true"
+                }
+              ],
+              "requiredOn": "1 === 1",
+              "inline": false,
+              "label": "联动校验"
+            },
+            {
+              "renderer": "computed",
+              "name": "skip_valid",
+              "exp": "!!data.valid"
+            },
+            {
+              "renderer": "combo",
+              "label": "深层校验",
+              "name": "monitors",
+              "defaultValue": [],
+              "controls": [
+                {
+                  "renderer": "radio",
+                  "name": "type",
+                  "label": "方式",
+                  "defaultValue": 0,
+                  "options": [
+                    {
+                      "text": "无",
+                      "value": 0
+                    },
+                    {
+                      "text": "有",
+                      "value": 1
+                    }
+                  ]
+                },
+                {
+                  "renderer": "input",
+                  "name": "expose",
+                  "label": "曝光",
+                  "requiredOn": "data.type",
+                  "visibleOn": "data.type",
+                  "idem": true,
+                  "rules": [
+                    {
+                      "type": "url",
+                      "message": "请输入正确的链接"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "input",
+                  "name": "click",
+                  "label": "点击",
+                  "requiredOn": "data.type",
+                  "visibleOn": "data.type",
+                  "rules": [
+                    {
+                      "type": "url",
+                      "message": "请输入正确的链接"
+                    }
+                  ]
+                }
+              ],
+              "isTab": true,
+              "inline": false
+            },
+            {
+              "renderer": "viewer",
+              "body": {
+                "renderer": "data"
+              }
+            },
+            {
+              "renderer": "action",
+              "text": "返回",
+              "type": "success",
+              "actionType": "url",
+              "url": "-1",
+              "body": {},
+              "plain": true
+            },
+            {
+              "renderer": "action",
+              "actionType": "reset",
+              "text": "重置",
+              "plain": true,
+              "size": "default"
+            },
+            {
+              "renderer": "action",
+              "actionType": "submit",
+              "popupType": "dialog",
+              "messageBoxExp": "1 === 1",
+              "popoverTitle": "存在${valid}，确定提交吗？",
+              "text": "确定",
+              "body": {}
+            }
+          ],
+          "classname": "actions-fixed",
+          "initData": {
+            "isMail": "1234@12.com"
+          }
+        }
+      ],
+      "steps": [],
+      "innerStyle": ".i-form__container__fieldset {\n  &.noViewer {\n    .el-collapse-item__header {\n      display: none;\n    }\n  }\n}",
+      "req": "if(url.includes('/api/submit')) {\n  params.url = encodeURIComponent(params.url);\n}"
+    },
+    "version": 0,
+    "status": 1,
+    "createdAt": "2023-11-25T15:16:11.000Z",
+    "updatedAt": "2023-11-25T15:16:11.000Z"
+  }
+}
