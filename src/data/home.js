@@ -1,5 +1,4 @@
 const assets = [
-  `${process.env.VUE_APP_PUBLIC_ASSETS}/js/Issues.177a4b.min.js`,
   `${process.env.VUE_APP_PUBLIC_ASSETS}/js/Particle.6d8915.min.js`
 ];
 export {
@@ -413,7 +412,7 @@ export default {
           icon: 'http://songshuzhong.github.io/i-assets/public/img/question.png',
           body: [
             {
-              renderer: 'Issues',
+              renderer: 'issues',
               lazy: true
             }
           ],

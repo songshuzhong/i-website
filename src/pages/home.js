@@ -3,6 +3,7 @@ import ElementPlus from 'element-plus';
 import {IRenderer} from  '../utils/lib.js';
 import routers from '../router/home';
 import Application from '../apps/Home.vue';
+import Issue from '../component/Issues.vue';
 import registrySw from '../registerServiceWorker';
 
 import 'element-plus/dist/index.css';
@@ -14,6 +15,7 @@ const app = createApp(Application);
 app
   .use(ElementPlus)
   .use(IRenderer, {
+    renderers: [Issue],
     permissions: [],
     roles: [],
     adaptor: {
