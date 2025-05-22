@@ -479,10 +479,10 @@ html {
   padding: 30px 120px;
   display: flex;
   justify-content: space-around;
-  color: #fff;
-  background-color: #000;
+  color: var(--el-color-white);
   overflow: hidden;
   text-align: center;
+  animation: gradientFade 4s ease forwards;
   .i-html__container {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -503,10 +503,10 @@ html {
   }
 }
 .i-home__copyright {
-  border-top: 1px solid #fff;
+  border-top: 1px solid var(--el-color-white);
   line-height: 60px;
-  color: #fff;
-  background-color: #000;
+  color: var(--el-color-white);
+  animation: gradientFade 4s ease forwards;
   text-align: center;
   font-size: 16px;
   font-weight: bold;
@@ -728,4 +728,8 @@ html {
     border: 1px solid var(--el-color-success);
     box-shadow: 0 1px 30px var(--el-color-success-light-5), 0 1px 20px var(--el-color-success-light-5) inset;
   }
+}
+@keyframes gradientFade {
+  0% {background-color: var(--el-color-white);}
+  100% {background-color: var(--el-color-black);}
 }

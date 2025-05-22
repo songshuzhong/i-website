@@ -272,7 +272,19 @@
             "pageDesc": null,
             "schemaUrl": "/api/page/fa5efa68-8e4f-4eb6-a633-cff9cda9c407"
           },
-
+          {
+            "renderer": "menuitem",
+            "name": "formItemTable",
+            "title": "表格项表单",
+            "icon": null,
+            "pageId": "70c7b1de-0d55-46f2-8246-61d63a820661",
+            "groupBy": "form",
+            "hidden": false,
+            "visible": [],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/70c7b1de-0d55-46f2-8246-61d63a820661"
+          },
           {
             "renderer": "menuitem",
             "name": "antdUsers",
