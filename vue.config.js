@@ -97,6 +97,11 @@ module.exports = {
       config.plugins.delete(`preload-${entryName}`);
     });
   },
+  pwa: {
+    workboxOptions: {
+      skipWaiting: true,
+    },
+  },
   devServer: {
     client: {
       overlay: false
