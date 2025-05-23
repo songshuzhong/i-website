@@ -46,9 +46,9 @@ export default defineComponent({
           frame.onload = frame.onreadystatechange = function() {
             status.value = 'mounted';
           };
-          frame.onerror = function(e) {
+          frame.addEventListener('error', (e) => {
             status.value = e.message;
-          };
+          });
         }
         script.onerror = function(e) {
           status.value = e.message;
