@@ -42,7 +42,8 @@ const config = {
       window.location.href = process.env.VUE_APP_PAGE_LOGIN;
     }
     return res;
-  }
+  },
+  domains: [process.env.VUE_APP_API_BASE]
 };
 const isGPOrDev = process.env.VUE_APP_API_NODE_ENV === 'gp' || process.env.VUE_APP_API_NODE_ENV === 'dev';
 config.adaptor = {
