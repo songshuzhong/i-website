@@ -665,6 +665,7 @@
               "body": {
                 "renderer": "service",
                 "silentMessage": true,
+                "promiseType": "sw",
                 "initApi": {
                   "url": "/api/mock/fieldinfo?type=2",
                   "method": "post",
