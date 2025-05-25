@@ -380,19 +380,6 @@
           },
           {
             "renderer": "menuitem",
-            "name": "tabForm",
-            "title": "选项卡表单",
-            "icon": null,
-            "pageId": "3ddedb2a-1cb5-49cb-888f-d992c6186477",
-            "groupBy": "form",
-            "hidden": false,
-            "visible": [],
-            "assets": [],
-            "pageDesc": null,
-            "schemaUrl": "/api/page/3ddedb2a-1cb5-49cb-888f-d992c6186477"
-          },
-          {
-            "renderer": "menuitem",
             "name": "formStressTest",
             "title": "表单压测",
             "icon": null,
