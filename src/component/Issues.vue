@@ -1,6 +1,12 @@
 <template>
   <div id="comments">
-    <el-skeleton v-if="!isMounted" :rows="6" animated />
+    <el-skeleton v-if="status === 'loading'" :rows="6" animated />
+    <el-result
+      v-if="status !=='mounted' && status !== 'loading'"
+      title="留言板创建失败"
+      icon="error"
+      :sub-title="status"
+    />
   </div>
 </template>
 <script>
@@ -17,7 +23,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const isMounted = ref(false);
+    const status = ref('loading');
     onMounted(() => {
       const {proxy} = getCurrentInstance();
       const comments = document.getElementById('comments');
@@ -38,21 +44,20 @@ export default defineComponent({
           script.onload = script.onreadystatechange = null;
           const frame = document.querySelectorAll('.utterances-frame')[0];
           frame.onload = frame.onreadystatechange = function() {
-            isMounted.value = true;
-            console.log('comments loaded');
+            status.value = 'mounted';
           };
-        } else {
-          console.error('comments loaded');
+          frame.addEventListener('error', (e) => {
+            status.value = e.message;
+          });
         }
-
-        script.onerror = function() {
-          console.error('comments loaded');
+        script.onerror = function(e) {
+          status.value = e.message;
         };
       };
       comments.appendChild(script);
     });
     return {
-      isMounted
+      status
     };
   }
 });
