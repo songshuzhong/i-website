@@ -124,21 +124,6 @@
           },
           {
             "renderer": "menuitem",
-            "name": "services",
-            "title": "服务",
-            "icon": "",
-            "pageId": "2cfb7da9-b9fc-42e5-b3c6-412b913a2804",
-            "groupBy": "other",
-            "hidden": null,
-            "visible": [
-              0
-            ],
-            "assets": [],
-            "pageDesc": null,
-            "schemaUrl": "/api/page/2cfb7da9-b9fc-42e5-b3c6-412b913a2804"
-          },
-          {
-            "renderer": "menuitem",
             "name": "list",
             "title": "列表",
             "icon": "",
@@ -287,6 +272,19 @@
           },
           {
             "renderer": "menuitem",
+            "name": "tabsForm",
+            "title": "选项卡表单",
+            "icon": null,
+            "pageId": "ff661e43-23b4-4f1d-be5e-6e1aa90b44d4",
+            "groupBy": "form",
+            "hidden": false,
+            "visible": [],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/ff661e43-23b4-4f1d-be5e-6e1aa90b44d4"
+          },
+          {
+            "renderer": "menuitem",
             "name": "antdUsers",
             "title": "蚂蚁列表",
             "icon": "",
@@ -366,21 +364,6 @@
           },
           {
             "renderer": "menuitem",
-            "name": "animation",
-            "title": "内置动画",
-            "icon": "",
-            "pageId": "419c3641-a47d-44b8-9c97-2c06dbd1d2b3",
-            "groupBy": "other",
-            "hidden": null,
-            "visible": [
-              0
-            ],
-            "assets": [],
-            "pageDesc": null,
-            "schemaUrl": "/api/page/419c3641-a47d-44b8-9c97-2c06dbd1d2b3"
-          },
-          {
-            "renderer": "menuitem",
             "name": "covid",
             "title": "疫情分布",
             "icon": null,
@@ -410,19 +393,6 @@
           },
           {
             "renderer": "menuitem",
-            "name": "login",
-            "title": "登录",
-            "icon": null,
-            "pageId": "e3b2507b-4092-433e-aa9c-87581d81a54e",
-            "groupBy": "form",
-            "hidden": false,
-            "visible": [],
-            "assets": [],
-            "pageDesc": null,
-            "schemaUrl": "/api/page/e3b2507b-4092-433e-aa9c-87581d81a54e"
-          },
-          {
-            "renderer": "menuitem",
             "name": "formStressTest",
             "title": "表单压测",
             "icon": null,
@@ -446,6 +416,124 @@
             "assets": [],
             "pageDesc": null,
             "schemaUrl": "/api/page/6989283c-50b6-491a-8f35-95387b287246"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "dataScope",
+            "title": "初始化数据",
+            "icon": null,
+            "pageId": "8781564d-590a-4484-b20a-40c7eb1ab048",
+            "groupBy": "other",
+            "hidden": false,
+            "visible": [],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/8781564d-590a-4484-b20a-40c7eb1ab048"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "worker",
+            "title": "计算线程",
+            "icon": null,
+            "pageId": "c6be5603-a17d-406d-a192-8dd0112a29e0",
+            "groupBy": "other",
+            "hidden": false,
+            "visible": [],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/c6be5603-a17d-406d-a192-8dd0112a29e0"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "services",
+            "title": "服务",
+            "icon": "",
+            "pageId": "2cfb7da9-b9fc-42e5-b3c6-412b913a2804",
+            "groupBy": "other",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/2cfb7da9-b9fc-42e5-b3c6-412b913a2804"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "animation",
+            "title": "内置动画",
+            "icon": "",
+            "pageId": "419c3641-a47d-44b8-9c97-2c06dbd1d2b3",
+            "groupBy": "other",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/419c3641-a47d-44b8-9c97-2c06dbd1d2b3"
+          }
+        ]
+      },
+      {
+        "renderer": "submenu",
+        "name": "superFans",
+        "title": "超级粉丝通",
+        "icon": "Ticket",
+        "body": [
+          {
+            "renderer": "menuitem",
+            "name": "creative",
+            "title": "新建系列",
+            "icon": "",
+            "pageId": "d829ad7d-5178-4035-bfbd-fbc0eff77567",
+            "groupBy": "超粉",
+            "hidden": null,
+            "visible": "",
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/d829ad7d-5178-4035-bfbd-fbc0eff77567"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "campaigns",
+            "title": "新建计划",
+            "icon": "",
+            "pageId": "5b49467e-ae0d-4ff3-a665-f45c2a49a87a",
+            "groupBy": "超粉",
+            "hidden": null,
+            "visible": null,
+            "assets": [
+              "https://songshuzhong.github.io/i-assets/public/js/Schedule.394219.min.js"
+            ],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/5b49467e-ae0d-4ff3-a665-f45c2a49a87a"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "scene",
+            "title": "标准广告",
+            "icon": "",
+            "pageId": "23c8daf9-5323-46fb-b896-b2f92862b4d9",
+            "groupBy": "ka",
+            "hidden": null,
+            "visible": "",
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/23c8daf9-5323-46fb-b896-b2f92862b4d9"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "campaignList",
+            "title": "计划列表",
+            "icon": "",
+            "pageId": "b1748a7c-2485-4c0b-90fd-d94d032216d0",
+            "groupBy": "ka",
+            "hidden": null,
+            "visible": "",
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/b1748a7c-2485-4c0b-90fd-d94d032216d0"
           }
         ]
       },

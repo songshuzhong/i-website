@@ -129,10 +129,25 @@ export default {
       ]
     },
     {
+      "renderer": "notice",
+      "effect": "light",
+      "direction": "vertical",
+      "title": [
+        "作者从事前端开发5年+，经验丰富",
+        "项目历经数十个不同业务场景的打磨",
+        "组件库丰富，渲染性能出众",
+        "可视化编辑，无文档、无代码、无api",
+        "长期维护、精益求精、客户至上"
+      ]
+    },
+    {
       "renderer": "grid",
       "body": [
         {
           "renderer": "card",
+          "style": {
+            "margin-top": "20px"
+          },
           "header": [
             {
               "renderer": "html",
@@ -211,6 +226,9 @@ export default {
         },
         {
           "renderer": "card",
+          "style": {
+            "margin-top": "20px"
+          },
           "header": [
             {
               "renderer": "html",
@@ -341,92 +359,39 @@ export default {
           ]
         },
         {
-          "renderer": "card",
-          "classname": "margin-bottom-20 margin-top-20",
+          "renderer": "carousel",
+          "classname": "i-home__carousel margin-bottom-20 margin-top-20",
+          "autoplay": true,
+          "loop": true,
+          "style": {
+            "margin-top": "20px",
+            "border-radius": "4px"
+          },
           "body": [
             {
-              "renderer": "carousel",
-              "classname": "i-home__carousel",
-              "autoplay": true,
-              "loop": true,
-              "body": [
-                {
-                  "renderer": "image",
-                  "src": "https://songshuzhong.github.io/i-assets/public/img/case1.png",
-                  "previews": [
-                    "https://songshuzhong.github.io/i-assets/public/img/case1.png"
-                  ]
-                },
-                {
-                  "renderer": "image",
-                  "src": "https://songshuzhong.github.io/i-assets/public/img/case2.png",
-                  "previews": [
-                    "https://songshuzhong.github.io/i-assets/public/img/case2.png"
-                  ]
-                },
-                {
-                  "renderer": "image",
-                  "src": "https://songshuzhong.github.io/i-assets/public/img/case3.png",
-                  "previews": [
-                    "https://songshuzhong.github.io/i-assets/public/img/case3.png"
-                  ]
-                },
-                {
-                  "renderer": "image",
-                  "src": "https://songshuzhong.github.io/i-assets/public/img/case4.png",
-                  "previews": [
-                    "https://songshuzhong.github.io/i-assets/public/img/case4.png"
-                  ]
-                },
-                {
-                  "renderer": "image",
-                  "src": "https://songshuzhong.github.io/i-assets/public/img/case5.jpg",
-                  "previews": [
-                    "https://songshuzhong.github.io/i-assets/public/img/case5.jpg"
-                  ]
-                }
-              ],
-              "height": 140,
-              "indicatorPosition": "none",
-              "arrow": "always"
-            }
-          ],
-          "header": [
+              "renderer": "image",
+              "src": `${process.env.VUE_APP_PUBLIC_PATH}/img/case5.png`
+            },
             {
-              "renderer": "html",
-              "html": "优秀案例",
-              "classname": "font-size-16 font-weight-600"
+              "renderer": "image",
+              "src": `${process.env.VUE_APP_PUBLIC_PATH}/img/case7.png`
+            },
+            {
+              "renderer": "image",
+              "src": `${process.env.VUE_APP_PUBLIC_PATH}/img/case1.png`
+            },
+            {
+              "renderer": "image",
+              "src": `${process.env.VUE_APP_PUBLIC_PATH}/img/case6.png`
+            },
+            {
+              "renderer": "image",
+              "src": `${process.env.VUE_APP_PUBLIC_PATH}/img/case8.png`
             }
           ],
-          "footer": []
-        }
-      ]
-    },
-    {
-      "renderer": "card",
-      "header": [
-        {
-          "renderer": "html",
-          "html": "优势",
-          "inline": true,
-          "classname": "font-size-16 text-center font-weight-600"
-        }
-      ],
-      "footer": [],
-      "classname": "margin-bottom-20",
-      "body": [
-        {
-          "renderer": "static",
-          "table": false,
-          "column": 0,
-          "width": 0,
-          "columns": [
-            "作者从事前端开发5年+，经验丰富",
-            "项目历经数十个不同业务场景的打磨",
-            "组件库丰富，渲染性能出众",
-            "可视化编辑，无文档、无代码、无api",
-            "长期维护、精益求精、客户至上"
-          ]
+          "height": 340,
+          "indicatorPosition": "none",
+          "arrow": "always"
         }
       ]
     },
@@ -466,7 +431,7 @@ export default {
         },
         {
           "renderer": "html",
-          "html": "<pre>&lt;schema\n  :init-schema=\"JSON\"\n  :can-schema-update=\"false\"\n  classname=\"i-renderer-schema__container\"\n/&gt;</pre>"
+          "html": "<pre>&lt;schema\n  :init-schema=\"JSON\"\n  :updatable=\"false\"\n  classname=\"i-renderer-schema__container\"\n/&gt;</pre>"
         }
       ]
     }

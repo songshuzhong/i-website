@@ -140,6 +140,10 @@ html {
         color: var(--el-color-white);
       }
     }
+    .i-home__footer,
+    .i-home__copyright {
+      animation: unset;
+    }
   }
 }
 .i-home__page {
@@ -218,7 +222,6 @@ html {
       border-radius: 100%;
     }
   }
-
   .i-card__footer {
     position: relative;
     padding: 8px 20px;
@@ -360,6 +363,9 @@ html {
     border-right: 30px solid transparent;
     border-bottom: 0;
     background: transparent;
+  }
+  &:before {
+    box-shadow: var(--el-box-shadow-dark);
   }
   span {
     transform: translate(-10px, -28px);
