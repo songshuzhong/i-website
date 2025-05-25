@@ -17,7 +17,694 @@
     ],
     "visible": null,
     "pageDesc": null,
-    "pageSchema": "{\n  \"renderer\": \"page\",\n  \"body\": [\n    {\n      \"renderer\": \"affix\",\n      \"body\": [\n        {\n          \"renderer\": \"anchor\",\n          \"direction\": \"horizontal\",\n          \"options\": [\n            {\n              \"href\": \"aaa\",\n              \"title\": \"投放范围\"\n            },\n            {\n              \"href\": \"bbb\",\n              \"title\": \"投放目标\"\n            },\n            {\n              \"href\": \"ccc\",\n              \"title\": \"受众定向\"\n            },\n            {\n              \"href\": \"ddd\",\n              \"title\": \"投放排期\"\n            },\n            {\n              \"href\": \"eee\",\n              \"title\": \"计划名称\"\n            }\n          ],\n          \"offset\": 130\n        },\n        {\n          \"renderer\": \"action\",\n          \"actionType\": \"reset\",\n          \"text\": \"重置\",\n          \"type\": \"danger\",\n          \"plain\": true,\n          \"size\": \"default\",\n          \"triggered\": \"Campaign_form_data\"\n        },\n        {\n          \"renderer\": \"action\",\n          \"actionType\": \"submit\",\n          \"text\": \"提交\",\n          \"plain\": true,\n          \"triggered\": \"Campaign_form_data\"\n        }\n      ],\n      \"offset\": 61,\n      \"position\": \"top\",\n      \"zIndex\": 100\n    },\n    {\n      \"renderer\": \"form\",\n      \"name\": \"Campaign_form_data\",\n      \"actionApi\": {\n        \"url\": \"/api/submit\",\n        \"params\": {\n          \"*\": \"*\"\n        },\n        \"method\": \"post\"\n      },\n      \"labelWidth\": \"130px\",\n      \"controls\": [\n        {\n          \"renderer\": \"divider\",\n          \"text\": \"投放范围\"\n        },\n        {\n          \"renderer\": \"radio\",\n          \"label\": \"投放范围\",\n          \"name\": \"deliver_scope\",\n          \"type\": \"button\",\n          \"defaultValue\": \"0\",\n          \"id\": \"aaa\",\n          \"tip\": \"微博站内\",\n          \"options\": [\n            {\n              \"value\": \"0\",\n              \"text\": \"优选流量\"\n            },\n            {\n              \"value\": \"1\",\n              \"text\": \"微博站内\"\n            }\n          ],\n          \"requiredOn\": \"true\"\n        },\n        {\n          \"renderer\": \"radio\",\n          \"name\": \"mid_source\",\n          \"label\": \"广告类型\",\n          \"type\": \"button\",\n          \"tip\": \"不同的广告类型对应创意层级的不同创意创建方式\",\n          \"options\": [\n            {\n              \"value\": \"0\",\n              \"text\": \"新建博文\"\n            },\n            {\n              \"value\": \"1\",\n              \"text\": \"已有博文\"\n            }\n          ],\n          \"defaultValue\": \"0\",\n          \"requiredOn\": \"true\"\n        },\n        {\n          \"renderer\": \"divider\",\n          \"text\": \"投放目标\"\n        },\n        {\n          \"renderer\": \"radio\",\n          \"name\": \"subject_obj_type\",\n          \"label\": \"投放标的\",\n          \"type\": \"button\",\n          \"defaultValue\": \"1\",\n          \"id\": \"bbb\",\n          \"tip\": \"创意点击后的跳转位置。\",\n          \"options\": [\n            {\n              \"text\": \"落地页\",\n              \"value\": \"0\"\n            },\n            {\n              \"text\": \"小程序\",\n              \"value\": \"1\"\n            }\n          ],\n          \"requiredOn\": \"true\"\n        },\n        {\n          \"renderer\": \"input\",\n          \"name\": \"subject_obj_url\",\n          \"label\": \"落地页链接\",\n          \"clearble\": true,\n          \"tip\": \"落地页链接\",\n          \"visibleOn\": \"data.subject_obj_type == 0\"\n        },\n        {\n          \"renderer\": \"input\",\n          \"name\": \"subject_mini_program_id\",\n          \"label\": \"小程序原始ID\",\n          \"clearble\": true,\n          \"tip\": \"小程序原始ID\",\n          \"visibleOn\": \"data.subject_obj_type == 1\",\n          \"requiredOn\": \"true\",\n          \"placeholder\": \"请输入\",\n          \"type\": \"text\",\n          \"validType\": \"normal\",\n          \"rules\": []\n        },\n        {\n          \"renderer\": \"input\",\n          \"name\": \"subject_mini_program_address\",\n          \"label\": \"小程序地址\",\n          \"clearble\": true,\n          \"tip\": \"小程序地址\",\n          \"visibleOn\": \"data.subject_obj_type == 1\",\n          \"requiredOn\": \"true\",\n          \"placeholder\": \"请输入\",\n          \"type\": \"text\",\n          \"validType\": \"normal\",\n          \"rules\": []\n        },\n        {\n          \"renderer\": \"divider\",\n          \"text\": \"受众定向\"\n        },\n        {\n          \"renderer\": \"select\",\n          \"name\": \"target_template_id\",\n          \"label\": \"定向模板\",\n          \"id\": \"ccc\",\n          \"placeholder\": \"请选择定向模板\",\n          \"tip\": \"定向模板\",\n          \"initApi\": {\n            \"url\": \"/api/projects/combo\",\n            \"method\": \"get\"\n          },\n          \"optionConfig\": {\n            \"text\": \"text\",\n            \"value\": \"value\"\n          },\n          \"options\": []\n        },\n        {\n          \"renderer\": \"wrapper\",\n          \"classname\": \"usf__tamplate__wrapper\",\n          \"visibleOn\": \"data.target_template_id\",\n          \"body\": {\n            \"renderer\": \"service\",\n            \"target\": \"ucampaigns__viewer1\",\n            \"inherit\": {\n              \"type\": \"include\",\n              \"value\": [\n                \"target_template_id\"\n              ]\n            },\n            \"initApi\": {\n              \"url\": \"/api/mock/templateinfo/${target_template_id}\",\n              \"method\": \"get\"\n            },\n            \"body\": [\n              {\n                \"renderer\": \"html\",\n                \"html\": \"<div class='usf__tamplate-title'>已选定向信息</div>\"\n              },\n              {\n                \"renderer\": \"service\",\n                \"silentMessage\": true,\n                \"initApi\": {\n                  \"url\": \"/api/mock/fieldinfo\",\n                  \"method\": \"get\",\n                  \"params\": \"*\"\n                },\n                \"body\": {\n                  \"renderer\": \"wrapper\",\n                  \"classname\": \"usf__tamplate\",\n                  \"body\": {\n                    \"renderer\": \"each\",\n                    \"name\": \"fields\",\n                    \"body\": {\n                      \"renderer\": \"html\",\n                      \"html\": \"<div><span class='umis__viewer__label'><%=data.label%></span>:<span class='umis__viewer__value'><%=data.text%></span></div>\"\n                    }\n                  }\n                }\n              },\n              {\n                \"renderer\": \"action\",\n                \"text\": \"编辑当前定向\",\n                \"actionType\": \"linkage\",\n                \"target\": \"Campaign_form_data\",\n                \"isText\": true,\n                \"body\": {}\n              }\n            ]\n          }\n        },\n        {\n          \"renderer\": \"radio\",\n          \"name\": \"target_genders\",\n          \"visibleOn\": \"!data.target_template_id\",\n          \"defaultValue\": \"0\",\n          \"label\": \"性别\",\n          \"tip\": \"性别\",\n          \"type\": \"button\",\n          \"options\": [\n            {\n              \"text\": \"不限\",\n              \"value\": \"0\"\n            },\n            {\n              \"text\": \"男\",\n              \"value\": \"1\"\n            },\n            {\n              \"text\": \"女\",\n              \"value\": \"2\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"checkbox\",\n          \"name\": \"target_user_os\",\n          \"visibleOn\": \"!data.target_template_id\",\n          \"defaultValue\": [\n            \"0\"\n          ],\n          \"label\": \"投放平台\",\n          \"tip\": \"投放平台\",\n          \"type\": \"button\",\n          \"options\": [\n            {\n              \"text\": \"不限\",\n              \"value\": \"0\",\n              \"individual\": true\n            },\n            {\n              \"text\": \"安卓\",\n              \"value\": \"1\"\n            },\n            {\n              \"text\": \"IOS\",\n              \"value\": \"2\"\n            },\n            {\n              \"text\": \"PC\",\n              \"value\": \"3\"\n            },\n            {\n              \"text\": \"其他\",\n              \"value\": \"4\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"checkbox\",\n          \"name\": \"target_user_network\",\n          \"visibleOn\": \"!data.target_template_id\",\n          \"defaultValue\": [\n            \"0\"\n          ],\n          \"label\": \"用户信号\",\n          \"tip\": \"用户信号\",\n          \"type\": \"button\",\n          \"options\": [\n            {\n              \"text\": \"不限\",\n              \"value\": \"0\",\n              \"individual\": true\n            },\n            {\n              \"text\": \"wifi\",\n              \"value\": \"1\"\n            },\n            {\n              \"text\": \"5/4G\",\n              \"value\": \"2\"\n            },\n            {\n              \"text\": \"3/2G\",\n              \"value\": \"3\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"radio\",\n          \"name\": \"target_login_frequency\",\n          \"visibleOn\": \"!data.target_template_id\",\n          \"defaultValue\": \"0\",\n          \"label\": \"登录频次\",\n          \"tip\": \"登录频次\",\n          \"type\": \"button\",\n          \"options\": [\n            {\n              \"text\": \"不限\",\n              \"value\": \"0\"\n            },\n            {\n              \"text\": \"低频\",\n              \"value\": \"1\"\n            },\n            {\n              \"text\": \"中频\",\n              \"value\": \"2\"\n            },\n            {\n              \"text\": \"高频\",\n              \"value\": \"3\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"radio\",\n          \"name\": \"fe_user_device\",\n          \"visibleOn\": \"!data.target_template_id\",\n          \"defaultValue\": \"0\",\n          \"label\": \"手机品牌\",\n          \"tip\": \"手机品牌\",\n          \"type\": \"button\",\n          \"options\": [\n            {\n              \"text\": \"不限\",\n              \"value\": \"0\"\n            },\n            {\n              \"text\": \"按品牌\",\n              \"value\": \"1\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"checkbox\",\n          \"name\": \"target_user_device\",\n          \"visibleOn\": \"data.fe_user_device == 1 && !data.target_template_id\",\n          \"options\": [\n            {\n              \"text\": \"iphone\",\n              \"value\": \"0\"\n            },\n            {\n              \"text\": \"小米\",\n              \"value\": \"1\"\n            },\n            {\n              \"text\": \"魅族\",\n              \"value\": \"2\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"checkbox\",\n          \"label\": \"手机价格\",\n          \"defaultValue\": [\n            \"0\"\n          ],\n          \"name\": \"target_mobile_price\",\n          \"visibleOn\": \"!data.target_template_id\",\n          \"type\": \"button\",\n          \"tip\": \"选择手机价格定向，来圈定受众人群\",\n          \"options\": [\n            {\n              \"text\": \"不限\",\n              \"value\": \"0\",\n              \"individual\": true\n            },\n            {\n              \"text\": \"1500一下\",\n              \"value\": \"1\"\n            },\n            {\n              \"text\": \"1500-2500\",\n              \"value\": \"2\"\n            },\n            {\n              \"text\": \"2500-3500\",\n              \"value\": \"3\"\n            },\n            {\n              \"text\": \"3500以上\",\n              \"value\": \"4\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"checkbox\",\n          \"name\": \"target_new_account_type\",\n          \"visibleOn\": \"!data.target_template_id\",\n          \"label\": \"新用户\",\n          \"type\": \"button\",\n          \"defaultValue\": [\n            \"0\"\n          ],\n          \"tip\": \"新用户注册微博的时间\",\n          \"options\": [\n            {\n              \"text\": \"不限\",\n              \"value\": \"0\",\n              \"individual\": true\n            },\n            {\n              \"text\": \"一个月以内\",\n              \"value\": \"1\"\n            },\n            {\n              \"text\": \"一月到三月\",\n              \"value\": \"2\"\n            },\n            {\n              \"text\": \"三月以上\",\n              \"value\": \"3\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"checkbox\",\n          \"name\": \"target_is_qualifier\",\n          \"visibleOn\": \"!data.target_template_id\",\n          \"label\": \"高质量人群\",\n          \"type\": \"button\",\n          \"defaultValue\": [\n            \"0\"\n          ],\n          \"tip\": \"高质量人群\",\n          \"options\": [\n            {\n              \"text\": \"不投放\",\n              \"value\": \"0\"\n            },\n            {\n              \"text\": \"投放\",\n              \"value\": \"1\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"viewer\",\n          \"name\": \"ucampaigns__viewer1\",\n          \"classname\": \"ucampaigns__wrapper ucampaigns__viewer zoom_move_2\",\n          \"body\": [\n            {\n              \"renderer\": \"service\",\n              \"silentMessage\": true,\n              \"initApi\": {\n                \"url\": \"/api/mock/fieldinfo?type=1\",\n                \"method\": \"get\",\n                \"params\": \"*\"\n              },\n              \"classname\": \"ucampaigns__viewer__list\",\n              \"body\": [\n                {\n                  \"renderer\": \"html\",\n                  \"html\": \"<div class='ucampaigns__viewer__header'><div>人群覆盖预估：</div><div><%=data.number%></div></div>\"\n                },\n                {\n                  \"renderer\": \"each\",\n                  \"name\": \"fields\",\n                  \"body\": {\n                    \"renderer\": \"html\",\n                    \"html\": \"<div><span class='umis__viewer__label'><%=data.label%></span>:<span class='umis__viewer__value'><%=data.text%></span></div>\"\n                  }\n                }\n              ]\n            }\n          ],\n          \"target\": \".i-admin__main\"\n        },\n        {\n          \"renderer\": \"divider\",\n          \"text\": \"预算排期\"\n        },\n        {\n          \"renderer\": \"radio\",\n          \"name\": \"fe_daily_budget_type\",\n          \"label\": \"预算\",\n          \"tip\": \"预算\",\n          \"id\": \"ddd\",\n          \"defaultValue\": \"0\",\n          \"type\": \"button\",\n          \"options\": [\n            {\n              \"text\": \"不限\",\n              \"value\": \"0\"\n            },\n            {\n              \"text\": \"指定预算\",\n              \"value\": \"1\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"input\",\n          \"name\": \"daily_budget\",\n          \"visibleOn\": \"data.fe_daily_budget_type == 1\",\n          \"append\": {\n            \"renderer\": \"html\",\n            \"html\": \"元\"\n          }\n        },\n        {\n          \"renderer\": \"radio\",\n          \"name\": \"billing_type\",\n          \"label\": \"计费模式\",\n          \"tip\": \"计费模式\",\n          \"defaultValue\": \"0\",\n          \"requiredOn\": \"true\",\n          \"type\": \"button\",\n          \"options\": [\n            {\n              \"text\": \" CPM\",\n              \"value\": \"0\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"input\",\n          \"name\": \"bid_amount\",\n          \"label\": \"设置出价\",\n          \"tip\": \"设置出价\",\n          \"append\": {\n            \"renderer\": \"html\",\n            \"html\": \"元/千次曝光\"\n          },\n          \"requiredOn\": \"true\",\n          \"placeholder\": \"请输入\",\n          \"type\": \"text\",\n          \"validType\": \"normal\"\n        },\n        {\n          \"renderer\": \"radio\",\n          \"name\": \"schedule_delivery_type\",\n          \"label\": \"投放排期\",\n          \"tip\": \"投放排期\",\n          \"defaultValue\": \"0\",\n          \"type\": \"button\",\n          \"options\": [\n            {\n              \"text\": \"即日起长期投放\",\n              \"value\": \"0\"\n            },\n            {\n              \"text\": \"指定开始结束日期\",\n              \"value\": \"1\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"datepicker\",\n          \"name\": \"fe_schedule_range\",\n          \"type\": \"daterange\",\n          \"visibleOn\": \"data.schedule_delivery_type == 1\"\n        },\n        {\n          \"renderer\": \"radio\",\n          \"name\": \"schedule_daily_delivery_type\",\n          \"label\": \"投放时段\",\n          \"tip\": \"投放时段\",\n          \"defaultValue\": \"1\",\n          \"type\": \"button\",\n          \"options\": [\n            {\n              \"text\": \"全时段\",\n              \"value\": \"0\"\n            },\n            {\n              \"text\": \"指定时段\",\n              \"value\": \"1\"\n            }\n          ],\n          \"rules\": []\n        },\n        {\n          \"renderer\": \"Schedule\",\n          \"name\": \"schedule_date\",\n          \"lazy\": true,\n          \"defaultValue\": {},\n          \"visibleOn\": \"data.schedule_daily_delivery_type == 1\"\n        },\n        {\n          \"renderer\": \"radio\",\n          \"name\": \"schedule_delivery_speed\",\n          \"label\": \"投放方式\",\n          \"type\": \"button\",\n          \"defaultValue\": \"0\",\n          \"tip\": \"系统将按您选择的投放方式为您控制预算消耗速率\",\n          \"options\": [\n            {\n              \"value\": \"0\",\n              \"text\": \"优先跑量\"\n            },\n            {\n              \"value\": \"1\",\n              \"text\": \"匀速投放\"\n            }\n          ],\n          \"requiredOn\": \"true\"\n        },\n        {\n          \"renderer\": \"switch\",\n          \"name\": \"target_is_enlarge\",\n          \"label\": \"自动扩量\",\n          \"tip\": \"自动扩量\"\n        },\n        {\n          \"renderer\": \"viewer\",\n          \"classname\": \"ucampaigns__wrapper ucampaigns__viewer\",\n          \"body\": {\n            \"renderer\": \"service\",\n            \"silentMessage\": true,\n            \"initApi\": {\n              \"url\": \"/api/mock/fieldinfo?type=2\",\n              \"method\": \"get\",\n              \"params\": \"*\"\n            },\n            \"classname\": \"ucampaigns__viewer__list\",\n            \"body\": {\n              \"renderer\": \"each\",\n              \"name\": \"fields\",\n              \"body\": {\n                \"renderer\": \"html\",\n                \"html\": \"<div><span class='umis__viewer__label'><%=data.label%></span>:<span class='umis__viewer__value'><%=data.text%></span></div>\"\n              }\n            }\n          },\n          \"target\": \".i-admin__main\"\n        },\n        {\n          \"renderer\": \"divider\",\n          \"text\": \"计划名称\"\n        },\n        {\n          \"renderer\": \"input\",\n          \"name\": \"name\",\n          \"label\": \"计划名称\",\n          \"id\": \"eee\",\n          \"defaultValue\": \"推广品牌活动_1611314706500_478\",\n          \"requiredOn\": \"true\",\n          \"placeholder\": \"请输入\",\n          \"type\": \"text\",\n          \"validType\": \"normal\"\n        }\n      ],\n      \"classname\": \"margin-top-10\"\n    }\n  ],\n  \"innerStyle\": \".i-website__main {\\n  background-color: #f1f1f1;\\n}\\n.i-affix__container {\\n  &.fixed {\\n    .i-anchor__container {    \\n      box-shadow: 4px 4px 10px 0 var(--el-border-color);\\n      border-bottom: 1px solid var(--el-bg-color-page);\\n    }\\n  }\\n  .el-button--primary {\\n    position: absolute;\\n    top: 10px;\\n    right: 20px;\\n  }\\n  .el-button--danger {\\n    position: absolute;\\n    top: 10px;\\n    right: 100px;\\n  }\\n}\\n.ucampaigns__wrapper {\\n  width: 290px;\\n  padding: 10px;\\n  border-radius: 4px;\\n  border: 1px solid #ebeef5;\\n  overflow: hidden;\\n}\\n.ucampaigns__viewer__header {\\n  width: 240px;\\n  height: 74px;\\n  padding: 15px;\\n  margin-bottom: 10px;\\n  background: var(--el-color-primary);\\n  border-radius: 4px;\\n  box-sizing: border-box;\\n  color: white;\\n}\\n.ucampaigns__viewer__list {\\n  width: 240px;\\n  max-height: 380px;\\n  box-sizing: border-box;\\n  overflow-x: hidden;\\n  overflow-y: auto;\\n}\\n.umis__viewer__label {\\n  padding-left: 6px;\\n  white-space: nowrap;\\n  line-height: 20px;\\n  font-size: 12px;\\n  font-weight: 700;\\n  color: #081422;\\n}\\n.umis__viewer__value {\\n  width: 200px;\\n  line-height: 20px;\\n  padding: 0 10px;\\n  font-size: 12px;\\n  color: #38434e;\\n  white-space: normal;\\n  word-break: break-all;\\n}\\n.usf__tamplate__wrapper {\\n  max-width: 700px;\\n}\\n.usf__tamplate-title {\\n  width: 100%;\\n  height: 40px;\\n  padding: 0 20px;\\n  background: #f1f1f1;\\n  border: 1px solid #e6e7e8;\\n  border-radius: 4px 4px 0 0;\\n  text-align: left;\\n  font-weight: 700;\\n  font-size: 13px;\\n  line-height: 38px;\\n  color: #081422;\\n}\\n.usf__tamplate {\\n  padding: 10px 20px;\\n  border: 1px solid #e6e7e8;\\n  background-color: #fff;\\n  overflow-x: hidden;\\n  overflow-y: scroll;\\n}\\n.i-form__container__viewer {\\n  top: 0;\\n}\\n.i-form__container .i-form__container__fieldset {\\n  margin-bottom: 10px;\\n  padding: 0px 10px 0px 0px;\\n}\",\n  \"showBacktop\": true\n}",
+    "pageSchema": {
+      "renderer": "page",
+      "body": [
+        {
+          "renderer": "affix",
+          "body": [
+            {
+              "renderer": "anchor",
+              "direction": "horizontal",
+              "options": [
+                {
+                  "href": "aaa",
+                  "title": "投放范围"
+                },
+                {
+                  "href": "bbb",
+                  "title": "投放目标"
+                },
+                {
+                  "href": "ccc",
+                  "title": "受众定向"
+                },
+                {
+                  "href": "ddd",
+                  "title": "投放排期"
+                },
+                {
+                  "href": "eee",
+                  "title": "计划名称"
+                }
+              ],
+              "offset": 130
+            },
+            {
+              "renderer": "action",
+              "actionType": "reset",
+              "text": "重置",
+              "type": "danger",
+              "plain": true,
+              "size": "default",
+              "triggered": "Campaign_form_data"
+            },
+            {
+              "renderer": "action",
+              "actionType": "submit",
+              "text": "提交",
+              "plain": true,
+              "triggered": "Campaign_form_data"
+            }
+          ],
+          "offset": 61,
+          "position": "top",
+          "zIndex": 100
+        },
+        {
+          "renderer": "form",
+          "name": "Campaign_form_data",
+          "actionApi": {
+            "url": "/api/submit",
+            "params": {
+              "*": "*"
+            },
+            "method": "post"
+          },
+          "labelWidth": "130px",
+          "controls": [
+            {
+              "renderer": "divider",
+              "text": "投放范围"
+            },
+            {
+              "renderer": "radio",
+              "label": "投放范围",
+              "name": "deliver_scope",
+              "type": "button",
+              "defaultValue": "0",
+              "id": "aaa",
+              "tip": "微博站内",
+              "options": [
+                {
+                  "value": "0",
+                  "text": "优选流量"
+                },
+                {
+                  "value": "1",
+                  "text": "微博站内"
+                }
+              ],
+              "requiredOn": "true"
+            },
+            {
+              "renderer": "radio",
+              "name": "mid_source",
+              "label": "广告类型",
+              "type": "button",
+              "tip": "不同的广告类型对应创意层级的不同创意创建方式",
+              "options": [
+                {
+                  "value": "0",
+                  "text": "新建博文"
+                },
+                {
+                  "value": "1",
+                  "text": "已有博文"
+                }
+              ],
+              "defaultValue": "0",
+              "requiredOn": "true"
+            },
+            {
+              "renderer": "divider",
+              "text": "投放目标"
+            },
+            {
+              "renderer": "radio",
+              "name": "subject_obj_type",
+              "label": "投放标的",
+              "type": "button",
+              "defaultValue": "1",
+              "id": "bbb",
+              "tip": "创意点击后的跳转位置。",
+              "options": [
+                {
+                  "text": "落地页",
+                  "value": "0"
+                },
+                {
+                  "text": "小程序",
+                  "value": "1"
+                }
+              ],
+              "requiredOn": "true"
+            },
+            {
+              "renderer": "input",
+              "name": "subject_obj_url",
+              "label": "落地页链接",
+              "clearble": true,
+              "tip": "落地页链接",
+              "visibleOn": "data.subject_obj_type == 0"
+            },
+            {
+              "renderer": "input",
+              "name": "subject_mini_program_id",
+              "label": "小程序原始ID",
+              "clearble": true,
+              "tip": "小程序原始ID",
+              "visibleOn": "data.subject_obj_type == 1",
+              "requiredOn": "true",
+              "placeholder": "请输入",
+              "type": "text",
+              "validType": "normal",
+              "rules": []
+            },
+            {
+              "renderer": "input",
+              "name": "subject_mini_program_address",
+              "label": "小程序地址",
+              "clearble": true,
+              "tip": "小程序地址",
+              "visibleOn": "data.subject_obj_type == 1",
+              "requiredOn": "true",
+              "placeholder": "请输入",
+              "type": "text",
+              "validType": "normal",
+              "rules": []
+            },
+            {
+              "renderer": "divider",
+              "text": "受众定向"
+            },
+            {
+              "renderer": "select",
+              "name": "target_template_id",
+              "label": "定向模板",
+              "id": "ccc",
+              "placeholder": "请选择定向模板",
+              "tip": "定向模板",
+              "initApi": {
+                "url": "/api/projects/combo",
+                "method": "get"
+              },
+              "optionConfig": {
+                "text": "text",
+                "value": "value"
+              },
+              "options": []
+            },
+            {
+              "renderer": "wrapper",
+              "classname": "usf__tamplate__wrapper",
+              "visibleOn": "data.target_template_id",
+              "body": {
+                "renderer": "service",
+                "target": "ucampaigns__viewer1",
+                "inherit": {
+                  "type": "include",
+                  "value": [
+                    "target_template_id"
+                  ]
+                },
+                "initApi": {
+                  "url": "/api/mock/templateinfo/${target_template_id}",
+                  "method": "get"
+                },
+                "body": [
+                  {
+                    "renderer": "html",
+                    "html": "<div class='usf__tamplate-title'>已选定向信息</div>"
+                  },
+                  {
+                    "renderer": "service",
+                    "silentMessage": true,
+                    "initApi": {
+                      "url": "/api/mock/fieldinfo",
+                      "method": "post",
+                      "params": "*"
+                    },
+                    "body": {
+                      "renderer": "wrapper",
+                      "classname": "usf__tamplate",
+                      "body": {
+                        "renderer": "each",
+                        "name": "fields",
+                        "body": {
+                          "renderer": "html",
+                          "html": "<div><span class='umis__viewer__label'><%=data.label%></span>:<span class='umis__viewer__value'><%=data.text%></span></div>"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "renderer": "action",
+                    "text": "编辑当前定向",
+                    "actionType": "linkage",
+                    "target": "Campaign_form_data",
+                    "isText": true,
+                    "body": {}
+                  }
+                ]
+              }
+            },
+            {
+              "renderer": "radio",
+              "name": "target_genders",
+              "visibleOn": "!data.target_template_id",
+              "defaultValue": "0",
+              "label": "性别",
+              "tip": "性别",
+              "type": "button",
+              "options": [
+                {
+                  "text": "不限",
+                  "value": "0"
+                },
+                {
+                  "text": "男",
+                  "value": "1"
+                },
+                {
+                  "text": "女",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "renderer": "checkbox",
+              "name": "target_user_os",
+              "visibleOn": "!data.target_template_id",
+              "defaultValue": [
+                "0"
+              ],
+              "label": "投放平台",
+              "tip": "投放平台",
+              "type": "button",
+              "options": [
+                {
+                  "text": "不限",
+                  "value": "0",
+                  "individual": true
+                },
+                {
+                  "text": "安卓",
+                  "value": "1"
+                },
+                {
+                  "text": "IOS",
+                  "value": "2"
+                },
+                {
+                  "text": "PC",
+                  "value": "3"
+                },
+                {
+                  "text": "其他",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "renderer": "checkbox",
+              "name": "target_user_network",
+              "visibleOn": "!data.target_template_id",
+              "defaultValue": [
+                "0"
+              ],
+              "label": "用户信号",
+              "tip": "用户信号",
+              "type": "button",
+              "options": [
+                {
+                  "text": "不限",
+                  "value": "0",
+                  "individual": true
+                },
+                {
+                  "text": "wifi",
+                  "value": "1"
+                },
+                {
+                  "text": "5/4G",
+                  "value": "2"
+                },
+                {
+                  "text": "3/2G",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "renderer": "radio",
+              "name": "target_login_frequency",
+              "visibleOn": "!data.target_template_id",
+              "defaultValue": "0",
+              "label": "登录频次",
+              "tip": "登录频次",
+              "type": "button",
+              "options": [
+                {
+                  "text": "不限",
+                  "value": "0"
+                },
+                {
+                  "text": "低频",
+                  "value": "1"
+                },
+                {
+                  "text": "中频",
+                  "value": "2"
+                },
+                {
+                  "text": "高频",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "renderer": "radio",
+              "name": "fe_user_device",
+              "visibleOn": "!data.target_template_id",
+              "defaultValue": "0",
+              "label": "手机品牌",
+              "tip": "手机品牌",
+              "type": "button",
+              "options": [
+                {
+                  "text": "不限",
+                  "value": "0"
+                },
+                {
+                  "text": "按品牌",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "renderer": "checkbox",
+              "name": "target_user_device",
+              "visibleOn": "data.fe_user_device == 1 && !data.target_template_id",
+              "options": [
+                {
+                  "text": "iphone",
+                  "value": "0"
+                },
+                {
+                  "text": "小米",
+                  "value": "1"
+                },
+                {
+                  "text": "魅族",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "renderer": "checkbox",
+              "label": "手机价格",
+              "defaultValue": [
+                "0"
+              ],
+              "name": "target_mobile_price",
+              "visibleOn": "!data.target_template_id",
+              "type": "button",
+              "tip": "选择手机价格定向，来圈定受众人群",
+              "options": [
+                {
+                  "text": "不限",
+                  "value": "0",
+                  "individual": true
+                },
+                {
+                  "text": "1500一下",
+                  "value": "1"
+                },
+                {
+                  "text": "1500-2500",
+                  "value": "2"
+                },
+                {
+                  "text": "2500-3500",
+                  "value": "3"
+                },
+                {
+                  "text": "3500以上",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "renderer": "checkbox",
+              "name": "target_new_account_type",
+              "visibleOn": "!data.target_template_id",
+              "label": "新用户",
+              "type": "button",
+              "defaultValue": [
+                "0"
+              ],
+              "tip": "新用户注册微博的时间",
+              "options": [
+                {
+                  "text": "不限",
+                  "value": "0",
+                  "individual": true
+                },
+                {
+                  "text": "一个月以内",
+                  "value": "1"
+                },
+                {
+                  "text": "一月到三月",
+                  "value": "2"
+                },
+                {
+                  "text": "三月以上",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "renderer": "checkbox",
+              "name": "target_is_qualifier",
+              "visibleOn": "!data.target_template_id",
+              "label": "高质量人群",
+              "type": "button",
+              "defaultValue": [
+                "0"
+              ],
+              "tip": "高质量人群",
+              "options": [
+                {
+                  "text": "不投放",
+                  "value": "0"
+                },
+                {
+                  "text": "投放",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "renderer": "viewer",
+              "name": "ucampaigns__viewer1",
+              "classname": "ucampaigns__wrapper ucampaigns__viewer zoom_move_2",
+              "body": [
+                {
+                  "renderer": "service",
+                  "classname": "ucampaigns__viewer__list",
+                  "body": [
+                    {
+                      "renderer": "html",
+                      "html": "<div class='ucampaigns__viewer__header'><div>人群覆盖预估：</div><div><%=data.number%></div></div>"
+                    },
+                    {
+                      "renderer": "each",
+                      "name": "fields",
+                      "body": {
+                        "renderer": "html",
+                        "html": "<div><span class='umis__viewer__label'><%=data.label%></span>:<span class='umis__viewer__value'><%=data.text%></span></div>"
+                      }
+                    }
+                  ],
+                  "promiseType": "sw"
+                }
+              ],
+              "target": ".i-admin__main"
+            },
+            {
+              "renderer": "divider",
+              "text": "预算排期"
+            },
+            {
+              "renderer": "radio",
+              "name": "fe_daily_budget_type",
+              "label": "预算",
+              "tip": "预算",
+              "id": "ddd",
+              "defaultValue": "0",
+              "type": "button",
+              "options": [
+                {
+                  "text": "不限",
+                  "value": "0"
+                },
+                {
+                  "text": "指定预算",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "renderer": "input",
+              "name": "daily_budget",
+              "visibleOn": "data.fe_daily_budget_type == 1",
+              "append": {
+                "renderer": "html",
+                "html": "元"
+              }
+            },
+            {
+              "renderer": "radio",
+              "name": "billing_type",
+              "label": "计费模式",
+              "tip": "计费模式",
+              "defaultValue": "0",
+              "requiredOn": "true",
+              "type": "button",
+              "options": [
+                {
+                  "text": " CPM",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "renderer": "input",
+              "name": "bid_amount",
+              "label": "设置出价",
+              "tip": "设置出价",
+              "append": {
+                "renderer": "html",
+                "html": "元/千次曝光"
+              },
+              "requiredOn": "true",
+              "placeholder": "请输入",
+              "type": "text",
+              "validType": "normal"
+            },
+            {
+              "renderer": "radio",
+              "name": "schedule_delivery_type",
+              "label": "投放排期",
+              "tip": "投放排期",
+              "defaultValue": "0",
+              "type": "button",
+              "options": [
+                {
+                  "text": "即日起长期投放",
+                  "value": "0"
+                },
+                {
+                  "text": "指定开始结束日期",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "renderer": "datepicker",
+              "name": "fe_schedule_range",
+              "type": "daterange",
+              "visibleOn": "data.schedule_delivery_type == 1"
+            },
+            {
+              "renderer": "radio",
+              "name": "schedule_daily_delivery_type",
+              "label": "投放时段",
+              "tip": "投放时段",
+              "defaultValue": "1",
+              "type": "button",
+              "options": [
+                {
+                  "text": "全时段",
+                  "value": "0"
+                },
+                {
+                  "text": "指定时段",
+                  "value": "1"
+                }
+              ],
+              "rules": []
+            },
+            {
+              "renderer": "Schedule",
+              "name": "schedule_date",
+              "lazy": true,
+              "defaultValue": {},
+              "visibleOn": "data.schedule_daily_delivery_type == 1"
+            },
+            {
+              "renderer": "radio",
+              "name": "schedule_delivery_speed",
+              "label": "投放方式",
+              "type": "button",
+              "defaultValue": "0",
+              "tip": "系统将按您选择的投放方式为您控制预算消耗速率",
+              "options": [
+                {
+                  "value": "0",
+                  "text": "优先跑量"
+                },
+                {
+                  "value": "1",
+                  "text": "匀速投放"
+                }
+              ],
+              "requiredOn": "true"
+            },
+            {
+              "renderer": "switch",
+              "name": "target_is_enlarge",
+              "label": "自动扩量",
+              "tip": "自动扩量"
+            },
+            {
+              "renderer": "viewer",
+              "classname": "ucampaigns__wrapper ucampaigns__viewer",
+              "body": {
+                "renderer": "service",
+                "silentMessage": true,
+                "initApi": {
+                  "url": "/api/mock/fieldinfo?type=2",
+                  "method": "post",
+                  "params": "*"
+                },
+                "classname": "ucampaigns__viewer__list",
+                "body": {
+                  "renderer": "each",
+                  "name": "fields",
+                  "body": {
+                    "renderer": "html",
+                    "html": "<div><span class='umis__viewer__label'><%=data.label%></span>:<span class='umis__viewer__value'><%=data.text%></span></div>"
+                  }
+                }
+              },
+              "target": ".i-admin__main"
+            },
+            {
+              "renderer": "divider",
+              "text": "计划名称"
+            },
+            {
+              "renderer": "input",
+              "name": "name",
+              "label": "计划名称",
+              "id": "eee",
+              "defaultValue": "推广品牌活动_1611314706500_478",
+              "requiredOn": "true",
+              "placeholder": "请输入",
+              "type": "text",
+              "validType": "normal"
+            }
+          ],
+          "classname": "margin-top-10"
+        }
+      ],
+      "innerStyle": ".i-website__main {\n  background-color: #f1f1f1;\n}\n.i-affix__container {\n  &.fixed {\n    .i-anchor__container {    \n      box-shadow: 4px 4px 10px 0 var(--el-border-color);\n      border-bottom: 1px solid var(--el-bg-color-page);\n    }\n  }\n  .el-button--primary {\n    position: absolute;\n    top: 10px;\n    right: 20px;\n  }\n  .el-button--danger {\n    position: absolute;\n    top: 10px;\n    right: 100px;\n  }\n}\n.ucampaigns__wrapper {\n  width: 290px;\n  padding: 10px;\n  border-radius: 4px;\n  border: 1px solid #ebeef5;\n  overflow: hidden;\n}\n.ucampaigns__viewer__header {\n  width: 240px;\n  height: 74px;\n  padding: 15px;\n  margin-bottom: 10px;\n  background: var(--el-color-primary);\n  border-radius: 4px;\n  box-sizing: border-box;\n  color: white;\n}\n.ucampaigns__viewer__list {\n  width: 240px;\n  max-height: 380px;\n  box-sizing: border-box;\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.umis__viewer__label {\n  padding-left: 6px;\n  white-space: nowrap;\n  line-height: 20px;\n  font-size: 12px;\n  font-weight: 700;\n  color: #081422;\n}\n.umis__viewer__value {\n  width: 200px;\n  line-height: 20px;\n  padding: 0 10px;\n  font-size: 12px;\n  color: #38434e;\n  white-space: normal;\n  word-break: break-all;\n}\n.usf__tamplate__wrapper {\n  max-width: 700px;\n}\n.usf__tamplate-title {\n  width: 100%;\n  height: 40px;\n  padding: 0 20px;\n  background: #f1f1f1;\n  border: 1px solid #e6e7e8;\n  border-radius: 4px 4px 0 0;\n  text-align: left;\n  font-weight: 700;\n  font-size: 13px;\n  line-height: 38px;\n  color: #081422;\n}\n.usf__tamplate {\n  padding: 10px 20px;\n  border: 1px solid #e6e7e8;\n  background-color: #fff;\n  overflow-x: hidden;\n  overflow-y: scroll;\n}\n.i-form__container__viewer {\n  top: 0;\n}\n.i-form__container .i-form__container__fieldset {\n  margin-bottom: 10px;\n  padding: 0px 10px 0px 0px;\n}",
+      "showBacktop": true,
+      "worker": "(e) => {\n  return new Promise(res => {\n    let values = Object.values(e.data);\n    while (values.some(Array.isArray)) {\n      values = [].concat(...values);\n    }\n    let number = values.length * 100;\n    number = \"约\" + number + \"用户\";\n    const keys = Object.keys(e.data);\n    const fieldsMap1 = {\n      target_genders: {\n        label: '性别',\n        '0': '不限',\n        '1': '男',\n        '2': '女',\n      },\n      target_user_os: {\n        label: '投放平台',\n        '0': '不限',\n        '1': '安卓',\n        '2': 'IOS',\n        '3': 'PC',\n        '4': '其他',\n      },\n      target_user_network: {\n        label: '设备信号',\n        '0': 'WIFI',\n        '1': '5/4G',\n        '2': '3/2G',\n      },\n      target_login_frequency: {\n        label: '登录频次',\n        '0': '不限',\n        '1': '低频',\n        '2': '中频',\n        '3': '高频',\n      },\n      fe_user_device: {\n        label: '手机品牌',\n        '0': '不限',\n        '1': '按品牌'\n      },\n      target_mobile_price: {\n        label: '手机价格',\n        '0': '不限',\n        '1': '1500以下',\n        '2': '1500-2500',\n        '3': '2500-3500',\n        '4': '3500以上',\n      },\n      target_user_device: {\n        label: '品牌',\n        '0': 'iPhone',\n        '1': '小米',\n        '2': '魅族',\n        '3': '高频',\n      },\n      target_new_account_type: {\n        label: '新用户',\n        '0': '不限',\n        '1': '一个月以内',\n        '2': '一到三个月',\n        '3': '三个月以上',\n      },\n      target_is_qualifier: {\n        label: '高质量人群',\n        '0': '不投放',\n        '1': '投放',\n      },\n    };\n    const fieldsMap2 = {\n      schedule_date: {\n        '1': '星期一',\n        '2': '星期二',\n        '3': '星期三',\n        '4': '星期四',\n        '5': '星期五',\n        '6': '星期六',\n        '7': '星期七',\n      },\n      fe_daily_budget_type: {\n        label: '预算',\n        '0': '不限',\n        '1': '指定预算'\n      },\n      billing_type: {\n        label: '计费模式',\n        '0': 'CPM'\n      },\n      daily_budget: {\n        label: '预算费用',\n      },\n      bid_amount: {\n        label: '出价'\n      },\n      schedule_daily_delivery_type: {\n        label: '时段类型',\n        '0': '全时段',\n        '1': '指定时段'\n      },\n      schedule_delivery_speed: {\n        label: '投放方式',\n        '0': '优先跑量',\n        '1': '匀速投放'\n      },\n      schedule_delivery_type: {\n        label: '投放排期',\n        '0': '即日起长期投放',\n        '1': '指定开始结束日期'\n      },\n      fe_schedule_range: {\n        label: '日期'\n      },\n      target_is_enlarge: {\n        label: '自动扩量',\n        'true': '开启',\n        'false': '关闭'\n      }\n    };\n    let fieldsMap;\n    if (e.track == '/page/body/1/controls/20/body/0') {\n      fieldsMap = fieldsMap1;\n    } else if (e.track == '/page/body/1/controls/32/body') {\n      fieldsMap = fieldsMap2;\n    } else {\n      fieldsMap = { ...fieldsMap1, ...fieldsMap2 };\n    }\n    const result = {};\n    keys.forEach(function (key) {\n      if (fieldsMap[key]) {\n        const values = e.data[key];\n        let text = [];\n        if (key == 'schedule_date') {\n          Object.keys(values).forEach(i => {\n            const first = values[i][0];\n            const last = values[i][values[i].length - 1];\n            text.push(`${fieldsMap.schedule_date[i]} ${first}:00-${last}:00`);\n          });\n          if (!text.length) {\n            return;\n          }\n          return result[key] = {\n            label: '投放时段',\n            text: text.join('，')\n          };\n        }\n        if (Object.prototype.toString.call(values) === '[object Array]') {\n          values.forEach(function (item) {\n            text.push(fieldsMap[key][item] ? fieldsMap[key][item] : item);\n          });\n          text = text.join('，');\n        } else {\n          text = fieldsMap[key][values] || values\n        }\n        if (!text) {\n          return;\n        }\n        result[key] = {\n          label: fieldsMap[key].label,\n          text: text\n        }\n      }\n    });\n\n    res({\n      number,\n      fields: result\n    });\n  });\n}"
+    },
     "version": 0,
     "status": 1,
     "createdAt": "2023-11-25T16:07:34.000Z",
