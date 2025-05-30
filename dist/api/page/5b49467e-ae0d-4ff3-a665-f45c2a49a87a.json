@@ -218,6 +218,7 @@
                     "target_template_id"
                   ]
                 },
+                "sendOn": "$.target_template_id",
                 "initApi": {
                   "url": "/api/mock/templateinfo/${target_template_id}",
                   "method": "get",
@@ -523,7 +524,7 @@
                   ],
                   "promiseType": "sw",
                   "deps": [
-                    "templateVersion"
+                    "*"
                   ]
                 }
               ],
@@ -673,13 +674,8 @@
                 "silentMessage": true,
                 "promiseType": "sw",
                 "deps": [
-                  "templateVersion"
+                  "*"
                 ],
-                "initApi": {
-                  "url": "/api/mock/fieldinfo?type=2",
-                  "method": "post",
-                  "params": "*"
-                },
                 "classname": "ucampaigns__viewer__list",
                 "body": {
                   "renderer": "each",
