@@ -16,7 +16,476 @@
     "assets": [],
     "visible": null,
     "pageDesc": null,
-    "pageSchema": "{\n  \"renderer\": \"page\",\n  \"initData\": {\n    \"map\": {\n      \"2222\": \"www\",\n      \"www\": \"111\"\n    },\n    \"name\": {\n      \"aaa\": \"1234\"\n    },\n    \"tabs\": [],\n    \"conditions\": []\n  },\n  \"body\": [\n    {\n      \"renderer\": \"form\",\n      \"controls\": [\n        {\n          \"renderer\": \"divider\",\n          \"text\": \"简单组合示例\"\n        },\n        {\n          \"renderer\": \"combo\",\n          \"name\": \"array\",\n          \"label\": \"简单数组\",\n          \"requiredOn\": \"1\",\n          \"inline\": false,\n          \"type\": \"array\"\n        },\n        {\n          \"renderer\": \"combo\",\n          \"name\": \"map\",\n          \"label\": \"简单字典\",\n          \"requiredOn\": \"1\",\n          \"inline\": false,\n          \"type\": \"map\"\n        },\n        {\n          \"renderer\": \"viewer\",\n          \"body\": [\n            {\n              \"renderer\": \"data\"\n            }\n          ],\n          \"target\": \".i-main__container\"\n        },\n        {\n          \"renderer\": \"divider\",\n          \"text\": \"复合组合示例\"\n        },\n        {\n          \"renderer\": \"switch\",\n          \"name\": \"collapse\",\n          \"inlinePrompt\": false,\n          \"type\": \"button\",\n          \"activeText\": \"展开\",\n          \"inactiveText\": \"收起\",\n          \"rules\": []\n        },\n        {\n          \"renderer\": \"combo\",\n          \"name\": \"multiplle\",\n          \"label\": \"复合数组\",\n          \"requiredOn\": 1,\n          \"inline\": false,\n          \"type\": \"multiple\",\n          \"controls\": [\n            {\n              \"renderer\": \"radio\",\n              \"label\": \"radio\",\n              \"name\": \"radio\",\n              \"requiredOn\": \"1\"\n            },\n            {\n              \"renderer\": \"input\",\n              \"label\": \"input\",\n              \"name\": \"input\",\n              \"requiredOn\": \"1\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"combo\",\n          \"name\": \"tabs\",\n          \"label\": \"选项卡\",\n          \"requiredOn\": 1,\n          \"isTab\": true,\n          \"controls\": [\n            {\n              \"renderer\": \"radio\",\n              \"label\": \"radio\",\n              \"name\": \"radio\",\n              \"requiredOn\": \"1\"\n            },\n            {\n              \"renderer\": \"input\",\n              \"label\": \"input\",\n              \"name\": \"input\",\n              \"requiredOn\": \"1\"\n            }\n          ],\n          \"category\": \"table\"\n        },\n        {\n          \"renderer\": \"combo\",\n          \"name\": \"custom\",\n          \"label\": \"复合字典\",\n          \"requiredOn\": \"1\",\n          \"inline\": false,\n          \"type\": \"custom\",\n          \"controls\": [\n            {\n              \"renderer\": \"input\",\n              \"label\": \"aaa\",\n              \"name\": \"aaa\",\n              \"requiredOn\": \"1\"\n            },\n            {\n              \"renderer\": \"input\",\n              \"label\": \"bbb\",\n              \"name\": \"bbb\",\n              \"requiredOn\": \"1\"\n            }\n          ]\n        },\n        {\n          \"renderer\": \"viewer\",\n          \"body\": [\n            {\n              \"renderer\": \"html\",\n              \"html\": \"组合与轮播联动\",\n              \"classname\": \"text-center strong\"\n            },\n            {\n              \"renderer\": \"carousel\",\n              \"name\": \"tabs\",\n              \"autoplay\": true,\n              \"body\": [\n                {\n                  \"renderer\": \"data\"\n                }\n              ]\n            },\n            {\n              \"renderer\": \"timeline\",\n              \"body\": [\n                {\n                  \"renderer\": \"alert\",\n                  \"type\": \"${input}\"\n                }\n              ],\n              \"name\": \"tabs\",\n              \"type\": \"input\",\n              \"placement\": \"top\",\n              \"hollow\": true\n            }\n          ],\n          \"computedClass\": \"$.collapse? 'viewer__collapse': ''\",\n          \"target\": \".i-main__container\"\n        },\n        {\n          \"renderer\": \"divider\",\n          \"text\": \"复杂嵌套\"\n        },\n        {\n          \"renderer\": \"combo\",\n          \"name\": \"conditions\",\n          \"label\": \"检索条件\",\n          \"border\": false,\n          \"inline\": true,\n          \"controls\": [\n            {\n              \"renderer\": \"select\",\n              \"name\": \"domain\",\n              \"label\": \"\",\n              \"options\": [\n                {\n                  \"text\": \"就诊信息表\",\n                  \"value\": \"1\"\n                },\n                {\n                  \"text\": \"诊断信息表\",\n                  \"value\": \"2\",\n                  \"disabledOn\": \"$.comboIndex == 0\"\n                }\n              ]\n            },\n            {\n              \"renderer\": \"select\",\n              \"name\": \"type\",\n              \"label\": \"\",\n              \"placeholder\": \"入院信息表\",\n              \"visibleOn\": \"$.domain == 1\",\n              \"options\": [\n                {\n                  \"text\": \"年龄\",\n                  \"value\": \"1\"\n                },\n                {\n                  \"text\": \"性别\",\n                  \"value\": \"2\"\n                }\n              ]\n            },\n            {\n              \"renderer\": \"radio\",\n              \"name\": \"sex\",\n              \"label\": \"\",\n              \"placeholder\": \"性别\",\n              \"visibleOn\": \"$.domain == 1 && $.type == 2\",\n              \"options\": [\n                {\n                  \"text\": \"男\",\n                  \"value\": \"1\"\n                },\n                {\n                  \"text\": \"女\",\n                  \"value\": \"2\"\n                }\n              ]\n            },\n            {\n              \"renderer\": \"select\",\n              \"name\": \"ageType\",\n              \"label\": \"\",\n              \"placeholder\": \"年龄\",\n              \"visibleOn\": \"$.domain == 1 && $.type == 1\",\n              \"options\": [\n                {\n                  \"text\": \"范围\",\n                  \"value\": \"1\"\n                },\n                {\n                  \"text\": \"具体\",\n                  \"value\": \"2\"\n                }\n              ]\n            },\n            {\n              \"renderer\": \"input\",\n              \"label\": \"\",\n              \"placeholder\": \"最小年龄\",\n              \"name\": \"minAge\",\n              \"visibleOn\": \"$.domain == 1 && $.type == 1 && $.ageType == 1\"\n            },\n            {\n              \"renderer\": \"input\",\n              \"label\": \"\",\n              \"placeholder\": \"最大年龄\",\n              \"name\": \"maxAge\",\n              \"visibleOn\": \"$.domain == 1 && $.type == 1 && $.ageType == 1\"\n            },\n            {\n              \"renderer\": \"input\",\n              \"label\": \"\",\n              \"placeholder\": \"年龄\",\n              \"name\": \"age\",\n              \"visibleOn\": \"$.domain == 1 && $.type == 1 && $.ageType == 2\"\n            },\n            {\n              \"renderer\": \"select\",\n              \"name\": \"type\",\n              \"label\": \"\",\n              \"visibleOn\": \"$.domain == 2\",\n              \"options\": [\n                {\n                  \"text\": \"呼吸科\",\n                  \"value\": \"1\"\n                },\n                {\n                  \"text\": \"外科\",\n                  \"value\": \"2\"\n                },\n                {\n                  \"text\": \"肿瘤科\",\n                  \"value\": \"3\"\n                }\n              ]\n            },\n            {\n              \"renderer\": \"select\",\n              \"name\": \"relation\",\n              \"placeholder\": \"请选择关系\",\n              \"requiredOn\": \"1\",\n              \"options\": [\n                {\n                  \"text\": \"或\",\n                  \"value\": \"1\"\n                },\n                {\n                  \"text\": \"且\",\n                  \"value\": \"2\"\n                }\n              ]\n            },\n            {\n              \"renderer\": \"combo\",\n              \"name\": \"children\",\n              \"visibleOn\": \"$.relation == 2\",\n              \"label\": \"\",\n              \"inline\": true,\n              \"type\": \"custom\",\n              \"border\": false,\n              \"controls\": [\n                {\n                  \"renderer\": \"select\",\n                  \"name\": \"domain\",\n                  \"label\": \"\",\n                  \"options\": [\n                    {\n                      \"text\": \"就诊信息表\",\n                      \"value\": \"1\"\n                    },\n                    {\n                      \"text\": \"诊断信息表\",\n                      \"value\": \"2\"\n                    }\n                  ]\n                },\n                {\n                  \"renderer\": \"select\",\n                  \"name\": \"type\",\n                  \"label\": \"\",\n                  \"placeholder\": \"入院信息表\",\n                  \"visibleOn\": \"$.domain == 1\",\n                  \"options\": [\n                    {\n                      \"text\": \"年龄\",\n                      \"value\": \"1\"\n                    },\n                    {\n                      \"text\": \"性别\",\n                      \"value\": \"2\"\n                    }\n                  ]\n                },\n                {\n                  \"renderer\": \"radio\",\n                  \"name\": \"sex\",\n                  \"label\": \"\",\n                  \"placeholder\": \"性别\",\n                  \"visibleOn\": \"$.domain == 1 && $.type == 2\",\n                  \"options\": [\n                    {\n                      \"text\": \"男\",\n                      \"value\": \"1\"\n                    },\n                    {\n                      \"text\": \"女\",\n                      \"value\": \"2\"\n                    }\n                  ]\n                },\n                {\n                  \"renderer\": \"select\",\n                  \"name\": \"ageType\",\n                  \"label\": \"\",\n                  \"placeholder\": \"年龄\",\n                  \"visibleOn\": \"$.domain == 1 && $.type == 1\",\n                  \"options\": [\n                    {\n                      \"text\": \"范围\",\n                      \"value\": \"1\"\n                    },\n                    {\n                      \"text\": \"具体\",\n                      \"value\": \"2\"\n                    }\n                  ]\n                },\n                {\n                  \"renderer\": \"input\",\n                  \"label\": \"\",\n                  \"placeholder\": \"最小年龄\",\n                  \"name\": \"minAge\",\n                  \"visibleOn\": \"$.domain == 1 && $.type == 1 && $.ageType == 1\"\n                },\n                {\n                  \"renderer\": \"input\",\n                  \"label\": \"\",\n                  \"placeholder\": \"最大年龄\",\n                  \"name\": \"maxAge\",\n                  \"visibleOn\": \"$.domain == 1 && $.type == 1 && $.ageType == 1\"\n                },\n                {\n                  \"renderer\": \"input\",\n                  \"label\": \"\",\n                  \"placeholder\": \"年龄\",\n                  \"name\": \"age\",\n                  \"visibleOn\": \"$.domain == 1 && $.type == 1 && $.ageType == 2\"\n                },\n                {\n                  \"renderer\": \"select\",\n                  \"name\": \"type\",\n                  \"label\": \"\",\n                  \"visibleOn\": \"$.domain == 2\",\n                  \"options\": [\n                    {\n                      \"text\": \"呼吸科\",\n                      \"value\": \"1\"\n                    },\n                    {\n                      \"text\": \"外科\",\n                      \"value\": \"2\"\n                    },\n                    {\n                      \"text\": \"肿瘤科\",\n                      \"value\": \"3\"\n                    }\n                  ]\n                }\n              ]\n            }\n          ],\n          \"extends\": true\n        },\n        {\n          \"renderer\": \"action\",\n          \"actionType\": \"submit\"\n        },\n        {\n          \"renderer\": \"html\"\n        }\n      ],\n      \"classname\": \"actions-fixed\"\n    }\n  ],\n  \"innerStyle\": \".viewer__collapse {\\n  width: 40px !important;\\n  padding-left: 20px;\\n  white-space: nowrap;\\n}\\n.el-table__header,\\n.el-table__body {\\n  width: unset !important;\\n}\"\n}",
+    "pageSchema": {
+      "renderer": "page",
+      "initData": {
+        "map": {
+          "2222": "www",
+          "www": "111"
+        },
+        "name": {
+          "aaa": "1234"
+        },
+        "tabs": [
+          {
+            "radio": "value2",
+            "input": "1"
+          },
+          {
+            "radio": "value1",
+            "input": "2"
+          },
+          {
+            "radio": "value2",
+            "input": "3"
+          },
+          {
+            "radio": "value1",
+            "input": "4"
+          }
+        ],
+        "conditions": [
+          {
+            "domain": "1",
+            "type": "1",
+            "ageType": "1",
+            "minAge": "18",
+            "maxAge": "80"
+          }
+        ]
+      },
+      "body": [
+        {
+          "renderer": "form",
+          "controls": [
+            {
+              "renderer": "divider",
+              "text": "简单组合示例"
+            },
+            {
+              "renderer": "combo",
+              "name": "array",
+              "label": "简单数组",
+              "requiredOn": "1",
+              "inline": false,
+              "type": "array"
+            },
+            {
+              "renderer": "combo",
+              "name": "map",
+              "label": "简单字典",
+              "requiredOn": "1",
+              "inline": false,
+              "type": "map"
+            },
+            {
+              "renderer": "viewer",
+              "body": [
+                {
+                  "renderer": "data"
+                }
+              ],
+              "target": ".i-main__container"
+            },
+            {
+              "renderer": "divider",
+              "text": "复合组合示例",
+              "body": [
+                {
+                  "renderer": "switch",
+                  "name": "collapse",
+                  "type": "icon",
+                  "activeText": "CaretLeft",
+                  "inactiveText": "CaretRight"
+                }
+              ]
+            },
+            {
+              "renderer": "combo",
+              "name": "multiplle",
+              "label": "复合数组",
+              "requiredOn": 1,
+              "inline": false,
+              "type": "multiple",
+              "controls": [
+                {
+                  "renderer": "radio",
+                  "label": "radio",
+                  "name": "radio",
+                  "requiredOn": "1"
+                },
+                {
+                  "renderer": "input",
+                  "label": "input",
+                  "name": "input",
+                  "requiredOn": "1"
+                }
+              ]
+            },
+            {
+              "renderer": "combo",
+              "name": "tabs",
+              "label": "选项卡",
+              "requiredOn": 1,
+              "isTab": true,
+              "controls": [
+                {
+                  "renderer": "radio",
+                  "label": "radio",
+                  "name": "radio",
+                  "requiredOn": "1"
+                },
+                {
+                  "renderer": "input",
+                  "label": "input",
+                  "name": "input",
+                  "requiredOn": "1"
+                },
+                {
+                  "renderer": "action",
+                  "category": "icon",
+                  "icon": "Delete",
+                  "actionType": "extends",
+                  "triggered": "delete",
+                  "size": 12,
+                  "header": {
+                    "renderer": "action",
+                    "category": "icon",
+                    "icon": "Plus",
+                    "actionType": "extends",
+                    "triggered": "add",
+                    "size": 12
+                  }
+                }
+              ],
+              "category": "table"
+            },
+            {
+              "renderer": "combo",
+              "name": "custom",
+              "label": "复合字典",
+              "requiredOn": "1",
+              "inline": false,
+              "type": "custom",
+              "controls": [
+                {
+                  "renderer": "input",
+                  "label": "aaa",
+                  "name": "aaa",
+                  "requiredOn": "1"
+                },
+                {
+                  "renderer": "input",
+                  "label": "bbb",
+                  "name": "bbb",
+                  "requiredOn": "1"
+                }
+              ]
+            },
+            {
+              "renderer": "viewer",
+              "body": [
+                {
+                  "renderer": "html",
+                  "html": "组合与轮播联动",
+                  "classname": "text-center strong"
+                },
+                {
+                  "renderer": "carousel",
+                  "name": "tabs",
+                  "autoplay": true,
+                  "body": [
+                    {
+                      "renderer": "data"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "timeline",
+                  "body": [
+                    {
+                      "renderer": "alert",
+                      "type": "${input}",
+                      "title": "这是第<%=$.input%>个警告。"
+                    }
+                  ],
+                  "name": "tabs",
+                  "type": "input",
+                  "placement": "top",
+                  "hollow": true
+                }
+              ],
+              "computedClass": "$.collapse? 'viewer__collapse': ''",
+              "target": ".i-main__container"
+            },
+            {
+              "renderer": "divider",
+              "text": "复杂嵌套"
+            },
+            {
+              "renderer": "combo",
+              "name": "conditions",
+              "label": "检索条件",
+              "border": false,
+              "inline": true,
+              "controls": [
+                {
+                  "renderer": "select",
+                  "name": "domain",
+                  "label": "",
+                  "options": [
+                    {
+                      "text": "就诊信息表",
+                      "value": "1"
+                    },
+                    {
+                      "text": "诊断信息表",
+                      "value": "2",
+                      "disabledOn": "$.comboIndex == 0"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "select",
+                  "name": "type",
+                  "label": "",
+                  "placeholder": "入院信息表",
+                  "visibleOn": "$.domain == 1",
+                  "options": [
+                    {
+                      "text": "年龄",
+                      "value": "1"
+                    },
+                    {
+                      "text": "性别",
+                      "value": "2"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "radio",
+                  "name": "sex",
+                  "label": "",
+                  "placeholder": "性别",
+                  "visibleOn": "$.domain == 1 && $.type == 2",
+                  "options": [
+                    {
+                      "text": "男",
+                      "value": "1"
+                    },
+                    {
+                      "text": "女",
+                      "value": "2"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "select",
+                  "name": "ageType",
+                  "label": "",
+                  "placeholder": "年龄",
+                  "visibleOn": "$.domain == 1 && $.type == 1",
+                  "options": [
+                    {
+                      "text": "范围",
+                      "value": "1"
+                    },
+                    {
+                      "text": "具体",
+                      "value": "2"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "input",
+                  "label": "",
+                  "placeholder": "最小年龄",
+                  "name": "minAge",
+                  "visibleOn": "$.domain == 1 && $.type == 1 && $.ageType == 1"
+                },
+                {
+                  "renderer": "input",
+                  "label": "",
+                  "placeholder": "最大年龄",
+                  "name": "maxAge",
+                  "visibleOn": "$.domain == 1 && $.type == 1 && $.ageType == 1"
+                },
+                {
+                  "renderer": "input",
+                  "label": "",
+                  "placeholder": "年龄",
+                  "name": "age",
+                  "visibleOn": "$.domain == 1 && $.type == 1 && $.ageType == 2"
+                },
+                {
+                  "renderer": "select",
+                  "name": "type",
+                  "label": "",
+                  "visibleOn": "$.domain == 2",
+                  "options": [
+                    {
+                      "text": "呼吸科",
+                      "value": "1"
+                    },
+                    {
+                      "text": "外科",
+                      "value": "2"
+                    },
+                    {
+                      "text": "肿瘤科",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "select",
+                  "name": "relation",
+                  "placeholder": "请选择关系",
+                  "requiredOn": "1",
+                  "options": [
+                    {
+                      "text": "或",
+                      "value": "1"
+                    },
+                    {
+                      "text": "且",
+                      "value": "2"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "combo",
+                  "name": "children",
+                  "visibleOn": "$.relation == 2",
+                  "label": "",
+                  "inline": true,
+                  "type": "custom",
+                  "border": false,
+                  "controls": [
+                    {
+                      "renderer": "select",
+                      "name": "domain",
+                      "label": "",
+                      "options": [
+                        {
+                          "text": "就诊信息表",
+                          "value": "1"
+                        },
+                        {
+                          "text": "诊断信息表",
+                          "value": "2"
+                        }
+                      ]
+                    },
+                    {
+                      "renderer": "select",
+                      "name": "type",
+                      "label": "",
+                      "placeholder": "入院信息表",
+                      "visibleOn": "$.domain == 1",
+                      "options": [
+                        {
+                          "text": "年龄",
+                          "value": "1"
+                        },
+                        {
+                          "text": "性别",
+                          "value": "2"
+                        }
+                      ]
+                    },
+                    {
+                      "renderer": "radio",
+                      "name": "sex",
+                      "label": "",
+                      "placeholder": "性别",
+                      "visibleOn": "$.domain == 1 && $.type == 2",
+                      "options": [
+                        {
+                          "text": "男",
+                          "value": "1"
+                        },
+                        {
+                          "text": "女",
+                          "value": "2"
+                        }
+                      ]
+                    },
+                    {
+                      "renderer": "select",
+                      "name": "ageType",
+                      "label": "",
+                      "placeholder": "年龄",
+                      "visibleOn": "$.domain == 1 && $.type == 1",
+                      "options": [
+                        {
+                          "text": "范围",
+                          "value": "1"
+                        },
+                        {
+                          "text": "具体",
+                          "value": "2"
+                        }
+                      ]
+                    },
+                    {
+                      "renderer": "input",
+                      "label": "",
+                      "placeholder": "最小年龄",
+                      "name": "minAge",
+                      "visibleOn": "$.domain == 1 && $.type == 1 && $.ageType == 1"
+                    },
+                    {
+                      "renderer": "input",
+                      "label": "",
+                      "placeholder": "最大年龄",
+                      "name": "maxAge",
+                      "visibleOn": "$.domain == 1 && $.type == 1 && $.ageType == 1"
+                    },
+                    {
+                      "renderer": "input",
+                      "label": "",
+                      "placeholder": "年龄",
+                      "name": "age",
+                      "visibleOn": "$.domain == 1 && $.type == 1 && $.ageType == 2"
+                    },
+                    {
+                      "renderer": "select",
+                      "name": "type",
+                      "label": "",
+                      "visibleOn": "$.domain == 2",
+                      "options": [
+                        {
+                          "text": "呼吸科",
+                          "value": "1"
+                        },
+                        {
+                          "text": "外科",
+                          "value": "2"
+                        },
+                        {
+                          "text": "肿瘤科",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "extends": true
+            },
+            {
+              "renderer": "action",
+              "actionType": "extends",
+              "text": "保存",
+              "triggered": "submit"
+            }
+          ],
+          "classname": "actions-fixed"
+        }
+      ],
+      "innerStyle": ".viewer__collapse {\n  width: 40px !important;\n  padding-left: 20px;\n  white-space: nowrap;\n  .i-carousel__container,\n  .i-html__container {\n    display: none;\n  }\n}\n.el-table__header,\n.el-table__body {\n  width: unset !important;\n}"
+    },
     "version": 0,
     "status": 1,
     "createdAt": "2023-11-25T15:17:22.000Z",
