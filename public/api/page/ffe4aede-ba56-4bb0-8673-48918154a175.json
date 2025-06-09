@@ -23,6 +23,13 @@
           "renderer": "form",
           "name": "FormWithLinked",
           "labelWidth": "100px",
+          "actionApi": {
+            "url": "/api/submit",
+            "method": "post",
+            "params": {
+              "*": "*"
+            }
+          },
           "controls": [
             {
               "renderer": "divider",
@@ -172,6 +179,20 @@
                   ]
                 }
               ]
+            },
+            {
+              "renderer": "action",
+              "text": "submit",
+              "actionType": "extends",
+              "triggered": "submit",
+              "type": "primary"
+            },
+            {
+              "renderer": "action",
+              "text": "reset",
+              "actionType": "extends",
+              "triggered": "reset",
+              "type": "danger"
             }
           ]
         }
