@@ -11,6 +11,20 @@
           {
             "renderer": "menuitem",
             "name": "form",
+            "title": "表单显隐校验",
+            "icon": "",
+            "pageId": "ffe4aede-ba56-4bb0-8673-48918154a175",
+            "groupBy": "form",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/ffe4aede-ba56-4bb0-8673-48918154a175"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "form",
             "title": "表单",
             "icon": "",
             "pageId": "7fe82cb4-4156-4897-a6f1-82cd8e1cc9f5",
