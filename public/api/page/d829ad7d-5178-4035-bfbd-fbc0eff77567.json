@@ -15,7 +15,152 @@
     "assets": [],
     "visible": null,
     "pageDesc": null,
-    "pageSchema": "{\n  \"renderer\": \"page\",\n  \"body\": {\n    \"renderer\": \"form\",\n    \"redirect\": \"/superfans/campaigns\",\n    \"actionApi\": {\n      \"url\": \"https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ad/create\"\n    },\n    \"controls\": [\n      {\n        \"renderer\": \"list\",\n        \"name\": \"marketing-goals\",\n        \"classname\": \"sf-marketing-goals__list\",\n        \"label\": \"营销目标\",\n        \"multiple\": false,\n        \"defaultValue\": \"0\",\n        \"min\": 0,\n        \"max\": 1,\n        \"options\": [\n          {\n            \"value\": \"0\",\n            \"name\": \"brand-awareness\",\n            \"title\": \"推广品牌活动\",\n            \"desc\": \"投放给更多潜在用户，提升品牌影响力\",\n            \"src\": \"https://js.t.sinajs.cn/weiboad/apps/sf/blitz/img/brand-awareness.273062f0.png\"\n          },\n          {\n            \"value\": \"1\",\n            \"name\": \"content-engagement\",\n            \"title\": \"推广博文\",\n            \"desc\": \"提升内容互动、关注以及链接跳转量\",\n            \"src\": \"https://js.t.sinajs.cn/weiboad/apps/sf/blitz/img/content-engagement.e0d93c11.png\"\n          },\n          {\n            \"value\": \"2\",\n            \"name\": \"sales-leads\",\n            \"title\": \"收集销售线索\",\n            \"desc\": \"收集对产品有意向的用户信息，提升转化效果\",\n            \"src\": \"https://js.t.sinajs.cn/weiboad/apps/sf/blitz/img/sales-leads.b2bac8fa.png\"\n          },\n          {\n            \"value\": \"3\",\n            \"name\": \"sales-leads\",\n            \"title\": \"推广APP\",\n            \"desc\": \"增加应用下载量与使用率\",\n            \"src\": \"https://js.t.sinajs.cn/weiboad/apps/sf/blitz/img/app.5094529a.png\"\n          },\n          {\n            \"value\": \"4\",\n            \"name\": \"sales-leads\",\n            \"title\": \"推广电商店铺\",\n            \"desc\": \"提升微博小店及第三方电商店铺的商品销量\",\n            \"src\": \"https://js.t.sinajs.cn/weiboad/apps/sf/blitz/img/merchandise.03631423.png\"\n          }\n        ],\n        \"body\": [\n          {\n            \"renderer\": \"wrapper\",\n            \"classname\": \"ulist-demo__img-wrapper\",\n            \"body\": {\n              \"renderer\": \"avatar\",\n              \"classname\": \"ulist-demo__img\",\n              \"isComputedSrc\": true,\n              \"src\": \"${src}\",\n              \"shape\": \"square\"\n            }\n          },\n          {\n            \"renderer\": \"html\",\n            \"html\": \"<div class='ulist-demo'><h4><%=data.title%></h4><span><%=data.desc%></span></div>\"\n          }\n        ],\n        \"requiredOn\": true,\n        \"rules\": []\n      },\n      {\n        \"renderer\": \"switch\",\n        \"label\": \"定价保量\",\n        \"name\": \"guaranteed_delivery\",\n        \"defaultValue\": false,\n        \"visibleOn\": \"data['marketing-goals'] === '0'\"\n      },\n      {\n        \"renderer\": \"radio\",\n        \"name\": \"campaignBudgetType\",\n        \"label\": \"广告系列预算\",\n        \"type\": \"button\",\n        \"defaultValue\": \"0\",\n        \"options\": [\n          {\n            \"text\": \"不限\",\n            \"value\": \"0\"\n          },\n          {\n            \"text\": \"指定预算\",\n            \"value\": \"1\"\n          }\n        ]\n      },\n      {\n        \"renderer\": \"input\",\n        \"name\": \"lifetime_budget\",\n        \"visibleOn\": \"data.campaignBudgetType === '1'\",\n        \"append\": {\n          \"renderer\": \"html\",\n          \"html\": \"元\"\n        },\n        \"requiredOn\": true,\n        \"label\": \" \",\n        \"placeholder\": \"请输入\",\n        \"type\": \"text\",\n        \"rules\": []\n      },\n      {\n        \"renderer\": \"input\",\n        \"name\": \"name\",\n        \"label\": \"广告系列名称\",\n        \"requiredOn\": true\n      },\n      {\n        \"renderer\": \"action\",\n        \"actionType\": \"linkage\",\n        \"text\": \"表单提交后联动\",\n        \"hiddenOn\": \"1 === 1\",\n        \"actionApi\": \"https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ad/create\"\n      },\n      {\n        \"renderer\": \"action\",\n        \"actionType\": \"submit\",\n        \"text\": \"保存并创建计划\",\n        \"actionApi\": \"https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ad/create\"\n      },\n      {\n        \"renderer\": \"action\",\n        \"actionType\": \"reset\",\n        \"text\": \"取消\",\n        \"actionApi\": \"https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ad/create\"\n      }\n    ]\n  },\n  \"innerStyle\": \".ulist-demo {\\n  width: 180px;\\n  height: 115px;\\n  padding: 0 20px;\\n  text-align: center;\\n}\\n.ulist-demo__img {\\n  position: absolute;\\n  top: 50%;\\n  left: 50%;\\n  width: 48px;\\n  height: 48px;\\n  background-color: #daf4f5;\\n  transform: translateX(-50%) translateY(-50%);\\n}\\n.ulist-demo__img-wrapper {\\n  position: relative;\\n  height: 88px;\\n  background-color: #daf4f5;\\n}\\n.index-1 .ulist-demo__img-wrapper {\\n  background-color: #ffeae3;\\n}\\n.index-1 .ulist-demo__img {\\n  background-color: #ffeae3;\\n}\\n.index-2 .ulist-demo__img-wrapper {\\n  background-color: #e2e4f1;\\n}\\n.index-2 .ulist-demo__img {\\n  background-color: #e2e4f1;\\n}\\n.sf-marketing-goals__list {\\n  .i-list__item {\\n    flex:1;\\n  }\\n  .ulist__item {\\n    flex:1;\\n  }\\n}\",\n  \"steps\": []\n}",
+    "pageSchema": {
+      "renderer": "page",
+      "body": {
+        "renderer": "form",
+        "redirect": "/superfans/campaigns",
+        "actionApi": {
+          "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ad/create"
+        },
+        "controls": [
+          {
+            "renderer": "list",
+            "name": "marketing-goals",
+            "classname": "sf-marketing-goals__list",
+            "label": "营销目标",
+            "multiple": false,
+            "defaultValue": "0",
+            "min": 0,
+            "max": 1,
+            "options": [
+              {
+                "value": "0",
+                "name": "brand-awareness",
+                "title": "推广品牌活动",
+                "desc": "投放给更多潜在用户，提升品牌影响力",
+                "src": "https://js.t.sinajs.cn/weiboad/apps/sf/blitz/img/brand-awareness.273062f0.png"
+              },
+              {
+                "value": "1",
+                "name": "content-engagement",
+                "title": "推广博文",
+                "desc": "提升内容互动、关注以及链接跳转量",
+                "src": "https://js.t.sinajs.cn/weiboad/apps/sf/blitz/img/content-engagement.e0d93c11.png"
+              },
+              {
+                "value": "2",
+                "name": "sales-leads",
+                "title": "收集销售线索",
+                "desc": "收集对产品有意向的用户信息，提升转化效果",
+                "src": "https://js.t.sinajs.cn/weiboad/apps/sf/blitz/img/sales-leads.b2bac8fa.png"
+              },
+              {
+                "value": "3",
+                "name": "sales-leads",
+                "title": "推广APP",
+                "desc": "增加应用下载量与使用率",
+                "src": "https://js.t.sinajs.cn/weiboad/apps/sf/blitz/img/app.5094529a.png"
+              },
+              {
+                "value": "4",
+                "name": "sales-leads",
+                "title": "推广电商店铺",
+                "desc": "提升微博小店及第三方电商店铺的商品销量",
+                "src": "https://js.t.sinajs.cn/weiboad/apps/sf/blitz/img/merchandise.03631423.png"
+              }
+            ],
+            "body": [
+              {
+                "renderer": "wrapper",
+                "classname": "ulist-demo__img-wrapper",
+                "body": {
+                  "renderer": "avatar",
+                  "classname": "ulist-demo__img",
+                  "isComputedSrc": true,
+                  "src": "${src}",
+                  "shape": "square"
+                }
+              },
+              {
+                "renderer": "html",
+                "html": "<div class='ulist-demo'><h4><%=data.title%></h4><span><%=data.desc%></span></div>"
+              }
+            ],
+            "requiredOn": true,
+            "rules": []
+          },
+          {
+            "renderer": "switch",
+            "label": "定价保量",
+            "name": "guaranteed_delivery",
+            "defaultValue": false,
+            "visibleOn": "data['marketing-goals'] === '0'"
+          },
+          {
+            "renderer": "radio",
+            "name": "campaignBudgetType",
+            "label": "广告系列预算",
+            "type": "button",
+            "defaultValue": "0",
+            "options": [
+              {
+                "text": "不限",
+                "value": "0"
+              },
+              {
+                "text": "指定预算",
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "renderer": "input",
+            "name": "lifetime_budget",
+            "visibleOn": "data.campaignBudgetType === '1'",
+            "append": {
+              "renderer": "html",
+              "html": "元"
+            },
+            "requiredOn": true,
+            "label": " ",
+            "placeholder": "请输入",
+            "type": "text",
+            "rules": []
+          },
+          {
+            "renderer": "input",
+            "name": "name",
+            "label": "广告系列名称",
+            "requiredOn": true
+          },
+          {
+            "renderer": "action",
+            "actionType": "linkage",
+            "text": "表单提交后联动",
+            "hiddenOn": "1 === 1",
+            "actionApi": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ad/create"
+          },
+          {
+            "renderer": "action",
+            "actionType": "submit",
+            "text": "保存并创建计划",
+            "actionApi": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ad/create",
+            "style": {
+              "margin-left": "117px"
+            }
+          },
+          {
+            "renderer": "action",
+            "actionType": "reset",
+            "text": "取消",
+            "actionApi": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ad/create"
+          }
+        ]
+      },
+      "innerStyle": ".ulist-demo {\n  width: 180px;\n  height: 115px;\n  padding: 0 20px;\n  text-align: center;\n}\n.ulist-demo__img {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 48px;\n  height: 48px;\n  background-color: #daf4f5;\n  transform: translateX(-50%) translateY(-50%);\n}\n.ulist-demo__img-wrapper {\n  position: relative;\n  height: 88px;\n  background-color: #daf4f5;\n}\n.index-1 .ulist-demo__img-wrapper {\n  background-color: #ffeae3;\n}\n.index-1 .ulist-demo__img {\n  background-color: #ffeae3;\n}\n.index-2 .ulist-demo__img-wrapper {\n  background-color: #e2e4f1;\n}\n.index-2 .ulist-demo__img {\n  background-color: #e2e4f1;\n}\n.sf-marketing-goals__list {\n  .i-list__item {\n    flex:1;\n  }\n  .ulist__item {\n    flex:1;\n  }\n}",
+      "steps": []
+    },
     "version": 0,
     "status": 1,
     "createdAt": "2023-11-25T16:07:58.000Z",
