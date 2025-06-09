@@ -10,7 +10,7 @@
         "body": [
           {
             "renderer": "menuitem",
-            "name": "form",
+            "name": "visible",
             "title": "表单显隐校验",
             "icon": "",
             "pageId": "ffe4aede-ba56-4bb0-8673-48918154a175",
