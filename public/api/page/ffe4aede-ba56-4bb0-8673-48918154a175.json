@@ -85,13 +85,19 @@
                   "value": "4"
                 }
               ],
-              "desc": "请切换类型来看效果"
+              "desc": "依赖关系异常的数据在合并到表单时不会被纠正依赖关系"
             },
             {
-              "renderer": "input",
-              "label": "所有可见",
+              "renderer": "select",
+              "initApi": {
+                "url": "/api/mock/dynamicSelect?type=${type}"
+              },
+              "deps": [],
               "name": "whatever",
-              "desc": "依赖关系异常的数据在合并到表单时不会被纠正依赖关系"
+              "label": "联动api",
+              "multiple": false,
+              "maxCollapseTags": 1,
+              "options": []
             },
             {
               "renderer": "input",
@@ -198,7 +204,7 @@
           }
         }
       ],
-      "worker": "(e) => {\r\n  if (e.track == '/page/body/0/controls/0/body/0/body') {\r\n    return Promise.resolve({\r\n      \"type\": \"4\",\r\n      \"whatever\": \"1\",\r\n      \"hidden\": \"22\",\r\n      \"disable\": \"2\",\r\n      \"require\": \"3\",\r\n      \"multiple\": [\r\n        {\r\n          \"innerType\": 1,\r\n          \"click\": \"16\",\r\n          \"expose\": \"45\"\r\n        }],\r\n      \"visible\": \"4\"\r\n    });\r\n  } else if (e.track === '/page/body/0/controls/0/body/1/body') {\r\n    return Promise.resolve({\r\n      \"type\": \"2\",\r\n      \"whatever\": \"11\",\r\n      \"hidden\": \"44\",\r\n      \"disable\": \"62\",\r\n      \"require\": \"93\",\r\n      \"multiple\": [\r\n        {\r\n          \"innerType\": 1,\r\n          \"click\": \"6\",\r\n          \"expose\": \"5\"\r\n        }],\r\n      \"visible\": \"4\"\r\n    });\r\n  }\r\n}",
+      "worker": "(e) => {\r\n  if (e.track == '/page/body/0/controls/0/body/0/body') {\r\n    return Promise.resolve({\r\n      \"type\": \"4\",\r\n      \"whatever\": \"1\",\r\n      \"hidden\": \"22\",\r\n      \"disable\": \"2\",\r\n      \"require\": \"3\",\r\n      \"multiple\": [\r\n        {\r\n          \"innerType\": 1,\r\n          \"click\": \"16\",\r\n          \"expose\": \"45\"\r\n        }],\r\n      \"visible\": \"4\"\r\n    });\r\n  } else if (e.track === '/page/body/0/controls/0/body/1/body') {\r\n    return Promise.resolve({\r\n      \"type\": \"2\",\r\n      \"whatever\": \"11\",\r\n      \"hidden\": \"44\",\r\n      \"disable\": \"62\",\r\n      \"require\": \"93\",\r\n      \"multiple\": [\r\n        {\r\n          \"innerType\": 0,\r\n          \"click\": \"6\"\r\n        }],\r\n      \"visible\": \"4\"\r\n    });\r\n  }\r\n}",
       "refs": {}
     },
     "version": 2,
