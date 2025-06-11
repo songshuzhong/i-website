@@ -9,6 +9,7 @@ VUE_APP_API_MOCK=/api/mock/
 VUE_APP_PUBLIC_PATH=/i-website/dist
 VUE_APP_PUBLIC_ASSETS=https://songshuzhong.github.io/i-website/dist
 VUE_APP_PAGE_HOME=https://songshuzhong.github.io/i-website/dist/home.html
+VUE_APP_PAGE_PLAYGROUND=https://songshuzhong.github.io/i-website/dist/playground.html
 VUE_APP_PAGE_MOBILE=https://songshuzhong.github.io/i-website/dist/mobile.html
 VUE_APP_PAGE_EDITING=https://songshuzhong.github.io/i-website/dist/editing.html
 VUE_APP_PAGE_LOGIN=https://songshuzhong.github.io/i-website/dist/login.html

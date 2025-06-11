@@ -3,7 +3,7 @@ export default {
   body: [
     {
       renderer: 'frame',
-      src: 'https://songshuzhong.github.io/i-website/dist/playground.html'
+      src: process.env.VUE_APP_PAGE_PLAYGROUND
     }
   ],
   innerStyle: '.i-frame__container {\n  height: 737px;\n}'
