@@ -296,80 +296,216 @@ export default {
               target: 'LiveVideoTable'
             },
             {
-              renderer: 'table',
+              "renderer": "table",
               name: 'LiveVideoTable',
-              columns: [
+              showHeader: false,
+              height: 181,
+              "columns": [
                 {
-                  fixed: false,
-                  sortable: false,
-                  type: 'index',
-                  body: []
+                  "label": "id",
+                  "name": "id",
+                  "sortable": false,
+                  "fixed": false,
+                  "type": "-",
+                  "align": "none"
                 },
                 {
-                  label: '封面',
-                  name: 'poster',
-                  body: [
+                  "label": "文案",
+                  "name": "text",
+                  "sortable": false,
+                  "fixed": false,
+                  "type": "-",
+                  "align": "none"
+                },
+                {
+                  "label": "进度条",
+                  "sortable": false,
+                  "fixed": false,
+                  "type": "-",
+                  "align": "none",
+                  "width": 200,
+                  "body": [
                     {
-                      renderer: 'image',
-                      src: '${cover}',
-                      previews: []
+                      "renderer": "progress",
+                      "name": "progress",
+                      "exp": "data.progress",
+                      "status": "success",
+                      "color": []
+                    }
+                  ],
+                  "name": "progress"
+                },
+                {
+                  "label": "字典",
+                  "name": "type",
+                  "sortable": false,
+                  "fixed": false,
+                  "type": "-",
+                  "align": "none",
+                  "body": [
+                    {
+                      "renderer": "mapping",
+                      "name": "type",
+                      "status": "type",
+                      "optionConfig": {},
+                      "map": {
+                        "1": "第一个",
+                        "2": "第二个",
+                        "3": "第三个",
+                        "4": "第四个",
+                        "5": "第五个"
+                      }
                     }
                   ]
                 },
                 {
-                  label: '名称',
-                  name: 'name',
-                  body: []
+                  "label": "时间",
+                  "name": "date",
+                  "sortable": false,
+                  "fixed": false,
+                  "type": "-",
+                  "align": "none"
                 },
                 {
-                  label: '视频时长',
-                  name: 'length',
-                  body: []
-                },
-                {
-                  label: '视频ID',
-                  name: 'id',
-                  body: []
-                },
-                {
-                  label: '操作',
-                  sortable: false,
-                  fixed: false,
-                  type: '-',
-                  align: 'none',
-                  body: [
+                  "label": "音频",
+                  "name": "audio",
+                  "sortable": false,
+                  "fixed": false,
+                  "type": "-",
+                  "align": "none",
+                  "width": 330,
+                  "body": [
                     {
-                      renderer: 'action',
-                      category: 'icon',
-                      icon: 'Delete',
-                      body: {},
-                      popupType: 'confirm',
-                      tipContent: '确认删除吗？',
-                      actionType: 'ajax',
-                      actionApi: {
-                        url: '/api/delete',
-                        method: 'delete',
-                        params: {}
+                      "renderer": "audio",
+                      "src": "${audio}",
+                      "preload": "none"
+                    }
+                  ]
+                },
+                {
+                  "label": "图片",
+                  "name": "image",
+                  "sortable": false,
+                  "fixed": false,
+                  "type": "-",
+                  "align": "none",
+                  "width": 100,
+                  "body": [
+                    {
+                      "renderer": "image",
+                      "src": "${image}",
+                      "previews": []
+                    }
+                  ]
+                },
+                {
+                  "label": "状态",
+                  "name": "boolean",
+                  "sortable": false,
+                  "fixed": false,
+                  "type": "-",
+                  "align": "none"
+                },
+                {
+                  "label": "列表",
+                  "name": "list",
+                  "sortable": false,
+                  "fixed": false,
+                  "type": "-",
+                  "align": "none",
+                  "width": 200,
+                  "body": [
+                    {
+                      "renderer": "each",
+                      "body": [
+                        {
+                          "renderer": "html",
+                          "html": "<h1><%=data.title%></h1>",
+                          "inline": true
+                        }
+                      ],
+                      "name": "list"
+                    }
+                  ]
+                },
+                {
+                  "label": "轮播",
+                  "name": "carousel",
+                  "sortable": false,
+                  "fixed": false,
+                  "type": "-",
+                  "align": "none",
+                  "width": 200,
+                  "body": [
+                    {
+                      "renderer": "wrapper",
+                      "inherit": {
+                        "type": "include",
+                        "value": [
+                          "carousel"
+                        ]
                       },
-                      confirmTitle: '确定删除吗？'
+                      "body": [
+                        {
+                          "renderer": "carousel",
+                          "name": "carousel",
+                          "body": [
+                            {
+                              "renderer": "image",
+                              "src": "${image1}"
+                            },
+                            {
+                              "renderer": "html",
+                              "html": "<%=data.html%>"
+                            },
+                            {
+                              "renderer": "image",
+                              "src": "${image2}"
+                            }
+                          ],
+                          "autoplay": false,
+                          "height": 100
+                        }
+                      ],
+                      "bodyClassname": "big-table-carousel"
+                    }
+                  ]
+                },
+                {
+                  "label": "操作",
+                  "name": "text",
+                  "sortable": false,
+                  "fixed": false,
+                  "type": "-",
+                  "align": "none",
+                  "body": [
+                    {
+                      "renderer": "action",
+                      "text": "数据",
+                      "actionType": "dialog",
+                      "body": {
+                        "body": [
+                          {
+                            "renderer": "data"
+                          }
+                        ]
+                      },
+                      "isText": true
                     }
                   ]
                 }
               ],
-              actions: [],
-              initApi: {
-                url: 'http://rap2api.taobao.org/app/mock/241577/videos',
-                method: 'get',
-                params: {
+              "actions": [],
+              "promiseType": "single",
+              "initApi": {
+                "url": "/api/mock/bigTable",
+                "method": "get",
+                "cached": false,
+                "params": {
                   type: '${type}',
                   timestamp: '${timestamp}'
                 }
-              },
-              initData: {
-                type: 3
-              },
-              height: 81,
-              showHeader: false
+              }
             }
           ]
         },
