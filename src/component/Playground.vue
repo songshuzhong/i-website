@@ -2,15 +2,20 @@
   <div class="i-home__playground">
     <el-divider>左侧编辑 | 右侧预览</el-divider>
     <div class="i-home__playground__body">
-      <div v-if="!isEditorReady" v-loading="!isEditorReady" class="i-editor__container" />
-      <component v-else v-bind:is="'i-editor'" :is-json="false"/>
-      <el-divider direction="vertical" />
-      <i-schema
-        :init-schema="initSchema"
-        :updatable="false"
-        track="/editor"
-        classname="i-home__playground__preview"
-      />
+      <el-splitter>
+        <el-splitter-panel collapsible>
+          <div v-if="!isEditorReady" v-loading="!isEditorReady" class="i-editor__container" />
+          <component v-else v-bind:is="'i-editor'" :is-json="false"/>
+        </el-splitter-panel>
+        <el-splitter-panel collapsible>
+          <i-schema
+            :init-schema="initSchema"
+            :updatable="false"
+            track="/editor"
+            classname="i-home__playground__preview"
+          />
+        </el-splitter-panel>
+      </el-splitter>
     </div>
   </div>
 </template>
