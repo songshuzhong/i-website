@@ -90,7 +90,11 @@
             {
               "renderer": "select",
               "initApi": {
-                "url": "/api/mock/dynamicSelect?type=${type}"
+                "url": "/api/mock/dynamicSelect",
+                "method": "get",
+                "params": {
+                  "type": "${type}"
+                }
               },
               "deps": [],
               "name": "whatever",
@@ -200,7 +204,7 @@
             }
           ],
           "style": {
-            "--el-text-color-placeholder": "var(--el-color-success)"
+            "--i-field-color-desc": "var(--el-color-danger)"
           }
         }
       ],
