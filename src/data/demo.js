@@ -76,7 +76,7 @@ export default {
         {
           renderer: 'select',
           initApi: {
-            url: `${process.env.VUE_APP_API_BASE}/api/mock/dynamicSelect`,
+            url: '/api/mock/dynamicSelect',
             method: 'get',
             params: {
               type: '${type}'
@@ -149,7 +149,7 @@ export default {
               rules: [
                 {
                   type: 'api',
-                  exp: process.env.VUE_APP_API_BASE + '/api/mock/form/verify?asyncValid=${expose}'
+                  exp: '/api/mock/form/verify?asyncValid=${expose}'
                 }
               ],
               flexible: false
@@ -466,7 +466,7 @@ export default {
               actions: [],
               promiseType: 'single',
               initApi: {
-                url: `${process.env.VUE_APP_API_BASE}/api/mock/bigTable`,
+                url: '/api/mock/bigTable',
                 method: 'get',
                 cached: false,
                 params: {

@@ -17,6 +17,7 @@ app.component(Schema);
 app
   .use(ElementPlus)
   .use(IRenderer, {
+    domains: [process.env.VUE_APP_API_BASE],
     permissions: [],
     roles: [],
     adaptor: {
