@@ -162,16 +162,17 @@
                 {
                   "renderer": "input",
                   "name": "expose",
-                  "label": "曝光",
+                  "label": "接口校验",
                   "visibleOn": "$.innerType",
                   "desc": "内层类型是0时消失",
                   "idem": true,
                   "rules": [
                     {
-                      "type": "url",
-                      "message": "请输入正确的链接"
+                      "type": "api",
+                      "exp": "/api/mock/form/verify?asyncValid=${expose}"
                     }
-                  ]
+                  ],
+                  "flexible": false
                 },
                 {
                   "renderer": "input",
@@ -204,7 +205,7 @@
             }
           ],
           "style": {
-            "--i-field-color-desc": "var(--el-color-danger)"
+            "--i-field-color-desc": "var(--el-color-warning)"
           }
         }
       ],
