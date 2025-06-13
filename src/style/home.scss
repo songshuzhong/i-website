@@ -144,6 +144,16 @@ html {
     .i-home__copyright {
       animation: unset;
     }
+    .i-html__container.i-home__banner__title {
+      color: var(--el-color-danger);
+      background: linear-gradient(120deg, var(--el-color-danger) 50%, var(--el-color-primary));
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-box-reflect: below 0 -webkit-linear-gradient(transparent, transparent 50%, var(--el-color-danger));
+    }
+    .i-home__banner__container .i-home__banner__desc {
+      color: var(--el-color-white);
+    }
   }
 }
 .i-home__page {
@@ -271,7 +281,7 @@ html {
       color: var(--el-color-primary);
       line-height: 60px;
       font-weight: 900;
-      background: linear-gradient(120deg, var(--el-color-primary-light-9) 30%, var(--el-color-primary));
+      background: linear-gradient(120deg, var(--el-color-danger) 30%, var(--el-color-primary));
       -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
       -webkit-box-reflect: below 0 -webkit-linear-gradient(transparent, transparent 50%, rgba(255, 255, 255, 0.3));
