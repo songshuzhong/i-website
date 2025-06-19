@@ -6,6 +6,8 @@ const fs = require('fs');
 const rewrites = [];
 const pages = {};
 
+const isPro = process.env.VUE_APP_API_NODE_ENV === 'gp' || process.env.VUE_APP_API_NODE_ENV === 'nestjs';
+
 glob.sync('./src/pages/*.js').forEach(entry => {
   const filename = path.basename(entry, path.extname(entry));
   let pageConfig;
@@ -24,6 +26,7 @@ glob.sync('./src/pages/*.js').forEach(entry => {
     template: path.join(__dirname, '/src/template.html'),
     filename:  `${filename}.html`,
     title: pageConfig.title,
+    umami: isPro? '<script defer src="https://cloud.umami.is/script.js" data-website-id="13d3f783-5071-4cf9-b4e0-5667ff90d567"></script>': '',
     skeleton: pageConfig.skeleton || '',
     skeletonStyle: pageConfig.skeletonStyle || '',
     preload: false,
