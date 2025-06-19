@@ -3,6 +3,7 @@ import ElementPlus from 'element-plus';
 import {IRenderer} from  '../utils/lib.js';
 import Application from '../apps/Mobile.vue';
 import registrySw from '../registerServiceWorker';
+import '../utils/debug';
 
 import 'element-plus/dist/index.css';
 import 'i-renderer/dist/css/index.css';

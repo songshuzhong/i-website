@@ -5,6 +5,7 @@ import routers from '../router/home';
 import Application from '../apps/Home.vue';
 import Issue from '../component/Issues.vue';
 import registrySw from '../registerServiceWorker';
+import '../utils/debug';
 
 import 'element-plus/dist/index.css';
 import 'element-plus/theme-chalk/dark/css-vars.css';
