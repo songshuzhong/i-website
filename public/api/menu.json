@@ -168,6 +168,21 @@
           },
           {
             "renderer": "menuitem",
+            "name": "chatList",
+            "title": "对话列表",
+            "icon": "",
+            "pageId": "fde6bd44-d592-4f27-b809-f9fd027d84ba",
+            "groupBy": "crud",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/2ccde596-7d78-45ec-be1f-735e2b5da59a"
+          },
+          {
+            "renderer": "menuitem",
             "name": "cards",
             "title": "卡片列表",
             "icon": "",
