@@ -106,6 +106,28 @@ module.exports = {
     },
   },
   devServer: {
+    setupMiddlewares: (middlewares, devServer) => {
+      devServer.app.get('/ajax/stream', (req, res) => {
+        res.setHeader('Content-Type', 'application/octet-stream');
+        res.setHeader('Transfer-Encoding', 'chunked');
+
+        let count = 0;
+        const interval = setInterval(() => {
+          if (count < 10) {
+            const chunk = new Uint8Array(16);
+            for (let i = 0; i < chunk.length; i++) {
+              chunk[i] = Math.floor(Math.random() * 256);
+            }
+            res.write('data: ' + JSON.stringify({event_name: 'stream', chunk: chunk.join()}) + '\n\n');
+            count++;
+          } else {
+            clearInterval(interval);
+            res.end();
+          }
+        }, 1000);
+      });
+      return middlewares;
+    },
     client: {
       overlay: false
     },

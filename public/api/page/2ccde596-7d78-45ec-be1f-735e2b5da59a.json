@@ -18,6 +18,9 @@
     "pageDesc": null,
     "pageSchema": {
       "renderer": "page",
+      "style": {
+        "padding": "0 300px"
+      },
       "body": [
         {
           "renderer": "cards",
@@ -66,8 +69,7 @@
             }
           ],
           "footer": [],
-          "height": 500,
-          "itemHeight": 200
+          "height": 500
         },
         {
           "renderer": "form",
@@ -107,7 +109,7 @@
         }
       ],
       "worker": "e => {\nconst content = JSON.parse(e.data.content);\n let chunk = e.data.context.chunk || ''; \n chunk += content.chunk; \n e.data.context.chunk = chunk; \n return Promise.resolve(e.data.context);\n}",
-      "innerStyle": ".ai-wrapper {\n  padding: 0 20px;\n}\n.ai-question-form {\n  &:hover {\n    border: 1px solid var(--el-color-primary) !important;\n  }\n}\n.ai-question-input {\n  .el-textarea__inner {\n    box-shadow: none !important;\n    &:focus,\n    &:hover {\n      box-shadow: none !important;\n    }\n  }\n}"
+      "innerStyle": ".ai-wrapper {\n  padding: 0 10px;\n}\n.ai-question-form {\n  &:hover {\n    border: 1px solid var(--el-color-primary) !important;\n  }\n}\n.ai-question-input {\n  .el-textarea__inner {\n    box-shadow: none !important;\n    &:focus,\n    &:hover {\n      box-shadow: none !important;\n    }\n  }\n}"
     },
     "version": 0,
     "status": 1,
