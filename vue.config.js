@@ -24,7 +24,7 @@ glob.sync('./src/pages/*.js').forEach(entry => {
   pages[filename] = {
     entry,
     template: path.join(__dirname, '/src/template.html'),
-    filename:  `${filename}.html`,
+    filename: `${filename}.html`,
     title: pageConfig.title,
     umami: isPro? '<script defer src="https://cloud.umami.is/script.js" data-website-id="13d3f783-5071-4cf9-b4e0-5667ff90d567"></script>': '',
     skeleton: pageConfig.skeleton || '',
@@ -56,7 +56,7 @@ module.exports = {
         filename: 'js/worker/[name].worker.js',
         languages: ['json', 'less', 'javascript', 'html', 'css', 'typescript'],
       }),
-      new GenerateSW ({
+      new GenerateSW({
         swDest: 'service-workbox.js',
         clientsClaim: true,
         skipWaiting: true,
@@ -107,35 +107,43 @@ module.exports = {
   },
   devServer: {
     setupMiddlewares: (middlewares, devServer) => {
-      devServer.app.get('/ajax/stream', (req, res) => {
-        res.setHeader('Content-Type', 'application/octet-stream');
-        res.setHeader('Transfer-Encoding', 'chunked');
+      devServer.app.get('/ajax/stream', (req, res, next) => {
+        res.writeHead(200, {
+          'Content-Type': 'text/event-stream',
+          'Cache-Control': 'no-cache',
+          'Connection': 'keep-alive'
+        });
 
         let count = 0;
         const interval = setInterval(() => {
-          if (count < 10) {
-            const chunk = new Uint8Array(16);
-            for (let i = 0; i < chunk.length; i++) {
-              chunk[i] = Math.floor(Math.random() * 256);
-            }
-            res.write('data: ' + JSON.stringify({event_name: 'stream', chunk: chunk.join()}) + '\n\n');
-            count++;
-          } else {
+          count++;
+          const data = {
+            event: 'conversation',
+            content: `count ${count}`
+          };
+          res.write('data: ' + JSON.stringify(data) + '\\r\\n');
+
+          if (count === 6) {
             clearInterval(interval);
             res.end();
           }
         }, 1000);
+
+        req.on('close', () => {
+          clearInterval(interval);
+          res.end();
+        });
       });
       return middlewares;
     },
     client: {
       overlay: false
     },
-    proxy: process.env.NODE_ENV === 'local'? {
+    proxy: process.env.NODE_ENV === 'local' ? {
       '/api': {
         target: 'http://0.0.0.0:9000',
         changeOrigin: true
       }
-    }: {}
+    } : {}
   },
 };
