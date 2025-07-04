@@ -22,7 +22,7 @@ glob.sync('./src/pages/*.js').forEach(entry => {
   pages[filename] = {
     entry,
     template: path.join(__dirname, '/src/template.html'),
-    filename:  `${filename}.html`,
+    filename: `${filename}.html`,
     title: pageConfig.title,
     skeleton: pageConfig.skeleton || '',
     skeletonStyle: pageConfig.skeletonStyle || '',
@@ -53,7 +53,7 @@ module.exports = {
         filename: 'js/worker/[name].worker.js',
         languages: ['json', 'less', 'javascript', 'html', 'css', 'typescript'],
       }),
-      new GenerateSW ({
+      new GenerateSW({
         swDest: 'service-workbox.js',
         clientsClaim: true,
         skipWaiting: true,
@@ -103,14 +103,44 @@ module.exports = {
     },
   },
   devServer: {
+    setupMiddlewares: (middlewares, devServer) => {
+      devServer.app.get('/ajax/stream', (req, res, next) => {
+        res.writeHead(200, {
+          'Content-Type': 'text/event-stream',
+          'Cache-Control': 'no-cache',
+          'Connection': 'keep-alive'
+        });
+
+        let count = 0;
+        const interval = setInterval(() => {
+          count++;
+          const data = {
+            event: 'conversation',
+            content: `count ${count}`
+          };
+          res.write('data: ' + JSON.stringify(data) + '\\r\\n');
+
+          if (count === 6) {
+            clearInterval(interval);
+            res.end();
+          }
+        }, 1000);
+
+        req.on('close', () => {
+          clearInterval(interval);
+          res.end();
+        });
+      });
+      return middlewares;
+    },
     client: {
       overlay: false
     },
-    proxy: process.env.NODE_ENV === 'local'? {
+    proxy: process.env.NODE_ENV === 'local' ? {
       '/api': {
         target: 'http://0.0.0.0:9000',
         changeOrigin: true
       }
-    }: {}
+    } : {}
   },
 };
