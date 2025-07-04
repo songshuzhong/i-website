@@ -15,6 +15,24 @@ export default {
     initApi: {
       url: '/api/menu'
     },
+    tracks: {
+      init: {
+        trackId: 1,
+        trackName: 'website_menu_init'
+      },
+      initSuccess: {
+        trackId: 2,
+        trackName: 'website_menu_init_success'
+      },
+      initError: {
+        trackId: 3,
+        trackName: 'website_menu_init_success'
+      },
+      change: {
+        trackId: 4,
+        trackName: 'website_menu_change'
+      }
+    },
     body: []
   },
   header: {

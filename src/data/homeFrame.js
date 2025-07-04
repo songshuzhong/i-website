@@ -60,7 +60,13 @@ export default {
                 icon: 'Avatar',
                 extra: true
               }
-            ]
+            ],
+            tracks: {
+              change: {
+                trackId: 4,
+                trackName: 'home_menu_change'
+              }
+            },
           }
         ]
       },
