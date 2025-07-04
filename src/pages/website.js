@@ -16,7 +16,7 @@ import '../style/index.scss';
 
 const app = createApp(Application);
 const config = {
-  trackUtil: function(name, props) {
+  track: function(name, props) {
     window.umami.track(() => ({
       name,
       data: props
