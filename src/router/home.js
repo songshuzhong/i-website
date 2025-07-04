@@ -31,6 +31,9 @@ const router = createRouter({
       props: {
         initSchema: () => import('../data/me.js')
       },
+      meta: {
+        permission: 'quality'
+      }
     },
     {
       path: '/quality',

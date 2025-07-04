@@ -7,6 +7,8 @@ import Ai from '../component/Ai.vue';
 import Application from '../apps/Website.vue';
 import registrySw from '../registerServiceWorker';
 import Verify from '../component/Verify';
+import '../utils/debug';
+
 import 'element-plus/dist/index.css';
 import 'element-plus/theme-chalk/dark/css-vars.css';
 import 'i-renderer/dist/css/index.css';

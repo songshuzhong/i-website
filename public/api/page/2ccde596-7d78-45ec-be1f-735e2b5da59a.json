@@ -1,0 +1,117 @@
+{
+  "status": 0,
+  "message": "success",
+  "data": {
+    "pageId": "2ccde496-7d68-45ec-be1f-735e2b5da59a",
+    "id": 16,
+    "projectId": "4",
+    "pageTitle": "单元格合并",
+    "pageName": "sheetMerge",
+    "namespace": "联通",
+    "pageIcon": "",
+    "groupBy": "crud",
+    "updatedBy": "admin",
+    "updatedCause": null,
+    "hidden": null,
+    "assets": [],
+    "visible": null,
+    "pageDesc": null,
+    "pageSchema": {
+      "renderer": "page",
+      "body": [
+        {
+          "renderer": "cards",
+          "name": "Cards",
+          "shadow": "hover",
+          "span": 24,
+          "virtual": true,
+          "body": [
+            {
+              "renderer": "wrapper",
+              "body": [
+                {
+                  "renderer": "html",
+                  "html": "<%=$.question%>",
+                  "style": {
+                    "display": "inline-block",
+                    "padding": "6px",
+                    "border-radius": "8px"
+                  },
+                  "inline": true
+                },
+                {
+                  "renderer": "service",
+                  "sendOn": "$.question",
+                  "promiseType": "pipe",
+                  "initApi": {
+                    "url": "/ajax/stream"
+                  },
+                  "body": [
+                    {
+                      "renderer": "http://localhost:8080/js/Typewriter.vue",
+                      "text": "<%=$.chunk%>",
+                      "style": {
+                        "background": "var(--el-color-success)",
+                        "margin-top": "20px",
+                        "padding": "8px",
+                        "color": "var(--el-color-white)",
+                        "border-radius": "8px",
+                        "word-break": "break-word"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "classname": "ai-wrapper"
+            }
+          ],
+          "footer": [],
+          "height": 500,
+          "itemHeight": 200
+        },
+        {
+          "renderer": "form",
+          "style": {
+            "border": "1px solid rgba(0,23,144, .08)",
+            "border-radius": "16px",
+            "box-shadow": "0 3px 10px 0 rgba(5,7,59, .06)",
+            "padding": "10px",
+            "margin-top": "20px"
+          },
+          "controls": [
+            {
+              "renderer": "input",
+              "name": "question",
+              "flexible": false,
+              "type": "textarea",
+              "classname": "ai-question-input",
+              "placeholder": "通过cmd/shift+回车换行；支持复制粘贴/拖拽上传图片、文档、音视频"
+            },
+            {
+              "renderer": "action",
+              "actionType": "extends",
+              "triggered": "submit",
+              "icon": "Promotion",
+              "classname": "ai-send-action",
+              "circle": true,
+              "style": {
+                "position": "absolute",
+                "right": "-2px",
+                "bottom": "0px"
+              }
+            }
+          ],
+          "submitType": "target",
+          "target": "Cards.add",
+          "classname": "ai-question-form"
+        }
+      ],
+      "worker": "e => {\nconst content = JSON.parse(e.data.content);\n let chunk = e.data.context.chunk || ''; \n chunk += content.chunk; \n e.data.context.chunk = chunk; \n return Promise.resolve(e.data.context);\n}",
+      "innerStyle": ".ai-wrapper {\n  padding: 0 20px;\n}\n.ai-question-form {\n  &:hover {\n    border: 1px solid var(--el-color-primary) !important;\n  }\n}\n.ai-question-input {\n  .el-textarea__inner {\n    box-shadow: none !important;\n    &:focus,\n    &:hover {\n      box-shadow: none !important;\n    }\n  }\n}"
+    },
+    "version": 0,
+    "status": 1,
+    "createdAt": "2023-11-25T15:20:17.000Z",
+    "updatedAt": "2023-11-25T15:20:17.000Z"
+  }
+}

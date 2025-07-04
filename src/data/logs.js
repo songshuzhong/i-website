@@ -1,6 +1,26 @@
 const logs = [
   {
     bugs: [
+      '- Env fix env overwrite',
+      '- Renderers[service] fix sw',
+      '- Renderers[form] fix reset',
+      '- Renderers[form-item] fix data backfilling when invisible or visible'
+    ],
+    refactors: [
+      '- Renderers[switch] delete requiredOn props',
+      '- Renderers[split] use the splitter component of element-plus',
+      '- Renderers[field] delete the value of invisible field',
+      '- Theme unified corner size'
+    ],
+    features: [
+      '- Renderers[icon] add svg render',
+      '- Renderers[segmented] options item add disabledOn props'
+    ],
+    timestamp: '2025-06-14',
+    version: '1.0.2-bata.33'
+  },
+  {
+    bugs: [
       '- Renderers[action] fix image button not popping up',
       '- Renderers[image] fix click event',
       '- Renderers[component] fix loading background color hard coded',
