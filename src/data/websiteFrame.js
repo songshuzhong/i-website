@@ -30,6 +30,20 @@ export default {
           url: '/api/user',
           cached: true
         },
+        tracks: {
+          init: {
+            trackId: 1,
+            trackName: 'website_user_service_init'
+          },
+          initSuccess: {
+            trackId: 2,
+            trackName: 'website_user_service_success'
+          },
+          initError: {
+            trackId: 3,
+            trackName: 'website_user_service_error'
+          }
+        },
         body: [
           {
             renderer: 'action',
