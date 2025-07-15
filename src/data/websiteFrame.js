@@ -50,15 +50,15 @@ export default {
         },
         tracks: {
           init: {
-            trackId: 1,
+            trackId: 5,
             trackName: 'website_user_service_init'
           },
           initSuccess: {
-            trackId: 2,
+            trackId: 6,
             trackName: 'website_user_service_success'
           },
           initError: {
-            trackId: 3,
+            trackId: 7,
             trackName: 'website_user_service_error'
           }
         },
@@ -167,6 +167,12 @@ export default {
             trustOn: [
               8
             ],
+            tracks: {
+              clickAfter: {
+                trackId: 8,
+                trackName: 'website_edit_click_after'
+              }
+            },
             body: {
               width: 100,
               appendToBody: true,
