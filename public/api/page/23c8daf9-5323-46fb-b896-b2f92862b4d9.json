@@ -77,19 +77,14 @@
               "gutter": 10,
               "events": {
                 "click": {
-                  "renderer": "action",
-                  "text": "<%=data.text%>",
-                  "isText": true,
-                  "plain": true,
-                  "body": {},
-                  "tipContent": "${description}",
-                  "actionType": "url",
-                  "url": "/superfans/discoveryView",
-                  "params": {
-                    "id": "${id}"
-                  },
-                  "type": "info",
-                  "size": "small"
+                  "actions": [
+                    {
+                      "content": "<%=$.description%>",
+                      "reload": "<%=$.text%>",
+                      "actionType": "notify",
+                      "type": "primary"
+                    }
+                  ]
                 }
               },
               "footer": [
