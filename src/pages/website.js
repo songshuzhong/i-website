@@ -16,11 +16,8 @@ import '../style/index.scss';
 
 const app = createApp(Application);
 const config = {
-  track: function(info) {
-    window.umami && window.umami.track(() => ({
-      name: info.trackName,
-      data: info
-    }));
+  track: function(name, info) {
+    window.umami && window.umami.track(name, info);
   },
   renderers: [ToMobile, Verify, Ai],
   actions: {
