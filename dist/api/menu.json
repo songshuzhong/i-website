@@ -488,6 +488,21 @@
             "assets": [],
             "pageDesc": null,
             "schemaUrl": "/api/page/419c3641-a47d-44b8-9c97-2c06dbd1d2b3"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "mouseEvents",
+            "title": "鼠标事件",
+            "icon": "",
+            "pageId": "2b7960e7-2136-4257-a2a6-3cac34b5862f",
+            "groupBy": "other",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/2b7960e7-2136-4257-a2a6-3cac34b5862f"
           }
         ]
       },

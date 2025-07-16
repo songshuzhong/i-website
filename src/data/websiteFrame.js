@@ -168,7 +168,7 @@ export default {
               8
             ],
             tracks: {
-              clickAfter: {
+              clickBefore: {
                 trackId: 8,
                 trackName: 'website_edit_click_after'
               }
