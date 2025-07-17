@@ -1,0 +1,17 @@
+{
+  "status": 0,
+  "message": "success",
+  "data": {
+    "id": 52,
+    "title": "虚拟表格数据",
+    "method": "get",
+    "path": "/virtualTable",
+    "namespace": "联通",
+    "description": "虚拟表格数据",
+    "delay": 300,
+    "createdBy": "admin",
+    "createdAt": "2024-03-30T08:26:51.000Z",
+    "updatedAt": "2024-04-08T01:45:10.000Z",
+    "schema": "() => {\n  const data = {\n    users: [],\n    count: 200\n  };\n  for (let i = 0; i < data.count; i++) {\n    data.users.push({\n      \"name\": \"song\" + i,\n      \"syncValid\": 123,\n      \"sex\": i % 1,\n      \"role\": [\n        1,\n        i\n      ],\n      \"connect\": true,\n      \"mail\": i + \"fasdgre@jl.com\",\n      \"phone\": \"4665432465\",\n      \"createdAt\": i,\n      \"adult\": true,\n      \"color\": `#BE${i % 6}F${i % 9}F`,\n      \"textarea\": \"234\" + i,\n      \"updatedAt\": 1,\n      \"richtxt\": \"eee1\" + i,\n      \"rate\": 0\n    });\n  }\n  return data;\n}"
+  }
+}
