@@ -681,7 +681,7 @@
                       {
                         "renderer": "input",
                         "name": "createdAt",
-                        "label": "createdAt",
+                        "placeholder": "createdAt",
                         "requiredOn": "1==1",
                         "flexible": false,
                         "editableOn": "$.editable"
@@ -689,7 +689,6 @@
                       {
                         "renderer": "input",
                         "name": "richtxt",
-                        "html": "<%=$.richtxt%>",
                         "type": "textarea",
                         "flexible": false,
                         "editableOn": "$.editable"
