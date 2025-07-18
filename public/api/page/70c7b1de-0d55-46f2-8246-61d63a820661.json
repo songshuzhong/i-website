@@ -449,13 +449,18 @@
           },
           "body": {
             "renderer": "form",
+            "actionApi": {
+              "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/form/submit",
+              "params": {"*": "*"},
+              "method": "post"
+            },
             "controls": [
               {
                 "renderer": "table",
                 "virtual": true,
                 "name": "users",
                 "label": "表格项",
-                "width": 1290,
+                "width": 1160,
                 "estimatedRowHeight": 116,
                 "tip": "双击行进行编辑",
                 "desc": "双击行退出编辑时不会远程保存数据",
@@ -463,13 +468,20 @@
                 "linkedOn": "data.name == target.name",
                 "columns": [
                   {
-                    "title": "sex",
-                    "key": "sex",
+                    "label": "索引",
+                    "name": "uid",
                     "body": [
                       {
                         "renderer": "html",
-                        "html": "<%=$.name%>"
-                      },
+                        "html": "<%=$.createdAt + 1%>"
+                      }
+                    ],
+                    "width": 40
+                  },
+                  {
+                    "label": "性别",
+                    "name": "uid",
+                    "body": [
                       {
                         "renderer": "radio",
                         "name": "sex",
@@ -491,8 +503,8 @@
                     "width": 200
                   },
                   {
-                    "key": "name",
-                    "title": " rate",
+                    "name": "name",
+                    "label": " 评分",
                     "width": 200,
                     "body": [
                       {
@@ -509,8 +521,7 @@
                         "renderer": "colorpicker",
                         "name": "color",
                         "editableOn": "$.editable",
-                        "showAlpha": false,
-                        "teleported": true
+                        "showAlpha": false
                       }
                     ],
                     "header": [
@@ -616,8 +627,8 @@
                     ]
                   },
                   {
-                    "key": "connect",
-                    "title": "connect",
+                    "name": "connect",
+                    "label": "联系",
                     "body": [
                       {
                         "renderer": "switch",
@@ -661,16 +672,16 @@
                         "hiddenOn": "1==1"
                       }
                     ],
-                    "width": 200
+                    "width": 160
                   },
                   {
-                    "title": "createdAt",
-                    "key": "createdAt",
+                    "label": "创建",
+                    "name": "createdAt",
                     "body": [
                       {
                         "renderer": "input",
                         "name": "createdAt",
-                        "placeholder": "createdAt",
+                        "label": "createdAt",
                         "requiredOn": "1==1",
                         "flexible": false,
                         "editableOn": "$.editable"
@@ -687,9 +698,9 @@
                     "width": 240
                   },
                   {
-                    "title": "updatedAt",
-                    "key": "updatedAt",
-                    "width": 240,
+                    "label": "更新",
+                    "name": "updatedAt",
+                    "width": 160,
                     "body": [
                       {
                         "renderer": "switch",
@@ -761,9 +772,9 @@
                         "triggered": "down"
                       }
                     ],
-                    "title": "sd",
-                    "width": 200,
-                    "key": "updatedAt"
+                    "width": 160,
+                    "label": "操作",
+                    "name": "updatedAt"
                   }
                 ]
               },
@@ -772,10 +783,6 @@
                 "text": "保存数据",
                 "actionType": "extends",
                 "triggered": "submit",
-                "popupType": "dialog",
-                "messageBoxExp": "$.names === 'fe'",
-                "popoverTitle": "确定提交吗？",
-                "popoverContent": "姓名不合法",
                 "style": {
                   "marginLeft": "76px"
                 }
