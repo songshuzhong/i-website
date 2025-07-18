@@ -439,7 +439,8 @@
           ]
         },
         {
-          "renderer": "divider"
+          "renderer": "divider",
+          "text": "2000条数据压测"
         },
         {
           "renderer": "service",
