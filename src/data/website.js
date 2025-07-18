@@ -15,7 +15,7 @@ export default {
       "steps": [
         {
           "target": "/admin/menu",
-          "title": "新手指引",
+          "title": "新手指引（页面所有元素、交互均由配置得来）",
           "placement": "right-start",
           "body": {
             "renderer": "wrapper",
@@ -44,7 +44,7 @@ export default {
         },
         {
           "target": "/admin/header/0/body/6",
-          "title": "新手指引",
+          "title": "新手指引（透过按钮可看到现象本质）",
           "placement": "bottom-end",
           "body": {
             "renderer": "wrapper",
