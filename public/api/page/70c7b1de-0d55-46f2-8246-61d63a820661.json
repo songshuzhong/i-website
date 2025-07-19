@@ -155,6 +155,7 @@
                       "renderer": "colorpicker",
                       "name": "color",
                       "editableOn": "$.editable",
+                      "teleported": true,
                       "showAlpha": false
                     }
                   ],
@@ -279,6 +280,7 @@
                       "renderer": "computed",
                       "name": "$relation",
                       "useWorker": false,
+                      "immediate": false,
                       "exp": "$.relation",
                       "deps": [
                         "relation"
@@ -288,6 +290,7 @@
                       "renderer": "computed",
                       "name": "$relationValue",
                       "useWorker": false,
+                      "immediate": false,
                       "exp": "$.relationValue",
                       "deps": [
                         "relationValue"
@@ -297,6 +300,7 @@
                       "renderer": "computed",
                       "name": "$index",
                       "useWorker": false,
+                      "immediate": false,
                       "exp": "$.index",
                       "deps": [
                         "index"
@@ -440,7 +444,7 @@
         },
         {
           "renderer": "divider",
-          "text": "2000条数据压测"
+          "text": "10000条数据压测"
         },
         {
           "renderer": "service",
@@ -462,6 +466,7 @@
                 "name": "users",
                 "label": "表格项",
                 "width": 1160,
+                "cache": 10,
                 "estimatedRowHeight": 116,
                 "tip": "双击行进行编辑",
                 "desc": "双击行退出编辑时不会远程保存数据",
@@ -522,6 +527,7 @@
                         "renderer": "colorpicker",
                         "name": "color",
                         "editableOn": "$.editable",
+                        "teleported": true,
                         "showAlpha": false
                       }
                     ],
@@ -644,6 +650,7 @@
                         "renderer": "computed",
                         "name": "$relation",
                         "useWorker": false,
+                        "immediate": false,
                         "exp": "$.relation",
                         "deps": [
                           "relation"
@@ -653,6 +660,7 @@
                         "renderer": "computed",
                         "name": "$relationValue",
                         "useWorker": false,
+                        "immediate": false,
                         "exp": "$.relationValue",
                         "deps": [
                           "relationValue"
