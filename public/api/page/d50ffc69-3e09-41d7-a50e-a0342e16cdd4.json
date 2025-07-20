@@ -38,6 +38,12 @@
               "label": "文案",
               "name": "text",
               "align": "center",
+              "body": [
+                {
+                  "renderer": "html",
+                  "html": "<div style=\"color: <%=$.color%>\">\n  <%=$.text%>\n</div>"
+                }
+            ],
               "width": 100
             },
             {

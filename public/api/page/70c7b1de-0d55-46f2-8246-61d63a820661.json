@@ -465,9 +465,7 @@
                 "virtual": true,
                 "name": "users",
                 "label": "表格项",
-                "width": 1160,
-                "cache": 10,
-                "estimatedRowHeight": 116,
+                "width": 1240,
                 "tip": "双击行进行编辑",
                 "desc": "双击行退出编辑时不会远程保存数据",
                 "target": "editable",
@@ -485,20 +483,36 @@
                     "width": 40
                   },
                   {
-                    "label": "性别",
+                    "label": "输入框",
+                    "name": "createdAt",
+                    "body": [
+                      {
+                        "renderer": "input",
+                        "name": "name",
+                        "placeholder": "createdAt",
+                        "requiredOn": "1==1",
+                        "flexible": false,
+                        "editableOn": "$.editable"
+                      }
+                    ],
+                    "width": 240
+                  },
+                  {
+                    "label": "下拉框",
                     "name": "uid",
                     "body": [
                       {
-                        "renderer": "radio",
+                        "renderer": "select",
                         "name": "sex",
+                        "teleported": true,
                         "options": [
                           {
-                            "text": "文案1",
+                            "text": "女",
                             "value": "0",
                             "disabledOn": ""
                           },
                           {
-                            "text": "文案2",
+                            "text": "男",
                             "value": "1",
                             "disabledOn": ""
                           }
@@ -507,6 +521,20 @@
                       }
                     ],
                     "width": 200
+                  },
+                  {
+                    "name": "name",
+                    "label": " 颜色",
+                    "width": 200,
+                    "body": [
+                      {
+                        "renderer": "colorpicker",
+                        "name": "color",
+                        "editableOn": "$.editable",
+                        "teleported": true,
+                        "showAlpha": false
+                      }
+                    ]
                   },
                   {
                     "name": "name",
@@ -522,22 +550,15 @@
                         "showText": false,
                         "showScore": true,
                         "editableOn": "$.editable"
-                      },
-                      {
-                        "renderer": "colorpicker",
-                        "name": "color",
-                        "editableOn": "$.editable",
-                        "teleported": true,
-                        "showAlpha": false
                       }
                     ],
                     "header": [
                       {
                         "renderer": "tooltip",
-                        "content": "表头过滤",
+                        "content": "配置过滤和气泡的表头",
                         "body": {
                           "renderer": "html",
-                          "html": "表头过滤",
+                          "html": "评分",
                           "inline": true,
                           "style": {
                             "padding-right": "40px"
@@ -635,16 +656,12 @@
                   },
                   {
                     "name": "connect",
-                    "label": "联系",
+                    "label": "开关",
                     "body": [
                       {
                         "renderer": "switch",
                         "name": "connect",
                         "editableOn": "$.editable"
-                      },
-                      {
-                        "renderer": "html",
-                        "html": "<%='connect: ' + $.connect%>"
                       },
                       {
                         "renderer": "computed",
@@ -684,39 +701,25 @@
                     "width": 160
                   },
                   {
-                    "label": "创建",
+                    "label": "文本框",
                     "name": "createdAt",
                     "body": [
-                      {
-                        "renderer": "input",
-                        "name": "createdAt",
-                        "placeholder": "createdAt",
-                        "requiredOn": "1==1",
-                        "flexible": false,
-                        "editableOn": "$.editable"
-                      },
                       {
                         "renderer": "input",
                         "name": "richtxt",
                         "type": "textarea",
                         "flexible": false,
+                        "rows": 1,
                         "editableOn": "$.editable"
                       }
                     ],
                     "width": 240
                   },
                   {
-                    "label": "更新",
+                    "label": "行为",
                     "name": "updatedAt",
-                    "width": 160,
+                    "width": 80,
                     "body": [
-                      {
-                        "renderer": "switch",
-                        "label": "adult",
-                        "name": "adult",
-                        "type": "checkbox",
-                        "editableOn": "$.editable"
-                      },
                       {
                         "text": "<%=$.createdAt%>",
                         "renderer": "action",
@@ -750,38 +753,45 @@
                     "body": [
                       {
                         "renderer": "action",
-                        "icon": "Delete",
-                        "actionType": "extends",
-                        "triggered": "delete",
-                        "popupType": "dialog",
-                        "popoverTitle": "确定要删除吗？",
-                        "messageBoxExp": "$.createdAt==2",
-                        "popoverContent": "仅第二条记录允许删除",
-                        "disabledOn": "$.createdAt==3",
-                        "category": "icon",
-                        "inherit": {
-                          "type": "replace",
-                          "value": []
-                        },
-                        "initData": {}
-                      },
-                      {
-                        "renderer": "action",
-                        "category": "icon",
-                        "icon": "ArrowUpBold",
-                        "actionType": "extends",
-                        "triggered": "up"
-                      },
-                      {
-                        "renderer": "action",
-                        "category": "icon",
-                        "icon": "ArrowDownBold",
-                        "actionType": "extends",
-                        "triggered": "down"
+                        "size": "small",
+                        "body": [
+                          {
+                            "renderer": "action",
+                            "icon": "Delete",
+                            "actionType": "extends",
+                            "triggered": "delete",
+                            "popupType": "dialog",
+                            "popoverTitle": "确定要删除吗？",
+                            "messageBoxExp": "$.createdAt==2",
+                            "popoverContent": "仅第二条记录允许删除",
+                            "disabledOn": "$.createdAt==3",
+                            "category": "icon",
+                            "inherit": {
+                              "type": "replace",
+                              "value": []
+                            },
+                            "initData": {}
+                          },
+                          {
+                            "renderer": "action",
+                            "category": "icon",
+                            "icon": "ArrowUpBold",
+                            "actionType": "extends",
+                            "triggered": "up"
+                          },
+                          {
+                            "renderer": "action",
+                            "category": "icon",
+                            "icon": "ArrowDownBold",
+                            "actionType": "extends",
+                            "triggered": "down"
+                          }
+                        ]
                       }
                     ],
-                    "width": 160,
-                    "label": "操作",
+                    "width": 260,
+                    "align": "center",
+                    "label": "行为组",
                     "name": "updatedAt"
                   }
                 ]
