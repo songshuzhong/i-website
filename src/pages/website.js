@@ -59,7 +59,11 @@ api()
     config.permissions = res.data['permissions'];
     config.roles = res.data['roles'];
     app
-      .use(ElementPlus)
+      .use(ElementPlus, {
+        popperOptions: {
+          forceDestroy: true
+        }
+      })
       .use(IRenderer, config)
       .use(routers)
       .mount('.i-website-app__container');

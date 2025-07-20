@@ -213,6 +213,21 @@
           },
           {
             "renderer": "menuitem",
+            "name": "virtualSheet",
+            "title": "虚拟表格",
+            "icon": "",
+            "pageId": "d50ffc69-3e09-41d7-a50e-a0342e16cdd4",
+            "groupBy": "crud",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/d50ffc69-3e09-41d7-a50e-a0342e16cdd4"
+          },
+          {
+            "renderer": "menuitem",
             "name": "dataColumn",
             "title": "数据列",
             "icon": "",
