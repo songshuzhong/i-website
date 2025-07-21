@@ -466,22 +466,25 @@
                 "virtual": true,
                 "name": "users",
                 "label": "表格项",
-                "width": 1240,
+                "width": 1400,
+                "height": 520,
                 "tip": "双击行进行编辑",
                 "desc": "双击行退出编辑时不会远程保存数据",
                 "target": "editable",
                 "linkedOn": "data.name == target.name",
                 "columns": [
                   {
-                    "label": "索引",
-                    "name": "uid",
+                    "label": "",
+                    "name": "createdAt",
                     "body": [
                       {
                         "renderer": "html",
+                        "inline": true,
                         "html": "<%=$.createdAt + 1%>"
                       }
                     ],
-                    "width": 40
+                    "fixed": "left",
+                    "width": 50
                   },
                   {
                     "label": "输入框",
@@ -496,7 +499,9 @@
                         "editableOn": "$.editable"
                       }
                     ],
-                    "width": 240
+                    "flexGrow": 0,
+                    "maxWidth": 150,
+                    "width": 150
                   },
                   {
                     "label": "下拉框",
@@ -521,12 +526,12 @@
                         "editableOn": "$.editable"
                       }
                     ],
-                    "width": 200
+                    "width": 150
                   },
                   {
-                    "name": "name",
+                    "name": "color",
                     "label": " 颜色",
-                    "width": 200,
+                    "width": 70,
                     "body": [
                       {
                         "renderer": "colorpicker",
@@ -540,7 +545,7 @@
                   {
                     "name": "name",
                     "label": " 评分",
-                    "width": 200,
+                    "width": 160,
                     "body": [
                       {
                         "renderer": "rate",
@@ -656,8 +661,33 @@
                     ]
                   },
                   {
+                    "name": "rate",
+                    "label": " 数字",
+                    "width": 160,
+                    "body": [
+                      {
+                        "renderer": "number",
+                        "name": "rate",
+                        "editableOn": "$.editable"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "date",
+                    "label": " 日期",
+                    "width": 210,
+                    "body": [
+                      {
+                        "renderer": "datepicker",
+                        "name": "date",
+                        "editableOn": "$.editable"
+                      }
+                    ]
+                  },
+                  {
                     "name": "connect",
                     "label": "开关",
+                    "width": 60,
                     "body": [
                       {
                         "renderer": "switch",
@@ -698,8 +728,7 @@
                         "name": "editable",
                         "hiddenOn": "1==1"
                       }
-                    ],
-                    "width": 160
+                    ]
                   },
                   {
                     "label": "文本框",
@@ -714,7 +743,7 @@
                         "editableOn": "$.editable"
                       }
                     ],
-                    "width": 240
+                    "width": 140
                   },
                   {
                     "label": "行为",
@@ -790,7 +819,7 @@
                         ]
                       }
                     ],
-                    "width": 260,
+                    "width": 160,
                     "align": "center",
                     "label": "行为组",
                     "name": "updatedAt"
