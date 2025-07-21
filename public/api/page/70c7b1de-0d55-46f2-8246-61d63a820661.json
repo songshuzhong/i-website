@@ -454,6 +454,7 @@
           },
           "body": {
             "renderer": "form",
+            "size": "small",
             "actionApi": {
               "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/form/submit",
               "params": {"*": "*"},
