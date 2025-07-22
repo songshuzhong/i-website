@@ -309,7 +309,7 @@
                     {
                       "renderer": "switch",
                       "name": "editable",
-                      "hiddenOn": "1==1"
+                      "hiddenOn": true
                     }
                   ],
                   "width": "160px"
@@ -325,7 +325,7 @@
                       "renderer": "input",
                       "name": "createdAt",
                       "label": "createdAt",
-                      "requiredOn": "1==1",
+                      "requiredOn": true,
                       "flexible": false,
                       "editableOn": "$.editable"
                     },
@@ -471,7 +471,7 @@
                 "tip": "双击行进行编辑",
                 "desc": "双击行退出编辑时不会远程保存数据",
                 "target": "editable",
-                "linkedOn": "data.name == target.name",
+                "linkedOn": "id",
                 "columns": [
                   {
                     "label": "",
@@ -500,7 +500,7 @@
                         "renderer": "input",
                         "name": "name",
                         "placeholder": "createdAt",
-                        "requiredOn": "1==1",
+                        "requiredOn": true,
                         "flexible": false,
                         "editableOn": "$.editable"
                       }
@@ -719,7 +719,7 @@
                       {
                         "renderer": "switch",
                         "name": "editable",
-                        "hiddenOn": "1==1"
+                        "hiddenOn": true
                       }
                     ]
                   },
