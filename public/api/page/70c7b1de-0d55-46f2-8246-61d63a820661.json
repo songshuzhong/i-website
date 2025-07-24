@@ -486,6 +486,7 @@
                       {
                         "renderer": "colorpicker",
                         "name": "color",
+                        "labelWidth": 0,
                         "editableOn": "$.editable",
                         "teleported": true,
                         "showAlpha": false
@@ -502,6 +503,7 @@
                         "placeholder": "createdAt",
                         "requiredOn": true,
                         "flexible": false,
+                        "labelWidth": 0,
                         "editableOn": "$.editable"
                       }
                     ],
@@ -517,6 +519,7 @@
                         "renderer": "select",
                         "name": "sex",
                         "teleported": true,
+                        "labelWidth": 0,
                         "options": [
                           {
                             "text": "女",
@@ -542,6 +545,7 @@
                       {
                         "renderer": "rate",
                         "name": "rate",
+                        "labelWidth": 0,
                         "allowHalf": false,
                         "color": [],
                         "texts": [],
@@ -660,6 +664,7 @@
                       {
                         "renderer": "number",
                         "name": "rate",
+                        "labelWidth": 0,
                         "editableOn": "$.editable"
                       }
                     ]
@@ -672,6 +677,7 @@
                       {
                         "renderer": "datepicker",
                         "name": "date",
+                        "labelWidth": 0,
                         "format": "YYYY-MM-DD",
                         "editableOn": "$.editable"
                       }
@@ -685,6 +691,7 @@
                       {
                         "renderer": "switch",
                         "name": "connect",
+                        "labelWidth": 0,
                         "editableOn": "$.editable"
                       },
                       {
@@ -692,6 +699,7 @@
                         "name": "$relation",
                         "useWorker": false,
                         "immediate": false,
+                        "labelWidth": 0,
                         "exp": "$.relation",
                         "deps": [
                           "relation"
@@ -702,6 +710,7 @@
                         "name": "$relationValue",
                         "useWorker": false,
                         "immediate": false,
+                        "labelWidth": 0,
                         "exp": "$.relationValue",
                         "deps": [
                           "relationValue"
@@ -711,6 +720,7 @@
                         "renderer": "computed",
                         "name": "$index",
                         "useWorker": false,
+                        "labelWidth": 0,
                         "exp": "$.index",
                         "deps": [
                           "index"
@@ -719,6 +729,7 @@
                       {
                         "renderer": "switch",
                         "name": "editable",
+                        "labelWidth": 0,
                         "hiddenOn": true
                       }
                     ]
@@ -731,6 +742,7 @@
                         "renderer": "input",
                         "name": "richtxt",
                         "type": "textarea",
+                        "labelWidth": 0,
                         "flexible": false,
                         "rows": 1,
                         "editableOn": "$.editable"
