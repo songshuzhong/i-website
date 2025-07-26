@@ -309,7 +309,7 @@
                     {
                       "renderer": "switch",
                       "name": "editable",
-                      "hiddenOn": "1==1"
+                      "hiddenOn": true
                     }
                   ],
                   "width": "160px"
@@ -325,7 +325,7 @@
                       "renderer": "input",
                       "name": "createdAt",
                       "label": "createdAt",
-                      "requiredOn": "1==1",
+                      "requiredOn": true,
                       "flexible": false,
                       "editableOn": "$.editable"
                     },
@@ -454,6 +454,7 @@
           },
           "body": {
             "renderer": "form",
+            "size": "small",
             "actionApi": {
               "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/form/submit",
               "params": {"*": "*"},
@@ -465,22 +466,32 @@
                 "virtual": true,
                 "name": "users",
                 "label": "表格项",
-                "width": 1240,
+                "width": 1300,
+                "height": 520,
                 "tip": "双击行进行编辑",
                 "desc": "双击行退出编辑时不会远程保存数据",
                 "target": "editable",
-                "linkedOn": "data.name == target.name",
+                "linkedOn": "id",
                 "columns": [
                   {
-                    "label": "索引",
-                    "name": "uid",
+                    "label": "",
+                    "name": "id",
+                    "width": 50
+                  },
+                  {
+                    "name": "color",
+                    "label": " 颜色",
+                    "width": 70,
                     "body": [
                       {
-                        "renderer": "html",
-                        "html": "<%=$.createdAt + 1%>"
+                        "renderer": "colorpicker",
+                        "name": "color",
+                        "labelWidth": 0,
+                        "editableOn": "$.editable",
+                        "teleported": true,
+                        "showAlpha": false
                       }
-                    ],
-                    "width": 40
+                    ]
                   },
                   {
                     "label": "输入框",
@@ -490,12 +501,15 @@
                         "renderer": "input",
                         "name": "name",
                         "placeholder": "createdAt",
-                        "requiredOn": "1==1",
+                        "requiredOn": true,
                         "flexible": false,
+                        "labelWidth": 0,
                         "editableOn": "$.editable"
                       }
                     ],
-                    "width": 240
+                    "flexGrow": 0,
+                    "maxWidth": 150,
+                    "width": 150
                   },
                   {
                     "label": "下拉框",
@@ -505,6 +519,7 @@
                         "renderer": "select",
                         "name": "sex",
                         "teleported": true,
+                        "labelWidth": 0,
                         "options": [
                           {
                             "text": "女",
@@ -520,30 +535,17 @@
                         "editableOn": "$.editable"
                       }
                     ],
-                    "width": 200
-                  },
-                  {
-                    "name": "name",
-                    "label": " 颜色",
-                    "width": 200,
-                    "body": [
-                      {
-                        "renderer": "colorpicker",
-                        "name": "color",
-                        "editableOn": "$.editable",
-                        "teleported": true,
-                        "showAlpha": false
-                      }
-                    ]
+                    "width": 150
                   },
                   {
                     "name": "name",
                     "label": " 评分",
-                    "width": 200,
+                    "width": 150,
                     "body": [
                       {
                         "renderer": "rate",
                         "name": "rate",
+                        "labelWidth": 0,
                         "allowHalf": false,
                         "color": [],
                         "texts": [],
@@ -655,12 +657,41 @@
                     ]
                   },
                   {
+                    "name": "rate",
+                    "label": " 数字",
+                    "width": 150,
+                    "body": [
+                      {
+                        "renderer": "number",
+                        "name": "rate",
+                        "labelWidth": 0,
+                        "editableOn": "$.editable"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "date",
+                    "label": " 日期",
+                    "width": 200,
+                    "body": [
+                      {
+                        "renderer": "datepicker",
+                        "name": "date",
+                        "labelWidth": 0,
+                        "format": "YYYY-MM-DD",
+                        "editableOn": "$.editable"
+                      }
+                    ]
+                  },
+                  {
                     "name": "connect",
                     "label": "开关",
+                    "width": 60,
                     "body": [
                       {
                         "renderer": "switch",
                         "name": "connect",
+                        "labelWidth": 0,
                         "editableOn": "$.editable"
                       },
                       {
@@ -668,6 +699,7 @@
                         "name": "$relation",
                         "useWorker": false,
                         "immediate": false,
+                        "labelWidth": 0,
                         "exp": "$.relation",
                         "deps": [
                           "relation"
@@ -678,6 +710,7 @@
                         "name": "$relationValue",
                         "useWorker": false,
                         "immediate": false,
+                        "labelWidth": 0,
                         "exp": "$.relationValue",
                         "deps": [
                           "relationValue"
@@ -687,6 +720,7 @@
                         "renderer": "computed",
                         "name": "$index",
                         "useWorker": false,
+                        "labelWidth": 0,
                         "exp": "$.index",
                         "deps": [
                           "index"
@@ -695,10 +729,10 @@
                       {
                         "renderer": "switch",
                         "name": "editable",
-                        "hiddenOn": "1==1"
+                        "labelWidth": 0,
+                        "hiddenOn": true
                       }
-                    ],
-                    "width": 160
+                    ]
                   },
                   {
                     "label": "文本框",
@@ -708,37 +742,13 @@
                         "renderer": "input",
                         "name": "richtxt",
                         "type": "textarea",
+                        "labelWidth": 0,
                         "flexible": false,
                         "rows": 1,
                         "editableOn": "$.editable"
                       }
                     ],
-                    "width": 240
-                  },
-                  {
-                    "label": "行为",
-                    "name": "updatedAt",
-                    "width": 80,
-                    "body": [
-                      {
-                        "text": "<%=$.createdAt%>",
-                        "renderer": "action",
-                        "isText": true,
-                        "actionType": "dialog",
-                        "body": {
-                          "body": [
-                            {
-                              "renderer": "data"
-                            }
-                          ]
-                        },
-                        "inherit": {
-                          "type": "replace",
-                          "value": []
-                        },
-                        "initData": {}
-                      }
-                    ]
+                    "width": 140
                   },
                   {
                     "header": [
@@ -755,6 +765,24 @@
                         "renderer": "action",
                         "size": "small",
                         "body": [
+                          {
+                            "renderer": "action",
+                            "category": "icon",
+                            "icon": "Search",
+                            "actionType": "dialog",
+                            "body": {
+                              "body": [
+                                {
+                                  "renderer": "data"
+                                }
+                              ]
+                            },
+                            "inherit": {
+                              "type": "replace",
+                              "value": []
+                            },
+                            "initData": {}
+                          },
                           {
                             "renderer": "action",
                             "icon": "Delete",
@@ -789,7 +817,7 @@
                         ]
                       }
                     ],
-                    "width": 260,
+                    "width": 190,
                     "align": "center",
                     "label": "行为组",
                     "name": "updatedAt"
