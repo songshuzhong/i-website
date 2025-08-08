@@ -486,6 +486,7 @@
                       {
                         "renderer": "colorpicker",
                         "name": "color",
+                        "labelWidth": 0,
                         "editableOn": "$.editable",
                         "labelWidth": 0,
                         "teleported": true,
@@ -504,6 +505,7 @@
                         "labelWidth": 0,
                         "requiredOn": true,
                         "flexible": false,
+                        "labelWidth": 0,
                         "editableOn": "$.editable"
                       }
                     ],
@@ -545,6 +547,7 @@
                       {
                         "renderer": "rate",
                         "name": "rate",
+                        "labelWidth": 0,
                         "allowHalf": false,
                         "labelWidth": 0,
                         "color": [],
@@ -700,6 +703,7 @@
                         "labelWidth": 0,
                         "useWorker": false,
                         "immediate": false,
+                        "labelWidth": 0,
                         "exp": "$.relation",
                         "deps": [
                           "relation"
@@ -711,6 +715,7 @@
                         "labelWidth": 0,
                         "useWorker": false,
                         "immediate": false,
+                        "labelWidth": 0,
                         "exp": "$.relationValue",
                         "deps": [
                           "relationValue"
@@ -721,6 +726,7 @@
                         "name": "$index",
                         "labelWidth": 0,
                         "useWorker": false,
+                        "labelWidth": 0,
                         "exp": "$.index",
                         "deps": [
                           "index"
