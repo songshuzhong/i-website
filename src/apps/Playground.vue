@@ -43,7 +43,7 @@ export default defineComponent({
     onMounted(() => {
       loadEditor().then(res => {
         const {Editor} = res;
-        proxy.$.appContext.components[Editor.name] = Editor;
+        proxy.$.appContext.components['i-editor'] = Editor;
         isEditorReady.value = true;
         notice && notice.close();
       }).catch(e => {
