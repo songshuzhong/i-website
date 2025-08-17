@@ -1,0 +1,201 @@
+{
+  "status": 0,
+  "message": "success",
+  "data": {
+    "pageId": "2cfb7da9-b9fc-42e5-b3c6-412b913a2804",
+    "id": 9,
+    "projectId": "4",
+    "pageTitle": "服务",
+    "pageName": "services",
+    "namespace": "联通",
+    "pageIcon": "",
+    "groupBy": "",
+    "updatedBy": "admin",
+    "updatedCause": null,
+    "hidden": null,
+    "assets": [],
+    "visible": null,
+    "pageDesc": null,
+    "pageSchema": {
+      "renderer": "page",
+      "body": [
+        {
+          "renderer": "tabs",
+          "panels": [
+            {
+              "label": "stream",
+              "body": [
+                {
+                  "renderer": "service",
+                  "promiseType": "pipe",
+                  "initApi": {
+                    "url": "/ajax/stream"
+                  },
+                  "body": {
+                    "renderer": "http://localhost:8080/js/Typewriter.vue",
+                    "text": "<%=$.chunk%>",
+                    "style": {
+                      "overflow-wrap": "break-word",
+                      "line-height": "22px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "label": "promise.any",
+              "icon": "",
+              "body": [
+                {
+                  "renderer": "service",
+                  "promiseType": "any",
+                  "initApi": [
+                    {
+                      "url": "/api/mock/news",
+                      "method": "get",
+                      "cached": false,
+                      "params": {}
+                    },
+                    {
+                      "url": "/api/mock/permissions",
+                      "method": "get",
+                      "cached": false,
+                      "params": {}
+                    }
+                  ],
+                  "body": [
+                    {
+                      "renderer": "data"
+                    }
+                  ]
+                }
+              ],
+              "keepAlive": false
+            },
+            {
+              "label": "promise.race",
+              "icon": "",
+              "body": [
+                {
+                  "renderer": "service",
+                  "promiseType": "race",
+                  "initApi": [
+                    {
+                      "url": "/api/mock/news",
+                      "method": "get",
+                      "cached": false,
+                      "params": {}
+                    },
+                    {
+                      "url": "/api/mock/permissions",
+                      "method": "get",
+                      "cached": false,
+                      "params": {}
+                    }
+                  ],
+                  "body": [
+                    {
+                      "renderer": "data"
+                    }
+                  ]
+                }
+              ],
+              "keepAlive": false
+            },
+            {
+              "label": "promise.all",
+              "icon": "",
+              "body": [
+                {
+                  "renderer": "service",
+                  "promiseType": "all",
+                  "initApi": [
+                    {
+                      "url": "/api/mock/news",
+                      "method": "get",
+                      "cached": false,
+                      "params": {}
+                    },
+                    {
+                      "url": "/api/mock/permissions",
+                      "method": "get",
+                      "cached": false,
+                      "params": {}
+                    }
+                  ],
+                  "body": [
+                    {
+                      "renderer": "data"
+                    }
+                  ]
+                }
+              ],
+              "keepAlive": true
+            },
+            {
+              "label": "promise.allSettled",
+              "icon": "",
+              "body": [
+                {
+                  "renderer": "service",
+                  "promiseType": "allSettled",
+                  "initApi": [
+                    {
+                      "url": "/api/mock/news",
+                      "method": "get",
+                      "cached": false,
+                      "params": {}
+                    },
+                    {
+                      "url": "/api/mock/permissions",
+                      "method": "get",
+                      "cached": false,
+                      "params": {}
+                    }
+                  ],
+                  "body": [
+                    {
+                      "renderer": "data"
+                    }
+                  ]
+                }
+              ],
+              "keepAlive": true
+            },
+            {
+              "label": "promise.interval",
+              "icon": "",
+              "body": [
+                {
+                  "renderer": "service",
+                  "initApi": {
+                    "url": "/api/mock/products",
+                    "method": "get",
+                    "cached": false,
+                    "params": {
+                      "*": "*"
+                    }
+                  },
+                  "body": [
+                    {
+                      "renderer": "data"
+                    }
+                  ],
+                  "interval": 5000,
+                  "timeout": 0
+                }
+              ]
+            }
+          ],
+          "activeTab": 0,
+          "tabPosition": "top"
+        }
+      ],
+      "worker": "e => {\nconst content = JSON.parse(e.data.content);\n let chunk = e.data.context.chunk || ''; \n chunk += content.chunk; \n e.data.context.chunk = chunk; \n return Promise.resolve(e.data.context);\n}"
+    },
+    "version": 0,
+    "status": 1,
+    "createdAt": "2023-11-25T15:17:51.000Z",
+    "updatedAt": "2023-11-25T15:17:51.000Z"
+  }
+}

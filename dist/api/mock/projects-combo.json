@@ -1,0 +1,17 @@
+{
+  "status": 0,
+  "message": "success",
+  "data": {
+    "id": 78,
+    "title": "模板列表",
+    "method": "get",
+    "path": "/projects/combo",
+    "namespace": "联通",
+    "description": "0",
+    "delay": 0,
+    "schema": "({_req}) => {\n  return {\n        \"1\": \"定向模板1\",\n        \"2\": \"定向模板2\",\n}\n}",
+    "createdBy": "admin",
+    "createdAt": "2025-01-17T11:50:39.000Z",
+    "updatedAt": "2025-01-17T11:50:39.000Z"
+  }
+}

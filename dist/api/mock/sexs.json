@@ -1,0 +1,17 @@
+{
+  "status": 0,
+  "message": "success",
+  "data": {
+    "id": 80,
+    "title": "性别分布",
+    "method": "get",
+    "path": "/sexs",
+    "namespace": "联通",
+    "description": "sex",
+    "delay": 0,
+    "schema": "({_req}) => {\n  return {\n    \"rows\": [\n      {\n        \"age\": \"0\",\n        \"male\": 5634674,\n        \"female\": 5063545\n      },\n      {\n        \"age\": \"5\",\n        \"male\": 37703110,\n        \"female\": 33389026\n      },\n      {\n        \"age\": \"10\",\n        \"male\": 80605857,\n        \"female\": 70419959\n      },\n      {\n        \"age\": \"15\",\n        \"male\": 121139833,\n        \"female\": 104836082\n      },\n      {\n        \"age\": \"20\",\n        \"male\": 156497343,\n        \"female\": 134740306\n      },\n      {\n        \"age\": \"25\",\n        \"male\": 191568124,\n        \"female\": 164785965\n      },\n      {\n        \"age\": \"30\",\n        \"male\": 230012339,\n        \"female\": 198722838\n      },\n      {\n        \"age\": \"35\",\n        \"male\": 283744580,\n        \"female\": 248044651\n      },\n      {\n        \"age\": \"40\",\n        \"male\": 330619843,\n        \"female\": 292588135\n      },\n      {\n        \"age\": \"45\",\n        \"male\": 368924926,\n        \"female\": 329961335\n      },\n      {\n        \"age\": \"50\",\n        \"male\": 413787735,\n        \"female\": 374424422\n      },\n      {\n        \"age\": \"55\",\n        \"male\": 464548600,\n        \"female\": 425915021\n      },\n      {\n        \"age\": \"60\",\n        \"male\": 510803652,\n        \"female\": 474245132\n      },\n      {\n        \"age\": \"65\",\n        \"male\": 534140713,\n        \"female\": 500597826\n      },\n      {\n        \"age\": \"70\",\n        \"male\": 559438986,\n        \"female\": 531398215\n      },\n      {\n        \"age\": \"75\",\n        \"male\": 573192279,\n        \"female\": 550723256\n      },\n      {\n        \"age\": \"80\",\n        \"male\": 577111069,\n        \"female\": 559163818\n      },\n      {\n        \"age\": \"85\",\n        \"male\": 575610127,\n        \"female\": 562037032\n      },\n      {\n        \"age\": \"90\",\n        \"male\": 570093111,\n        \"female\": 560370023\n      },\n      {\n        \"age\": \"95\",\n        \"male\": 562259321,\n        \"female\": 554970368\n      }\n    ]\n  }\n}",
+    "createdBy": "admin",
+    "createdAt": "2025-02-23T11:01:39.000Z",
+    "updatedAt": "2025-02-23T11:01:39.000Z"
+  }
+}

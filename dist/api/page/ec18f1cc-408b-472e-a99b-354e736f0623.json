@@ -1,0 +1,235 @@
+{
+  "status": 0,
+  "message": "success",
+  "data": {
+    "pageId": "ec18f1cc-408b-472e-a99b-354e736f0623",
+    "id": 111,
+    "projectId": "4",
+    "pageTitle": "表格表单",
+    "pageName": "tableForm",
+    "namespace": "联通",
+    "pageIcon": null,
+    "groupBy": "form",
+    "updatedBy": "admin",
+    "updatedCause": null,
+    "hidden": false,
+    "assets": [],
+    "visible": [
+      8
+    ],
+    "pageDesc": null,
+    "pageSchema": {
+      "renderer": "page",
+      "initData": {
+        "project_name": "1",
+        "department": "2",
+        "arch_name": "3",
+        "watch_name": "4",
+        "archs_name": "5",
+        "arch_name1": "6",
+        "huiqian_name1": [
+          {
+            "shigongdanwei": "a",
+            "jianlidanwei": "b",
+            "jianshinwei": "c"
+          },
+          {
+            "shigongdanwei": "d",
+            "jianlidanwei": "e",
+            "jianshinwei": "f"
+          }
+        ]
+      },
+      "body": [
+        {
+          "renderer": "form",
+          "labelWidth": "180px",
+          "controls": [
+            {
+              "renderer": "divider"
+            },
+            {
+              "renderer": "input",
+              "name": "project_name",
+              "label": "工程名称",
+              "placeholder": "请输入",
+              "colspan": {
+                "value": "2"
+              },
+              "type": "text",
+              "rules": [],
+              "borderless": true
+            },
+            {
+              "renderer": "input",
+              "name": "department",
+              "label": "部门",
+              "colspan": {
+                "value": "2"
+              },
+              "placeholder": "请输入",
+              "type": "text",
+              "borderless": true,
+              "rules": []
+            },
+            {
+              "renderer": "divider"
+            },
+            {
+              "renderer": "input",
+              "name": "arch_name",
+              "label": "建筑名称",
+              "placeholder": "请输入",
+              "colspan": {
+                "value": "4"
+              },
+              "type": "text",
+              "borderless": true,
+              "rules": []
+            },
+            {
+              "renderer": "divider"
+            },
+            {
+              "renderer": "input",
+              "name": "watch_name",
+              "label": "监理单位",
+              "placeholder": "请输入",
+              "colspan": {
+                "value": "2"
+              },
+              "type": "text",
+              "borderless": true,
+              "rules": []
+            },
+            {
+              "renderer": "input",
+              "name": "archs_name",
+              "label": "实施名称",
+              "placeholder": "请输入",
+              "type": "text",
+              "colspan": {
+                "value": "2"
+              },
+              "borderless": true,
+              "rules": []
+            },
+            {
+              "renderer": "divider"
+            },
+            {
+              "renderer": "input",
+              "name": "arch_name1",
+              "label": "工作量",
+              "placeholder": "请输入",
+              "colspan": {
+                "value": "4"
+              },
+              "type": "text",
+              "borderless": true,
+              "rules": []
+            },
+            {
+              "renderer": "divider"
+            },
+            {
+              "renderer": "combo",
+              "name": "huiqian_name1",
+              "label": "会签",
+              "placeholder": "请输入",
+              "colspan": {
+                "value": "4"
+              },
+              "rowspan": {
+                "value": "4"
+              },
+              "border": false,
+              "rules": [],
+              "defaultValue": [
+                {
+                  "shigongdanwei": "a",
+                  "jianlidanwei": "b",
+                  "jianshinwei": "c"
+                },
+                {
+                  "shigongdanwei": "d",
+                  "jianlidanwei": "e",
+                  "jianshinwei": "f"
+                }
+              ],
+              "category": "table",
+              "controls": [
+                {
+                  "renderer": "input",
+                  "name": "shigongdanwei",
+                  "label": "施工单位",
+                  "requiredOn": "1"
+                },
+                {
+                  "renderer": "input",
+                  "name": "jianlidanwei",
+                  "label": "监理单位",
+                  "requiredOn": "1"
+                },
+                {
+                  "renderer": "input",
+                  "name": "jianshinwei",
+                  "label": "建设单位",
+                  "requiredOn": "1"
+                }
+              ],
+              "length": 2
+            }
+          ],
+          "name": "Form1",
+          "submitType": "target",
+          "target": "Debug"
+        },
+        {
+          "renderer": "form",
+          "name": "Form2",
+          "controls": [
+            {
+              "renderer": "input",
+              "name": "a",
+              "label": "a",
+              "requiredOn": "1",
+              "placeholder": "请输入",
+              "type": "text",
+              "rules": []
+            }
+          ],
+          "submitType": "target",
+          "target": "Debug"
+        },
+        {
+          "renderer": "action",
+          "actionType": "trigger",
+          "triggered": "Form1,Form2.submit",
+          "text": "提交"
+        },
+        {
+          "renderer": "action",
+          "type": "danger",
+          "actionType": "trigger",
+          "triggered": "Form1,Form2.reset",
+          "text": "重置"
+        },
+        {
+          "renderer": "service",
+          "name": "Debug",
+          "body": [
+            {
+              "renderer": "data"
+            }
+          ]
+        }
+      ],
+      "innerStyle": ".el-form-item.huiqian_name1 {\r\n  padding: 0;\r\n}"
+    },
+    "version": 0,
+    "status": 1,
+    "createdAt": "2024-09-19T14:30:35.000Z",
+    "updatedAt": "2024-09-19T14:32:58.000Z"
+  }
+}

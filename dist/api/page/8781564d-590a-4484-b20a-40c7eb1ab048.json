@@ -1,0 +1,225 @@
+{
+  "code": 200,
+  "data": {
+    "pageId": "8781564d-590a-4484-b20a-40c7eb1ab048",
+    "id": 37,
+    "projectId": "4",
+    "pageTitle": "初始化数据",
+    "pageName": "initData",
+    "namespace": "联通",
+    "pageIcon": "",
+    "groupBy": "",
+    "updatedBy": "admin",
+    "updatedCause": "v2",
+    "hidden": null,
+    "assets": [],
+    "visible": null,
+    "pageDesc": null,
+    "pageSchema": {
+      "renderer": "page",
+      "body": [
+        {
+          "renderer": "html",
+          "html": "页面级数据域"
+        },
+        {
+          "renderer": "layout",
+          "initData": {
+            "layout": "this data is from layout."
+          },
+          "direction": "horizontal",
+          "body": [
+            {
+              "renderer": "wrapper",
+              "initData": {
+                "left": "this data is from left wrapper.",
+                "map": {
+                  "mapKey1": "mapValue1",
+                  "mapKey2": "mapKey2"
+                }
+              },
+              "body": [
+                {
+                  "renderer": "html",
+                  "inline": true,
+                  "html": "数据继承合并"
+                },
+                {
+                  "renderer": "data"
+                }
+              ],
+              "footer": [
+                {
+                  "renderer": "wrapper",
+                  "classname": "data-scope__wrapper2",
+                  "inherit": {
+                    "type": "deconstruct",
+                    "value": [
+                      "map"
+                    ]
+                  },
+                  "initData": {},
+                  "body": [
+                    {
+                      "renderer": "html",
+                      "inline": true,
+                      "html": "解构map"
+                    },
+                    {
+                      "renderer": "data"
+                    }
+                  ],
+                  "footer": [
+                    {
+                      "renderer": "wrapper",
+                      "inherit": {
+                        "type": "exclude",
+                        "value": [
+                          "mapKey1"
+                        ]
+                      },
+                      "initData": {},
+                      "body": [
+                        {
+                          "renderer": "html",
+                          "inline": true,
+                          "html": "排除mapKey1"
+                        },
+                        {
+                          "renderer": "data"
+                        }
+                      ],
+                      "classname": "data-scope__wrapper3",
+                      "footer": [
+                        {
+                          "renderer": "wrapper",
+                          "inherit": {
+                            "type": "none",
+                            "value": []
+                          },
+                          "initData": {},
+                          "body": [
+                            {
+                              "renderer": "html",
+                              "inline": true,
+                              "html": "不继承任何数据"
+                            },
+                            {
+                              "renderer": "data"
+                            }
+                          ],
+                          "classname": "data-scope__wrapper3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "style": {
+                "border": "1px solid var(--el-color-primary)"
+              }
+            },
+            {
+              "renderer": "divider",
+              "direction": "vertical"
+            },
+            {
+              "renderer": "wrapper",
+              "initData": {
+                "right": "this data is from right wrapper.",
+                "array": [
+                  "1",
+                  "2"
+                ]
+              },
+              "body": [
+                {
+                  "renderer": "html",
+                  "inline": true,
+                  "html": "数据继承合并"
+                },
+                {
+                  "renderer": "data"
+                }
+              ],
+              "footer": [
+                {
+                  "renderer": "wrapper",
+                  "classname": "data-scope__wrapper2",
+                  "inherit": {
+                    "type": "include",
+                    "value": [
+                      "array"
+                    ]
+                  },
+                  "initData": {},
+                  "body": [
+                    {
+                      "renderer": "html",
+                      "inline": true,
+                      "html": "包含array"
+                    },
+                    {
+                      "renderer": "data"
+                    }
+                  ],
+                  "footer": [
+                    {
+                      "renderer": "service",
+                      "promiseType": "sw",
+                      "body": [
+                        {
+                          "renderer": "service",
+                          "classname": "data-scope__wrapper3",
+                          "body": [
+                            {
+                              "renderer": "html",
+                              "inline": true,
+                              "html": "覆盖原数据域"
+                            },
+                            {
+                              "renderer": "data"
+                            }
+                          ],
+                          "inherit": {
+                            "type": "replace",
+                            "value": []
+                          },
+                          "promiseType": "sw",
+                          "silentLoading": true
+                        }
+                      ],
+                      "silentLoading": true,
+                      "inherit": {
+                        "type": "none",
+                        "value": []
+                      },
+                      "initData": {},
+                      "classname": "data-scope__service"
+                    }
+                  ]
+                }
+              ],
+              "style": {
+                "border": "1px solid var(--el-color-primary)"
+              }
+            }
+          ],
+          "classname": "data-scope__layout data-scope__wrapper1"
+        }
+      ],
+      "initData": {
+        "page": "this data is from page."
+      },
+      "innerStyle": ".data-scope__page {\n  padding: 20px;\n  border: 1px solid var(--el-color-warning);\n}\n.data-scope__service,\n.i-wrapper__container__footer {\n  padding: 10px;\n}\n.data-scope__wrapper1 {\n  padding: 20px;\n  border: 1px solid var(--el-color-primary);\n}\n.data-scope__wrapper2 {\n  margin: 10px 0;\n  padding: 10px;\n  border: 1px solid var(--el-color-success);\n}\n.data-scope__wrapper3 {\n  margin: 10px 0;\n  padding: 10px;\n  border: 1px solid var(--el-color-danger);\n}",
+      "worker": "(e) => {\n  if (e.track === '/page/body/1/body/2/footer/0/footer/0') {\n    return new Promise(res => {\n      const t = setTimeout(() => {\n        clearTimeout(t);\n        res({\n          from: 'this is from server worker.'\n        });\n      }, 3000);\n    });\n  } else if (e.data.from) {\n    return Promise.resolve({});\n  }\n  return new Promise(res => {\n    res({\n      from1: 'this is from server worker1.',\n      from2: 'this is from server worker2.',\n      from3: 'this is from server worker3.',\n      from4: 'this is from server worker4.'\n    });\n  });\n}",
+      "classname": "data-scope__page",
+      "refs": null
+    },
+    "version": 0,
+    "status": 1,
+    "createdAt": "2023-11-25T15:27:02.000Z",
+    "updatedAt": "2023-11-27T13:21:06.000Z"
+  },
+  "describe": "请求成功"
+}
