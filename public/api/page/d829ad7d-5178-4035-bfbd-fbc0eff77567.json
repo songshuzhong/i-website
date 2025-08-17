@@ -139,22 +139,19 @@
             "actionType": "linkage",
             "text": "表单提交后联动",
             "hiddenOn": "1 === 1",
-            "actionApi": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ad/create"
-          },
-          {
-            "renderer": "action",
-            "actionType": "submit",
-            "text": "保存并创建计划",
-            "actionApi": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ad/create",
             "style": {
               "margin-left": "117px"
             }
           },
           {
             "renderer": "action",
+            "actionType": "submit",
+            "text": "保存并创建计划"
+          },
+          {
+            "renderer": "action",
             "actionType": "reset",
-            "text": "取消",
-            "actionApi": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/ad/create"
+            "text": "取消"
           }
         ]
       },

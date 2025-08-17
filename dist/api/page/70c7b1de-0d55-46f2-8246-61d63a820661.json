@@ -488,6 +488,7 @@
                         "name": "color",
                         "labelWidth": 0,
                         "editableOn": "$.editable",
+                        "labelWidth": 0,
                         "teleported": true,
                         "showAlpha": false
                       }
@@ -501,6 +502,7 @@
                         "renderer": "input",
                         "name": "name",
                         "placeholder": "createdAt",
+                        "labelWidth": 0,
                         "requiredOn": true,
                         "flexible": false,
                         "labelWidth": 0,
@@ -547,6 +549,7 @@
                         "name": "rate",
                         "labelWidth": 0,
                         "allowHalf": false,
+                        "labelWidth": 0,
                         "color": [],
                         "texts": [],
                         "showText": false,
@@ -697,6 +700,7 @@
                       {
                         "renderer": "computed",
                         "name": "$relation",
+                        "labelWidth": 0,
                         "useWorker": false,
                         "immediate": false,
                         "labelWidth": 0,
@@ -708,6 +712,7 @@
                       {
                         "renderer": "computed",
                         "name": "$relationValue",
+                        "labelWidth": 0,
                         "useWorker": false,
                         "immediate": false,
                         "labelWidth": 0,
@@ -719,6 +724,7 @@
                       {
                         "renderer": "computed",
                         "name": "$index",
+                        "labelWidth": 0,
                         "useWorker": false,
                         "labelWidth": 0,
                         "exp": "$.index",
@@ -764,6 +770,7 @@
                       {
                         "renderer": "action",
                         "size": "small",
+                        "labelWidth": 0,
                         "body": [
                           {
                             "renderer": "action",
