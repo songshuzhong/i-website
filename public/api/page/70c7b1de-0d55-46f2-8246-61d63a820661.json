@@ -482,33 +482,27 @@
                     "name": "color",
                     "label": " 颜色",
                     "width": 70,
-                    "body": [
-                      {
-                        "renderer": "colorpicker",
-                        "name": "color",
-                        "labelWidth": 0,
-                        "editableOn": "$.editable",
-                        "labelWidth": 0,
-                        "teleported": true,
-                        "showAlpha": false
-                      }
-                    ]
+                    "body": {
+                      "renderer": "colorpicker",
+                      "name": "color",
+                      "labelWidth": 0,
+                      "editableOn": "$.editable",
+                      "teleported": true,
+                      "showAlpha": false
+                    }
                   },
                   {
                     "label": "输入框",
                     "name": "createdAt",
-                    "body": [
-                      {
-                        "renderer": "input",
-                        "name": "name",
-                        "placeholder": "createdAt",
-                        "labelWidth": 0,
-                        "requiredOn": true,
-                        "flexible": false,
-                        "labelWidth": 0,
-                        "editableOn": "$.editable"
-                      }
-                    ],
+                    "body": {
+                      "renderer": "input",
+                      "name": "name",
+                      "placeholder": "createdAt",
+                      "labelWidth": 0,
+                      "requiredOn": true,
+                      "flexible": false,
+                      "editableOn": "$.editable"
+                    },
                     "flexGrow": 0,
                     "maxWidth": 150,
                     "width": 150
@@ -516,47 +510,42 @@
                   {
                     "label": "下拉框",
                     "name": "uid",
-                    "body": [
-                      {
-                        "renderer": "select",
-                        "name": "sex",
-                        "teleported": true,
-                        "labelWidth": 0,
-                        "options": [
-                          {
-                            "text": "女",
-                            "value": "0",
-                            "disabledOn": ""
-                          },
-                          {
-                            "text": "男",
-                            "value": "1",
-                            "disabledOn": ""
-                          }
-                        ],
-                        "editableOn": "$.editable"
-                      }
-                    ],
+                    "body": {
+                      "renderer": "select",
+                      "name": "sex",
+                      "teleported": true,
+                      "labelWidth": 0,
+                      "options": [
+                        {
+                          "text": "女",
+                          "value": "0",
+                          "disabledOn": ""
+                        },
+                        {
+                          "text": "男",
+                          "value": "1",
+                          "disabledOn": ""
+                        }
+                      ],
+                      "editableOn": "$.editable"
+                    },
                     "width": 150
                   },
                   {
                     "name": "name",
                     "label": " 评分",
                     "width": 150,
-                    "body": [
-                      {
-                        "renderer": "rate",
-                        "name": "rate",
-                        "labelWidth": 0,
-                        "allowHalf": false,
-                        "labelWidth": 0,
-                        "color": [],
-                        "texts": [],
-                        "showText": false,
-                        "showScore": true,
-                        "editableOn": "$.editable"
-                      }
-                    ],
+                    "body": {
+                      "renderer": "rate",
+                      "name": "rate",
+                      "labelWidth": 0,
+                      "allowHalf": false,
+                      "color": [],
+                      "texts": [],
+                      "showText": false,
+                      "showScore": true,
+                      "editableOn": "$.editable"
+                    },
                     "header": [
                       {
                         "renderer": "tooltip",
@@ -663,28 +652,24 @@
                     "name": "rate",
                     "label": " 数字",
                     "width": 150,
-                    "body": [
-                      {
-                        "renderer": "number",
-                        "name": "rate",
-                        "labelWidth": 0,
-                        "editableOn": "$.editable"
-                      }
-                    ]
+                    "body": {
+                      "renderer": "number",
+                      "name": "rate",
+                      "labelWidth": 0,
+                      "editableOn": "$.editable"
+                    }
                   },
                   {
                     "name": "date",
                     "label": " 日期",
                     "width": 200,
-                    "body": [
-                      {
-                        "renderer": "datepicker",
-                        "name": "date",
-                        "labelWidth": 0,
-                        "format": "YYYY-MM-DD",
-                        "editableOn": "$.editable"
-                      }
-                    ]
+                    "body": {
+                      "renderer": "datepicker",
+                      "name": "date",
+                      "labelWidth": 0,
+                      "format": "YYYY-MM-DD",
+                      "editableOn": "$.editable"
+                    }
                   },
                   {
                     "name": "connect",
@@ -743,87 +728,81 @@
                   {
                     "label": "文本框",
                     "name": "createdAt",
-                    "body": [
-                      {
-                        "renderer": "input",
-                        "name": "richtxt",
-                        "type": "textarea",
-                        "labelWidth": 0,
-                        "flexible": false,
-                        "rows": 1,
-                        "editableOn": "$.editable"
-                      }
-                    ],
+                    "body": {
+                      "renderer": "input",
+                      "name": "richtxt",
+                      "type": "textarea",
+                      "labelWidth": 0,
+                      "flexible": false,
+                      "rows": 1,
+                      "editableOn": "$.editable"
+                    },
                     "width": 140
                   },
                   {
-                    "header": [
-                      {
-                        "renderer": "action",
-                        "category": "icon",
-                        "icon": "Plus",
-                        "actionType": "extends",
-                        "triggered": "add"
-                      }
-                    ],
-                    "body": [
-                      {
-                        "renderer": "action",
-                        "size": "small",
-                        "labelWidth": 0,
-                        "body": [
-                          {
-                            "renderer": "action",
-                            "category": "icon",
-                            "icon": "Search",
-                            "actionType": "dialog",
-                            "body": {
-                              "body": [
-                                {
-                                  "renderer": "data"
-                                }
-                              ]
-                            },
-                            "inherit": {
-                              "type": "replace",
-                              "value": []
-                            },
-                            "initData": {}
+                    "header": {
+                      "renderer": "action",
+                      "category": "icon",
+                      "icon": "Plus",
+                      "actionType": "extends",
+                      "triggered": "add"
+                    },
+                    "body": {
+                      "renderer": "action",
+                      "size": "small",
+                      "labelWidth": 0,
+                      "body": [
+                        {
+                          "renderer": "action",
+                          "category": "icon",
+                          "icon": "Search",
+                          "actionType": "dialog",
+                          "body": {
+                            "body": [
+                              {
+                                "renderer": "data"
+                              }
+                            ]
                           },
-                          {
-                            "renderer": "action",
-                            "icon": "Delete",
-                            "actionType": "extends",
-                            "triggered": "delete",
-                            "popupType": "dialog",
-                            "popoverTitle": "确定要删除吗？",
-                            "messageBoxExp": "$.createdAt==2",
-                            "popoverContent": "仅第二条记录允许删除",
-                            "disabledOn": "$.createdAt==3",
-                            "category": "icon",
-                            "inherit": {
-                              "type": "replace",
-                              "value": []
-                            },
-                            "initData": {}
+                          "inherit": {
+                            "type": "replace",
+                            "value": []
                           },
-                          {
-                            "renderer": "action",
-                            "category": "icon",
-                            "icon": "ArrowUpBold",
-                            "actionType": "extends",
-                            "triggered": "up"
+                          "initData": {}
+                        },
+                        {
+                          "renderer": "action",
+                          "icon": "Delete",
+                          "actionType": "extends",
+                          "triggered": "delete",
+                          "popupType": "dialog",
+                          "popoverTitle": "确定要删除吗？",
+                          "messageBoxExp": "$.createdAt==2",
+                          "popoverContent": "仅第二条记录允许删除",
+                          "disabledOn": "$.createdAt==3",
+                          "category": "icon",
+                          "inherit": {
+                            "type": "replace",
+                            "value": []
                           },
-                          {
-                            "renderer": "action",
-                            "category": "icon",
-                            "icon": "ArrowDownBold",
-                            "actionType": "extends",
-                            "triggered": "down"
-                          }
-                        ]
-                      }
-                    ],
+                          "initData": {}
+                        },
+                        {
+                          "renderer": "action",
+                          "category": "icon",
+                          "icon": "ArrowUpBold",
+                          "actionType": "extends",
+                          "triggered": "up"
+                        },
+                        {
+                          "renderer": "action",
+                          "category": "icon",
+                          "icon": "ArrowDownBold",
+                          "actionType": "extends",
+                          "triggered": "down"
+                        }
+                      ]
+                    },
                     "width": 190,
                     "align": "center",
                     "label": "行为组",
