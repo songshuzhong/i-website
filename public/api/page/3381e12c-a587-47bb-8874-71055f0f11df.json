@@ -13,7 +13,7 @@
     "updatedBy": "admin",
     "updatedCause": null,
     "hidden": null,
-    "assets": [],
+    "assets": ["http://localhost:8080/js/dayjs.worker.js"],
     "visible": null,
     "pageDesc": null,
     "pageSchema": {
@@ -29,8 +29,8 @@
             "method": "post"
           },
           "initApi": {
-            "url": "/api/mock/valid/comment",
-            "method": "post",
+            "url": "/api/mock/valid-comment",
+            "method": "get",
             "params": {
               "*": "*"
             }
@@ -130,9 +130,7 @@
               "readonly": false,
               "rules": [
                 {
-                  "type": "exp",
-                  "exp": "!data.start.$later('$')",
-                  "message": "开始日期应大于当前日期",
+                  "type": "sw",
                   "trigger": "blur"
                 }
               ],
@@ -145,9 +143,7 @@
               "readonly": false,
               "rules": [
                 {
-                  "type": "exp",
-                  "exp": "!data.end.$later(data.start)",
-                  "message": "结束日期应大于开始日期",
+                  "type": "sw",
                   "trigger": "blur"
                 }
               ],
@@ -365,19 +361,20 @@
             },
             {
               "renderer": "action",
-              "actionType": "reset",
+              "actionType": "extends",
               "text": "重置",
               "plain": true,
-              "size": "default"
+              "triggered": "reset"
             },
             {
               "renderer": "action",
-              "actionType": "submit",
+              "actionType": "extends",
               "popupType": "dialog",
               "messageBoxExp": "1 === 1",
               "popoverTitle": "存在${valid}，确定提交吗？",
               "text": "确定",
-              "body": {}
+              "body": {},
+              "triggered": "submit"
             }
           ],
           "classname": "actions-fixed",
@@ -386,9 +383,9 @@
           }
         }
       ],
-      "steps": [],
       "innerStyle": ".i-form__container__fieldset {\n  &.noViewer {\n    .el-collapse-item__header {\n      display: none;\n    }\n  }\n}",
-      "req": "if(url.includes('/api/submit')) {\n  params.url = encodeURIComponent(params.url);\n}"
+      "req": "if(url.includes('/api/submit')) {\n  params.url = encodeURIComponent(params.url);\n}",
+      "worker": "e => {\r\n  let { start, end } = e.data;\r\n  start = dayjs(start);\r\n  end = dayjs(end);\r\n  if (start.isAfter(end)) {\r\n    return Promise.reject({message: '结束日期小于开始日期！'});\r\n  }\r\n  return Promise.resolve();\r\n}"
     },
     "version": 0,
     "status": 1,
