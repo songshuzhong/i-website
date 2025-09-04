@@ -361,12 +361,15 @@
                           "triggered": "submit"
                         }
                       ],
+                      "style": {
+                        "marginBottom": "-5px"
+                      },
                       "inline": true,
                       "target": "UserTable",
                       "reload": "UserTable",
                       "actionApi": {
                         "url": "/api/user",
-                        "method": "post",
+                        "method": "get",
                         "params": {
                           "name": "${owner}",
                           "uid": "${uid}"
@@ -380,7 +383,7 @@
                   "title": "更新姓名",
                   "isText": true,
                   "popupType": "over",
-                  "popperWidth": 320
+                  "popperWidth": 310
                 }
               ],
               "align": "right",
