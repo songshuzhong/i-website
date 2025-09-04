@@ -3544,7 +3544,7 @@
               "validType": "normal"
             }
           ],
-          "classname": "actions-fixed",
+          "classname": "actions-fixed--top",
           "initApi": {
             "url": "/api/mock/stressTesting",
             "method": "get",
