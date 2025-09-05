@@ -24,7 +24,7 @@
           "renderer": "form",
           "initData": {
             "names": "renderer",
-            "users": [
+            "me": [
               {
                 "name": "song",
                 "syncValid": 123,
@@ -94,7 +94,7 @@
             },
             {
               "renderer": "table",
-              "name": "users",
+              "name": "me",
               "label": "表格项",
               "tip": "双击行进行编辑",
               "desc": "双击行退出编辑时不会远程保存数据",
