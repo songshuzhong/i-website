@@ -520,7 +520,7 @@
             },
             {
               "renderer": "divider",
-              "text": "身份验证",
+              "text": "星座、格言",
               "groupBy": 3,
               "step": {
                 "title": "第三步",
