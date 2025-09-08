@@ -19,14 +19,14 @@
     "pageSchema": {
       "renderer": "page",
       "initData": {
-        "name": "frfafad",
+        "name": "分步表单测试",
         "syncValid": 123,
         "sex": "0",
-        "role": "1234",
+        "role": "0",
         "connect": "0",
         "mail": "fasdgre@jl.com",
         "phone": "4665432465",
-        "createdAt": "",
+        "createdAt": "2025-09-08",
         "adult": true,
         "color": "#456533",
         "rate": 5,
@@ -48,13 +48,39 @@
           "cover": "https://songshuzhong.github.io/i-assets/public/ironMan.jpeg",
           "src": "https://songshuzhong.github.io/i-assets/public/IronMan.mp4"
         },
-        "calendar": "",
+        "calendar": "2025-09-08T01:03:22.644Z",
         "richtext": "",
         "schedule_date": {
           "4": [
             0
           ]
-        }
+        },
+        "switch1": false,
+        "switch_button": false,
+        "cascader": [
+          [
+            "component",
+            "form",
+            "form"
+          ]
+        ],
+        "array": [
+          "1"
+        ],
+        "custom": {
+          "aaa": "a",
+          "bbb": "b"
+        },
+        "multiplle": [
+          {
+            "radio": "value1",
+            "input": "q"
+          }
+        ],
+        "map": {},
+        "ll": [
+          "value2"
+        ]
       },
       "body": [
         {
@@ -70,8 +96,12 @@
           "controls": [
             {
               "renderer": "divider",
-              "text": "第一步",
-              "groupBy": 1
+              "text": "基本信息",
+              "groupBy": 1,
+              "step": {
+                "title": "第一步",
+                "icon": "Avatar"
+              }
             },
             {
               "renderer": "input",
@@ -141,11 +171,6 @@
               ]
             },
             {
-              "renderer": "divider",
-              "text": "第一步",
-              "groupBy": 1
-            },
-            {
               "renderer": "select",
               "name": "role",
               "label": "角色",
@@ -204,6 +229,11 @@
               ]
             },
             {
+              "renderer": "divider",
+              "text": "联系方式",
+              "groupBy": 1
+            },
+            {
               "renderer": "cascader",
               "name": "cascader",
               "label": "级联",
@@ -251,8 +281,12 @@
             },
             {
               "renderer": "divider",
-              "text": "第二步",
-              "groupBy": 2
+              "text": "职业信息",
+              "groupBy": 2,
+              "step": {
+                "title": "第二步",
+                "icon": "Picture"
+              }
             },
             {
               "renderer": "datepicker",
@@ -486,8 +520,12 @@
             },
             {
               "renderer": "divider",
-              "text": "第三步",
-              "groupBy": 3
+              "text": "身份验证",
+              "groupBy": 3,
+              "step": {
+                "title": "第三步",
+                "icon": "Upload"
+              }
             },
             {
               "renderer": "calendar",
