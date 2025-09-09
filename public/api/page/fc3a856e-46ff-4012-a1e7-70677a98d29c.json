@@ -13,7 +13,11 @@
     "updatedBy": "admin",
     "updatedCause": null,
     "hidden": null,
-    "assets": [],
+    "assets": [
+      "https://songshuzhong.github.io/i-assets/public/js/spark-md5.min.js",
+      "https://songshuzhong.github.io/i-assets/public/js/Schedule.394219.min.js",
+      "https://songshuzhong.github.io/i-assets/public/js/Richtxt.fca61a.min.js?version=1.0.1"
+    ],
     "visible": null,
     "pageDesc": null,
     "pageSchema": {
@@ -97,11 +101,8 @@
             {
               "renderer": "divider",
               "text": "基本信息",
-              "groupBy": 1,
-              "step": {
-                "title": "第一步",
-                "icon": "Avatar"
-              }
+              "icon": "Avatar",
+              "groupBy": 1
             },
             {
               "renderer": "input",
@@ -231,7 +232,8 @@
             {
               "renderer": "divider",
               "text": "联系方式",
-              "groupBy": 1
+              "icon": "Position",
+              "groupBy": 2
             },
             {
               "renderer": "cascader",
@@ -281,12 +283,9 @@
             },
             {
               "renderer": "divider",
-              "text": "职业信息",
-              "groupBy": 2,
-              "step": {
-                "title": "第二步",
-                "icon": "Picture"
-              }
+              "text": "职业",
+              "icon": "Picture",
+              "groupBy": 3
             },
             {
               "renderer": "datepicker",
@@ -520,12 +519,9 @@
             },
             {
               "renderer": "divider",
-              "text": "星座、格言",
-              "groupBy": 3,
-              "step": {
-                "title": "第三步",
-                "icon": "Upload"
-              }
+              "text": "星座",
+              "icon": "Upload",
+              "groupBy": 4
             },
             {
               "renderer": "calendar",
@@ -609,6 +605,7 @@
           ],
           "labelWidth": "120px",
           "idem": true,
+          "stepDirection": "horizontal",
           "classname": "actions-fixed--bottom"
         }
       ]
