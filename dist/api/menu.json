@@ -79,7 +79,7 @@
           {
             "renderer": "menuitem",
             "name": "steps",
-            "title": "引导",
+            "title": "分步表单",
             "icon": "",
             "pageId": "fc3a856e-46ff-4012-a1e7-70677a98d29c",
             "groupBy": "form",

@@ -382,7 +382,7 @@
               "triggered": "submit"
             }
           ],
-          "classname": "actions-fixed",
+          "classname": "actions-fixed--top",
           "initData": {
             "isMail": "1234@12.com"
           }

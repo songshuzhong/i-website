@@ -481,7 +481,7 @@
               "triggered": "submit"
             }
           ],
-          "classname": "actions-fixed"
+          "classname": "actions-fixed--bottom"
         }
       ],
       "innerStyle": ".viewer__collapse {\n  width: 40px !important;\n  padding-left: 20px;\n  white-space: nowrap;\n  .i-carousel__container,\n  .i-html__container {\n    display: none;\n  }\n}\n.el-table__header,\n.el-table__body {\n  width: unset !important;\n}"
