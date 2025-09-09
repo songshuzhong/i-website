@@ -570,35 +570,17 @@
             },
             {
               "renderer": "action",
-              "actionType": "submit",
-              "text": "提交",
-              "initApi": {
-                "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/calendar",
-                "method": "get",
-                "params": {}
-              },
-              "silentMessage": true,
-              "silentLoading": false,
-              "cached": false,
-              "syncLocation": false,
-              "plain": true,
-              "body": {},
-              "type": "primary",
-              "data": {}
+              "triggered": "submit",
+              "actionType": "extends",
+              "text": "提交"
             },
             {
               "renderer": "action",
               "text": "重置",
               "type": "warning",
               "plain": true,
-              "actionType": "reset",
-              "actionApi": {
-                "url": "",
-                "method": "post",
-                "params": {}
-              },
-              "params": {},
-              "body": {},
+              "actionType": "extends",
+              "triggered": "reset",
               "popupType": "confirm",
               "confirmTitle": "确定要重置吗？"
             }
