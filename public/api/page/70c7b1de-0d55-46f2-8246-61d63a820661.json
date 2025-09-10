@@ -486,7 +486,6 @@
                       "renderer": "colorpicker",
                       "name": "color",
                       "labelWidth": 0,
-                      "editableOn": "$.editable",
                       "teleported": true,
                       "showAlpha": false
                     }
@@ -500,8 +499,7 @@
                       "placeholder": "createdAt",
                       "labelWidth": 0,
                       "requiredOn": true,
-                      "flexible": false,
-                      "editableOn": "$.editable"
+                      "flexible": false
                     },
                     "flexGrow": 0,
                     "maxWidth": 150,
@@ -526,8 +524,7 @@
                           "value": "1",
                           "disabledOn": ""
                         }
-                      ],
-                      "editableOn": "$.editable"
+                      ]
                     },
                     "width": 150
                   },
@@ -543,8 +540,7 @@
                       "color": [],
                       "texts": [],
                       "showText": false,
-                      "showScore": true,
-                      "editableOn": "$.editable"
+                      "showScore": true
                     },
                     "header": [
                       {
@@ -655,8 +651,7 @@
                     "body": {
                       "renderer": "number",
                       "name": "rate",
-                      "labelWidth": 0,
-                      "editableOn": "$.editable"
+                      "labelWidth": 0
                     }
                   },
                   {
@@ -667,8 +662,7 @@
                       "renderer": "datepicker",
                       "name": "date",
                       "labelWidth": 0,
-                      "format": "YYYY-MM-DD",
-                      "editableOn": "$.editable"
+                      "format": "YYYY-MM-DD"
                     }
                   },
                   {
@@ -679,8 +673,7 @@
                       {
                         "renderer": "switch",
                         "name": "connect",
-                        "labelWidth": 0,
-                        "editableOn": "$.editable"
+                        "labelWidth": 0
                       },
                       {
                         "renderer": "computed",
@@ -688,7 +681,6 @@
                         "labelWidth": 0,
                         "useWorker": false,
                         "immediate": false,
-                        "labelWidth": 0,
                         "exp": "$.relation",
                         "deps": [
                           "relation"
@@ -700,7 +692,6 @@
                         "labelWidth": 0,
                         "useWorker": false,
                         "immediate": false,
-                        "labelWidth": 0,
                         "exp": "$.relationValue",
                         "deps": [
                           "relationValue"
@@ -711,17 +702,10 @@
                         "name": "$index",
                         "labelWidth": 0,
                         "useWorker": false,
-                        "labelWidth": 0,
                         "exp": "$.index",
                         "deps": [
                           "index"
                         ]
-                      },
-                      {
-                        "renderer": "switch",
-                        "name": "editable",
-                        "labelWidth": 0,
-                        "hiddenOn": true
                       }
                     ]
                   },
@@ -734,8 +718,7 @@
                       "type": "textarea",
                       "labelWidth": 0,
                       "flexible": false,
-                      "rows": 1,
-                      "editableOn": "$.editable"
+                      "rows": 1
                     },
                     "width": 140
                   },
