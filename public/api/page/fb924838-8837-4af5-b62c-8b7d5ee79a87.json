@@ -18,7 +18,496 @@
     ],
     "visible": null,
     "pageDesc": null,
-    "pageSchema": "{\n  \"renderer\": \"page\",\n  \"body\": [\n    {\n      \"renderer\": \"service\",\n      \"initApi\": {\n        \"url\": \"/api/mock/pv\",\n        \"method\": \"get\",\n        \"params\": {}\n      },\n      \"interval\": 10000,\n      \"body\": [\n        {\n          \"renderer\": \"grid\",\n          \"span\": 6,\n          \"gutter\": 4,\n          \"body\": [\n            {\n              \"renderer\": \"card\",\n              \"body\": [\n                {\n                  \"renderer\": \"avatar\",\n                  \"title\": \"访问量\",\n                  \"subTitle\": \"<%=data.pv%>\",\n                  \"description\": \"每10秒钟更新一次\",\n                  \"icon\": \"User\",\n                  \"size\": 70,\n                  \"shape\": \"circle\",\n                  \"borderRadius\": 10,\n                  \"invert\": true,\n                  \"color\": \"#02FCF4\",\n                  \"bgColor\": \"#ffffff\"\n                }\n              ]\n            },\n            {\n              \"renderer\": \"card\",\n              \"body\": [\n                {\n                  \"renderer\": \"avatar\",\n                  \"title\": \"用户反馈\",\n                  \"subTitle\": \"<%=data.feedback%>\",\n                  \"description\": \"每10秒钟更新一次\",\n                  \"icon\": \"Message\",\n                  \"size\": 70,\n                  \"shape\": \"circle\",\n                  \"borderRadius\": 10,\n                  \"invert\": true,\n                  \"color\": \"#0455F7\",\n                  \"bgColor\": \"#ffffff\"\n                }\n              ]\n            },\n            {\n              \"renderer\": \"card\",\n              \"body\": [\n                {\n                  \"renderer\": \"avatar\",\n                  \"title\": \"赞助数\",\n                  \"subTitle\": \"<%=data.support%>\",\n                  \"description\": \"每10秒钟更新一次\",\n                  \"icon\": \"Money\",\n                  \"size\": 70,\n                  \"shape\": \"circle\",\n                  \"borderRadius\": 10,\n                  \"invert\": true,\n                  \"color\": \"#F76104\",\n                  \"bgColor\": \"#ffffff\"\n                }\n              ]\n            },\n            {\n              \"renderer\": \"card\",\n              \"body\": [\n                {\n                  \"renderer\": \"avatar\",\n                  \"title\": \"授权数\",\n                  \"subTitle\": \"<%=data.fork%>\",\n                  \"description\": \"授权数量\",\n                  \"icon\": \"ShoppingCartFull\",\n                  \"size\": 70,\n                  \"shape\": \"circle\",\n                  \"borderRadius\": 10,\n                  \"invert\": true,\n                  \"color\": \"#85F10A\",\n                  \"bgColor\": \"#ffffff\"\n                }\n              ]\n            }\n          ]\n        }\n      ],\n      \"timeout\": 0,\n      \"silentLoading\": true,\n      \"classname\": \"move_1\"\n    },\n    {\n      \"renderer\": \"grid\",\n      \"span\": 12,\n      \"gutter\": 4,\n      \"body\": [\n        {\n          \"renderer\": \"card\",\n          \"body\": {\n            \"renderer\": \"service\",\n            \"initApi\": {\n              \"url\": \"/api/mock/chart/love\",\n              \"method\": \"get\",\n              \"params\": {}\n            },\n            \"body\": {\n              \"renderer\": \"chart\",\n              \"config\": {\n                \"title\": {\n                  \"text\": \"${sayHi}\"\n                },\n                \"tooltip\": {\n                  \"trigger\": \"axis\",\n                  \"axisPointer\": {\n                    \"type\": \"cross\"\n                  }\n                },\n                \"polar\": {},\n                \"angleAxis\": {\n                  \"type\": \"value\",\n                  \"startAngle\": 0\n                },\n                \"radiusAxis\": {},\n                \"series\": [\n                  {\n                    \"coordinateSystem\": \"polar\",\n                    \"name\": \"line\",\n                    \"type\": \"line\",\n                    \"data\": \"${list}\"\n                  }\n                ]\n              },\n              \"height\": 302\n            }\n          },\n          \"classname\": \"move_4\"\n        },\n        {\n          \"renderer\": \"card\",\n          \"body\": [\n            {\n              \"renderer\": \"service\",\n              \"name\": \"\",\n              \"stopAutoRefreshWhen\": \"\",\n              \"timeout\": 0,\n              \"reload\": \"\",\n              \"classname\": \"\",\n              \"initApi\": {\n                \"url\": \"/api/mock/dependencies\",\n                \"method\": \"get\",\n                \"params\": {}\n              },\n              \"footer\": [],\n              \"body\": [\n                {\n                  \"renderer\": \"static\",\n                  \"columns\": [\n                    {\n                      \"label\": \"vue\",\n                      \"name\": \"vue\",\n                      \"fixed\": false,\n                      \"sortable\": false,\n                      \"type\": \"\",\n                      \"align\": \"left\",\n                      \"body\": []\n                    },\n                    {\n                      \"label\": \"vue-router\",\n                      \"name\": \"vue-router\",\n                      \"fixed\": false,\n                      \"sortable\": false,\n                      \"type\": \"\",\n                      \"align\": \"left\",\n                      \"body\": []\n                    },\n                    {\n                      \"label\": \"axios\",\n                      \"name\": \"axios\",\n                      \"fixed\": false,\n                      \"sortable\": false,\n                      \"type\": \"\",\n                      \"align\": \"left\",\n                      \"body\": []\n                    },\n                    {\n                      \"label\": \"element-plus\",\n                      \"name\": \"element-plus\",\n                      \"fixed\": \"\",\n                      \"sortable\": \"\",\n                      \"type\": \"\",\n                      \"align\": \"left\",\n                      \"body\": []\n                    },\n                    {\n                      \"label\": \"@element-plus/icons-vue\",\n                      \"name\": \"@element-plus/icons-vue\",\n                      \"fixed\": \"\",\n                      \"sortable\": \"\",\n                      \"type\": \"\",\n                      \"align\": \"left\",\n                      \"body\": []\n                    },\n                    {\n                      \"label\": \"monaco-editor\",\n                      \"name\": \"monaco-editor\",\n                      \"fixed\": false,\n                      \"sortable\": false,\n                      \"type\": \"\",\n                      \"align\": \"left\",\n                      \"body\": []\n                    },\n                    {\n                      \"label\": \"echarts\",\n                      \"name\": \"echarts\",\n                      \"fixed\": false,\n                      \"sortable\": false,\n                      \"type\": \"\",\n                      \"align\": \"left\",\n                      \"body\": []\n                    },\n                    {\n                      \"label\": \"video.js\",\n                      \"name\": \"video.js\",\n                      \"fixed\": false,\n                      \"sortable\": false,\n                      \"type\": \"\",\n                      \"align\": \"left\",\n                      \"body\": []\n                    }\n                  ],\n                  \"border\": true,\n                  \"size\": \"default\",\n                  \"column\": 2,\n                  \"direction\": \"horizontal\"\n                }\n              ]\n            }\n          ],\n          \"header\": [\n            {\n              \"renderer\": \"icon\",\n              \"icon\": \"Connection\",\n              \"color\": \"#606266\",\n              \"bgColor\": \"#ffffff\",\n              \"borderRadius\": 0,\n              \"invert\": false,\n              \"size\": 14,\n              \"classname\": \"\"\n            },\n            {\n              \"renderer\": \"html\",\n              \"html\": \"&nbsp;第三方依赖库说明\",\n              \"inline\": true\n            }\n          ],\n          \"actions\": [\n            {\n              \"renderer\": \"\"\n            }\n          ],\n          \"footer\": [\n            {\n              \"renderer\": \"html\",\n              \"html\": \"IRenderer基础渲染库共计：72.19kb，编辑器共计：26.48kb\",\n              \"inline\": true\n            }\n          ],\n          \"classname\": \"move_2\"\n        }\n      ],\n      \"bodyStyle\": {\n        \"margin\": \"20px 0\"\n      },\n      \"style\": {\n        \"margin\": \"20px 0\"\n      }\n    },\n    {\n      \"renderer\": \"grid\",\n      \"span\": 24,\n      \"gutter\": 4,\n      \"body\": [\n        {\n          \"renderer\": \"service\",\n          \"name\": \"ChartService\",\n          \"initApi\": {\n            \"url\": \"/api/mock/chart/map\",\n            \"method\": \"get\",\n            \"params\": {\n              \"start_time\": \"${start_time}\"\n            }\n          },\n          \"body\": {\n            \"renderer\": \"chart\",\n            \"mapArea\": \"china\",\n            \"config\": {\n              \"tooltip\": {\n                \"trigger\": \"item\"\n              },\n              \"visualMap\": {\n                \"min\": 800,\n                \"max\": 5000,\n                \"text\": [\n                  \"high\",\n                  \"low\"\n                ],\n                \"realtime\": false,\n                \"calculable\": true,\n                \"inRange\": {\n                  \"color\": [\n                    \"#e6f7ff\",\n                    \"#1890FF\",\n                    \"#0050b3\"\n                  ]\n                }\n              },\n              \"series\": [\n                {\n                  \"type\": \"map\",\n                  \"map\": \"china\",\n                  \"name\": \"人均收入\",\n                  \"data\": \"${list}\"\n                }\n              ]\n            },\n            \"height\": 500,\n            \"initData\": {\n              \"start_time\": \"\"\n            }\n          },\n          \"classname\": \"move_3\"\n        }\n      ]\n    }\n  ],\n  \"steps\": [\n    {\n      \"element\": \"IWebsiteEdit\",\n      \"popover\": {\n        \"title\": \"编辑\",\n        \"description\": \"点击查看或编辑页面\"\n      }\n    },\n    {\n      \"element\": \"IWebsiteRefresh\",\n      \"popover\": {\n        \"title\": \"刷新\",\n        \"description\": \"点击刷新页面\"\n      }\n    },\n    {\n      \"element\": \"IWebsiteFullScreen\",\n      \"popover\": {\n        \"title\": \"全屏\",\n        \"description\": \"点击全屏显示\"\n      }\n    },\n    {\n      \"element\": \"IWebsiteHome\",\n      \"popover\": {\n        \"title\": \"官网\",\n        \"description\": \"点击跳转官网\"\n      }\n    },\n    {\n      \"element\": \"IWebsiteExpand\",\n      \"popover\": {\n        \"title\": \"折叠\",\n        \"description\": \"点击折叠展开菜单\"\n      }\n    }\n  ]\n}",
+    "pageSchema": {
+      "renderer": "page",
+      "initData": {
+        "startValue": "0",
+        "endValue": "3",
+        "direction": true,
+        "type": "dataZoom",
+        "dataZoomIndex": 0
+      },
+      "body": [
+        {
+          "renderer": "service",
+          "initApi": {
+            "url": "/api/mock/pv",
+            "method": "get",
+            "params": {}
+          },
+          "interval": 10000,
+          "body": [
+            {
+              "renderer": "grid",
+              "span": 6,
+              "gutter": 4,
+              "body": [
+                {
+                  "renderer": "card",
+                  "body": [
+                    {
+                      "renderer": "avatar",
+                      "title": "访问量",
+                      "subTitle": "<%=data.pv%>",
+                      "description": "每10秒钟更新一次",
+                      "icon": "User",
+                      "size": 70,
+                      "shape": "circle",
+                      "borderRadius": 10,
+                      "invert": true,
+                      "color": "#02FCF4",
+                      "bgColor": "#ffffff"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "card",
+                  "body": [
+                    {
+                      "renderer": "avatar",
+                      "title": "用户反馈",
+                      "subTitle": "<%=data.feedback%>",
+                      "description": "每10秒钟更新一次",
+                      "icon": "Message",
+                      "size": 70,
+                      "shape": "circle",
+                      "borderRadius": 10,
+                      "invert": true,
+                      "color": "#0455F7",
+                      "bgColor": "#ffffff"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "card",
+                  "body": [
+                    {
+                      "renderer": "avatar",
+                      "title": "赞助数",
+                      "subTitle": "<%=data.support%>",
+                      "description": "每10秒钟更新一次",
+                      "icon": "Money",
+                      "size": 70,
+                      "shape": "circle",
+                      "borderRadius": 10,
+                      "invert": true,
+                      "color": "#F76104",
+                      "bgColor": "#ffffff"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "card",
+                  "body": [
+                    {
+                      "renderer": "avatar",
+                      "title": "授权数",
+                      "subTitle": "<%=data.fork%>",
+                      "description": "授权数量",
+                      "icon": "ShoppingCartFull",
+                      "size": 70,
+                      "shape": "circle",
+                      "borderRadius": 10,
+                      "invert": true,
+                      "color": "#85F10A",
+                      "bgColor": "#ffffff"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "timeout": 0,
+          "silentLoading": true,
+          "classname": "move_1"
+        },
+        {
+          "renderer": "grid",
+          "span": 12,
+          "gutter": 4,
+          "body": [
+            {
+              "renderer": "card",
+              "body": {
+                "renderer": "service",
+                "initApi": {
+                  "url": "/api/mock/chart/love",
+                  "method": "get",
+                  "params": {}
+                },
+                "body": {
+                  "renderer": "chart",
+                  "config": {
+                    "title": {
+                      "text": "${sayHi}"
+                    },
+                    "tooltip": {
+                      "trigger": "axis",
+                      "axisPointer": {
+                        "type": "cross"
+                      }
+                    },
+                    "polar": {},
+                    "angleAxis": {
+                      "type": "value",
+                      "startAngle": 0
+                    },
+                    "radiusAxis": {},
+                    "series": [
+                      {
+                        "coordinateSystem": "polar",
+                        "name": "line",
+                        "type": "line",
+                        "data": "${list}"
+                      }
+                    ]
+                  },
+                  "height": 302
+                }
+              },
+              "classname": "move_4"
+            },
+            {
+              "renderer": "card",
+              "body": [
+                {
+                  "renderer": "service",
+                  "name": "",
+                  "stopAutoRefreshWhen": "",
+                  "timeout": 0,
+                  "reload": "",
+                  "classname": "",
+                  "initApi": {
+                    "url": "/api/mock/dependencies",
+                    "method": "get",
+                    "params": {}
+                  },
+                  "footer": [],
+                  "body": [
+                    {
+                      "renderer": "static",
+                      "columns": [
+                        {
+                          "label": "vue",
+                          "name": "vue",
+                          "fixed": false,
+                          "sortable": false,
+                          "type": "",
+                          "align": "left",
+                          "body": []
+                        },
+                        {
+                          "label": "vue-router",
+                          "name": "vue-router",
+                          "fixed": false,
+                          "sortable": false,
+                          "type": "",
+                          "align": "left",
+                          "body": []
+                        },
+                        {
+                          "label": "axios",
+                          "name": "axios",
+                          "fixed": false,
+                          "sortable": false,
+                          "type": "",
+                          "align": "left",
+                          "body": []
+                        },
+                        {
+                          "label": "element-plus",
+                          "name": "element-plus",
+                          "fixed": "",
+                          "sortable": "",
+                          "type": "",
+                          "align": "left",
+                          "body": []
+                        },
+                        {
+                          "label": "@element-plus/icons-vue",
+                          "name": "@element-plus/icons-vue",
+                          "fixed": "",
+                          "sortable": "",
+                          "type": "",
+                          "align": "left",
+                          "body": []
+                        },
+                        {
+                          "label": "monaco-editor",
+                          "name": "monaco-editor",
+                          "fixed": false,
+                          "sortable": false,
+                          "type": "",
+                          "align": "left",
+                          "body": []
+                        },
+                        {
+                          "label": "echarts",
+                          "name": "echarts",
+                          "fixed": false,
+                          "sortable": false,
+                          "type": "",
+                          "align": "left",
+                          "body": []
+                        },
+                        {
+                          "label": "video.js",
+                          "name": "video.js",
+                          "fixed": false,
+                          "sortable": false,
+                          "type": "",
+                          "align": "left",
+                          "body": []
+                        }
+                      ],
+                      "border": true,
+                      "size": "default",
+                      "column": 2,
+                      "direction": "horizontal"
+                    }
+                  ]
+                }
+              ],
+              "header": [
+                {
+                  "renderer": "icon",
+                  "icon": "Connection",
+                  "color": "#606266",
+                  "bgColor": "#ffffff",
+                  "borderRadius": 0,
+                  "invert": false,
+                  "size": 14,
+                  "classname": ""
+                },
+                {
+                  "renderer": "html",
+                  "html": "&nbsp;第三方依赖库说明",
+                  "inline": true
+                }
+              ],
+              "actions": [
+                {
+                  "renderer": ""
+                }
+              ],
+              "footer": [
+                {
+                  "renderer": "html",
+                  "html": "IRenderer基础渲染库共计：72.19kb，编辑器共计：26.48kb",
+                  "inline": true
+                }
+              ],
+              "classname": "move_2"
+            }
+          ],
+          "bodyStyle": {
+            "margin": "20px 0"
+          },
+          "style": {
+            "margin": "20px 0"
+          }
+        },
+        {
+          "renderer": "chart",
+          "name": "WalkerChart",
+          "initData": {
+            "xData": [
+              "2024-05",
+              "2024-06",
+              "2024-07",
+              "2024-08",
+              "2024-09",
+              "2024-10",
+              "2024-11"
+            ],
+            "planData": [
+              1000,
+              1200,
+              1300,
+              1400,
+              1500,
+              1600,
+              1700
+            ],
+            "actualData": [
+              1100,
+              1200,
+              1300,
+              1400,
+              1500,
+              1600,
+              1700
+            ],
+            "progressData": [
+              55,
+              76,
+              67,
+              98,
+              49,
+              100,
+              81
+            ]
+          },
+          "config": {
+            "tooltip": {
+              "trigger": "axis",
+              "axisPointer": {
+                "type": "cross"
+              }
+            },
+            "legend": {
+              "data": [
+                "应完成",
+                "实完成",
+                "准时交付率"
+              ],
+              "left": "right",
+              "itemWidth": 10,
+              "itemHeight": 10
+            },
+            "xAxis": {
+              "type": "category",
+              "data": "${xData}"
+            },
+            "dataZoom": [
+              {
+                "type": "slider",
+                "show": false,
+                "filterMode": "empty",
+                "width": "80%",
+                "height": 20,
+                "showDataShadow": false,
+                "left": "10%",
+                "startValue": 0,
+                "endValue": 3,
+                "zoomLock": true,
+                "xAxisIndex": 0
+              }
+            ],
+            "yAxis": [
+              {
+                "type": "value",
+                "name": "数量",
+                "min": 0,
+                "axisLabel": {
+                  "formatter": "{value}"
+                },
+                "splitLine": {
+                  "show": false
+                }
+              },
+              {
+                "type": "value",
+                "name": "交付率",
+                "min": 0,
+                "max": 100,
+                "axisLabel": {
+                  "formatter": "{value}%"
+                },
+                "position": "right",
+                "splitLine": {
+                  "show": false
+                }
+              }
+            ],
+            "series": [
+              {
+                "name": "应完成",
+                "type": "bar",
+                "data": "${planData}",
+                "yAxisIndex": 0,
+                "showBackground": true,
+                "barMaxWidth": 30
+              },
+              {
+                "name": "实完成",
+                "type": "bar",
+                "data": "${actualData}",
+                "yAxisIndex": 0,
+                "showBackground": true,
+                "barMaxWidth": 30
+              },
+              {
+                "name": "准时交付率",
+                "type": "line",
+                "data": "${progressData}",
+                "yAxisIndex": 1,
+                "symbol": "circle",
+                "symbolSize": 6,
+                "showBackground": true
+              }
+            ]
+          }
+        },
+        {
+          "renderer": "grid",
+          "span": 24,
+          "gutter": 4,
+          "body": [
+            {
+              "renderer": "service",
+              "name": "ChartService",
+              "initApi": {
+                "url": "/api/mock/chart/map",
+                "method": "get",
+                "params": {
+                  "start_time": "${start_time}"
+                }
+              },
+              "body": {
+                "renderer": "chart",
+                "mapArea": "china",
+                "config": {
+                  "tooltip": {
+                    "trigger": "item"
+                  },
+                  "visualMap": {
+                    "min": 800,
+                    "max": 5000,
+                    "text": [
+                      "high",
+                      "low"
+                    ],
+                    "realtime": false,
+                    "calculable": true,
+                    "inRange": {
+                      "color": [
+                        "#e6f7ff",
+                        "#1890FF",
+                        "#0050b3"
+                      ]
+                    }
+                  },
+                  "series": [
+                    {
+                      "type": "map",
+                      "map": "china",
+                      "name": "人均收入",
+                      "data": "${list}"
+                    }
+                  ]
+                },
+                "height": 500,
+                "initData": {
+                  "start_time": ""
+                }
+              },
+              "classname": "move_3"
+            }
+          ]
+        },
+        {
+          "renderer": "service",
+          "promiseType": "sw",
+          "deps": [
+            "now"
+          ],
+          "interval": 5000,
+          "target": "WalkerChart.dispatchAction"
+        }
+      ],
+      "worker": "e => {\r\n  let { startValue, endValue, direction } = e.data;\r\n  start = Number(startValue);\r\n  end = Number(endValue);\r\n  if (direction) {\r\n    if (end < 6) {\r\n      start += 1\r\n      end += 1\r\n    } else {\r\n      direction = false\r\n    }\r\n  } else {\r\n    if (end > 4) {\r\n      start -= 1\r\n      end -= 1\r\n    } else {\r\n      direction = true\r\n    }\r\n  }\r\n\r\n  return Promise.resolve({\r\n    now: Date.now(),\r\n    endValue: end,\r\n    startValue: start,\r\n    direction,\r\n  });\r\n}"
+    },
     "version": 0,
     "status": 1,
     "createdAt": "2023-11-25T15:23:46.000Z",
