@@ -17,7 +17,33 @@
     "pageDesc": null,
     "pageSchema": {
       "renderer": "page",
+      "refs": {
+        "AlertRef": {
+          "renderer": "alert"
+        },
+        "IconDialog": {
+          "renderer": "dialog",
+          "body": {
+            "renderer": "data"
+          }
+        }
+      },
       "body": [
+        {
+          "renderer": "icon",
+          "size": 140,
+          "icon": "House",
+          "events": {
+            "click": {
+              "actions": [
+                {
+                  "actionType": "dialog",
+                  "triggered": "IconDialog"
+                }
+              ]
+            }
+          }
+        },
         {
           "renderer": "icon",
           "events": {

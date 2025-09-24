@@ -20,13 +20,6 @@
     "pageDesc": null,
     "pageSchema": {
       "renderer": "page",
-      "initData": {
-        "startValue": "0",
-        "endValue": "3",
-        "direction": true,
-        "type": "dataZoom",
-        "dataZoomIndex": 0
-      },
       "body": [
         {
           "renderer": "service",
@@ -498,6 +491,13 @@
         },
         {
           "renderer": "service",
+          "initData": {
+            "startValue": "0",
+            "endValue": "3",
+            "direction": true,
+            "type": "dataZoom",
+            "dataZoomIndex": 0
+          },
           "promiseType": "sw",
           "deps": [
             "now"
