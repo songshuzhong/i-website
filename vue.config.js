@@ -134,6 +134,46 @@ module.exports = {
           res.end();
         });
       });
+      devServer.app.use('/v1/ajax/tree', (req, res) => {
+        const code = req.query.code;
+        if (code) {
+          res.json({
+            message: true,
+            code: 200,
+            data: [
+              {
+                code: code + '1001',
+                label: '研发' + code + '1001' + '部',
+                isLeaf: true,
+              },
+              {
+                code: code + '1002',
+                label: '研发' + code + '1002' + '部',
+                isLeaf: true,
+              },
+            ],
+          });
+        } else {
+          res.json({
+            message: true,
+            code: 200,
+            data: [
+              {
+                code: '1001',
+                label: '集团1号',
+                isLeaf: false,
+                children: []
+              },
+              {
+                code: '1002',
+                label: '集团2号',
+                isLeaf: false,
+                children: []
+              },
+            ],
+          });
+        }
+      });
       return middlewares;
     },
     client: {

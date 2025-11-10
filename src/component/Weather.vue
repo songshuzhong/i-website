@@ -1,213 +1,79 @@
 <template>
-  <el-card shadow="hover">
-    <h1>天气</h1>
-    <el-input v-model="state.input" placeholder="输入位置并按下回车以查询该地天气" @keyup.enter="keyUp"></el-input>
-    <p class="ipAddress">
-      <i class="el-icon-location-outline"></i>
-      {{ state.ipAddress }}
-      <el-link type="primary" @click="useIp">使用该地区</el-link>
-    </p>
-    <el-divider></el-divider>
-      <div class="showBlock">
-        <p class="address">{{ state.address }}</p>
-        <p class="temperature">{{ state.temperature }}℃
-          <span class="weather">{{ state.weather }}
-            <span>
-              <i class="mainWeather" :class="getIcon"></i>
-            </span>
-          </span>
-        </p>
-        <div class="other">
-          <p class="wind"><i class="el-icon-wind-power"></i>
-            风向:<span>{{ state.winddirection }}</span>&nbsp;&nbsp;&nbsp;<span>风力:{{ state.windpower }}级</span>
-          </p>
-          <p class="humidity"><i class="el-icon-odometer"></i> 湿度:{{ state.humidity }}</p>
-          <p id="reporttime">消息发布时间:{{ state.reporttime }}</p>
-        </div>
-    </div>
-    <iframe src='https://view.officeapps.live.com/op/view.aspx?src=https://songshuzhong.github.io/i-assets/public/thor.docx' width='100%' height='500px' frameborder='0'></iframe>
-  </el-card>
+  <div class="container" :class="{'collapsed': collapsed}">
+    <div class="left-panel" @click="onClick">左侧内容</div>
+    <div class="right-panel">右侧内容（动态跟随左侧宽度）</div>
+  </div>
 </template>
+
 <script>
-import { defineComponent, getCurrentInstance, watch, reactive, onMounted } from 'vue';
+import {defineComponent, ref} from 'vue';
+
 export default defineComponent({
   name: 'Weather',
   setup() {
-    const { proxy } = getCurrentInstance();
-    const state = reactive({
-      input: '北京',
-      city: '',
-      adcode: '',
-      address: '',
-      ipAddress: '',
-      ipAdCode: '',
-      weather: '',
-      temperature: '',
-      winddirection: '',
-      windpower: '',
-      humidity: '',
-      reporttime: '',
-      icon: true
-    });
-    const objectToQueryString = (obj) => {  
-      return Object.keys(obj)  
-        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)  
-        .join('&');  
+    const collapsed = ref(false);
+    const onClick = () => {
+      collapsed.value = !collapsed.value;
     };
-    const getAdcode = () => {
-      fetch(`https://restapi.amap.com/v3/weather/weatherInfo?${objectToQueryString(
-        {
-          key: 'da2884df6b6df873f701a4d99d7763e4',
-          city: state.adcode,
-          extensions: 'base'
-        }
-      )}`).then(res => res.json()).then(response => {
-        let lives = response.lives[0];
-        state.weather = lives.weather;
-        state.temperature = lives.temperature;
-        state.winddirection = lives.winddirection;
-        state.windpower = lives.windpower;
-        state.humidity = lives.humidity;
-        state.reporttime = lives.reporttime;
-        state.address = lives.city;
-        localStorage.setItem('adcode', state.adcode);    //将存储目前查询的天气
-      }).catch(e => {
-        proxy.$notify.info({title: '未知错误', message: e.message});
-      });
-    };
-    const useIp = () => {
-      state.adcode = state.ipAdCode;
-    };
-    const keyUp = () => {
-      state.city = state.input;
-      state.input = '';
-      getCityCode();
-    };
-    const getIcon = () => {
-      state.icon = false;
-      if (state.weather === '晴') {
-        return 'el-icon-sunny';
-      } else if (state.weather === '多云') {
-        return 'el-icon-cloudy-and-sunny';
-      } else if (state.weather === '阴') {
-        return 'el-icon-partly-cloudy';
-      } else if (state.weather.indexOf('雨')) {
-        return 'el-icon-heavy-rain';
-      } else if (state.weather.indexOf('雪')) {
-        return 'el-icon-light-rain';
-      }
-      state.icon = true;
-      return '';
-    };
-    const getIp = () => { //挂载时执行，获取ip地址
-      fetch(`https://restapi.amap.com/v3/ip?${objectToQueryString(
-        {
-          key: 'da2884df6b6df873f701a4d99d7763e4',
-          city: state.adcode,
-          extensions: 'base'
-        }
-      )}`).then(res => res.json()).then(
-        response => {
-          state.ipAddress = `${response.data.province}${response.data.city}`;
-          state.ipAdCode = response.data.adcode;
-          if (!(localStorage.getItem('adcode'))) {
-            state.adcode = response.data.adcode;
-          }
-        }
-      );
-    };
-    const getCityCode = () => {        //查询城市的adcode
-      fetch(`https://restapi.amap.com/v3/geocode/geo?${objectToQueryString(
-        {
-          key: 'da2884df6b6df873f701a4d99d7763e4',
-          city: state.city,
-          address: state.city,
-        }
-      )}`).then(res => res.json()).then(
-        response => {
-          if (response.status === '1') {
-            state.adcode = response.geocodes[0].adcode;
-          } else if (response.status === '0') {
-            proxy.$notify.error({
-              title: '查询错误',
-              message: '请重新核对查询地址'
-            });
-          }
-        }
-      );
-    };
-    watch(() => state.adcode, () => {
-      getAdcode();
-    });
-    onMounted(() => {
-      if (localStorage.getItem('adcode')) {            //取出本地存储的地址，若不存在，则使用ip地址
-        state.adcode = localStorage.getItem('adcode');
-      }
-      getIp();
-    });
     return {
-      useIp,
-      keyUp,
-      getIcon,
-      state
+      collapsed,
+      onClick
     };
   }
 });
 </script>
+
 <style>
-.ipAddress {
-    margin-top: 10px;
+/* 容器：相对定位，避免使用 Flex */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* 防止右侧内容溢出 */
 }
 
-.el-card {
-    background-color: rgba(255, 215, 55, 0.8);
-    height: 409px;
-    color: #000;
+/* 左侧面板：可折叠，启用 GPU 加速 */
+.left-panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200px; /* 默认宽度 */
+  height: 100%;
+  background: #f0f0f0;
+  transition: width 0.3s ease, transform 0.3s ease; /* 平滑过渡 */
+  will-change: width; /* 提前告知浏览器优化（可选） */
+  transform: translateZ(0); /* 强制启用 GPU 加速 */
 }
 
-h1 {
-    margin: 0px 0px 10px 10px;
+/* 折叠状态：宽度变为 60px */
+.left-panel.collapsed {
+  width: 60px;
 }
 
-.showBlock {
-    margin-top: 10px;
+/* 右侧面板：动态跟随左侧宽度 */
+.right-panel {
+  position: absolute;
+  left: 200px; /* 默认左侧宽度（与 .left-panel 初始值一致） */
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: #e0e0e0;
+  transition: left 0.3s ease, transform 0.3s ease; /* 平滑过渡 */
+  transform: translateZ(0); /* 启用 GPU 加速 */
 }
 
-.temperature {
-    font-size: 50px;
+/* 左侧折叠时，右侧面板左边缘对齐到 60px */
+.left-panel.collapsed + .right-panel { /* 这里用相邻兄弟选择器可能不直接（因为.right-panel不是.left-panel的兄弟的直接后续）, 实际可以通过JS或调整结构*/
+  /* 更好的方式是通过 JS 或父容器控制，如下文 JS 示例 */
+  left: 60px;
+  /* 或者改用以下结构，通过父容器类名控制 */
 }
 
-.weather {
-    margin-left: 20px;
-    font-size: 35px;
+/* 更好的CSS结构控制方式（避免选择器问题）： */
+.container.collapsed .left-panel {
+  width: 60px;
 }
-
-.address {
-    font-size: 20px;
-}
-
-.other {
-    margin-top: 10px;
-}
-
-.other p {
-    margin-top: 10px;
-    font-size: 18px;
-}
-
-#reporttime {
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-.mainWeather {
-    float: right;
-    margin-top: 10px;
-    margin-right: 10%;
-    font-size: 120px;
-}
-
-.showBlock {
-    margin-left: 10px;
+.container.collapsed .right-panel {
+  left: 60px;
 }
 </style>
