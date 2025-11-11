@@ -14,7 +14,7 @@
     "visible": [],
     "pageDesc": null,
     "pageSchema": {
-      "renderer": "layout",
+      "renderer": "container",
       "direction": "vertical",
       "body": [
         {

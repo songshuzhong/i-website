@@ -22,7 +22,7 @@ export default {
   },
   "body": [
     {
-      "renderer": "layout",
+      "renderer": "container",
       "body": [
         {
           "renderer": "aside",

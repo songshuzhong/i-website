@@ -2,7 +2,7 @@ export default {
   renderer: 'page',
   classname: 'i-home__page',
   body: {
-    renderer: 'layout',
+    renderer: 'container',
     direction: 'vertical',
     body: [
       {
