@@ -117,6 +117,7 @@
                     {
                       "renderer": "form",
                       "name": "OrgForm",
+                      "labelPosition": "top",
                       "controls": [
                         {
                           "renderer": "divider",

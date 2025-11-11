@@ -389,8 +389,7 @@
                 {
                   "renderer": "data"
                 }
-              ],
-              "target": ".i-admin__main"
+              ]
             },
             {
               "renderer": "divider",

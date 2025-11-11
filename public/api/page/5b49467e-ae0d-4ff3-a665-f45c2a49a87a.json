@@ -548,8 +548,7 @@
                   ],
                   "initData": {}
                 }
-              ],
-              "target": ".i-admin__main"
+              ]
             },
             {
               "renderer": "divider",
@@ -704,8 +703,7 @@
                     "html": "<div><span class='umis__viewer__label'><%=data.label%></span>:<span class='umis__viewer__value'><%=data.text%></span></div>"
                   }
                 }
-              },
-              "target": ".i-admin__main"
+              }
             },
             {
               "renderer": "divider",

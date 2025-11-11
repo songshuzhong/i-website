@@ -19,6 +19,6 @@ app
       res: `if (${isGPOrDev} && url.includes("/api/mock")) {\n  let exp = res.data.schema;\n  const regex =\n    /^\\s*(?:\\(([^)]*)\\)|([^=\\s]+))\\s*=>\\s*(?:\\{([\\s\\S]*?)\\}|([^\\n]*))\\s*$/;\n  const match = exp.match && exp.match(regex);\n  let functionBody = exp;\n  if (match && match.length > 1) {\n    functionBody = match[3].trim();\n    try {\n      const fun = new Function("_req", "_res", functionBody);\n      res.data = fun({ params, query: params }, res);\n    } catch (error) {\n      res.data = error;\n    }\n  }\n}`
     }
   })
-  .mount('.i-website-app__container');
+  .mount('.i-renderer-app__container');
 
 registrySw(process.env.VUE_APP_SERVICE_WORKER, app);
