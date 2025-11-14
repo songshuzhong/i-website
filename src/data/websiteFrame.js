@@ -94,8 +94,10 @@ export default {
                       renderer: 'each',
                       name: 'tasks',
                       body: {
-                        renderer: 'html',
-                        html: '<div class="border-top padding-10"><%=data.title%></div>'
+                        renderer: 'action',
+                        isText: true,
+                        type: 'info',
+                        text: '<%=data.title%>'
                       }
                     }
                   ]
@@ -103,13 +105,20 @@ export default {
                 {
                   label: '待办',
                   icon: '',
+                  header: {
+                    renderer: 'badge',
+                    value: '9',
+                    body: '待办'
+                  },
                   body: [
                     {
                       renderer: 'each',
                       name: 'notices',
                       body: {
-                        renderer: 'html',
-                        html: '<div class="border-top padding-10"><%=data.title%></div>'
+                        renderer: 'action',
+                        isText: true,
+                        type: 'info',
+                        text: '<%=data.title%>'
                       }
                     }
                   ]
