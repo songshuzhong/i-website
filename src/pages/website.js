@@ -11,7 +11,7 @@ import '../utils/debug';
 
 import 'element-plus/dist/index.css';
 import 'element-plus/theme-chalk/dark/css-vars.css';
-import 'i-renderer/dist/css/index.css';
+import '../../../i-renderer/packages/assets/styles/index.scss';
 import '../style/index.scss';
 
 const app = createApp(Application);
@@ -66,7 +66,7 @@ api()
       })
       .use(IRenderer, config)
       .use(routers)
-      .mount('.i-website-app__container');
+      .mount('.i-renderer-app__container');
     registrySw(process.env.VUE_APP_SERVICE_WORKER, app);
   })
   .catch((e) => {
