@@ -246,7 +246,7 @@ export default {
           },
           {
             renderer: 'dropdown',
-            text: '<%=data.username%>',
+            text: '<%=$.username || "guest"%>',
             popperClass: 'i-website__header__dropdown',
             name: 'IWebsiteDropdown',
             body: [

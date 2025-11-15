@@ -93,6 +93,21 @@
           },
           {
             "renderer": "menuitem",
+            "name": "gridForm",
+            "title": "栅栏表单",
+            "icon": "",
+            "pageId": "96132910-8814-4328-b4e1-f2a51785da0b",
+            "groupBy": "form",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/96132910-8814-4328-b4e1-f2a51785da0b"
+          },
+          {
+            "renderer": "menuitem",
             "name": "inputValid",
             "title": "校验",
             "icon": "",

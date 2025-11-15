@@ -543,7 +543,6 @@
                   "renderer": "data"
                 }
               ],
-              "target": ".i-admin__main",
               "classname": "swing_skew_1"
             },
             {
