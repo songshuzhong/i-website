@@ -429,153 +429,172 @@
               "body": [
                 {
                   "renderer": "action",
-                  "name": "UpdateAction",
-                  "text": "更新",
-                  "type": "success",
-                  "actionType": "dialog",
-                  "plain": true,
                   "size": "small",
-                  "group": true,
-                  "body": {
-                    "direction": "ltr",
-                    "closeOnClickModal": true,
-                    "closeOnPressEscape": true,
-                    "footer": [
-                      {
-                        "renderer": "action",
-                        "text": "更新",
-                        "actionType": "submit",
-                        "actionApi": {
-                          "url": "/api/demo",
-                          "method": "post",
-                          "params": {}
-                        },
-                        "remoteComponent": "UpdateForm"
-                      }
-                    ],
-                    "body": [
-                      {
-                        "renderer": "form",
-                        "name": "UpdateForm",
-                        "actionApi": {
-                          "url": "/api/user?uid=${uid}",
-                          "method": "put",
-                          "params": {
-                            "*": "*"
-                          }
-                        },
-                        "controls": [
+                  "body": [
+                    {
+                      "renderer": "action",
+                      "name": "UpdateAction",
+                      "text": "更新",
+                      "type": "success",
+                      "actionType": "dialog",
+                      "plain": true,
+                      "size": "small",
+                      "group": true,
+                      "body": {
+                        "direction": "ltr",
+                        "closeOnClickModal": true,
+                        "closeOnPressEscape": true,
+                        "footer": [
                           {
-                            "renderer": "input",
-                            "name": "name",
-                            "label": "姓名",
-                            "placeholder": "占位符",
-                            "type": "text",
-                            "validType": "normal"
+                            "renderer": "action",
+                            "text": "更新",
+                            "actionType": "trigger",
+                            "actionApi": {
+                              "url": "/api/demo",
+                              "method": "post",
+                              "params": {}
+                            },
+                            "triggered": "UpdateForm"
                           }
                         ],
-                        "reload": "UserTable"
-                      }
-                    ],
-                    "fullscreen": false,
-                    "center": false,
-                    "autoNext": true,
-                    "draggable": false
-                  },
-                  "actionApi": {
-                    "url": "",
-                    "method": "post",
-                    "params": {}
-                  }
-                },
-                {
-                  "renderer": "action",
-                  "size": "small",
-                  "group": true,
-                  "actionType": "drawer",
-                  "actionApi": {
-                    "url": "",
-                    "method": "post",
-                    "params": {}
-                  },
-                  "body": {
-                    "title": "模态框",
-                    "closeOnClickModal": true,
-                    "footer": [],
-                    "body": [
-                      {
-                        "renderer": "service",
-                        "name": "ChartService",
-                        "initApi": {
-                          "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/chart/map",
-                          "method": "get",
-                          "params": {
-                            "start_time": ""
-                          }
-                        },
-                        "body": {
-                          "renderer": "chart",
-                          "mapArea": "china",
-                          "config": {
-                            "tooltip": {
-                              "trigger": "item"
-                            },
-                            "visualMap": {
-                              "min": 800,
-                              "max": 5000,
-                              "text": [
-                                "high",
-                                "low"
-                              ],
-                              "realtime": false,
-                              "calculable": true,
-                              "inRange": {
-                                "color": [
-                                  "#e6f7ff",
-                                  "#1890FF",
-                                  "#0050b3"
-                                ]
+                        "body": [
+                          {
+                            "renderer": "form",
+                            "name": "UpdateForm",
+                            "actionApi": {
+                              "url": "/api/user?id=${id}",
+                              "method": "put",
+                              "params": {
+                                "*": "*"
                               }
                             },
-                            "series": [
+                            "controls": [
                               {
-                                "type": "map",
-                                "map": "china",
-                                "name": "人均收入",
-                                "data": "${list}"
+                                "renderer": "input",
+                                "name": "owner",
+                                "label": "姓名",
+                                "placeholder": "占位符",
+                                "type": "text",
+                                "validType": "normal"
+                              },
+                              {
+                                "renderer": "input",
+                                "name": "title",
+                                "label": "标题",
+                                "placeholder": "占位符",
+                                "type": "text",
+                                "validType": "normal"
                               }
-                            ]
-                          },
-                          "height": 500,
-                          "initData": {
-                            "start_time": ""
+                            ],
+                            "reload": "UserTable"
                           }
-                        }
+                        ],
+                        "fullscreen": false,
+                        "center": false,
+                        "autoNext": true,
+                        "draggable": false,
+                        "renderer": "dialog"
+                      },
+                      "actionApi": {
+                        "url": "",
+                        "method": "post",
+                        "params": {}
                       }
-                    ]
-                  },
-                  "text": "查看",
-                  "plain": true,
-                  "params": {}
-                },
-                {
-                  "renderer": "action",
-                  "text": "删除",
-                  "group": true,
-                  "type": "warning",
-                  "plain": true,
-                  "size": "small",
-                  "popupType": "confirm",
-                  "confirmTitle": "确定删除吗？",
-                  "actionType": "ajax",
-                  "actionApi": {
-                    "url": "/api/user?uid=",
-                    "method": "delete",
-                    "params": {}
-                  },
-                  "reload": "UserTable",
-                  "params": {},
-                  "body": {}
+                    },
+                    {
+                      "renderer": "action",
+                      "size": "small",
+                      "group": true,
+                      "actionType": "drawer",
+                      "actionApi": {
+                        "url": "",
+                        "method": "post",
+                        "params": {}
+                      },
+                      "body": {
+                        "title": "模态框",
+                        "closeOnClickModal": true,
+                        "footer": [],
+                        "body": [
+                          {
+                            "renderer": "service",
+                            "name": "ChartService",
+                            "initApi": {
+                              "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/chart/map",
+                              "method": "get",
+                              "params": {
+                                "start_time": ""
+                              }
+                            },
+                            "body": {
+                              "renderer": "chart",
+                              "mapArea": "china",
+                              "config": {
+                                "tooltip": {
+                                  "trigger": "item"
+                                },
+                                "visualMap": {
+                                  "min": 800,
+                                  "max": 5000,
+                                  "text": [
+                                    "high",
+                                    "low"
+                                  ],
+                                  "realtime": false,
+                                  "calculable": true,
+                                  "inRange": {
+                                    "color": [
+                                      "#e6f7ff",
+                                      "#1890FF",
+                                      "#0050b3"
+                                    ]
+                                  }
+                                },
+                                "series": [
+                                  {
+                                    "type": "map",
+                                    "map": "china",
+                                    "name": "人均收入",
+                                    "data": "${list}"
+                                  }
+                                ]
+                              },
+                              "height": 500,
+                              "initData": {
+                                "start_time": ""
+                              }
+                            }
+                          }
+                        ],
+                        "renderer": "drawer"
+                      },
+                      "text": "查看",
+                      "plain": true,
+                      "params": {}
+                    },
+                    {
+                      "renderer": "action",
+                      "text": "删除",
+                      "group": true,
+                      "type": "warning",
+                      "plain": true,
+                      "size": "small",
+                      "popupType": "dialog",
+                      "confirmTitle": "确定删除吗？",
+                      "actionType": "ajax",
+                      "actionApi": {
+                        "url": "/api/user?id=${id}",
+                        "method": "delete",
+                        "params": {}
+                      },
+                      "reload": "UserTable",
+                      "params": {},
+                      "body": {},
+                      "messageBoxExp": "$.id",
+                      "popoverTitle": "确定要删除吗？",
+                      "popoverContent": "用户id不能为空"
+                    }
+                  ]
                 }
               ]
             }
@@ -638,8 +657,7 @@
           },
           "reactive": true
         }
-      ],
-      "steps": []
+      ]
     },
     "version": 0,
     "status": 1,
