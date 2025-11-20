@@ -129,7 +129,7 @@
                           "disabledOn": ""
                         }
                       ],
-                      "editableOn": "$.editable"
+                      "editableOn1": "$.editable"
                     }
                   ],
                   "align": "center",
@@ -149,12 +149,12 @@
                       "texts": [],
                       "showText": false,
                       "showScore": true,
-                      "editableOn": "$.editable"
+                      "editableOn1": "$.editable"
                     },
                     {
                       "renderer": "colorpicker",
                       "name": "color",
-                      "editableOn": "$.editable",
+                      "editableOn1": "$.editable",
                       "teleported": true,
                       "showAlpha": false
                     }
@@ -270,7 +270,7 @@
                     {
                       "renderer": "switch",
                       "name": "connect",
-                      "editableOn": "$.editable"
+                      "editableOn1": "$.editable"
                     },
                     {
                       "renderer": "html",
@@ -327,7 +327,7 @@
                       "label": "createdAt",
                       "requiredOn": true,
                       "flexible": false,
-                      "editableOn": "$.editable"
+                      "editableOn1": "$.editable"
                     },
                     {
                       "renderer": "input",
@@ -335,7 +335,7 @@
                       "html": "<%=$.richtxt%>",
                       "type": "textarea",
                       "flexible": false,
-                      "editableOn": "$.editable"
+                      "editableOn1": "$.editable"
                     }
                   ],
                   "width": "240px"
@@ -352,7 +352,7 @@
                       "label": "adult",
                       "name": "adult",
                       "type": "checkbox",
-                      "editableOn": "$.editable"
+                      "editableOn1": "$.editable"
                     },
                     {
                       "text": "<%=$.createdAt%>",
@@ -455,6 +455,7 @@
           "body": {
             "renderer": "form",
             "size": "small",
+            "readOnly": true,
             "actionApi": {
               "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/form/submit",
               "params": {"*": "*"},
@@ -486,7 +487,7 @@
                       "renderer": "colorpicker",
                       "name": "color",
                       "labelWidth": 0,
-                      "editableOn": "$.editable",
+                      "editableOn1": "$.editable",
                       "teleported": true,
                       "showAlpha": false
                     }
@@ -501,7 +502,7 @@
                       "labelWidth": 0,
                       "requiredOn": true,
                       "flexible": false,
-                      "editableOn": "$.editable"
+                      "editableOn1": "$.editable"
                     },
                     "flexGrow": 0,
                     "maxWidth": 150,
@@ -527,7 +528,7 @@
                           "disabledOn": ""
                         }
                       ],
-                      "editableOn": "$.editable"
+                      "editableOn1": "$.editable"
                     },
                     "width": 150
                   },
@@ -544,7 +545,7 @@
                       "texts": [],
                       "showText": false,
                       "showScore": true,
-                      "editableOn": "$.editable"
+                      "editableOn1": "$.editable"
                     },
                     "header": [
                       {
@@ -656,7 +657,7 @@
                       "renderer": "number",
                       "name": "rate",
                       "labelWidth": 0,
-                      "editableOn": "$.editable"
+                      "editableOn1": "$.editable"
                     }
                   },
                   {
@@ -668,7 +669,7 @@
                       "name": "date",
                       "labelWidth": 0,
                       "format": "YYYY-MM-DD",
-                      "editableOn": "$.editable"
+                      "editableOn1": "$.editable"
                     }
                   },
                   {
@@ -680,7 +681,7 @@
                         "renderer": "switch",
                         "name": "connect",
                         "labelWidth": 0,
-                        "editableOn": "$.editable"
+                        "editableOn1": "$.editable"
                       },
                       {
                         "renderer": "computed",
@@ -735,7 +736,7 @@
                       "labelWidth": 0,
                       "flexible": false,
                       "rows": 1,
-                      "editableOn": "$.editable"
+                      "editableOn1": "$.editable"
                     },
                     "width": 140
                   },

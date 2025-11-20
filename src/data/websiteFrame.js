@@ -1,5 +1,5 @@
 export default {
-  name: 'IWebsiteContainer',
+  name: 'AdminRouterView',
   classname: 'i-website__container',
   title: '百搭云平台',
   logo: `${process.env.VUE_APP_PUBLIC_PATH}/shuttle.png`,
@@ -91,14 +91,11 @@ export default {
                   label: '通知',
                   body: [
                     {
-                      renderer: 'mapping',
-                      value: 'todos',
+                      renderer: 'each',
+                      name: 'tasks',
                       body: {
-                        renderer: 'each',
-                        body: {
-                          renderer: 'html',
-                          html: '<div class="border-top padding-10"><%=data.title%></div>'
-                        }
+                        renderer: 'html',
+                        html: '<div class="border-top padding-10"><%=data.title%></div>'
                       }
                     }
                   ]
@@ -108,8 +105,12 @@ export default {
                   icon: '',
                   body: [
                     {
-                      renderer: 'html',
-                      html: '<div class="text-center">空</div>'
+                      renderer: 'each',
+                      name: 'notices',
+                      body: {
+                        renderer: 'html',
+                        html: '<div class="border-top padding-10"><%=data.title%></div>'
+                      }
                     }
                   ]
                 }
@@ -415,9 +416,5 @@ export default {
       }
     ]
   },
-  footer: {
-    renderer: 'footer',
-    classname: 'i-website__footer',
-    body: 'copyright © 2022 sshuzhong@outlook.com'
-  }
+  footer: 'copyright © 2022 sshuzhong@outlook.com'
 };

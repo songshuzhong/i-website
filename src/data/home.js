@@ -5,7 +5,7 @@ export {
   assets
 };
 export default {
-  renderer: 'layout',
+  renderer: 'container',
   direction: 'vertical',
   body: [
     {

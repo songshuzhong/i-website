@@ -18,54 +18,6 @@
     "pageDesc": null,
     "pageSchema": {
       "renderer": "page",
-      "initData": {
-        "IWebsiteExpand": false,
-        "Combo": [
-          {
-            "type": 1,
-            "jieshouqiuhe": "jieshouqiuhe",
-            "family": [
-              {
-                "jieshouqiuhe": "asdfasf"
-              },
-              {
-                "jieshouqiuhe": "132412"
-              }
-            ]
-          },
-          {
-            "type": "2",
-            "family": []
-          },
-          {
-            "type": "3",
-            "family": []
-          },
-          {
-            "type": "4",
-            "family": []
-          },
-          {
-            "type": "4",
-            "family": []
-          },
-          {
-            "type": "5",
-            "family": []
-          }
-        ],
-        "jieshouqiuhe": "",
-        "calender1": "2024-07-24T05:32:04.766Z",
-        "qiehuanfenlu": "",
-        "ceshi": "",
-        "xiala": "",
-        "fenluceshi1": "",
-        "calender2": "2024-07-24T05:32:04.766Z",
-        "fenluceshi2": "",
-        "calender3": "2024-07-24T05:32:04.767Z",
-        "tabs": "",
-        "calender4": "2024-07-24T05:32:04.767Z"
-      },
       "refs": {
         "lineChart": {
           "renderer": "chart",
@@ -176,20 +128,14 @@
             ]
           }
         },
-        "dateMapping": [
-          {
-            "renderer": "html",
-            "html": "<%=1 + $.$index%>",
-            "style": {
-              "height": "16px"
-            }
-          },
-          {
-            "renderer": "mapping",
-            "name": "$index",
-            "promiseType": "sw"
+        "dateMapping": {
+          "renderer": "mapping",
+          "name": "$index",
+          "promiseType": "sw",
+          "style": {
+            "margin-top": "-3px"
           }
-        ],
+        },
         "statusMapping": {
           "renderer": "mapping",
           "name": "$label",
@@ -1117,7 +1063,7 @@
             }
           ],
           "mergeCell": "col",
-          "highlightCurrentRow": false
+          "hasPageInfo": false
         },
         {
           "renderer": "table",
@@ -1194,7 +1140,7 @@
             }
           ],
           "mergeCell": "row",
-          "highlightCurrentRow": false
+          "hasPageInfo": false
         },
         {
           "renderer": "table",
@@ -1255,7 +1201,7 @@
         }
       ],
       "innerStyle": ".sales-table {\r\n  .sales-column-empty {\r\n    border: 0;\r\n  }\r\n  th {\r\n    border-bottom: 2px solid var(--el-color-error) !important;\r\n  }\r\n  .sales-column-danger {\r\n    border-right: 2px solid var(--el-color-error) !important;\r\n  }\r\n  .sales-column-success {\r\n    border-left: 2px solid var(--el-color-success) !important;\r\n  }\r\n  .sales-rate {\r\n    span:nth-of-type(1) {\r\n      width: 62px;\r\n      display: inline-block;\r\n    }\r\n    &.success {\r\n      span:nth-of-type(2) {\r\n        color: var(--el-color-success);\r\n      }\r\n    }\r\n    &.danger {\r\n      span:nth-of-type(2) {\r\n        color: var(--el-color-error);\r\n      }\r\n    }\r\n  }\r\n}\r\n.merge-cell-table {\r\n  .i-crud__container__header {\r\n    margin-bottom: 0;\r\n  }\r\n  .el-table__cell {\r\n    padding: 0;\r\n  }\r\n  .cell {\r\n    height: 40px;\r\n    padding: 0;\r\n  }\r\n  .cell-state {\r\n    width: 100%;\r\n    height: 40px;\r\n    line-height: 40px;\r\n    color: var(--el-color-white);\r\n    animation: zoom_1 500ms ease-in-out;\r\n  }\r\n  .cell-primary {\r\n    background: var(--el-color-primary);\r\n  }\r\n  .cell-success {\r\n    background: var(--el-color-success);\r\n  }\r\n  .cell-warning {\r\n    background: var(--el-color-warning);\r\n  }\r\n  .cell-error {\r\n    background: var(--el-color-error);\r\n  }\r\n}\r\n.sex-table {\r\n  .el-table__cell {\r\n    padding: 0 !important;\r\n  }\r\n  .sex-table-column {\r\n    .cell {\r\n      padding: 0 !important;\r\n    }\r\n  }\r\n  .sex-rate {\r\n    display: flex;\r\n    align-items: center;\r\n    &.male {\r\n      span:nth-of-type(1) {\r\n        flex: 1;\r\n      }\r\n      span:nth-of-type(2) {\r\n        height: 16px;\r\n        background: var(--el-color-success);\r\n      }\r\n    }\r\n    &.female {      \r\n      span:nth-of-type(1) {\r\n        height: 16px;\r\n        background: var(--el-color-error);\r\n      }\r\n      span:nth-of-type(2) {\r\n        flex: 1;\r\n      }\r\n    }\r\n  }\r\n}",
-      "worker": "e => {\r\n  if (e.data.type === 'merge' && e.track === '/page/body/0/actions/1/body/body/0') {\r\n    const tds = e.data.tds;\r\n    const result = [];\r\n    for (let i = 0; i < tds.length; i++) {\r\n      let o = {};\r\n      for (let j = 0; j < tds[i].length; j++) {\r\n        let td = tds[i][j];\r\n        for (let key in td) {\r\n          if (key !== 'projectName') {\r\n            td[key] = e.data.state; \r\n          }\r\n          o[key] = td[key];\r\n        }\r\n      }\r\n      result.push(o);\r\n    }\r\n    return Promise.resolve({selectedRows: result});\r\n  }\r\n  if (e.data.type === 'split' && e.track === '/page/body/0/actions/0') {\r\n    const tds = e.data.tds;\r\n    const o = {};\r\n    for (let i = 0; i < tds.length; i++) {\r\n      let td = tds[i];\r\n      o.projectName = td.projectName;\r\n      o[td.name] = '';\r\n    }\r\n    return Promise.resolve({selectedRows: [o]});\r\n  }\r\n  return new Promise(resolve => {\r\n    const daysOfWeek = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];\r\n    const today = new Date();\r\n    const year = today.getFullYear();\r\n    const month = today.getMonth();\r\n    const firstDayOfMonth = new Date(year, month, 1);\r\n    const lastDayOfMonth = new Date(year, month + 1, 0);\r\n    const daysInMonth = lastDayOfMonth.getDate();\r\n    const result = {};\r\n    for (let i = 1; i <= 31; i++) {\r\n        result[i.toString()] = '-';\r\n    }\r\n    for (let day = firstDayOfMonth; day <= lastDayOfMonth; day.setDate(day.getDate() + 1)) {\r\n      const date = day.getDate();\r\n      const weekDay = daysOfWeek[day.getDay()];\r\n      result[date.toString() - 1] = weekDay;\r\n    }\r\n\r\n    resolve(result);\r\n  });\r\n}"
+      "worker": "e => {\r\n  if (e.data.type === 'merge' && e.track === '/page/body/0/actions/1/body/body/0') {\r\n    const tds = e.data.tds;\r\n    const result = [];\r\n    for (let i = 0; i < tds.length; i++) {\r\n      let o = {};\r\n      for (let j = 0; j < tds[i].length; j++) {\r\n        let td = tds[i][j];\r\n        for (let key in td) {\r\n          if (key !== 'projectName') {\r\n            td[key] = e.data.state; \r\n          }\r\n          o[key] = td[key];\r\n        }\r\n      }\r\n      result.push(o);\r\n    }\r\n    return Promise.resolve({selectedRows: result});\r\n  }\r\n  if (e.data.type === 'split' && e.track === '/page/body/0/actions/0') {\r\n    const tds = e.data.tds;\r\n    const o = {};\r\n    for (let i = 0; i < tds.length; i++) {\r\n      let td = tds[i];\r\n      o.projectName = td.projectName;\r\n      o[td.name] = '';\r\n    }\r\n    return Promise.resolve({selectedRows: [o]});\r\n  }\r\n  return new Promise(resolve => {\r\n    const daysOfWeek = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];\r\n    const today = new Date();\r\n    const year = today.getFullYear();\r\n    const month = today.getMonth();\r\n    const firstDayOfMonth = new Date(year, month, 1);\r\n    const lastDayOfMonth = new Date(year, month + 1, 0);\r\n    const daysInMonth = lastDayOfMonth.getDate();\r\n    const result = {};\r\n    for (let i = 1; i <= 31; i++) {\r\n        result[i.toString()] = '-';\r\n    }\r\n    for (let day = firstDayOfMonth; day <= lastDayOfMonth; day.setDate(day.getDate() + 1)) {\r\n      const date = day.getDate();\r\n      const weekDay = daysOfWeek[day.getDay()];\r\n      result[date.toString() - 1] = `${date}<br/>${weekDay}`;\r\n    }\r\n\r\n    resolve(result);\r\n  });\r\n}"
     },
     "version": 0,
     "status": 1,

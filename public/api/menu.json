@@ -25,7 +25,7 @@
           {
             "renderer": "menuitem",
             "name": "form",
-            "title": "編輯",
+            "title": "编辑",
             "icon": "",
             "pageId": "7fe82cb4-4156-4897-a6f1-82cd8e1cc9f5",
             "groupBy": "form",
@@ -90,6 +90,21 @@
             "assets": [],
             "pageDesc": null,
             "schemaUrl": "/api/page/fc3a856e-46ff-4012-a1e7-70677a98d29c"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "gridForm",
+            "title": "栅栏表单",
+            "icon": "",
+            "pageId": "96132910-8814-4328-b4e1-f2a51785da0b",
+            "groupBy": "form",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/96132910-8814-4328-b4e1-f2a51785da0b"
           },
           {
             "renderer": "menuitem",

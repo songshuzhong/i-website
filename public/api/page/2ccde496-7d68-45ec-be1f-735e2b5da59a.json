@@ -131,7 +131,10 @@
         "dateMapping": {
           "renderer": "mapping",
           "name": "$index",
-          "promiseType": "sw"
+          "promiseType": "sw",
+          "style": {
+            "margin-top": "-3px"
+          }
         },
         "statusMapping": {
           "renderer": "mapping",

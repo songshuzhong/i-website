@@ -89,6 +89,6 @@ const options = {
 app
   .use(ElementPlus)
   .use(IRenderer, options)
-  .mount('.i-website-app__container');
+  .mount('.i-renderer-app__container');
 
 registrySw(process.env.VUE_APP_SERVICE_WORKER, app);

@@ -2,7 +2,6 @@
   <i-schema
     :init-schema="frameSchema"
     :updatable="false"
-    classname="i-renderer-website-schema__container"
   />
 </template>
 

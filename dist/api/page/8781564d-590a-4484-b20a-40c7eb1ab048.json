@@ -23,7 +23,7 @@
           "html": "页面级数据域"
         },
         {
-          "renderer": "layout",
+          "renderer": "container",
           "initData": {
             "layout": "this data is from layout."
           },
