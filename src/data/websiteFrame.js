@@ -142,7 +142,7 @@ export default {
             size: 18,
             actionType: 'drawer',
             body: {
-              width: 30,
+              width: 432,
               appendToBody: true,
               classname: 'i-website__setting__container',
               header: {

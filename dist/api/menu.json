@@ -5,13 +5,13 @@
       {
         "renderer": "submenu",
         "name": "demo",
-        "title": "案例项目",
+        "title": "牛刀小试",
         "icon": "Star",
         "body": [
           {
             "renderer": "menuitem",
             "name": "visible",
-            "title": "表单显隐校验",
+            "title": "复杂显隐与校验",
             "icon": "",
             "pageId": "ffe4aede-ba56-4bb0-8673-48918154a175",
             "groupBy": "form",
@@ -25,7 +25,7 @@
           {
             "renderer": "menuitem",
             "name": "form",
-            "title": "表单",
+            "title": "編輯",
             "icon": "",
             "pageId": "7fe82cb4-4156-4897-a6f1-82cd8e1cc9f5",
             "groupBy": "form",
@@ -44,7 +44,7 @@
           {
             "renderer": "menuitem",
             "name": "formDisabled",
-            "title": "表单禁用",
+            "title": "禁用",
             "icon": "",
             "pageId": "96932910-8814-4428-b4e1-f2a91785da0b",
             "groupBy": "form",
@@ -62,7 +62,7 @@
           {
             "renderer": "menuitem",
             "name": "foldingForm",
-            "title": "表单折叠",
+            "title": "折叠",
             "icon": "",
             "pageId": "9898b4da-37c2-44a6-8fe4-3a13b2d33df6",
             "groupBy": "form",
@@ -79,7 +79,7 @@
           {
             "renderer": "menuitem",
             "name": "steps",
-            "title": "分步表单",
+            "title": "分步",
             "icon": "",
             "pageId": "fc3a856e-46ff-4012-a1e7-70677a98d29c",
             "groupBy": "form",
@@ -425,7 +425,7 @@
           {
             "renderer": "menuitem",
             "name": "formStressTest",
-            "title": "表单压测",
+            "title": "压测",
             "icon": null,
             "pageId": "70c7b1de-0d55-46f2-8246-61c53a820661",
             "groupBy": "form",
@@ -524,7 +524,7 @@
       {
         "renderer": "submenu",
         "name": "superFans",
-        "title": "超级粉丝通",
+        "title": "脱颖而出",
         "icon": "Ticket",
         "body": [
           {
