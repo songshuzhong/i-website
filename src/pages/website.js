@@ -66,7 +66,7 @@ api()
       })
       .use(IRenderer, config)
       .use(routers)
-      .mount('.i-website-app__container');
+      .mount('.i-renderer-app__container');
     registrySw(process.env.VUE_APP_SERVICE_WORKER, app);
   })
   .catch((e) => {
