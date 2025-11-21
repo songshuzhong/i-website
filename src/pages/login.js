@@ -1,4 +1,5 @@
 import {createApp} from 'vue';
+import * as Vue from 'vue';
 import ElementPlus from 'element-plus';
 import {IRenderer, api} from  '../utils/lib.js';
 import Application from '../apps/Login.vue';
@@ -85,7 +86,7 @@ const options = {
     },
   }
 };
-
+window.vue = Vue;
 app
   .use(ElementPlus)
   .use(IRenderer, options)

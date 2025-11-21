@@ -1,4 +1,5 @@
 import {createApp} from 'vue';
+import * as Vue from 'vue';
 import ElementPlus from 'element-plus';
 import {IRenderer, api} from  '../utils/lib.js';
 import createRoutes from '../router/website';
@@ -58,6 +59,7 @@ api()
     const routers = createRoutes();
     config.permissions = res.data['permissions'];
     config.roles = res.data['roles'];
+    window.vue = Vue;
     app
       .use(ElementPlus, {
         popperOptions: {

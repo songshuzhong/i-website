@@ -21,12 +21,12 @@
 
 <script>
 import {defineComponent, onMounted, ref} from 'vue';
-import qs from 'qs';
 
 export default defineComponent({
   name: 'Mobile',
   setup() {
-    const query = qs.parse(window.location.href.split('?')[1]);
+    const searchStr = window.location.href.split('?')[1];
+    const query = Object.fromEntries(new URLSearchParams(searchStr));
     const isFrame = ref(query.isFrame);
     const update = ref(0);
     let url = '/api/page/' + query.pageId;

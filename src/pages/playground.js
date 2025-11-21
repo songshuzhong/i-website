@@ -1,4 +1,5 @@
 import {createApp} from 'vue';
+import * as Vue from 'vue';
 import ElementPlus from 'element-plus';
 import {IRenderer, Schema} from  '../utils/lib.js';
 import Playground from '../apps/Playground.vue';
@@ -12,7 +13,7 @@ import '../style/playground.scss';
 
 const app = createApp(Playground);
 const isGPOrDev = process.env.VUE_APP_API_NODE_ENV === 'gp' || process.env.VUE_APP_API_NODE_ENV === 'dev';
-
+window.vue = Vue;
 app.component(Schema);
 app
   .use(ElementPlus)
