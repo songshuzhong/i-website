@@ -108,11 +108,11 @@ module.exports = {
   devServer: {
     port: 3000,
     setupMiddlewares: (middlewares, devServer) => {
-      devServer.app.get('/ajax/stream', (req, res, next) => {
+      devServer.app.get('/ajax/stream', (req, res) => {
         res.writeHead(200, {
           'Content-Type': 'text/event-stream',
           'Cache-Control': 'no-cache',
-          'Connection': 'keep-alive'
+          Connection: 'keep-alive'
         });
 
         let count = 0;
