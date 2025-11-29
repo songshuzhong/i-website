@@ -13,7 +13,7 @@
     "updatedBy": "admin",
     "updatedCause": null,
     "hidden": null,
-    "assets": ["http://localhost:8080/js/dayjs.worker.js"],
+    "assets": ["http://localhost:3000/js/dayjs.worker.js"],
     "visible": null,
     "pageDesc": null,
     "pageSchema": {
