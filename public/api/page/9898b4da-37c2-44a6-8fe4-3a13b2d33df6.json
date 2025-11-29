@@ -295,7 +295,7 @@
           "renderer": "table",
           "name": "UserTable",
           "showExport": true,
-          "height": 500,
+          "height": 440,
           "initApi": {
             "url": "/api/mock/antdUsers",
             "method": "get",
@@ -435,7 +435,7 @@
                       "renderer": "action",
                       "name": "UpdateAction",
                       "text": "更新",
-                      "type": "success",
+                      "type": "primary",
                       "actionType": "dialog",
                       "plain": true,
                       "size": "small",
@@ -590,9 +590,23 @@
                       "reload": "UserTable",
                       "params": {},
                       "body": {},
+                      "disabledOn": "$.id === 'fake-list-2'",
                       "messageBoxExp": "$.id",
                       "popoverTitle": "确定要删除吗？",
                       "popoverContent": "用户id不能为空"
+                    },
+                    {
+                      "renderer": "action",
+                      "text": "详情"
+                    },
+                    {
+                      "renderer": "action",
+                      "text": "详情",
+                      "disabledOn": "$.id === 'fake-list-2'"
+                    },
+                    {
+                      "renderer": "action",
+                      "text": "详情"
                     }
                   ]
                 }
