@@ -1,12 +1,12 @@
 import {createApp} from 'vue';
-import * as Vue from 'vue';
-import ElementPlus from 'element-plus';
 import {IRenderer, api} from  '../utils/lib.js';
 import createRoutes from '../router/website';
 import ToMobile from '../component/ToMobile.vue';
 import Ai from '../component/Ai.vue';
 import Application from '../apps/Website.vue';
 import registrySw from '../registerServiceWorker';
+import * as ElementPlus from '../plugins/ui.js';
+import {installer} from '../plugins/installer.js';
 import Verify from '../component/Verify';
 import '../utils/debug';
 
@@ -19,7 +19,11 @@ import '../style/reset.scss';
 const app = createApp(Application);
 const config = {
   track: function(name, info) {
-    window.umami && window.umami.track(name, info);
+    if (window.umami) {
+      window.umami.track(name, info);
+    } else {
+      console.log(name, info);
+    }
   },
   renderers: [ToMobile, Verify, Ai],
   actions: {
@@ -58,15 +62,10 @@ api()
   .get(user)
   .then(res => {
     const routers = createRoutes();
+    installer(app, ElementPlus);
     config.permissions = res.data['permissions'];
     config.roles = res.data['roles'];
-    window.vue = Vue;
     app
-      .use(ElementPlus, {
-        popperOptions: {
-          forceDestroy: true
-        }
-      })
       .use(IRenderer, config)
       .use(routers)
       .mount('.i-renderer-app__container');

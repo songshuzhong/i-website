@@ -114,19 +114,20 @@ export default {
       ]
     },
     {
-      "renderer": "wrapper",
-      "body": [
-        {
-          "renderer": "html",
-          "classname": "margin-bottom-10 padding-left-20",
-          "html": "- 🤔 When you arise in the morning,think of what a precious privilege it is to be alive - to breathe,to think,to enjoy,to love. ~Marcus Aurelius."
-        },
-        {
-          "renderer": "html",
-          "classname": "margin-bottom-20 padding-left-20",
-          "html": "- 😄 当你早晨起来的时候，想想活着是多么宝贵的特权——还能呼吸，还能思考，还能享受，还能去爱。~马尔克·奥列里乌斯。"
-        },
-      ]
+      "renderer": "html",
+      "inline": false,
+      "style": {
+        "padding": "20px 20px 10px 20px"
+      },
+      "html": "- 🤔 When you arise in the morning,think of what a precious privilege it is to be alive - to breathe,to think,to enjoy,to love. ~Marcus Aurelius."
+    },
+    {
+      "renderer": "html",
+      "inline": false,
+      "style": {
+        "padding": "0 20px 20px 20px"
+      },
+      "html": "- 😄 当你早晨起来的时候，想想活着是多么宝贵的特权——还能呼吸，还能思考，还能享受，还能去爱。~马尔克·奥列里乌斯。"
     },
     {
       "renderer": "notice",
@@ -152,12 +153,22 @@ export default {
             {
               "renderer": "html",
               "html": "基础版",
-              "classname": "font-size-16 text-center font-weight-600 margin-bottom-20"
+              "style": {
+                "font-size": "16px",
+                "text-align": "center",
+                "font-weight": "600",
+                "margin-bottom": "12px"
+              }
             },
             {
               "renderer": "html",
               "html": "<span id=\"busuanzi_container_site_pv\">本站总访问量<span id=\"busuanzi_value_site_pv\"></span>次</span>",
-              "classname": "font-size-14 text-center font-weight-400 margin-bottom-10"
+              "style": {
+                "font-size": "14px",
+                "text-align": "center",
+                "font-weight": "400",
+                "margin-bottom": "10px"
+              }
             },
             {
               "renderer": "wrapper",
@@ -204,8 +215,9 @@ export default {
                   "body": {}
                 }
               ],
-              "footer": [],
-              "classname": "text-center"
+              "style": {
+                "text-align": "center"
+              },
             }
           ],
           "body": [
@@ -221,8 +233,7 @@ export default {
                 "支持样式自定义"
               ]
             }
-          ],
-          "footer": []
+          ]
         },
         {
           "renderer": "card",
@@ -233,15 +244,28 @@ export default {
             {
               "renderer": "html",
               "html": "专业版",
-              "classname": "font-size-16 text-center font-weight-600 margin-bottom-20"
+              "style": {
+                "font-size": "16px",
+                "text-align": "center",
+                "font-weight": "600",
+                "margin-bottom": "12px"
+              }
             },
             {
               "renderer": "html",
               "html": "<span id=\"busuanzi_container_site_uv\">本站访客数<span id=\"busuanzi_value_site_uv\"></span>人次</span>",
-              "classname": "font-size-14 text-center font-weight-400 margin-bottom-10"
+              "style": {
+                "font-size": "14px",
+                "text-align": "center",
+                "font-weight": "400",
+                "margin-bottom": "10px"
+              }
             },
             {
               "renderer": "wrapper",
+              "style": {
+                "text-align": "center"
+              },
               "body": [
                 {
                   "renderer": "action",
@@ -298,9 +322,7 @@ export default {
                   "params": {},
                   "body": {}
                 }
-              ],
-              "footer": [],
-              "classname": "text-center"
+              ]
             }
           ],
           "body": [

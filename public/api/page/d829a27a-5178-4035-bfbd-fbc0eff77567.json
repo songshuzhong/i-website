@@ -1,0 +1,67 @@
+{
+  "code": 200,
+  "data": {
+    "pageId": "d829a27a-5178-4035-bfbd-fbc0eff77567",
+    "id": 46,
+    "projectId": "1",
+    "pageTitle": "新建系列",
+    "pageName": "creative",
+    "namespace": "联通",
+    "pageIcon": "",
+    "groupBy": "超粉",
+    "updatedBy": "admin",
+    "updatedCause": null,
+    "hidden": null,
+    "assets": [],
+    "visible": null,
+    "pageDesc": null,
+    "pageSchema": {
+      "renderer": "page",
+      "body": [
+        {
+          "renderer": "service",
+          "promiseType": "sw",
+          "useRef": true,
+          "deps": [
+            "date"
+          ],
+          "interval": 1500,
+          "body": [
+            {
+              "renderer": "html",
+              "html": "<h1>\r\n  共得分:<%=$.count%>\r\n</h1>",
+              "inline": true
+            },
+            {
+              "renderer": "html",
+              "html": "<div class=\"container\">\r\n  <div class=\"item item0<%=$.active === 0? ' active': ''%>\"></div>\r\n  <div class=\"item item1<%=$.active === 1? ' active': ''%>\"></div>\r\n  <div class=\"item item2<%=$.active === 2? ' active': ''%>\"></div>\r\n  <div class=\"item item3<%=$.active === 3? ' active': ''%>\"></div>\r\n</div>",
+              "inline": true,
+              "events": {
+                "click": {
+                  "actions": [
+                    {
+                      "actionType": "custom",
+                      "content": "if (e && e.target.classList.contains('active')) {\r\n  const state = $app.ServiceRef.onAction({}, { actionType: 'state' });\r\n  const count = state.count + 1;\r\n  $app.ServiceRef.onAction({ count }, { actionType: 'computed', name: 'count' });\r\n}"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "name": "Service"
+        }
+      ],
+      "worker": "() => {\r\n  const active = Math.floor(Math.random() * 4);\r\n  return Promise.resolve({\r\n    date: Date.now(),\r\n    active,\r\n  });\r\n}",
+      "initData": {
+        "active": 0,
+        "count": 0
+      },
+      "innerStyle": ".container {\r\n  width: 200px;\r\n  height: 120px;\r\n  display: flex;\r\n  flex-direction: row;\r\n  gap: 20px;\r\n}\r\n.item {\r\n  width: 40px;\r\n  height: 10px;\r\n  margin-top: auto;\r\n  background-color: var(--el-color-success);\r\n  &.active {\r\n    height: 120px;\r\n    animation: ddd 0.2s ease-in-out;\r\n  }\r\n}\r\n\r\n@keyframes ddd {\r\n  from {\r\n    height: 10px;\r\n  }\r\n  to {\r\n    height: 120px;\r\n  }\r\n}"
+    },
+    "version": 0,
+    "status": 1,
+    "createdAt": "2023-11-25T16:07:58.000Z",
+    "updatedAt": "2023-11-25T16:07:58.000Z"
+  },
+  "describe": "请求成功"
+}

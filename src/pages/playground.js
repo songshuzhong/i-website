@@ -1,6 +1,6 @@
 import {createApp} from 'vue';
-import * as Vue from 'vue';
-import ElementPlus from 'element-plus';
+import * as ElementPlus from '../plugins/ui.js';
+import {installer} from '../plugins/installer.js';
 import {IRenderer, Schema} from  '../utils/lib.js';
 import Playground from '../apps/Playground.vue';
 import registrySw from '../registerServiceWorker';
@@ -13,10 +13,9 @@ import '../style/playground.scss';
 
 const app = createApp(Playground);
 const isGPOrDev = process.env.VUE_APP_API_NODE_ENV === 'gp' || process.env.VUE_APP_API_NODE_ENV === 'dev';
-window.vue = Vue;
+installer(app, ElementPlus);
 app.component(Schema);
 app
-  .use(ElementPlus)
   .use(IRenderer, {
     domains: [process.env.VUE_APP_API_BASE],
     permissions: [],

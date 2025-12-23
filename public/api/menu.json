@@ -533,6 +533,21 @@
             "assets": [],
             "pageDesc": null,
             "schemaUrl": "/api/page/2b7960e7-2136-4257-a2a6-3cac34b5862f"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "dadishu",
+            "title": "打地鼠",
+            "icon": "",
+            "pageId": "d829a27a-5178-4035-bfbd-fbc0eff77567",
+            "groupBy": "other",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/d829a27a-5178-4035-bfbd-fbc0eff77567"
           }
         ]
       },

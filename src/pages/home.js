@@ -1,6 +1,6 @@
 import {createApp} from 'vue';
-import * as Vue from 'vue';
-import ElementPlus from 'element-plus';
+import * as ElementPlus from '../plugins/ui.js';
+import {installer} from '../plugins/installer.js';
 import {IRenderer} from  '../utils/lib.js';
 import routers from '../router/home';
 import Application from '../apps/Home.vue';
@@ -15,9 +15,8 @@ import '../style/home.scss';
 
 const app = createApp(Application);
 const isGPOrDev = process.env.VUE_APP_API_NODE_ENV === 'gp' || process.env.VUE_APP_API_NODE_ENV === 'dev';
-window.vue = Vue;
+installer(app, ElementPlus);
 app
-  .use(ElementPlus)
   .use(IRenderer, {
     renderers: [Issue],
     permissions: [],

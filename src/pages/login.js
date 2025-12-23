@@ -1,6 +1,6 @@
 import {createApp} from 'vue';
-import * as Vue from 'vue';
-import ElementPlus from 'element-plus';
+import * as ElementPlus from '../plugins/ui.js';
+import {installer} from '../plugins/installer.js';
 import {IRenderer, api} from  '../utils/lib.js';
 import Application from '../apps/Login.vue';
 import Sendemail from '../component/Sendemail';
@@ -86,9 +86,8 @@ const options = {
     },
   }
 };
-window.vue = Vue;
+installer(app, ElementPlus);
 app
-  .use(ElementPlus)
   .use(IRenderer, options)
   .mount('.i-renderer-app__container');
 

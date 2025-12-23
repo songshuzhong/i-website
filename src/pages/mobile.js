@@ -1,6 +1,6 @@
 import {createApp} from 'vue';
-import * as Vue from 'vue';
-import ElementPlus from 'element-plus';
+import * as ElementPlus from '../plugins/ui.js';
+import {installer} from '../plugins/installer.js';
 import {IRenderer} from  '../utils/lib.js';
 import Application from '../apps/Mobile.vue';
 import registrySw from '../registerServiceWorker';
@@ -12,9 +12,8 @@ import '../style/mobile.scss';
 
 const app = createApp(Application);
 const isGPOrDev = process.env.VUE_APP_API_NODE_ENV === 'gp' || process.env.VUE_APP_API_NODE_ENV === 'dev';
-window.vue = Vue;
+installer(app, ElementPlus);
 app
-  .use(ElementPlus)
   .use(IRenderer, {
     adaptor: {
       req: `if (${isGPOrDev} && url.includes("/api/page")) {\n  req.url = req.url + ".json";\n}\n else if (${isGPOrDev} && url.includes("/api/mock")) {\n  let l = url.split("/api/mock")[1].split("/").filter(i => i).join("-") + ".json";\n  req.url = "/api/mock/" + l;\n} else if (${isGPOrDev} && url.includes("/api")) {\n  req.url = req.url + ".json";\n}`,

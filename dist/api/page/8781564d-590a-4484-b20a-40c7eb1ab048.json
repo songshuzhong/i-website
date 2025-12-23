@@ -17,6 +17,7 @@
     "pageDesc": null,
     "pageSchema": {
       "renderer": "page",
+      "mergeUrlQuery": true,
       "body": [
         {
           "renderer": "html",

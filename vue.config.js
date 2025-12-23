@@ -106,6 +106,7 @@ module.exports = {
     },
   },
   devServer: {
+    port: 3000,
     setupMiddlewares: (middlewares, devServer) => {
       devServer.app.get('/ajax/stream', (req, res) => {
         res.writeHead(200, {

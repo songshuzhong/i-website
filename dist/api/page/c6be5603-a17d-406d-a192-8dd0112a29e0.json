@@ -12,7 +12,7 @@
     "updatedBy": "admin",
     "updatedCause": null,
     "hidden": false,
-    "assets": ["http://localhost:8080/js/spark-md5.worker.js"],
+    "assets": ["http://localhost:3000/js/spark-md5.worker.js"],
     "visible": [],
     "pageDesc": null,
     "pageSchema": {

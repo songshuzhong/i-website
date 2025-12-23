@@ -25,8 +25,7 @@ import {defineComponent, onMounted, ref} from 'vue';
 export default defineComponent({
   name: 'Mobile',
   setup() {
-    const searchStr = window.location.href.split('?')[1];
-    const query = Object.fromEntries(new URLSearchParams(searchStr));
+    const query = Object.fromEntries(new URLSearchParams(window.location.href.split('?')[1]));
     const isFrame = ref(query.isFrame);
     const update = ref(0);
     let url = '/api/page/' + query.pageId;

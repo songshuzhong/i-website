@@ -70,8 +70,5 @@
     "vue": "latest",
     "vue-router": "latest",
     "workbox-webpack-plugin": "^7.3.0"
-  },
-  "dependencies": {
-    "lodash-es": "^4.17.21"
   }
 }

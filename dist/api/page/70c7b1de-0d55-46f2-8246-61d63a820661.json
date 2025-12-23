@@ -22,6 +22,7 @@
       "body": [
         {
           "renderer": "form",
+          "readOnly": true,
           "initData": {
             "names": "renderer",
             "me": [
@@ -128,8 +129,7 @@
                           "value": "1",
                           "disabledOn": ""
                         }
-                      ],
-                      "editableOn1": "$.editable"
+                      ]
                     }
                   ],
                   "align": "center",
@@ -148,13 +148,11 @@
                       "color": [],
                       "texts": [],
                       "showText": false,
-                      "showScore": true,
-                      "editableOn1": "$.editable"
+                      "showScore": true
                     },
                     {
                       "renderer": "colorpicker",
                       "name": "color",
-                      "editableOn1": "$.editable",
                       "teleported": true,
                       "showAlpha": false
                     }
@@ -269,8 +267,7 @@
                   "body": [
                     {
                       "renderer": "switch",
-                      "name": "connect",
-                      "editableOn1": "$.editable"
+                      "name": "connect"
                     },
                     {
                       "renderer": "html",
@@ -326,16 +323,14 @@
                       "name": "createdAt",
                       "label": "createdAt",
                       "requiredOn": true,
-                      "flexible": false,
-                      "editableOn1": "$.editable"
+                      "flexible": false
                     },
                     {
                       "renderer": "input",
                       "name": "richtxt",
                       "html": "<%=$.richtxt%>",
                       "type": "textarea",
-                      "flexible": false,
-                      "editableOn1": "$.editable"
+                      "flexible": false
                     }
                   ],
                   "width": "240px"
@@ -351,8 +346,7 @@
                       "renderer": "switch",
                       "label": "adult",
                       "name": "adult",
-                      "type": "checkbox",
-                      "editableOn1": "$.editable"
+                      "type": "checkbox"
                     },
                     {
                       "text": "<%=$.createdAt%>",
@@ -468,7 +462,7 @@
                 "name": "users",
                 "label": "表格项",
                 "width": 1300,
-                "height": 520,
+                "height": 400,
                 "tip": "双击行进行编辑",
                 "desc": "双击行退出编辑时不会远程保存数据",
                 "target": "editable",
@@ -487,7 +481,6 @@
                       "renderer": "colorpicker",
                       "name": "color",
                       "labelWidth": 0,
-                      "editableOn1": "$.editable",
                       "teleported": true,
                       "showAlpha": false
                     }
@@ -501,8 +494,7 @@
                       "placeholder": "createdAt",
                       "labelWidth": 0,
                       "requiredOn": true,
-                      "flexible": false,
-                      "editableOn1": "$.editable"
+                      "flexible": false
                     },
                     "flexGrow": 0,
                     "maxWidth": 150,
@@ -527,8 +519,7 @@
                           "value": "1",
                           "disabledOn": ""
                         }
-                      ],
-                      "editableOn1": "$.editable"
+                      ]
                     },
                     "width": 150
                   },
@@ -544,8 +535,7 @@
                       "color": [],
                       "texts": [],
                       "showText": false,
-                      "showScore": true,
-                      "editableOn1": "$.editable"
+                      "showScore": true
                     },
                     "header": [
                       {
@@ -656,8 +646,7 @@
                     "body": {
                       "renderer": "number",
                       "name": "rate",
-                      "labelWidth": 0,
-                      "editableOn1": "$.editable"
+                      "labelWidth": 0
                     }
                   },
                   {
@@ -668,8 +657,7 @@
                       "renderer": "datepicker",
                       "name": "date",
                       "labelWidth": 0,
-                      "format": "YYYY-MM-DD",
-                      "editableOn1": "$.editable"
+                      "format": "YYYY-MM-DD"
                     }
                   },
                   {
@@ -680,49 +668,7 @@
                       {
                         "renderer": "switch",
                         "name": "connect",
-                        "labelWidth": 0,
-                        "editableOn1": "$.editable"
-                      },
-                      {
-                        "renderer": "computed",
-                        "name": "$relation",
-                        "labelWidth": 0,
-                        "useWorker": false,
-                        "immediate": false,
-                        "labelWidth": 0,
-                        "exp": "$.relation",
-                        "deps": [
-                          "relation"
-                        ]
-                      },
-                      {
-                        "renderer": "computed",
-                        "name": "$relationValue",
-                        "labelWidth": 0,
-                        "useWorker": false,
-                        "immediate": false,
-                        "labelWidth": 0,
-                        "exp": "$.relationValue",
-                        "deps": [
-                          "relationValue"
-                        ]
-                      },
-                      {
-                        "renderer": "computed",
-                        "name": "$index",
-                        "labelWidth": 0,
-                        "useWorker": false,
-                        "labelWidth": 0,
-                        "exp": "$.index",
-                        "deps": [
-                          "index"
-                        ]
-                      },
-                      {
-                        "renderer": "switch",
-                        "name": "editable",
-                        "labelWidth": 0,
-                        "hiddenOn": true
+                        "labelWidth": 0
                       }
                     ]
                   },
@@ -735,8 +681,7 @@
                       "type": "textarea",
                       "labelWidth": 0,
                       "flexible": false,
-                      "rows": 1,
-                      "editableOn1": "$.editable"
+                      "rows": 1
                     },
                     "width": 140
                   },
