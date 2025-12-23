@@ -1,8 +1,8 @@
 {
   "code": 200,
-  "message": "success",
+  "message": "成功",
   "data": {
-    "id": "100",
+    "id": "1",
     "orgCode": "10000001",
     "orgType": "法人",
     "isVirtualDept": "0",
