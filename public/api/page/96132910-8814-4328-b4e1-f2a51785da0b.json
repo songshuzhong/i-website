@@ -160,7 +160,7 @@
                           "name": "onlyShowEditable",
                           "inactiveText": "仅显示可编辑",
                           "visibleOn": "$.langVersionType === 'language'",
-                          "target": "OrgForm",
+                          "target": "OrgForm,BizTable,BizDivider",
                           "style": {
                             "margin-right": "10px"
                           }
@@ -649,7 +649,8 @@
                               "renderer": "divider",
                               "direction": "horizontal",
                               "contentPosition": "center",
-                              "text": "标识代码"
+                              "text": "标识代码",
+                              "visibleOn": "!$.onlyShowEditable"
                             },
                             {
                               "label": "统一社会信用代码",
@@ -697,7 +698,8 @@
                               "renderer": "divider",
                               "direction": "horizontal",
                               "contentPosition": "center",
-                              "text": "地理信息"
+                              "text": "地理信息",
+                              "visibleOn": "!$.onlyShowEditable"
                             },
                             {
                               "label": "国家",
@@ -781,7 +783,8 @@
                               "renderer": "divider",
                               "direction": "horizontal",
                               "contentPosition": "center",
-                              "text": "注册信息"
+                              "text": "注册信息",
+                              "visibleOn": "!$.onlyShowEditable"
                             },
                             {
                               "label": "法定代表人",
@@ -809,7 +812,8 @@
                               "renderer": "divider",
                               "direction": "horizontal",
                               "contentPosition": "center",
-                              "text": "管理信息"
+                              "text": "管理信息",
+                              "visibleOn": "!$.onlyShowEditable"
                             },
                             {
                               "label": "上级管理单位",
@@ -855,7 +859,8 @@
                               "renderer": "divider",
                               "direction": "horizontal",
                               "contentPosition": "center",
-                              "text": "人事股权关系"
+                              "text": "人事股权关系",
+                              "visibleOn": "!$.onlyShowEditable"
                             },
                             {
                               "label": "上级人事单位",
@@ -918,6 +923,13 @@
                               "renderer": "input",
                               "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('shareholdingRatio')))",
                               "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('shareholdingRatio')))"
+                            },
+                            {
+                              "renderer": "divider",
+                              "direction": "horizontal",
+                              "contentPosition": "left",
+                              "text": "业务组织",
+                              "visibleOn": "!$.onlyShowEditable"
                             }
                           ],
                           "classname": "demo-grid-form",
@@ -930,13 +942,9 @@
                           }
                         },
                         {
-                          "renderer": "divider",
-                          "direction": "horizontal",
-                          "contentPosition": "left",
-                          "text": "业务组织"
-                        },
-                        {
                           "renderer": "table",
+                          "name": "BizTable",
+                          "visibleOn": "!$.onlyShowEditable",
                           "columns": [
                             {
                               "label": "序号",
@@ -1014,7 +1022,7 @@
                       "currentLang": "${currentLang}"
                     }
                   },
-                  "sendOn": "$.orgCode !== ''",
+                  "sendOn": "$.orgCode",
                   "deps": [],
                   "silentMessage": false,
                   "initData": {
@@ -1029,7 +1037,7 @@
           ]
         }
       ],
-      "innerStyle": ".wk-org-page {\r\n  height: 100%;\r\n  .wk-org-header {\r\n    line-height: 42px;\r\n    text-align: right;\r\n    &.with-collapse {\r\n      .i-wrapper__container__footer {\r\n        border-left: 1px solid var(--el-border-color-lighter);\r\n      }\r\n    }\r\n    &>.i-wrapper__container__body {\r\n      position: fixed;\r\n      top: calc(60px + var(--i-admin-header-height));\r\n      width: -webkit-fill-available;\r\n      margin-left: -19px;\r\n      z-index: 10;\r\n      background: var(--el-fill-color-lighter);\r\n      padding: 0 20px;\r\n    }\r\n    &>.i-wrapper__container__footer {\r\n      position: fixed;\r\n      right: 0;\r\n      top: 132px;\r\n      width: 260px;\r\n      .el-tab-pane {\r\n        height: calc(100vh - 230px);\r\n        overflow-y: auto;\r\n      }\r\n    }\r\n  }\r\n  .wk-org-header.with-collapse + .wk-org-form__wrapper {\r\n    padding-right: 260px;\r\n  }\r\n  .wk-org-header__title {\r\n    font-size: 16px;\r\n    font-weight: bold;\r\n  }\r\n  .wk-org-form__wrapper {\r\n    padding-top: 30px;\r\n  }\r\n  .wk-org__languages__wrapper {\r\n    height: calc(100vh - 180px);\r\n    padding: 0 10px 50px 10px;\r\n  }\r\n  .wk-org__version-cards {\r\n    padding: 0 10px 50px 10px;\r\n    .el-col {\r\n      margin-bottom: 0;\r\n    }\r\n    .el-card {\r\n      border: none;\r\n    }\r\n    .el-pagination {\r\n      position: fixed;\r\n      bottom: 50px;\r\n      background: var(--el-color-white);\r\n    }\r\n    .i-card__body {\r\n      padding: 0;\r\n    }\r\n  }\r\n  .wk-org__version-tags {\r\n    position: absolute;\r\n    right: 30px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__version-collapse {\r\n    border-bottom: 0;\r\n    overflow: hidden;\r\n    .i-collapse__container__title {\r\n      display: none;\r\n    }\r\n    .i-collapse__container__actions {\r\n      left: -10px;\r\n      text-align: left;\r\n    }\r\n    .el-collapse-item {\r\n      &:hover {\r\n        .el-collapse-item__header,\r\n        .el-collapse-item__wrap {\r\n          background: var(--el-color-primary-light-9);\r\n        }\r\n      }\r\n    }\r\n  }\r\n  .wk-org__language-item {\r\n    padding: 0 20px;\r\n    text-align: left;\r\n    cursor: pointer;\r\n    &:hover {\r\n      background: var(--el-color-primary-light-9);\r\n    }\r\n  }\r\n  .wk-org__language-name {\r\n    font-weight: bold;\r\n  }\r\n  .wk-org__language-icon {\r\n    border: 1px solid var(--el-border-color-lighter);\r\n    font-size: 12px;\r\n    padding: 4px;\r\n    margin-right: 10px;\r\n  }\r\n  .wk-org__language-tag {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-icon {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-text {\r\n    padding: 0 10px 10px 20px;\r\n  }\r\n  .demo-grid-form {\r\n    .i-form__container__fieldset__items {\r\n      display: grid;\r\n      grid-template-columns: repeat(3, 33.3%);\r\n    }\r\n    .field-1,\r\n    .field-4,\r\n    .field-7,\r\n    .field-10 {\r\n      padding-right: 20px;\r\n    }\r\n    .field-2,\r\n    .field-5,\r\n    .field-8,\r\n    .field-11 {\r\n      padding: 0 10px;\r\n    }\r\n    .field-3,\r\n    .field-6,\r\n    .field-9,\r\n    .field-12 {\r\n      padding-left: 20px;\r\n    }\r\n  }\r\n}"
+      "innerStyle": ".wk-org-page {\r\n  height: 100%;\r\n  .wk-org-header {\r\n    line-height: 42px;\r\n    text-align: right;\r\n    &.with-collapse {\r\n      .i-wrapper__container__footer {\r\n        border-left: 1px solid var(--el-border-color-lighter);\r\n      }\r\n    }\r\n    &>.i-wrapper__container__body {\r\n      position: fixed;\r\n      top: calc(60px + var(--i-admin-header-height));\r\n      width: -webkit-fill-available;\r\n      margin-left: -19px;\r\n      z-index: 10;\r\n      background: var(--el-fill-color-lighter);\r\n      padding: 0 20px;\r\n    }\r\n    &>.i-wrapper__container__footer {\r\n      position: fixed;\r\n      right: 0;\r\n      top: 132px;\r\n      width: 260px;\r\n      .el-tab-pane {\r\n        height: calc(100vh - 230px);\r\n        overflow-y: auto;\r\n      }\r\n    }\r\n  }\r\n  .wk-org-header.with-collapse + .wk-org-form__wrapper {\r\n    padding-right: 260px;\r\n  }\r\n  .wk-org-header__title {\r\n    font-size: 16px;\r\n    font-weight: bold;\r\n  }\r\n  .wk-org-form__wrapper {\r\n    padding-top: 30px;\r\n  }\r\n  .wk-org__languages__wrapper {\r\n    height: calc(100vh - 180px);\r\n    padding: 0 10px 50px 10px;\r\n  }\r\n  .wk-org__version-cards {\r\n    padding: 0 10px 50px 10px;\r\n    .el-col {\r\n      margin-bottom: 0;\r\n    }\r\n    .el-card {\r\n      border: none;\r\n    }\r\n    .el-pagination {\r\n      position: fixed;\r\n      bottom: 50px;\r\n      background: var(--el-bg-color);\r\n    }\r\n    .i-card__body {\r\n      padding: 0;\r\n    }\r\n  }\r\n  .wk-org__version-tags {\r\n    position: absolute;\r\n    right: 30px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__version-collapse {\r\n    border-bottom: 0;\r\n    overflow: hidden;\r\n    .i-collapse__container__title {\r\n      display: none;\r\n    }\r\n    .i-collapse__container__actions {\r\n      left: -10px;\r\n      text-align: left;\r\n    }\r\n    .el-collapse-item {\r\n      &:hover {\r\n        .el-collapse-item__header,\r\n        .el-collapse-item__wrap {\r\n          background: var(--el-color-primary-light-9);\r\n        }\r\n      }\r\n    }\r\n  }\r\n  .wk-org__language-item {\r\n    padding: 0 20px;\r\n    text-align: left;\r\n    cursor: pointer;\r\n    &:hover {\r\n      background: var(--el-color-primary-light-9);\r\n    }\r\n  }\r\n  .wk-org__language-name {\r\n    font-weight: bold;\r\n  }\r\n  .wk-org__language-icon {\r\n    border: 1px solid var(--el-border-color-lighter);\r\n    font-size: 12px;\r\n    padding: 4px;\r\n    margin-right: 10px;\r\n  }\r\n  .wk-org__language-tag {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-icon {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-text {\r\n    padding: 0 10px 10px 20px;\r\n  }\r\n  .demo-grid-form {\r\n    .i-form__container__fieldset__items {\r\n      display: grid;\r\n      grid-template-columns: repeat(3, 33.3%);\r\n    }\r\n    .field-1,\r\n    .field-4,\r\n    .field-7,\r\n    .field-10 {\r\n      padding-right: 20px;\r\n    }\r\n    .field-2,\r\n    .field-5,\r\n    .field-8,\r\n    .field-11 {\r\n      padding: 0 10px;\r\n    }\r\n    .field-3,\r\n    .field-6,\r\n    .field-9,\r\n    .field-12 {\r\n      padding-left: 20px;\r\n    }\r\n  }\r\n}"
     },
     "version": 0,
     "status": 1,
