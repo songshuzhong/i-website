@@ -42,7 +42,7 @@
                       "showCheckbox": false,
                       "joinValue": false,
                       "initApi": {
-                        "url": "/v1/ajax/tree",
+                        "url": "/api/mock/org-tree",
                         "params": {
                           "code": "${code}"
                         }
