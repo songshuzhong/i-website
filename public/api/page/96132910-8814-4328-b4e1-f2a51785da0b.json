@@ -358,7 +358,84 @@
                             {
                               "label": "历史",
                               "keepAlive": false,
-                              "body": []
+                              "body": [
+                                {
+                                  "renderer": "cards",
+                                  "classname": "wk-org__version-cards",
+                                  "initApi": {
+                                    "url": "/api/mock/org-history"
+                                  },
+                                  "deps": [],
+                                  "span": 24,
+                                  "virtual": false,
+                                  "body": [
+                                    {
+                                      "renderer": "html",
+                                      "html": "<div><%=$.changedAt%></div><div><%=$.changedByName%>对组织进行了变更</div>",
+                                      "style": {
+                                        "text-align": "left",
+                                        "padding": "0 20px 0 10px",
+                                        "cursor": "pointer",
+                                        "display": "block"
+                                      },
+                                      "inline": true
+                                    },
+                                    {
+                                      "renderer": "action",
+                                      "classname": "wk-org__history-icon",
+                                      "category": "icon",
+                                      "icon": "Search",
+                                      "size": 12,
+                                      "actionType": "dialog",
+                                      "body": {
+                                        "renderer": "dialog",
+                                        "title": "详情",
+                                        "body": [
+                                          {
+                                            "renderer": "html",
+                                            "visibleOn": "$.isVersionChange",
+                                            "html": "<h4>版本变更</h4>"
+                                          },
+                                          {
+                                            "renderer": "html",
+                                            "visibleOn": "$.isVersionChange",
+                                            "classname": "wk-org__history-text",
+                                            "html": "版本由【<%=$.fromVersionId%>】变更为【<%=$.toVersionId%>】",
+                                            "style": {
+                                              "padding": "0 20px 10px 20px"
+                                            }
+                                          },
+                                          {
+                                            "renderer": "html",
+                                            "html": "<h4>字段变更(<%=$.totalChanges%>)</h4>"
+                                          },
+                                          {
+                                            "renderer": "each",
+                                            "name": "changeDetails",
+                                            "body": {
+                                              "renderer": "html",
+                                              "classname": "wk-org__history-text",
+                                              "html": "<div>字段【<%=$.label%>】由【<%=$.old_value%>】变更为【<%=$.new_value%>】</div>",
+                                              "style": {
+                                                "padding": "0 20px 10px 20px"
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "pageConfig": {
+                                    "pageIndex": "pageIndex",
+                                    "pageSize": "pageSize",
+                                    "total": "count",
+                                    "rows": "rows",
+                                    "iLayout": [
+                                      "slot"
+                                    ]
+                                  }
+                                }
+                              ]
                             }
                           ],
                           "activeTab": 0,
@@ -952,7 +1029,7 @@
           ]
         }
       ],
-      "innerStyle": ".wk-org-page {\r\n  height: 100%;\r\n  .wk-org-header {\r\n    line-height: 42px;\r\n    text-align: right;\r\n    &.with-collapse {\r\n      .i-wrapper__container__footer {\r\n        border-left: 1px solid var(--el-border-color-lighter);\r\n      }\r\n    }\r\n    &>.i-wrapper__container__body {\r\n      position: fixed;\r\n      top: calc(60px + var(--i-admin-header-height));\r\n      width: -webkit-fill-available;\r\n      margin-left: -19px;\r\n      z-index: 10;\r\n      background: var(--el-fill-color-lighter);\r\n      padding: 0 20px;\r\n    }\r\n    &>.i-wrapper__container__footer {\r\n      position: fixed;\r\n      right: 0;\r\n      top: 132px;\r\n      width: 260px;\r\n      .el-tab-pane {\r\n        height: calc(100vh - 230px);\r\n        overflow-y: auto;\r\n      }\r\n    }\r\n  }\r\n  .wk-org-header.with-collapse + .wk-org-form__wrapper {\r\n    padding-right: 260px;\r\n  }\r\n  .wk-org-header__title {\r\n    font-size: 16px;\r\n    font-weight: bold;\r\n  }\r\n  .wk-org-form__wrapper {\r\n    padding-top: 30px;\r\n  }\r\n  .wk-org__languages__wrapper {\r\n    height: calc(100vh - 180px);\r\n    padding: 0 10px 50px 10px;\r\n  }\r\n  .wk-org__version-cards {\r\n    padding: 0 10px 50px 10px;\r\n    .el-col {\r\n      margin-bottom: 0;\r\n    }\r\n    .el-card {\r\n      border: none;\r\n    }\r\n    .el-pagination {\r\n      position: fixed;\r\n      bottom: 50px;\r\n      background: var(--el-color-white);\r\n    }\r\n    .i-card__body {\r\n      padding: 0;\r\n    }\r\n  }\r\n  .wk-org__version-tags {\r\n    position: absolute;\r\n    right: 30px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__version-collapse {\r\n    border-bottom: 0;\r\n    overflow: hidden;\r\n    .i-collapse__container__title {\r\n      display: none;\r\n    }\r\n    .i-collapse__container__actions {\r\n      left: -10px;\r\n      text-align: left;\r\n    }\r\n    .el-collapse-item {\r\n      &:hover {\r\n        .el-collapse-item__header,\r\n        .el-collapse-item__wrap {\r\n          background: var(--el-color-primary-light-9);\r\n        }\r\n      }\r\n    }\r\n  }\r\n  .wk-org__language-item {\r\n    padding: 0 20px;\r\n    text-align: left;\r\n    cursor: pointer;\r\n    &:hover {\r\n      background: var(--el-color-primary-light-9);\r\n    }\r\n  }\r\n  .wk-org__language-name {\r\n    font-weight: bold;\r\n  }\r\n  .wk-org__language-icon {\r\n    border: 1px solid var(--el-border-color-lighter);\r\n    font-size: 12px;\r\n    padding: 4px;\r\n    margin-right: 10px;\r\n  }\r\n  .wk-org__language-tag {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .demo-grid-form {\r\n    .i-form__container__fieldset__items {\r\n      display: grid;\r\n      grid-template-columns: repeat(3, 33.3%);\r\n    }\r\n    .field-1,\r\n    .field-4,\r\n    .field-7,\r\n    .field-10 {\r\n      padding-right: 20px;\r\n    }\r\n    .field-2,\r\n    .field-5,\r\n    .field-8,\r\n    .field-11 {\r\n      padding: 0 10px;\r\n    }\r\n    .field-3,\r\n    .field-6,\r\n    .field-9,\r\n    .field-12 {\r\n      padding-left: 20px;\r\n    }\r\n  }\r\n}"
+      "innerStyle": ".wk-org-page {\r\n  height: 100%;\r\n  .wk-org-header {\r\n    line-height: 42px;\r\n    text-align: right;\r\n    &.with-collapse {\r\n      .i-wrapper__container__footer {\r\n        border-left: 1px solid var(--el-border-color-lighter);\r\n      }\r\n    }\r\n    &>.i-wrapper__container__body {\r\n      position: fixed;\r\n      top: calc(60px + var(--i-admin-header-height));\r\n      width: -webkit-fill-available;\r\n      margin-left: -19px;\r\n      z-index: 10;\r\n      background: var(--el-fill-color-lighter);\r\n      padding: 0 20px;\r\n    }\r\n    &>.i-wrapper__container__footer {\r\n      position: fixed;\r\n      right: 0;\r\n      top: 132px;\r\n      width: 260px;\r\n      .el-tab-pane {\r\n        height: calc(100vh - 230px);\r\n        overflow-y: auto;\r\n      }\r\n    }\r\n  }\r\n  .wk-org-header.with-collapse + .wk-org-form__wrapper {\r\n    padding-right: 260px;\r\n  }\r\n  .wk-org-header__title {\r\n    font-size: 16px;\r\n    font-weight: bold;\r\n  }\r\n  .wk-org-form__wrapper {\r\n    padding-top: 30px;\r\n  }\r\n  .wk-org__languages__wrapper {\r\n    height: calc(100vh - 180px);\r\n    padding: 0 10px 50px 10px;\r\n  }\r\n  .wk-org__version-cards {\r\n    padding: 0 10px 50px 10px;\r\n    .el-col {\r\n      margin-bottom: 0;\r\n    }\r\n    .el-card {\r\n      border: none;\r\n    }\r\n    .el-pagination {\r\n      position: fixed;\r\n      bottom: 50px;\r\n      background: var(--el-color-white);\r\n    }\r\n    .i-card__body {\r\n      padding: 0;\r\n    }\r\n  }\r\n  .wk-org__version-tags {\r\n    position: absolute;\r\n    right: 30px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__version-collapse {\r\n    border-bottom: 0;\r\n    overflow: hidden;\r\n    .i-collapse__container__title {\r\n      display: none;\r\n    }\r\n    .i-collapse__container__actions {\r\n      left: -10px;\r\n      text-align: left;\r\n    }\r\n    .el-collapse-item {\r\n      &:hover {\r\n        .el-collapse-item__header,\r\n        .el-collapse-item__wrap {\r\n          background: var(--el-color-primary-light-9);\r\n        }\r\n      }\r\n    }\r\n  }\r\n  .wk-org__language-item {\r\n    padding: 0 20px;\r\n    text-align: left;\r\n    cursor: pointer;\r\n    &:hover {\r\n      background: var(--el-color-primary-light-9);\r\n    }\r\n  }\r\n  .wk-org__language-name {\r\n    font-weight: bold;\r\n  }\r\n  .wk-org__language-icon {\r\n    border: 1px solid var(--el-border-color-lighter);\r\n    font-size: 12px;\r\n    padding: 4px;\r\n    margin-right: 10px;\r\n  }\r\n  .wk-org__language-tag {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-icon {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-text {\r\n    padding: 0 10px 10px 20px;\r\n  }\r\n  .demo-grid-form {\r\n    .i-form__container__fieldset__items {\r\n      display: grid;\r\n      grid-template-columns: repeat(3, 33.3%);\r\n    }\r\n    .field-1,\r\n    .field-4,\r\n    .field-7,\r\n    .field-10 {\r\n      padding-right: 20px;\r\n    }\r\n    .field-2,\r\n    .field-5,\r\n    .field-8,\r\n    .field-11 {\r\n      padding: 0 10px;\r\n    }\r\n    .field-3,\r\n    .field-6,\r\n    .field-9,\r\n    .field-12 {\r\n      padding-left: 20px;\r\n    }\r\n  }\r\n}"
     },
     "version": 0,
     "status": 1,

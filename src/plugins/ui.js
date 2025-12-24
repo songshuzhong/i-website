@@ -110,4 +110,6 @@ export {
   ElMessageBox,
   ElNotification,
   ElPopoverDirective,
+  ElSplitter,
+  ElSplitterPanel,
 } from 'element-plus';
