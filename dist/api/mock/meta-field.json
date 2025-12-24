@@ -1,0 +1,17 @@
+{
+  "status": 0,
+  "message": "成功",
+  "data": {
+    "id": 78,
+    "title": "蚂蚁信息",
+    "method": "get",
+    "path": "/mata-field",
+    "namespace": "联通",
+    "description": "0",
+    "delay": 0,
+    "createdBy": "admin",
+    "createdAt": "2025-01-17T11:50:39.000Z",
+    "updatedAt": "2025-01-17T11:50:39.000Z",
+    "schema": "() => {\n  return {\n    metaLangFields: ['orgFullName', 'orgShortName']\n  }\n}"
+  }
+}

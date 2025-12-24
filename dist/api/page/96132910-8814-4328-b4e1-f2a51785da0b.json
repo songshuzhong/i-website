@@ -31,6 +31,9 @@
               "body": [
                 {
                   "renderer": "form",
+                  "style": {
+                    "position": "fixed"
+                  },
                   "controls": [
                     {
                       "renderer": "tree",
@@ -94,426 +97,939 @@
                 {
                   "renderer": "service",
                   "name": "OrgService",
+                  "useRef": true,
                   "body": [
                     {
-                      "renderer": "render",
+                      "renderer": "wrapper",
+                      "inherit": {
+                        "type": "include",
+                        "value": [
+                          "orgCode",
+                          "id"
+                        ]
+                      },
                       "body": [
                         {
                           "renderer": "html",
                           "html": "<%=$.orgCode%>",
                           "style": {
-                            "display": "inline"
+                            "display": "inline",
+                            "float": "left"
+                          },
+                          "classname": "wk-org-header__title",
+                          "inline": true
+                        },
+                        {
+                          "renderer": "service",
+                          "initApi": {
+                            "url": "/api/mock/meta-field",
+                            "deep": true,
+                            "params": {
+                              "onlyShowEditable": "${onlyShowEditable}"
+                            }
+                          },
+                          "inherit": {
+                            "type": "none",
+                            "value": []
+                          },
+                          "deps": [
+                            "onlyShowEditable"
+                          ],
+                          "silentMessage": false,
+                          "target": "OrgForm"
+                        },
+                        {
+                          "renderer": "computed",
+                          "name": "langVersionType",
+                          "exp": "$.isVersionType? 'version' :$.isLangType? 'language': ''",
+                          "deps": [
+                            "isVersionType",
+                            "isLangType"
+                          ]
+                        },
+                        {
+                          "renderer": "switch",
+                          "name": "isVersionType",
+                          "inactiveText": "历史版本",
+                          "type": "button",
+                          "activeText": "关闭历史版本",
+                          "visibleOn": "!$.isLangType && !$.isEditing"
+                        },
+                        {
+                          "renderer": "switch",
+                          "name": "onlyShowEditable",
+                          "inactiveText": "仅显示可编辑",
+                          "visibleOn": "$.langVersionType === 'language'",
+                          "target": "OrgForm,BizTable,BizDivider",
+                          "style": {
+                            "margin-right": "10px"
                           }
+                        },
+                        {
+                          "renderer": "switch",
+                          "name": "isLangType",
+                          "inactiveText": "多语言",
+                          "type": "button",
+                          "activeText": "关闭多语言",
+                          "target": "OrgForm",
+                          "visibleOn": "!$.isVersionType && !$.isEditing"
+                        },
+                        {
+                          "renderer": "switch",
+                          "name": "isEditing",
+                          "inactiveText": "编辑",
+                          "type": "button",
+                          "activeText": "取消",
+                          "target": "OrgForm",
+                          "visibleOn": "!$.langVersionType"
                         },
                         {
                           "renderer": "action",
                           "text": "保存",
                           "classname": "org-save",
                           "actionType": "trigger",
-                          "triggered": "OrgForm"
-                        }
-                      ]
-                    },
-                    {
-                      "renderer": "form",
-                      "name": "OrgForm",
-                      "labelPosition": "top",
-                      "controls": [
-                        {
-                          "renderer": "divider",
-                          "text": "基础信息"
+                          "triggered": "OrgForm",
+                          "visibleOn": "!$.langVersionType && $.isEditing"
                         },
                         {
-                          "label": "组织机构代码",
-                          "requiredOn": true,
-                          "rules": [
-                            {
-                              "pattern": {},
-                              "message": "编码规则为 8 位数字流水码",
-                              "trigger": "blur"
-                            }
-                          ],
-                          "name": "orgCode",
-                          "renderer": "input"
-                        },
-                        {
-                          "label": "组织机构类型",
-                          "renderer": "select",
-                          "requiredOn": true,
-                          "tableName": "cap_meta_org_type",
-                          "params": {
-                            "cached": true
-                          },
-                          "name": "orgType"
-                        },
-                        {
-                          "renderer": "radio",
-                          "label": "是否虚拟部门",
-                          "defaultValue": "1",
-                          "options": [
-                            {
-                              "value": "1",
-                              "label": "是"
-                            },
-                            {
-                              "value": "0",
-                              "label": "否"
-                            }
-                          ],
-                          "name": "isVirtualDept"
-                        },
-                        {
-                          "label": "组织机构全称",
-                          "requiredOn": true,
-                          "rules": [
-                            {
-                              "pattern": {},
-                              "message": "仅支持汉字、字母、数字和下划线",
-                              "trigger": "blur"
-                            }
-                          ],
-                          "name": "orgFullName",
-                          "renderer": "input"
-                        },
-                        {
-                          "label": "组织机构简称",
-                          "requiredOn": true,
-                          "rules": [
-                            {
-                              "pattern": {},
-                              "message": "仅支持汉字、字母、数字和下划线",
-                              "trigger": "blur"
-                            }
-                          ],
-                          "name": "orgShortName",
-                          "renderer": "input"
-                        },
-                        {
-                          "label": "企业类型",
-                          "renderer": "select",
-                          "tableName": "cap_meta_ent_type",
-                          "name": "enterpriseType"
-                        },
-                        {
-                          "label": "登记注册类型",
-                          "renderer": "select",
-                          "tableName": "cap_meta_reg_type",
-                          "name": "regType"
-                        },
-                        {
-                          "renderer": "radio",
-                          "label": "是否扩展组织",
-                          "requiredOn": true,
-                          "disabledOn": true,
-                          "defaultValue": "1",
-                          "options": [
-                            {
-                              "value": "1",
-                              "label": "是"
-                            },
-                            {
-                              "value": "0",
-                              "label": "否"
-                            }
-                          ],
-                          "name": "isExtend"
-                        },
-                        {
-                          "renderer": "divider",
-                          "direction": "horizontal",
-                          "contentPosition": "center",
-                          "text": "标识代码"
-                        },
-                        {
-                          "label": "统一社会信用代码",
-                          "rules1": [
-                            {
-                              "pattern": {},
-                              "message": "代码不合法",
-                              "trigger": "blur"
-                            }
-                          ],
-                          "name": "uscc",
-                          "renderer": "input"
-                        },
-                        {
-                          "label": "工商注册登记号",
-                          "name": "icRegNo",
-                          "renderer": "input"
-                        },
-                        {
-                          "label": "全国组织机构代码",
-                          "name": "nOrgCode",
-                          "renderer": "input"
-                        },
-                        {
-                          "label": "纳税人登记号",
-                          "name": "vatNo",
-                          "renderer": "input"
-                        },
-                        {
-                          "label": "其他有效证件号",
-                          "name": "otherIdNo",
-                          "renderer": "input"
-                        },
-                        {
-                          "renderer": "divider",
-                          "direction": "horizontal",
-                          "contentPosition": "center",
-                          "text": "地理信息"
-                        },
-                        {
-                          "label": "国家",
-                          "renderer": "select",
-                          "tableName": "cap_meta_country",
-                          "params": {
-                            "cached": true
-                          },
-                          "name": "country"
-                        },
-                        {
-                          "renderer": "computed",
-                          "name": "province",
-                          "exp": "''",
-                          "deps": [
-                            "country"
-                          ]
-                        },
-                        {
-                          "label": "省份/直辖市",
-                          "renderer": "select",
-                          "tableName": "cap_meta_area",
-                          "params": {
-                            "cached": true,
-                            "queryType": 2,
-                            "parentId": "country"
-                          },
-                          "name": "province"
-                        },
-                        {
-                          "renderer": "computed",
-                          "name": "city",
-                          "exp": "''",
-                          "deps": [
-                            "province"
-                          ]
-                        },
-                        {
-                          "label": "城市",
-                          "renderer": "select",
-                          "tableName": "cap_meta_area",
-                          "params": {
-                            "cached": true,
-                            "queryType": 2,
-                            "parentId": "province"
-                          },
-                          "name": "city"
-                        },
-                        {
-                          "renderer": "computed",
-                          "name": "town",
-                          "exp": "''",
-                          "deps": [
-                            "city"
-                          ]
-                        },
-                        {
-                          "label": "区县",
-                          "renderer": "select",
-                          "tableName": "cap_meta_area",
-                          "params": {
-                            "cached": true,
-                            "queryType": 2,
-                            "parentId": "city"
-                          },
-                          "name": "town"
-                        },
-                        {
-                          "renderer": "divider",
-                          "direction": "horizontal",
-                          "contentPosition": "center",
-                          "text": "注册信息"
-                        },
-                        {
-                          "label": "法定代表人",
-                          "requiredOn": true,
-                          "name": "legalRep",
-                          "renderer": "input"
-                        },
-                        {
-                          "label": "注册地址",
-                          "name": "regAddress",
-                          "renderer": "input"
-                        },
-                        {
-                          "label": "邮政编码",
-                          "name": "postalCode",
-                          "renderer": "input"
-                        },
-                        {
-                          "renderer": "divider",
-                          "direction": "horizontal",
-                          "contentPosition": "center",
-                          "text": "管理信息"
-                        },
-                        {
-                          "label": "上级管理单位",
-                          "renderer": "select",
-                          "requiredOn": true,
-                          "tableName": "cap_meta_upper_unit",
-                          "name": "upperMgrUnit"
-                        },
-                        {
-                          "label": "管理组织排序码",
-                          "name": "mgrPriox",
-                          "renderer": "input"
-                        },
-                        {
-                          "label": "所属直管企业",
-                          "renderer": "select",
-                          "tableName": "cap_meta_mgmt_ent",
-                          "name": "directEnterprise"
-                        },
-                        {
-                          "label": "股权属性",
-                          "renderer": "select",
-                          "tableName": "cap_meta_equity_type",
-                          "name": "equityType"
-                        },
-                        {
-                          "label": "经营状态",
-                          "renderer": "select",
-                          "tableName": "cap_meta_op_status",
-                          "name": "operationStatus"
-                        },
-                        {
-                          "renderer": "divider",
-                          "direction": "horizontal",
-                          "contentPosition": "center",
-                          "text": "人事股权关系"
-                        },
-                        {
-                          "label": "上级人事单位",
-                          "requiredOn": true,
-                          "renderer": "select",
-                          "tableName": "cap_meta_upper_unit",
-                          "name": "upperHrUnit"
-                        },
-                        {
-                          "label": "人事组织排序码",
-                          "name": "hrPriox",
-                          "renderer": "input"
-                        },
-                        {
-                          "label": "上级股权单位",
-                          "renderer": "select",
-                          "requiredOn": true,
-                          "tableName": "cap_meta_upper_unit",
-                          "name": "upperEquityUnit"
-                        },
-                        {
-                          "label": "股权组织排序码",
-                          "name": "equityPriox",
-                          "renderer": "input"
-                        },
-                        {
-                          "label": "股东名称",
-                          "name": "stockholderName",
-                          "renderer": "input"
-                        },
-                        {
-                          "label": "内外股东标识",
-                          "renderer": "select",
-                          "tableName": "cap_meta_shr_sign",
-                          "name": "stockholderCategory"
-                        },
-                        {
-                          "label": "股东经济类型",
-                          "renderer": "select",
-                          "tableName": "cap_meta_shr_type",
-                          "name": "stockholderType"
-                        },
-                        {
-                          "label": "股东持股比例",
-                          "name": "shareholdingRatio",
-                          "renderer": "input"
+                          "renderer": "action",
+                          "text": "保存",
+                          "classname": "lang-save",
+                          "actionType": "trigger",
+                          "triggered": "OrgForm",
+                          "extend": "cancel",
+                          "visibleOn": "$.langVersionType === 'language'"
                         }
                       ],
-                      "classname": "demo-grid-form"
-                    },
-                    {
-                      "renderer": "divider",
-                      "direction": "horizontal",
-                      "contentPosition": "left",
-                      "text": "业务组织"
-                    },
-                    {
-                      "renderer": "table",
-                      "columns": [
+                      "footer": [
                         {
-                          "label": "序号",
-                          "name": "id",
-                          "fixed": "-"
+                          "renderer": "tabs",
+                          "name": "VersionCards",
+                          "useRef": true,
+                          "visibleOn": "$.langVersionType === 'version'",
+                          "panels": [
+                            {
+                              "label": "版本",
+                              "keepAlive": false,
+                              "body": [
+                                {
+                                  "renderer": "cards",
+                                  "classname": "wk-org__version-cards",
+                                  "initApi": {
+                                    "url": "/api/mock/org-version"
+                                  },
+                                  "deps": [],
+                                  "shadow": "never",
+                                  "span": 24,
+                                  "virtual": false,
+                                  "body": [
+                                    {
+                                      "renderer": "collapse",
+                                      "classname": "wk-org__version-collapse",
+                                      "panels": [
+                                        {
+                                          "label": "面板",
+                                          "header": {
+                                            "renderer": "html",
+                                            "html": "<div><%=$.versionName%></div>"
+                                          },
+                                          "body": [
+                                            {
+                                              "renderer": "html",
+                                              "html": "<div>创建人：<%=$.createBy%></div><div>创建时间：<%=$.createTime%></div>",
+                                              "events": {
+                                                "click": {
+                                                  "actions": [
+                                                    {
+                                                      "actionType": "custom",
+                                                      "content": "$app.OrgServiceRef.dispatch(data, {\n  actionType: 'computed',\n  name: ['versionId', 'id'],\n  data: {\n    id: data.id,\n    versionId: data.versionId,\n  },\n});\n$app.VersionCardsRef.dispatch(data, {\n  actionType: 'computed',\n  data: {\n    selectedVersionId: data.versionId,\n  },\n});"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "style": {
+                                                "text-align": "left",
+                                                "padding": "0 20px 0 10px",
+                                                "cursor": "pointer",
+                                                "display": "block"
+                                              },
+                                              "inline": true
+                                            },
+                                            {
+                                              "renderer": "render",
+                                              "classname": "wk-org__version-tags",
+                                              "body": [
+                                                {
+                                                  "renderer": "action",
+                                                  "visibleOn": "$.selectedVersionId == $.versionId",
+                                                  "classname": "wk-org__version-tag",
+                                                  "plain": true,
+                                                  "type": "success",
+                                                  "size": "small",
+                                                  "text": "预览版本"
+                                                },
+                                                {
+                                                  "renderer": "action",
+                                                  "visibleOn": "$.status",
+                                                  "classname": "wk-org__version-tag",
+                                                  "plain": true,
+                                                  "type": "primary",
+                                                  "size": "small",
+                                                  "text": "当前版本"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "activeTab": 0,
+                                      "accordion": true
+                                    }
+                                  ],
+                                  "pageConfig": {
+                                    "pageIndex": "pageIndex",
+                                    "pageSize": "pageSize",
+                                    "total": "count",
+                                    "rows": "rows",
+                                    "iLayout": [
+                                      "slot"
+                                    ]
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "label": "语言",
+                              "keepAlive": false,
+                              "body": [
+                                {
+                                  "renderer": "service",
+                                  "initApi": {
+                                    "url": "/api/mock/org-language"
+                                  },
+                                  "body": [
+                                    {
+                                      "renderer": "each",
+                                      "name": "rows",
+                                      "body": {
+                                        "renderer": "render",
+                                        "classname": "wk-org__language-item",
+                                        "events": {
+                                          "click": {
+                                            "actions": [
+                                              {
+                                                "actionType": "custom",
+                                                "content": "$app.OrgServiceRef.dispatch(data, {\n  actionType: 'computed',\n  data: {\n    currentLang: data.code,\n    versionId: data.versionId,\n  },\n});"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "body": [
+                                          {
+                                            "renderer": "html",
+                                            "classname": "wk-org__language-icon",
+                                            "inline": true,
+                                            "html": "<%=$.code%>"
+                                          },
+                                          {
+                                            "renderer": "html",
+                                            "html": "<%=$.name%>",
+                                            "inline": true,
+                                            "classname": "wk-org__language-name"
+                                          },
+                                          {
+                                            "renderer": "action",
+                                            "type": "danger",
+                                            "plain": true,
+                                            "text": "未翻译",
+                                            "size": "small",
+                                            "visibleOn": "!$.translated",
+                                            "classname": "wk-org__language-tag"
+                                          }
+                                        ]
+                                      },
+                                      "type": "-",
+                                      "classname": "wk-org__languages"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "label": "历史",
+                              "keepAlive": false,
+                              "body": [
+                                {
+                                  "renderer": "cards",
+                                  "classname": "wk-org__version-cards",
+                                  "initApi": {
+                                    "url": "/api/mock/org-history"
+                                  },
+                                  "deps": [],
+                                  "span": 24,
+                                  "virtual": false,
+                                  "body": [
+                                    {
+                                      "renderer": "html",
+                                      "html": "<div><%=$.changedAt%></div><div><%=$.changedByName%>对组织进行了变更</div>",
+                                      "style": {
+                                        "text-align": "left",
+                                        "padding": "0 20px 0 10px",
+                                        "cursor": "pointer",
+                                        "display": "block"
+                                      },
+                                      "inline": true
+                                    },
+                                    {
+                                      "renderer": "action",
+                                      "classname": "wk-org__history-icon",
+                                      "category": "icon",
+                                      "icon": "Search",
+                                      "size": 12,
+                                      "actionType": "dialog",
+                                      "body": {
+                                        "renderer": "dialog",
+                                        "title": "详情",
+                                        "body": [
+                                          {
+                                            "renderer": "html",
+                                            "visibleOn": "$.isVersionChange",
+                                            "html": "<h4>版本变更</h4>"
+                                          },
+                                          {
+                                            "renderer": "html",
+                                            "visibleOn": "$.isVersionChange",
+                                            "classname": "wk-org__history-text",
+                                            "html": "版本由【<%=$.fromVersionId%>】变更为【<%=$.toVersionId%>】",
+                                            "style": {
+                                              "padding": "0 20px 10px 20px"
+                                            }
+                                          },
+                                          {
+                                            "renderer": "html",
+                                            "html": "<h4>字段变更(<%=$.totalChanges%>)</h4>"
+                                          },
+                                          {
+                                            "renderer": "each",
+                                            "name": "changeDetails",
+                                            "body": {
+                                              "renderer": "html",
+                                              "classname": "wk-org__history-text",
+                                              "html": "<div>字段【<%=$.label%>】由【<%=$.old_value%>】变更为【<%=$.new_value%>】</div>",
+                                              "style": {
+                                                "padding": "0 20px 10px 20px"
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "pageConfig": {
+                                    "pageIndex": "pageIndex",
+                                    "pageSize": "pageSize",
+                                    "total": "count",
+                                    "rows": "rows",
+                                    "iLayout": [
+                                      "slot"
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          ],
+                          "activeTab": 0,
+                          "tabPosition": "top",
+                          "stretch": true
                         },
                         {
-                          "label": "组织机构代码",
-                          "name": "orgCode",
-                          "fixed": "-"
-                        },
-                        {
-                          "label": "组织机构名称",
-                          "name": "fullPathName",
-                          "fixed": "-"
-                        },
-                        {
-                          "label": "业务组织类型",
-                          "name": "bizType",
-                          "fixed": "-"
-                        },
-                        {
-                          "name": "createBy",
-                          "label": "创建人",
-                          "fixed": "-"
-                        },
-                        {
-                          "name": "createAt",
-                          "label": "创建时间",
-                          "fixed": "-"
-                        },
-                        {
-                          "name": "updateBy",
-                          "label": "更新人",
-                          "fixed": "-"
-                        },
-                        {
-                          "name": "updateAt",
-                          "label": "更新时间",
-                          "fixed": "-"
-                        },
-                        {
-                          "fixed": "-",
-                          "renderer": "column",
+                          "renderer": "wrapper",
+                          "classname": "wk-org__languages__wrapper",
+                          "visibleOn": "$.langVersionType === 'language'",
                           "body": [
                             {
-                              "renderer": "action"
+                              "renderer": "html",
+                              "html": "语言设置",
+                              "style": {
+                                "padding-left": "20px",
+                                "text-align": "left",
+                                "font-weight": "bold",
+                                "font-size": "16px"
+                              }
+                            },
+                            {
+                              "renderer": "service",
+                              "initApi": {
+                                "url": "/api/mock/org-language"
+                              },
+                              "body": [
+                                {
+                                  "renderer": "each",
+                                  "name": "rows",
+                                  "body": {
+                                    "renderer": "render",
+                                    "classname": "wk-org__language-item",
+                                    "events": {
+                                      "click": {
+                                        "actions": [
+                                          {
+                                            "actionType": "custom",
+                                            "content": "$app.OrgServiceRef.dispatch(data, {\n  actionType: 'computed',\n  data: {\n    currentLang: data.code,\n    versionId: data.versionId,\n  },\n});"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "body": [
+                                      {
+                                        "renderer": "html",
+                                        "classname": "wk-org__language-icon",
+                                        "inline": true,
+                                        "html": "<%=$.code%>"
+                                      },
+                                      {
+                                        "renderer": "html",
+                                        "html": "<%=$.name%>",
+                                        "inline": true,
+                                        "classname": "wk-org__language-name"
+                                      },
+                                      {
+                                        "renderer": "action",
+                                        "type": "danger",
+                                        "plain": true,
+                                        "text": "未翻译",
+                                        "size": "small",
+                                        "visibleOn": "!$.translated",
+                                        "classname": "wk-org__language-tag"
+                                      }
+                                    ]
+                                  },
+                                  "type": "-",
+                                  "classname": "wk-org__languages"
+                                }
+                              ]
                             }
-                          ],
-                          "header": [],
-                          "label": "操作"
+                          ]
                         }
                       ],
-                      "header": []
+                      "classname": "wk-org-header",
+                      "computedClass": "$.langVersionType? 'with-collapse': ''"
+                    },
+                    {
+                      "renderer": "wrapper",
+                      "classname": "wk-org-form__wrapper",
+                      "body": [
+                        {
+                          "renderer": "form",
+                          "name": "OrgForm",
+                          "labelPosition": "top",
+                          "controls": [
+                            {
+                              "renderer": "divider",
+                              "text": "基础信息"
+                            },
+                            {
+                              "label": "组织机构代码",
+                              "requiredOn": true,
+                              "rules": [
+                                {
+                                  "pattern": {},
+                                  "message": "编码规则为 8 位数字流水码",
+                                  "trigger": "blur"
+                                }
+                              ],
+                              "name": "orgCode",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('orgCode')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('orgCode')))"
+                            },
+                            {
+                              "label": "组织机构类型",
+                              "renderer": "select",
+                              "requiredOn": true,
+                              "tableName": "cap_meta_org_type",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('orgType')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('orgType')))",
+                              "params": {
+                                "cached": true
+                              },
+                              "name": "orgType"
+                            },
+                            {
+                              "renderer": "radio",
+                              "label": "是否虚拟部门",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('isVirtualDept')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('isVirtualDept')))",
+                              "defaultValue": "1",
+                              "options": [
+                                {
+                                  "value": "1",
+                                  "label": "是"
+                                },
+                                {
+                                  "value": "0",
+                                  "label": "否"
+                                }
+                              ],
+                              "name": "isVirtualDept"
+                            },
+                            {
+                              "label": "组织机构全称",
+                              "requiredOn": true,
+                              "rules": [
+                                {
+                                  "pattern": {},
+                                  "message": "仅支持汉字、字母、数字和下划线",
+                                  "trigger": "blur"
+                                }
+                              ],
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('orgFullName')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('orgFullName')))",
+                              "name": "orgFullName",
+                              "renderer": "input"
+                            },
+                            {
+                              "label": "组织机构简称",
+                              "requiredOn": true,
+                              "rules": [
+                                {
+                                  "pattern": {},
+                                  "message": "仅支持汉字、字母、数字和下划线",
+                                  "trigger": "blur"
+                                }
+                              ],
+                              "name": "orgShortName",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('orgShortName')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('orgShortName')))"
+                            },
+                            {
+                              "label": "企业类型",
+                              "renderer": "select",
+                              "tableName": "cap_meta_ent_type",
+                              "name": "enterpriseType",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('enterpriseType')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('enterpriseType')))"
+                            },
+                            {
+                              "label": "登记注册类型",
+                              "renderer": "select",
+                              "tableName": "cap_meta_reg_type",
+                              "name": "regType",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('regType')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('regType')))"
+                            },
+                            {
+                              "renderer": "radio",
+                              "label": "是否扩展组织",
+                              "requiredOn": true,
+                              "disabledOn": true,
+                              "defaultValue": "1",
+                              "options": [
+                                {
+                                  "value": "1",
+                                  "label": "是"
+                                },
+                                {
+                                  "value": "0",
+                                  "label": "否"
+                                }
+                              ],
+                              "name": "isExtend",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('isExtend')))"
+                            },
+                            {
+                              "renderer": "computed",
+                              "name": "isEditing",
+                              "exp": "$.isLangType",
+                              "deps": [
+                                "isLangType"
+                              ]
+                            },
+                            {
+                              "renderer": "divider",
+                              "direction": "horizontal",
+                              "contentPosition": "center",
+                              "text": "标识代码",
+                              "visibleOn": "!$.onlyShowEditable"
+                            },
+                            {
+                              "label": "统一社会信用代码",
+                              "rules1": [
+                                {
+                                  "pattern": {},
+                                  "message": "代码不合法",
+                                  "trigger": "blur"
+                                }
+                              ],
+                              "name": "uscc",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('uscc')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('uscc')))"
+                            },
+                            {
+                              "label": "工商注册登记号",
+                              "name": "icRegNo",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('icRegNo')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('icRegNo')))"
+                            },
+                            {
+                              "label": "全国组织机构代码",
+                              "name": "nOrgCode",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('nOrgCode')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('nOrgCode')))"
+                            },
+                            {
+                              "label": "纳税人登记号",
+                              "name": "vatNo",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('vatNo')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('vatNo')))"
+                            },
+                            {
+                              "label": "其他有效证件号",
+                              "name": "otherIdNo",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('otherIdNo')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('otherIdNo')))"
+                            },
+                            {
+                              "renderer": "divider",
+                              "direction": "horizontal",
+                              "contentPosition": "center",
+                              "text": "地理信息",
+                              "visibleOn": "!$.onlyShowEditable"
+                            },
+                            {
+                              "label": "国家",
+                              "renderer": "select",
+                              "tableName": "cap_meta_country",
+                              "params": {
+                                "cached": true
+                              },
+                              "name": "country",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('country')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('country')))"
+                            },
+                            {
+                              "renderer": "computed",
+                              "name": "province",
+                              "exp": "''",
+                              "deps": [
+                                "country"
+                              ],
+                              "disabledOn": "!$.isEditing",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('province')))"
+                            },
+                            {
+                              "label": "省份/直辖市",
+                              "renderer": "select",
+                              "tableName": "cap_meta_area",
+                              "params": {
+                                "cached": true,
+                                "queryType": 2,
+                                "parentId": "country"
+                              },
+                              "name": "province",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('province')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('province')))"
+                            },
+                            {
+                              "renderer": "computed",
+                              "name": "city",
+                              "exp": "''",
+                              "deps": [
+                                "province"
+                              ],
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('')))"
+                            },
+                            {
+                              "label": "城市",
+                              "renderer": "select",
+                              "tableName": "cap_meta_area",
+                              "params": {
+                                "cached": true,
+                                "queryType": 2,
+                                "parentId": "province"
+                              },
+                              "name": "city",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('city')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('city')))"
+                            },
+                            {
+                              "renderer": "computed",
+                              "name": "town",
+                              "exp": "''",
+                              "deps": [
+                                "city"
+                              ]
+                            },
+                            {
+                              "label": "区县",
+                              "renderer": "select",
+                              "tableName": "cap_meta_area",
+                              "params": {
+                                "cached": true,
+                                "queryType": 2,
+                                "parentId": "city"
+                              },
+                              "name": "town",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('town')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('town')))"
+                            },
+                            {
+                              "renderer": "divider",
+                              "direction": "horizontal",
+                              "contentPosition": "center",
+                              "text": "注册信息",
+                              "visibleOn": "!$.onlyShowEditable"
+                            },
+                            {
+                              "label": "法定代表人",
+                              "requiredOn": true,
+                              "name": "legalRep",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('legalRep')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('legalRep')))"
+                            },
+                            {
+                              "label": "注册地址",
+                              "name": "regAddress",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('regAddress')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('regAddress')))"
+                            },
+                            {
+                              "label": "邮政编码",
+                              "name": "postalCode",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('postalCode')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('postalCode')))"
+                            },
+                            {
+                              "renderer": "divider",
+                              "direction": "horizontal",
+                              "contentPosition": "center",
+                              "text": "管理信息",
+                              "visibleOn": "!$.onlyShowEditable"
+                            },
+                            {
+                              "label": "上级管理单位",
+                              "renderer": "select",
+                              "requiredOn": true,
+                              "tableName": "cap_meta_upper_unit",
+                              "name": "upperMgrUnit",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('upperMgrUnit')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('upperMgrUnit')))"
+                            },
+                            {
+                              "label": "管理组织排序码",
+                              "name": "mgrPriox",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('mgrPriox')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('mgrPriox')))"
+                            },
+                            {
+                              "label": "所属直管企业",
+                              "renderer": "select",
+                              "tableName": "cap_meta_mgmt_ent",
+                              "name": "directEnterprise",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('directEnterprise')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('directEnterprise')))"
+                            },
+                            {
+                              "label": "股权属性",
+                              "renderer": "select",
+                              "tableName": "cap_meta_equity_type",
+                              "name": "equityType",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('equityType')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('equityType')))"
+                            },
+                            {
+                              "label": "经营状态",
+                              "renderer": "select",
+                              "tableName": "cap_meta_op_status",
+                              "name": "operationStatus",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('operationStatus')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('operationStatus')))"
+                            },
+                            {
+                              "renderer": "divider",
+                              "direction": "horizontal",
+                              "contentPosition": "center",
+                              "text": "人事股权关系",
+                              "visibleOn": "!$.onlyShowEditable"
+                            },
+                            {
+                              "label": "上级人事单位",
+                              "requiredOn": true,
+                              "renderer": "select",
+                              "tableName": "cap_meta_upper_unit",
+                              "name": "upperHrUnit",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('upperHrUnit')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('upperHrUnit')))"
+                            },
+                            {
+                              "label": "人事组织排序码",
+                              "name": "hrPriox",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('hrPriox')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('hrPriox')))"
+                            },
+                            {
+                              "label": "上级股权单位",
+                              "renderer": "select",
+                              "requiredOn": true,
+                              "tableName": "cap_meta_upper_unit",
+                              "name": "upperEquityUnit",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('upperEquityUnit')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('upperEquityUnit')))"
+                            },
+                            {
+                              "label": "股权组织排序码",
+                              "name": "equityPriox",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('equityPriox')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('equityPriox')))"
+                            },
+                            {
+                              "label": "股东名称",
+                              "name": "stockholderName",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('stockholderName')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('stockholderName')))"
+                            },
+                            {
+                              "label": "内外股东标识",
+                              "renderer": "select",
+                              "tableName": "cap_meta_shr_sign",
+                              "name": "stockholderCategory",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('stockholderCategory')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('stockholderCategory')))"
+                            },
+                            {
+                              "label": "股东经济类型",
+                              "renderer": "select",
+                              "tableName": "cap_meta_shr_type",
+                              "name": "stockholderType",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('stockholderType')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('stockholderType')))"
+                            },
+                            {
+                              "label": "股东持股比例",
+                              "name": "shareholdingRatio",
+                              "renderer": "input",
+                              "disabledOn": "!((!$.isLangType && $.isEditing) || ($.isLangType && $.metaLangFields && $.metaLangFields.includes('shareholdingRatio')))",
+                              "visibleOn": "!$.isEditing || (($.isEditing && !$.isLangType) || ($.isLangType && !$.onlyShowEditable) || ($.isLangType && $.onlyShowEditable && $.metaLangFields && $.metaLangFields.includes('shareholdingRatio')))"
+                            },
+                            {
+                              "renderer": "divider",
+                              "direction": "horizontal",
+                              "contentPosition": "left",
+                              "text": "业务组织",
+                              "visibleOn": "!$.onlyShowEditable"
+                            }
+                          ],
+                          "classname": "demo-grid-form",
+                          "actionApi": {
+                            "url": "/api/org",
+                            "method": "post",
+                            "params": {
+                              "*": "*"
+                            }
+                          }
+                        },
+                        {
+                          "renderer": "table",
+                          "name": "BizTable",
+                          "visibleOn": "!$.onlyShowEditable",
+                          "columns": [
+                            {
+                              "label": "序号",
+                              "name": "id",
+                              "fixed": "left",
+                              "renderer": "column",
+                              "width": "100"
+                            },
+                            {
+                              "label": "组织机构代码",
+                              "name": "orgCode",
+                              "renderer": "column",
+                              "width": "180"
+                            },
+                            {
+                              "label": "组织机构名称",
+                              "name": "fullPathName",
+                              "renderer": "column",
+                              "width": "180"
+                            },
+                            {
+                              "label": "业务组织类型",
+                              "name": "bizType",
+                              "renderer": "column",
+                              "width": "180"
+                            },
+                            {
+                              "name": "createBy",
+                              "label": "创建人",
+                              "renderer": "column",
+                              "width": "120"
+                            },
+                            {
+                              "name": "createAt",
+                              "label": "创建时间",
+                              "renderer": "column",
+                              "width": "180"
+                            },
+                            {
+                              "name": "updateBy",
+                              "label": "更新人",
+                              "renderer": "column",
+                              "width": "120"
+                            },
+                            {
+                              "name": "updateAt",
+                              "label": "更新时间",
+                              "renderer": "column",
+                              "width": "180"
+                            },
+                            {
+                              "fixed": "right",
+                              "renderer": "column",
+                              "body": [
+                                {
+                                  "renderer": "action"
+                                }
+                              ],
+                              "header": [],
+                              "label": "操作",
+                              "width": "100"
+                            }
+                          ],
+                          "header": []
+                        }
+                      ]
                     }
                   ],
                   "initApi": {
                     "url": "/api/mock/org-details",
-                    "method": "get",
                     "deep": true,
                     "params": {
-                      "orgCode": "${orgCode}"
+                      "orgCode": "${orgCode}",
+                      "versionId": "${versionId}",
+                      "currentLang": "${currentLang}"
                     }
                   },
-                  "sendOn": "$.orgCode !== ''"
+                  "sendOn": "$.orgCode",
+                  "deps": [],
+                  "silentMessage": false,
+                  "initData": {
+                    "langVersionType": "",
+                    "currentLang": "",
+                    "currentVersion": ""
+                  }
                 }
               ],
               "size": "80%"
@@ -521,10 +1037,7 @@
           ]
         }
       ],
-      "innerStyle": ".wk-org-page {\r\n.demo-grid-form {\r\n  .i-form__container__fieldset__items {\r\n    display: grid;\r\n    grid-template-columns: repeat(3, 33.3%);\r\n  }\r\n  .field-1,\r\n  .field-4,\r\n  .field-7,\r\n  .field-10 {\r\n    padding-right: 20px;\r\n  }\r\n  .field-2,\r\n  .field-5,\r\n  .field-8,\r\n  .field-11 {\r\n    padding: 0 10px;\r\n  }\r\n  .field-3,\r\n  .field-6,\r\n  .field-9,\r\n  .field-12 {\r\n    padding-left: 20px;\r\n  }\r\n}\r\n.org-save {\r\n  position: absolute;\r\n  right: 10px;\r\n}\r\n.i-render__container {\r\n  position: sticky;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 46px;\r\n  background: var(--el-color-white);\r\n  z-index: 2;\r\n}\r\n}",
-      "style": {
-        "height": "100%"
-      }
+      "innerStyle": ".wk-org-page {\r\n  height: 100%;\r\n  .wk-org-header {\r\n    line-height: 42px;\r\n    text-align: right;\r\n    &.with-collapse {\r\n      .i-wrapper__container__footer {\r\n        border-left: 1px solid var(--el-border-color-lighter);\r\n      }\r\n    }\r\n    &>.i-wrapper__container__body {\r\n      position: fixed;\r\n      top: calc(60px + var(--i-admin-header-height));\r\n      width: -webkit-fill-available;\r\n      margin-left: -19px;\r\n      z-index: 10;\r\n      background: var(--el-fill-color-lighter);\r\n      padding: 0 20px;\r\n    }\r\n    &>.i-wrapper__container__footer {\r\n      position: fixed;\r\n      right: 0;\r\n      top: 132px;\r\n      width: 260px;\r\n      .el-tab-pane {\r\n        height: calc(100vh - 230px);\r\n        overflow-y: auto;\r\n      }\r\n    }\r\n  }\r\n  .wk-org-header.with-collapse + .wk-org-form__wrapper {\r\n    padding-right: 260px;\r\n  }\r\n  .wk-org-header__title {\r\n    font-size: 16px;\r\n    font-weight: bold;\r\n  }\r\n  .wk-org-form__wrapper {\r\n    padding-top: 30px;\r\n  }\r\n  .wk-org__languages__wrapper {\r\n    height: calc(100vh - 180px);\r\n    padding: 0 10px 50px 10px;\r\n  }\r\n  .wk-org__version-cards {\r\n    padding: 0 10px 50px 10px;\r\n    .el-col {\r\n      margin-bottom: 0;\r\n    }\r\n    .el-card {\r\n      border: none;\r\n    }\r\n    .el-pagination {\r\n      position: fixed;\r\n      bottom: 50px;\r\n      background: var(--el-bg-color);\r\n    }\r\n    .i-card__body {\r\n      padding: 0;\r\n    }\r\n  }\r\n  .wk-org__version-tags {\r\n    position: absolute;\r\n    right: 30px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__version-collapse {\r\n    border-bottom: 0;\r\n    overflow: hidden;\r\n    .i-collapse__container__title {\r\n      display: none;\r\n    }\r\n    .i-collapse__container__actions {\r\n      left: -10px;\r\n      text-align: left;\r\n    }\r\n    .el-collapse-item {\r\n      &:hover {\r\n        .el-collapse-item__header,\r\n        .el-collapse-item__wrap {\r\n          background: var(--el-color-primary-light-9);\r\n        }\r\n      }\r\n    }\r\n  }\r\n  .wk-org__language-item {\r\n    padding: 0 20px;\r\n    text-align: left;\r\n    cursor: pointer;\r\n    &:hover {\r\n      background: var(--el-color-primary-light-9);\r\n    }\r\n  }\r\n  .wk-org__language-name {\r\n    font-weight: bold;\r\n  }\r\n  .wk-org__language-icon {\r\n    border: 1px solid var(--el-border-color-lighter);\r\n    font-size: 12px;\r\n    padding: 4px;\r\n    margin-right: 10px;\r\n  }\r\n  .wk-org__language-tag {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-icon {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-text {\r\n    padding: 0 10px 10px 20px;\r\n  }\r\n  .demo-grid-form {\r\n    .i-form__container__fieldset__items {\r\n      display: grid;\r\n      grid-template-columns: repeat(3, 33.3%);\r\n    }\r\n    .field-1,\r\n    .field-4,\r\n    .field-7,\r\n    .field-10 {\r\n      padding-right: 20px;\r\n    }\r\n    .field-2,\r\n    .field-5,\r\n    .field-8,\r\n    .field-11 {\r\n      padding: 0 10px;\r\n    }\r\n    .field-3,\r\n    .field-6,\r\n    .field-9,\r\n    .field-12 {\r\n      padding-left: 20px;\r\n    }\r\n  }\r\n}"
     },
     "version": 0,
     "status": 1,
