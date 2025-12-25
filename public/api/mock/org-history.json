@@ -1,0 +1,17 @@
+{
+  "status": 0,
+  "message": "成功",
+  "data": {
+    "id": 22,
+    "title": "数据列",
+    "method": "get",
+    "path": "/org-history",
+    "namespace": "版本历史",
+    "description": "版本历史",
+    "delay": null,
+    "createdBy": "admin",
+    "createdAt": "2024-03-29T02:42:54.000Z",
+    "updatedAt": "2024-03-30T01:15:30.000Z",
+    "schema": "() => {\n  return {\n    count: 3,\n    rows: [\n      {\n        id: 1,\n        masterId: 1001,\n        changeType: 1, // 创建\n        changedAt: '2023年01月15日', // 2023-01-15 09:30:00\n        changedBy: 'admin',\n        changedByName: '系统管理员',\n        isVersionChange: true,\n        fromVersionId: 'v1.0', // 创建时无前置版本\n        toVersionId: 'v2.0',\n        totalChanges: 2,\n        changeDetails: [\n          {\n            changeType: '3',\n            field: 'orgFullName',\n            label: '组织机构全称',\n            old_value: 'old_value1',\n            new_value: 'new_value1',\n          },\n          {\n            changeType: '7',\n            field: 'orgShortName',\n            label: '组织机构简称',\n            old_value: 'old_value2',\n            new_value: 'new_value2',\n          },\n        ],\n        version: 1,\n        status: 1,\n        createBy: 'admin',\n        createName: '系统管理员',\n        createTime: 1673746200000, // 2023-01-15 09:30:00\n        updateBy: 'admin',\n        updateName: '系统管理员',\n        updateTime: 1673746200000, // 2023-01-15 09:30:00\n        remark: '初始化创建用户名字段',\n      },\n      {\n        id: 2,\n        masterId: 1001,\n        changeType: 3, // 更新\n        changedAt: '2023年05月20日', // 2023-05-20 14:15:00\n        changedBy: 'user1',\n        changedByName: '张三',\n        isVersionChange: true,\n        fromVersionId: 'v1.0',\n        toVersionId: 'v1.1',\n        totalChanges: 1,\n        changeDetails: [\n          {\n            changeType: '1',\n            field: 'enterpriseType',\n            label: '企业类型',\n            old_value: '2',\n            new_value: '3',\n          }\n        ],\n        version: 2,\n        status: 1,\n        createBy: 'admin',\n        createName: '系统管理员',\n        createTime: 1673746200000, // 2023-01-15 09:30:00\n        updateBy: 'user1',\n        updateName: '张三',\n        updateTime: 1684563300000, // 2023-05-20 14:15:00\n        remark: '更新用户名字段的描述和名称',\n      },\n      {\n        id: 3,\n        masterId: 1002,\n        changeType: 5, // 删除\n        changedAt: '2023年06月10日', // 2023-06-10 10:00:00\n        changedBy: 'user2',\n        changedByName: '李四',\n        isVersionChange: false, // 删除操作通常不涉及版本变更\n        fromVersionId: 'v2.0',\n        toVersionId: null, // 删除后无版本\n        totalChanges: 1,\n        changeDetails: [\n          {\n            changeType: '5',\n            field: 'isExtend',\n     label: '是否扩展组织',\n         old_value: '1',\n            new_value: '0',\n          }\n        ],\n        version: 0, // 删除记录可能保留版本为0或原版本\n        status: 0, // 标记为停用（逻辑删除）\n        createBy: 'admin',\n        createName: '系统管理员',\n        createTime: 1676862900000, // 2023-02-20 11:15:00\n        updateBy: 'user2',\n        updateName: '李四',\n        updateTime: 1686376800000, // 2023-06-10 10:00:00\n        remark: '删除非核心字段【年龄】',\n      },\n    ],\n  }\n}"
+  }
+}
