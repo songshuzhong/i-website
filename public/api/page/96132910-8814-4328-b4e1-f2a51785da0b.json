@@ -104,6 +104,8 @@
                       "inherit": {
                         "type": "include",
                         "value": [
+                          "orgFullName",
+                          "versionId",
                           "orgCode",
                           "id"
                         ]
@@ -111,7 +113,7 @@
                       "body": [
                         {
                           "renderer": "html",
-                          "html": "<%=$.orgCode%>",
+                          "html": "<%=$.orgFullName%>",
                           "style": {
                             "display": "inline",
                             "float": "left"
@@ -231,7 +233,7 @@
                                           "label": "面板",
                                           "header": {
                                             "renderer": "html",
-                                            "html": "<div><%=$.versionName%></div>"
+                                            "html": "<strong><%=$.versionName%></strong>"
                                           },
                                           "body": [
                                             {
@@ -370,15 +372,31 @@
                                   "virtual": false,
                                   "body": [
                                     {
-                                      "renderer": "html",
-                                      "html": "<div><%=$.changedAt%></div><div><%=$.changedByName%>对组织进行了变更</div>",
+                                      "renderer": "render",
                                       "style": {
                                         "text-align": "left",
                                         "padding": "0 20px 0 10px",
                                         "cursor": "pointer",
                                         "display": "block"
                                       },
-                                      "inline": true
+                                      "body": [
+                                        {
+                                          "renderer": "html",
+                                          "inline": true,
+                                          "html": "<div><%=$.changedAt%></div><strong><%=$.changedByName%></strong>"
+                                        },
+                                        {
+                                          "renderer": "mapping",
+                                          "name": "changeType",
+                                          "inline": true,
+                                          "map": {
+                                            "1": "创建了该组织机构",
+                                            "3": "对组织进行了变更",
+                                            "5": "删除了该组织机构",
+                                            "7": "对该组织机构进行了翻译"
+                                          }
+                                        }
+                                      ]
                                     },
                                     {
                                       "renderer": "action",
