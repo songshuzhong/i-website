@@ -265,7 +265,7 @@
                                                   "actions": [
                                                     {
                                                       "actionType": "custom",
-                                                      "content": "$app.OrgServiceRef.dispatch(data, {\n  actionType: 'computed',\n  data: {\n    id: data.id,\n    versionId: data.currentOrgVersion,\n    selectedVersionId: data.versionId,\n  },\n});"
+                                                      "content": "$app.OrgServiceRef.dispatch(data, {\n  actionType: 'computed',\n  data: {\n    versionId: data.versionId,\n    selectedVersionId: data.versionId,\n  },\n});"
                                                     }
                                                   ]
                                                 }
