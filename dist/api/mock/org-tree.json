@@ -3,13 +3,15 @@
   "message": "成功",
   "data": [
     {
-      "code": "1001",
+      "orgCode": "1001",
+      "versionId": "1001",
       "label": "集团1号",
       "isLeaf": false,
       "children": []
     },
     {
-      "code": "1002",
+      "orgCode": "1002",
+      "versionId": "1002",
       "label": "集团2号",
       "isLeaf": false,
       "children": []

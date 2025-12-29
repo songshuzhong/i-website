@@ -23,10 +23,18 @@
           "promiseType": "sw",
           "useRef": true,
           "deps": [
-            "date"
+            "date",
+            "start"
           ],
           "interval": 1500,
           "body": [
+            {
+              "renderer": "switch",
+              "name": "start",
+              "activeText": "暂停游戏",
+              "inactiveText": "开始游戏",
+              "type": "button"
+            },
             {
               "renderer": "html",
               "html": "<h1>\r\n  共得分:<%=$.count%>\r\n</h1>",
@@ -41,7 +49,8 @@
                   "actions": [
                     {
                       "actionType": "custom",
-                      "content": "if (e && e.target.classList.contains('active')) {\r\n  const state = $app.ServiceRef.onAction({}, { actionType: 'state' });\r\n  const count = state.count + 1;\r\n  $app.ServiceRef.onAction({ count }, { actionType: 'computed', name: 'count' });\r\n}"
+                      "content": "if (e && e.target.classList.contains('active')) {\r\n  const state = $app.ServiceRef.dispatch({}, { actionType: 'state' });\r\n  const count = state.count + 1;\r\n  $app.ServiceRef.dispatch({ count, active: -1 }, { actionType: 'computed', name: ['count', 'active'] });\r\n}",
+                      "linkedOn": ""
                     }
                   ]
                 }
@@ -51,7 +60,7 @@
           "name": "Service"
         }
       ],
-      "worker": "() => {\r\n  const active = Math.floor(Math.random() * 4);\r\n  return Promise.resolve({\r\n    date: Date.now(),\r\n    active,\r\n  });\r\n}",
+      "worker": "(e) => {\r\n  if (!e.data.start) {\r\n    return Promise.resolve({ active: -1 });\r\n  }\r\n  const active = Math.floor(Math.random() * 4);\r\n  return Promise.resolve({\r\n    date: Date.now(),\r\n    active,\r\n  });\r\n}",
       "initData": {
         "active": 0,
         "count": 0
