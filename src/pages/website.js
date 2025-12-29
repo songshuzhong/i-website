@@ -52,8 +52,32 @@ const config = {
 };
 const isGPOrDev = process.env.VUE_APP_API_NODE_ENV === 'gp' || process.env.VUE_APP_API_NODE_ENV === 'dev';
 config.adaptor = {
-  req: `if (${isGPOrDev} && url.includes("/api/page")) {\n  req.url = req.url + ".json";\n}\n else if (${isGPOrDev} && url.includes("/api/mock")) {\nlet l=url.split("/api/mock")[1].split("/").filter(i => i).join("-");let s=l.split('?');l=s[0]+".json";\n  req.url = "/api/mock/" + l;\n} else if (${isGPOrDev} && url.includes("/api")) {\n  req.url = req.url + ".json";\n}`,
-  res: `if (${isGPOrDev} && url.includes("/api/mock")) {\n  let exp = res.data.schema;\n  const regex =\n    /^\\s*(?:\\(([^)]*)\\)|([^=\\s]+))\\s*=>\\s*(?:\\{([\\s\\S]*?)\\}|([^\\n]*))\\s*$/;\n  const match = exp && exp.match && exp.match(regex);\n  let functionBody = exp;\n  if (match && match.length > 1) {\n    functionBody = match[3].trim();\n    try {\n      const fun = new Function("_req", "_res", functionBody);\n      res.data = fun({ params, query: params }, res);\n    } catch (error) {\n      res.data = error;\n    }\n  }\n}`
+  req: `
+if (${isGPOrDev} && url.includes("/api/page")) {
+  req.url = req.url + ".json";
+} else if (${isGPOrDev} && url.includes("/api/mock")) {
+  let l=url.split("/api/mock")[1].split("/").filter(i => i).join("-");
+  let s=l.split('?');l=s[0]+".json";
+  req.url = "/api/mock/" + l;
+} else if (${isGPOrDev} && url.includes("/api")) {
+  req.url = req.url + ".json";
+}`,
+  res: `
+if (${isGPOrDev} && url.includes("/api/mock")) {
+  let exp = res.data.schema;
+  const regex =\n    /^\\s*(?:\\(([^)]*)\\)|([^=\\s]+))\\s*=>\\s*(?:\\{([\\s\\S]*?)\\}|([^\\n]*))\\s*$/;\n
+  const match = exp && exp.match && exp.match(regex);
+  let functionBody = exp;
+  if (match && match.length > 1) {
+    functionBody = match[3].trim();
+    try {
+      const fun = new Function("_req", "_res", functionBody);
+      res.data = fun({ params, query: params }, res);
+    } catch (error) {
+      res.data = error;
+    }
+  }
+}`
 };
 let user = `${process.env.VUE_APP_API_BASE}/api/user${isGPOrDev? '.json': ''}`;
 

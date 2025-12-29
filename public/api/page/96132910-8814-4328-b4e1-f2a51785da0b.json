@@ -23,6 +23,7 @@
       "body": [
         {
           "renderer": "split",
+          "name": "OrgSplit",
           "panels": [
             {
               "style": {
@@ -37,10 +38,10 @@
                   "controls": [
                     {
                       "renderer": "tree",
-                      "name": "orgCode",
+                      "name": "versionId",
                       "lazy": true,
                       "showCheckbox": false,
-                      "joinValue": false,
+                      "joinValue": true,
                       "initApi": {
                         "url": "/api/mock/org-tree",
                         "params": {
@@ -51,36 +52,12 @@
                         "isLeaf": "isLeaf",
                         "children": "children"
                       },
-                      "nodeKey": "code",
-                      "target": "OrgService",
+                      "nodeKey": "versionId",
+                      "target": "OrgService,CurrentVersionService",
                       "body": [
                         {
                           "renderer": "html",
                           "html": "<%=$.label%>"
-                        },
-                        {
-                          "renderer": "dropdown",
-                          "text": "...",
-                          "style": {
-                            "position": "absolute",
-                            "right": "6px"
-                          },
-                          "body": [
-                            {
-                              "renderer": "action",
-                              "text": "新增平级",
-                              "isText": true,
-                              "actionType": "extends",
-                              "triggered": "delete"
-                            },
-                            {
-                              "renderer": "action",
-                              "text": "新增下级",
-                              "isText": true,
-                              "actionType": "extends",
-                              "triggered": "add"
-                            }
-                          ]
                         }
                       ]
                     }
@@ -96,14 +73,44 @@
               "body": [
                 {
                   "renderer": "service",
+                  "name": "CurrentVersionService",
+                  "sendOn": "$.orgCode",
+                  "initApi": {
+                    "url": "/api/mock/current-version",
+                    "deep": true,
+                    "params": {
+                      "orgCode": "${orgCode}"
+                    }
+                  },
+                  "target": "OrgSplit?currentOrgVersion=${currentOrgVersion}"
+                },
+                {
+                  "renderer": "service",
                   "name": "OrgService",
                   "useRef": true,
+                  "initApi": {
+                    "url": "/api/mock/org-details",
+                    "deep": true,
+                    "params": {
+                      "versionId": "${versionId}",
+                      "langCode": "${currentLang}"
+                    }
+                  },
+                  "sendOn": "$.versionId && !Array.isArray($.versionId)",
+                  "silentMessage": false,
+                  "initData": {
+                    "langVersionType": "",
+                    "currentLang": "",
+                    "currentVersion": ""
+                  },
                   "body": [
                     {
                       "renderer": "wrapper",
                       "inherit": {
                         "type": "include",
                         "value": [
+                          "currentOrgVersion",
+                          "selectedVersionId",
                           "orgFullName",
                           "versionId",
                           "orgCode",
@@ -112,23 +119,36 @@
                       },
                       "body": [
                         {
-                          "renderer": "html",
-                          "html": "<%=$.orgFullName%>",
-                          "style": {
-                            "display": "inline",
-                            "float": "left"
-                          },
-                          "classname": "wk-org-header__title",
-                          "inline": true
+                          "renderer": "render",
+                          "body": [
+                            {
+                              "renderer": "html",
+                              "html": "<%=$.orgFullName%>",
+                              "style": {
+                                "display": "inline",
+                                "float": "left"
+                              },
+                              "classname": "wk-org-header__title",
+                              "inline": true
+                            },
+                            {
+                              "renderer": "action",
+                              "plain": true,
+                              "type": "success",
+                              "size": "small",
+                              "visibleOn": "$.selectedVersionId",
+                              "text": "查看版本：<%=$.selectedVersionId%>",
+                              "style": {
+                                "margin": "9px",
+                                "float": "left"
+                              }
+                            }
+                          ]
                         },
                         {
                           "renderer": "service",
                           "initApi": {
-                            "url": "/api/mock/meta-field",
-                            "deep": true,
-                            "params": {
-                              "onlyShowEditable": "${onlyShowEditable}"
-                            }
+                            "url": "/api/mock/meta-field"
                           },
                           "inherit": {
                             "type": "none",
@@ -155,7 +175,8 @@
                           "inactiveText": "历史版本",
                           "type": "button",
                           "activeText": "关闭历史版本",
-                          "visibleOn": "!$.isLangType && !$.isEditing"
+                          "visibleOn": "!$.isLangType && !$.isEditing",
+                          "target": "OrgSplit"
                         },
                         {
                           "renderer": "switch",
@@ -244,7 +265,7 @@
                                                   "actions": [
                                                     {
                                                       "actionType": "custom",
-                                                      "content": "$app.OrgServiceRef.dispatch(data, {\n  actionType: 'computed',\n  name: ['versionId', 'id'],\n  data: {\n    id: data.id,\n    versionId: data.versionId,\n  },\n});\n$app.VersionCardsRef.dispatch(data, {\n  actionType: 'computed',\n  data: {\n    selectedVersionId: data.versionId,\n  },\n});"
+                                                      "content": "$app.OrgServiceRef.dispatch(data, {\n  actionType: 'computed',\n  data: {\n    id: data.id,\n    versionId: data.currentOrgVersion,\n    selectedVersionId: data.versionId,\n  },\n});"
                                                     }
                                                   ]
                                                 }
@@ -272,9 +293,10 @@
                                                 },
                                                 {
                                                   "renderer": "action",
-                                                  "visibleOn": "$.status",
+                                                  "visibleOn": "$.versionId == $.currentOrgVersion",
                                                   "classname": "wk-org__version-tag",
                                                   "plain": true,
+                                                  "disabledOn": true,
                                                   "type": "primary",
                                                   "size": "small",
                                                   "text": "当前版本"
@@ -313,6 +335,7 @@
                                     {
                                       "renderer": "each",
                                       "name": "rows",
+                                      "extends": true,
                                       "body": {
                                         "renderer": "render",
                                         "classname": "wk-org__language-item",
@@ -321,7 +344,7 @@
                                             "actions": [
                                               {
                                                 "actionType": "custom",
-                                                "content": "$app.OrgServiceRef.dispatch(data, {\n  actionType: 'computed',\n  data: {\n    currentLang: data.code,\n    versionId: data.versionId,\n  },\n});"
+                                                "content": "$app.OrgServiceRef.dispatch(data, {\n  actionType: 'computed',\n  data: {\n    currentLang: data.code,\n    versionId: data.selectedVersionId,\n  },\n});"
                                               }
                                             ]
                                           }
@@ -439,6 +462,15 @@
                                               }
                                             }
                                           }
+                                        ],
+                                        "footer": [
+                                          {
+                                            "renderer": "html",
+                                            "html": "<%=$.changedBy + '&nbsp;&nbsp;' + $.changedAt%>",
+                                            "style": {
+                                              "text-align": "left"
+                                            }
+                                          }
                                         ]
                                       }
                                     }
@@ -484,6 +516,7 @@
                                 {
                                   "renderer": "each",
                                   "name": "rows",
+                                  "extends": true,
                                   "body": {
                                     "renderer": "render",
                                     "classname": "wk-org__language-item",
@@ -492,7 +525,7 @@
                                         "actions": [
                                           {
                                             "actionType": "custom",
-                                            "content": "$app.OrgServiceRef.dispatch(data, {\n  actionType: 'computed',\n  data: {\n    currentLang: data.code,\n    versionId: data.versionId,\n  },\n});"
+                                            "content": "$app.OrgServiceRef.dispatch(data, {\n  actionType: 'computed',\n  data: {\n    currentLang: data.code,\n    versionId: data.currentOrgVersion,\n  },\n});"
                                           }
                                         ]
                                       }
@@ -1029,25 +1062,20 @@
                           "header": []
                         }
                       ]
+                    },
+                    {
+                      "renderer": "computed",
+                      "name": "versionId",
+                      "exp": "$.isVersionType? $.versionId: $.currentOrgVersion",
+                      "deps": ["isVersionType"]
+                    },
+                    {
+                      "renderer": "computed",
+                      "name": "selectedVersionId",
+                      "exp": "$.isVersionType? $.versionId: ''",
+                      "deps": ["isVersionType"]
                     }
-                  ],
-                  "initApi": {
-                    "url": "/api/mock/org-details",
-                    "deep": true,
-                    "params": {
-                      "orgCode": "${orgCode}",
-                      "versionId": "${versionId}",
-                      "currentLang": "${currentLang}"
-                    }
-                  },
-                  "sendOn": "$.orgCode",
-                  "deps": [],
-                  "silentMessage": false,
-                  "initData": {
-                    "langVersionType": "",
-                    "currentLang": "",
-                    "currentVersion": ""
-                  }
+                  ]
                 }
               ],
               "size": "80%"
