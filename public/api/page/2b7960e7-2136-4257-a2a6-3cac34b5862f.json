@@ -51,7 +51,7 @@
               "actions": [
                 {
                   "actionType": "custom",
-                  "content": "let e = document.querySelector('.i-data__debug');\r\nif (e) {\r\n  e.style.color = 'var(--el-color-danger)';\r\n}\r\n$app.WrapperRef.onAction(\r\n  { now: Date.now() },\r\n  { actionType: 'computed', name: 'now', }\r\n);"
+                  "content": "let e = document.querySelector('.i-data__debug');\r\nif (e) {\r\n  e.style.color = 'var(--el-color-danger)';\r\n}\r\n$app.WrapperRef.dispatch(\r\n  {},\r\n  {\r\n    actionType: 'computed',\r\n    data: {\r\n      now: Date.now(),\r\n    },\r\n  }\r\n);"
                 }
               ]
             },

@@ -112,4 +112,5 @@ export {
   ElPopoverDirective,
   ElSplitter,
   ElSplitterPanel,
+  ElDatePickerPanel,
 } from 'element-plus';
