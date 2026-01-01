@@ -97,7 +97,7 @@ export default {
                         renderer: 'action',
                         isText: true,
                         type: 'info',
-                        text: '<%=data.title%>'
+                        text: '${data.title}'
                       }
                     }
                   ]
@@ -118,7 +118,7 @@ export default {
                         renderer: 'action',
                         isText: true,
                         type: 'info',
-                        text: '<%=data.title%>'
+                        text: '${data.title}'
                       }
                     }
                   ]
@@ -246,7 +246,7 @@ export default {
           },
           {
             renderer: 'dropdown',
-            text: '<%=$.username || "guest"%>',
+            text: '${$.username || "guest"}',
             popperClass: 'i-website__header__dropdown',
             name: 'IWebsiteDropdown',
             body: [

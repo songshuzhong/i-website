@@ -1167,39 +1167,39 @@ export default {
               header: [
                 {
                   renderer: 'html',
-                  html: '时间：<%=data.timestamp%>'
+                  html: '时间：${data.timestamp}'
                 }
               ],
               body: [
                 {
                   renderer: 'html',
-                  html: '<h3><%=$?.features?.length? "Features": ""%></h3>',
+                  html: '<h3>${$?.features?.length? "Features": ""}</h3>',
                   inline: true
                 },
                 {
                   renderer: 'each',
                   name: 'features',
-                  body: '<%=$%>'
+                  body: '${$}'
                 },
                 {
                   renderer: 'html',
-                  html: '<h3><%=$?.bugs?.length? "Bug fixes": ""%></h3>',
+                  html: '<h3>${$?.bugs?.length? "Bug fixes": ""}</h3>',
                   inline: true
                 },
                 {
                   renderer: 'each',
                   name: 'bugs',
-                  body: '<%=$%>'
+                  body: '${$}'
                 },
                 {
                   renderer: 'html',
-                  html: '<h3><%=$?.refactors?.length? "Refactors": ""%></h3>',
+                  html: '<h3>${$?.refactors?.length? "Refactors": ""}</h3>',
                   inline: true
                 },
                 {
                   renderer: 'each',
                   name: 'refactors',
-                  body: '<%=$%>'
+                  body: '${$}'
                 }
               ],
               footer: [],

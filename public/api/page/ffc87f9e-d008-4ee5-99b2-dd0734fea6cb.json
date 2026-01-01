@@ -206,7 +206,7 @@
                     {
                       "renderer": "alert",
                       "type": "${input}",
-                      "title": "这是第<%=$.input%>个警告。"
+                      "title": "这是第${$.input}个警告。"
                     }
                   ],
                   "name": "tabs",

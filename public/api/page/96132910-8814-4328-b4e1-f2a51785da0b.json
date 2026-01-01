@@ -24,6 +24,7 @@
         {
           "renderer": "split",
           "name": "OrgSplit",
+          "useRef": true,
           "panels": [
             {
               "style": {
@@ -31,76 +32,90 @@
               },
               "body": [
                 {
-                  "renderer": "form",
+                  "renderer": "render",
                   "style": {
-                    "position": "fixed"
+                    "position": "fixed",
+                    "margin-top": "-6px"
                   },
-                  "controls": [
-                    {
-                      "renderer": "render",
-                      "classname": "wk-org-form__render",
-                      "body": [
-                        {
-                          "renderer": "html",
-                          "html": "<strong>组织机构</strong>"
-                        },
-                        {
-                          "renderer": "html",
-                          "html": "（<%=$.currentTreeVersion%>）",
-                          "visibleOn": "$.currentTreeVersion"
-                        },
-                        {
-                          "renderer": "dropdown",
-                          "classname": "wk-org-form__dropdown",
-                          "body": [
-                            {
-                              "renderer": "action",
-                              "text": "当前版本",
-                              "isText": true
+                  "body": {
+                    "renderer": "form",
+                    "controls": [
+                      {
+                        "renderer": "render",
+                        "classname": "wk-org-form__render",
+                        "body": [
+                          {
+                            "renderer": "html",
+                            "html": "<strong>组织机构</strong>"
+                          },
+                          {
+                            "renderer": "html",
+                            "html": "${$.currentTreeVersion? '（' + $.currentTreeVersion + '）': ''}"
+                          },
+                          {
+                            "renderer": "dropdown",
+                            "classname": "wk-org-form__dropdown",
+                            "text": {
+                              "renderer": "icon",
+                              "icon": "Timer"
                             },
-                            {
-                              "renderer": "action",
-                              "text": "版本记录",
-                              "isText": true,
-                              "popupType": "over",
-                              "popperWidth": 340,
-                              "body": {
-                                "renderer": "datepicker",
-                                "isPanel": true,
-                                "name": "currentTreeVersion",
-                                "target": "OrgSplit"
+                            "body": [
+                              {
+                                "renderer": "action",
+                                "text": "当前版本",
+                                "isText": true,
+                                "actionType": "custom",
+                                "content": "$app.OrgSplitRef.dispatch({}, {\n  actionType: 'computed',\n  data: {\n    currentTreeVersion: '',\n  }\n});"
+                              },
+                              {
+                                "renderer": "action",
+                                "text": "版本记录",
+                                "isText": true,
+                                "popupType": "over",
+                                "popperWidth": 340,
+                                "body": {
+                                  "renderer": "datepicker",
+                                  "isPanel": true,
+                                  "name": "currentTreeVersion",
+                                  "target": "OrgSplit"
+                                },
+                                "footer": {
+                                  "renderer": "action",
+                                  "size": "small",
+                                  "text": "关闭"
+                                }
                               }
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "renderer": "tree",
-                      "name": "versionId",
-                      "lazy": true,
-                      "showCheckbox": false,
-                      "joinValue": true,
-                      "initApi": {
-                        "url": "/api/mock/org-tree",
-                        "params": {
-                          "code": "${orgCode}"
-                        }
+                            ]
+                          }
+                        ]
                       },
-                      "defaultProps": {
-                        "isLeaf": "isLeaf",
-                        "children": "children"
-                      },
-                      "nodeKey": "versionId",
-                      "target": "OrgService,CurrentVersionService",
-                      "body": [
-                        {
-                          "renderer": "html",
-                          "html": "<%=$.label%>"
-                        }
-                      ]
-                    }
-                  ]
+                      {
+                        "renderer": "tree",
+                        "name": "versionId",
+                        "lazy": true,
+                        "showCheckbox": false,
+                        "joinValue": true,
+                        "initApi": {
+                          "url": "/api/mock/org-tree",
+                          "params": {
+                            "code": "${orgCode}"
+                          }
+                        },
+                        "defaultProps": {
+                          "isLeaf": "isLeaf",
+                          "children": "children"
+                        },
+                        "nodeKey": "versionId",
+                        "target": "OrgService,CurrentVersionService",
+                        "body": [
+                          {
+                            "renderer": "html",
+                            "html": "${$.label}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
                 }
               ],
               "size": "20%"
@@ -148,6 +163,7 @@
                       "inherit": {
                         "type": "include",
                         "value": [
+                          "currentTreeVersion",
                           "currentOrgVersion",
                           "selectedVersionId",
                           "orgFullName",
@@ -163,7 +179,7 @@
                           "body": [
                             {
                               "renderer": "html",
-                              "html": "<%=$.orgFullName%>",
+                              "html": "${$.orgFullName}",
                               "style": {
                                 "display": "inline",
                                 "float": "left"
@@ -196,7 +212,7 @@
                               "type": "success",
                               "size": "small",
                               "visibleOn": "$.selectedVersionId",
-                              "text": "查看版本：<%=$.selectedVersionId%>",
+                              "text": "查看版本：${$.selectedVersionId}",
                               "style": {
                                 "margin": "9px",
                                 "float": "left"
@@ -313,12 +329,12 @@
                                           "label": "面板",
                                           "header": {
                                             "renderer": "html",
-                                            "html": "<strong><%=$.versionName%></strong>"
+                                            "html": "<strong>${$.versionName}</strong>"
                                           },
                                           "body": [
                                             {
                                               "renderer": "html",
-                                              "html": "<div>创建人：<%=$.createBy%></div><div>创建时间：<%=$.createTime%></div>",
+                                              "html": "<div>创建人：${$.createBy}</div><div>创建时间：${$.createTime}</div>",
                                               "events": {
                                                 "click": {
                                                   "actions": [
@@ -413,11 +429,11 @@
                                             "renderer": "html",
                                             "classname": "wk-org__language-icon",
                                             "inline": true,
-                                            "html": "<%=$.code%>"
+                                            "html": "${$.code}"
                                           },
                                           {
                                             "renderer": "html",
-                                            "html": "<%=$.name%>",
+                                            "html": "${$.name}",
                                             "inline": true,
                                             "classname": "wk-org__language-name"
                                           },
@@ -465,7 +481,7 @@
                                         {
                                           "renderer": "html",
                                           "inline": true,
-                                          "html": "<div><%=$.changedAt%></div><strong><%=$.changedByName%></strong>"
+                                          "html": "<div>${$.changedAt}</div><strong>${$.changedByName}</strong>"
                                         },
                                         {
                                           "renderer": "mapping",
@@ -500,14 +516,14 @@
                                             "renderer": "html",
                                             "visibleOn": "$.isVersionChange",
                                             "classname": "wk-org__history-text",
-                                            "html": "版本由【<%=$.fromVersionId%>】变更为【<%=$.toVersionId%>】",
+                                            "html": "版本由【${$.fromVersionId}】变更为【${$.toVersionId}】",
                                             "style": {
                                               "padding": "0 20px 10px 20px"
                                             }
                                           },
                                           {
                                             "renderer": "html",
-                                            "html": "<h4>字段变更(<%=$.totalChanges%>)</h4>"
+                                            "html": "<h4>字段变更(${$.totalChanges})</h4>"
                                           },
                                           {
                                             "renderer": "each",
@@ -515,7 +531,7 @@
                                             "body": {
                                               "renderer": "html",
                                               "classname": "wk-org__history-text",
-                                              "html": "<div>字段【<%=$.label%>】由【<%=$.old_value%>】变更为【<%=$.new_value%>】</div>",
+                                              "html": "<div>字段【${$.label}】由【${$.old_value}】变更为【${$.new_value}】</div>",
                                               "style": {
                                                 "padding": "0 20px 10px 20px"
                                               }
@@ -525,7 +541,7 @@
                                         "footer": [
                                           {
                                             "renderer": "html",
-                                            "html": "<%=$.changedBy + '&nbsp;&nbsp;' + $.changedAt%>",
+                                            "html": "${$.changedBy + '&nbsp;&nbsp;' + $.changedAt}",
                                             "style": {
                                               "text-align": "left"
                                             }
@@ -594,11 +610,11 @@
                                         "renderer": "html",
                                         "classname": "wk-org__language-icon",
                                         "inline": true,
-                                        "html": "<%=$.code%>"
+                                        "html": "${$.code}"
                                       },
                                       {
                                         "renderer": "html",
-                                        "html": "<%=$.name%>",
+                                        "html": "${$.name}",
                                         "inline": true,
                                         "classname": "wk-org__language-name"
                                       },

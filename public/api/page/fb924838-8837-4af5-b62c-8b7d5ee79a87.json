@@ -41,7 +41,7 @@
                     {
                       "renderer": "avatar",
                       "title": "访问量",
-                      "subTitle": "<%=data.pv%>",
+                      "subTitle": "${data.pv}",
                       "description": "每10秒钟更新一次",
                       "icon": "User",
                       "size": 70,
@@ -59,7 +59,7 @@
                     {
                       "renderer": "avatar",
                       "title": "用户反馈",
-                      "subTitle": "<%=data.feedback%>",
+                      "subTitle": "${data.feedback}",
                       "description": "每10秒钟更新一次",
                       "icon": "Message",
                       "size": 70,
@@ -77,7 +77,7 @@
                     {
                       "renderer": "avatar",
                       "title": "赞助数",
-                      "subTitle": "<%=data.support%>",
+                      "subTitle": "${data.support}",
                       "description": "每10秒钟更新一次",
                       "icon": "Money",
                       "size": 70,
@@ -95,7 +95,7 @@
                     {
                       "renderer": "avatar",
                       "title": "授权数",
-                      "subTitle": "<%=data.fork%>",
+                      "subTitle": "${data.fork}",
                       "description": "授权数量",
                       "icon": "ShoppingCartFull",
                       "size": 70,

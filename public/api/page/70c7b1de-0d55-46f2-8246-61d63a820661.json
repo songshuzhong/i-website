@@ -271,7 +271,7 @@
                     },
                     {
                       "renderer": "html",
-                      "html": "<%='connect: ' + $.connect%>"
+                      "html": "${'connect: ' + $.connect}"
                     },
                     {
                       "renderer": "computed",
@@ -328,7 +328,7 @@
                     {
                       "renderer": "input",
                       "name": "richtxt",
-                      "html": "<%=$.richtxt%>",
+                      "html": "${$.richtxt}",
                       "type": "textarea",
                       "flexible": false
                     }
@@ -349,7 +349,7 @@
                       "type": "checkbox"
                     },
                     {
-                      "text": "<%=$.createdAt%>",
+                      "text": "${$.createdAt}",
                       "renderer": "action",
                       "isText": true,
                       "actionType": "dialog",

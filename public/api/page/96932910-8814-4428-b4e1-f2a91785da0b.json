@@ -410,7 +410,7 @@
                 {
                   "renderer": "html",
                   "classname": "demo-form-calendar__html",
-                  "html": "<%=data.value%>"
+                  "html": "${data.value}"
                 }
               ],
               "label": "排期"

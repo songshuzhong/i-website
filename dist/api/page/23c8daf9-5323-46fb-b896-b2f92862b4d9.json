@@ -79,8 +79,8 @@
                 "click": {
                   "actions": [
                     {
-                      "content": "<%=$.description%>",
-                      "reload": "<%=$.text%>",
+                      "content": "${$.description}",
+                      "reload": "${$.text}",
                       "actionType": "notify",
                       "type": "primary"
                     }

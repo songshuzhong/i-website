@@ -244,7 +244,7 @@
                           "name": "fields",
                           "body": {
                             "renderer": "html",
-                            "html": "<div><span class='umis__viewer__label'><%=data.label%></span>:<span class='umis__viewer__value'><%=data.text%></span></div>"
+                            "html": "<div><span class='umis__viewer__label'>${data.label}</span>:<span class='umis__viewer__value'>${data.text}</span></div>"
                           }
                         }
                       }
@@ -530,14 +530,14 @@
                   "body": [
                     {
                       "renderer": "html",
-                      "html": "<div class='ucampaigns__viewer__header'><div>人群覆盖预估：</div><div><%=data.number%></div></div>"
+                      "html": "<div class='ucampaigns__viewer__header'><div>人群覆盖预估：</div><div>${data.number}</div></div>"
                     },
                     {
                       "renderer": "each",
                       "name": "fields",
                       "body": {
                         "renderer": "html",
-                        "html": "<div><span class='umis__viewer__label'><%=data.label%></span>:<span class='umis__viewer__value'><%=data.text%></span></div>"
+                        "html": "<div><span class='umis__viewer__label'>${data.label}</span>:<span class='umis__viewer__value'>${data.text}</span></div>"
                       }
                     }
                   ],
@@ -700,7 +700,7 @@
                   "name": "fields",
                   "body": {
                     "renderer": "html",
-                    "html": "<div><span class='umis__viewer__label'><%=data.label%></span>:<span class='umis__viewer__value'><%=data.text%></span></div>"
+                    "html": "<div><span class='umis__viewer__label'>${data.label}</span>:<span class='umis__viewer__value'>${data.text}</span></div>"
                   }
                 }
               }

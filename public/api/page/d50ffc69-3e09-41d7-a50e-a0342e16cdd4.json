@@ -41,7 +41,7 @@
               "body": [
                 {
                   "renderer": "html",
-                  "html": "<div style=\"color: <%=$.color%>\">\n  <%=$.text%>\n</div>"
+                  "html": "<div style=\"color: ${$.color}\">\n  ${$.text}\n</div>"
                 }
             ],
               "width": 100
@@ -131,7 +131,7 @@
                   "body": [
                     {
                       "renderer": "html",
-                      "html": "<h1><%=data.title%></h1>",
+                      "html": "<h1>${data.title}</h1>",
                       "inline": true
                     }
                   ],
@@ -164,7 +164,7 @@
                         },
                         {
                           "renderer": "html",
-                          "html": "<%=data.html%>"
+                          "html": "${data.html}"
                         },
                         {
                           "renderer": "image",

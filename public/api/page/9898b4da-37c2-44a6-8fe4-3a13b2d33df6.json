@@ -320,7 +320,7 @@
               "body": [
                 {
                   "renderer": "action",
-                  "text": "<%=$.id%>",
+                  "text": "${$.id}",
                   "isText": true,
                   "actionType": "url",
                   "url": "/demo/virtuleList?pageIndex=11&pageSize=10"
@@ -378,7 +378,7 @@
                     }
                   ],
                   "footer": [],
-                  "text": "<%=$.owner%>",
+                  "text": "${$.owner}",
                   "icon": "Edit",
                   "title": "更新姓名",
                   "isText": true,

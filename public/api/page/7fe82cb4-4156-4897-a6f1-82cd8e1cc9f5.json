@@ -448,7 +448,7 @@
                 },
                 {
                   "renderer": "html",
-                  "html": "<div class='ulist-demo'><h4><%=data.title%></h4><span><%=data.desc%></span></div>"
+                  "html": "<div class='ulist-demo'><h4>${data.title}</h4><span>${data.desc}</span></div>"
                 }
               ],
               "rules": []
@@ -564,7 +564,7 @@
                 {
                   "renderer": "html",
                   "classname": "demo-form-calendar__html",
-                  "html": "<%=data.value%>"
+                  "html": "${data.value}"
                 }
               ],
               "label": "排期"

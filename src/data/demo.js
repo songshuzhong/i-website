@@ -3,7 +3,7 @@ export default {
   body: [
     {
       renderer: 'html',
-      html: '<h2>1.<%=data.title%></h2>'
+      html: '<h2>1.${data.title}</h2>'
     },
     {
       renderer: 'form',
@@ -388,7 +388,7 @@ export default {
                       body: [
                         {
                           renderer: 'html',
-                          html: '<h1><%=data.title%></h1>',
+                          html: '<h1>${data.title}</h1>',
                           inline: true
                         }
                       ],
@@ -424,7 +424,7 @@ export default {
                             },
                             {
                               renderer: 'html',
-                              html: '<%=data.html%>'
+                              html: '${data.html}'
                             },
                             {
                               renderer: 'image',
@@ -735,7 +735,7 @@ export default {
                             },
                             {
                               renderer: 'html',
-                              html: '<%=\'connect: \' + $.connect%>'
+                              html: '${\'connect: \' + $.connect}'
                             },
                             {
                               renderer: 'computed',
@@ -790,7 +790,7 @@ export default {
                             {
                               renderer: 'input',
                               name: 'richtxt',
-                              html: '<%=$.richtxt%>',
+                              html: '${$.richtxt}',
                               type: 'textarea',
                               flexible: false,
                               editableOn: '$.editable'
@@ -813,7 +813,7 @@ export default {
                               editableOn: '$.editable'
                             },
                             {
-                              text: '<%=$.createdAt%>',
+                              text: '${$.createdAt}',
                               renderer: 'action',
                               isText: true,
                               actionType: 'dialog',

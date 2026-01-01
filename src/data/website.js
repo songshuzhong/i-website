@@ -445,7 +445,7 @@ export default {
               "body": [
                 {
                   "renderer": "html",
-                  "html": "Hi,欢迎使用<%=$.name%>"
+                  "html": "Hi,欢迎使用${$.name}"
                 }
               ]
             }
