@@ -209,7 +209,7 @@
                             {
                               "renderer": "action",
                               "plain": true,
-                              "type": "success",
+                              "type": "warning",
                               "size": "small",
                               "visibleOn": "$.selectedVersionId",
                               "text": "查看版本：${$.selectedVersionId}",
@@ -242,6 +242,14 @@
                           "deps": [
                             "isVersionType",
                             "isLangType"
+                          ]
+                        },
+                        {
+                          "renderer": "computed",
+                          "name": "isVersionType",
+                          "exp": "$.currentTreeVersion",
+                          "deps": [
+                            "currentTreeVersion"
                           ]
                         },
                         {
@@ -334,7 +342,7 @@
                                           "body": [
                                             {
                                               "renderer": "html",
-                                              "html": "<div>创建人：${$.createBy}</div><div>创建时间：${$.createTime}</div>",
+                                              "html": "<div>创建人：${$.createBy}</div><div>创建时间：${($.createTime + '').$format()}</div>",
                                               "events": {
                                                 "click": {
                                                   "actions": [
@@ -359,7 +367,7 @@
                                               "body": [
                                                 {
                                                   "renderer": "action",
-                                                  "visibleOn": "$.selectedVersionId == $.versionId",
+                                                  "visibleOn": "$.currentTreeVersion && $.currentTreeVersion.$isBetween($.effectiveStart, $.effectiveEnd)",
                                                   "classname": "wk-org__version-tag",
                                                   "plain": true,
                                                   "type": "success",
@@ -1077,20 +1085,14 @@
                           "columns": [
                             {
                               "label": "序号",
-                              "name": "id",
+                              "name": "videoId",
                               "fixed": "left",
                               "renderer": "column",
                               "width": "100"
                             },
                             {
                               "label": "组织机构代码",
-                              "name": "orgCode",
-                              "renderer": "column",
-                              "width": "180"
-                            },
-                            {
-                              "label": "组织机构名称",
-                              "name": "fullPathName",
+                              "name": "name",
                               "renderer": "column",
                               "width": "180"
                             },
@@ -1129,7 +1131,13 @@
                               "renderer": "column",
                               "body": [
                                 {
-                                  "renderer": "action"
+                                  "renderer": "action",
+                                  "text": "详情",
+                                  "size": "small",
+                                  "actionType": "ajax",
+                                  "actionApi": {
+                                    "url": "/org/${videoId}"
+                                  }
                                 }
                               ],
                               "header": [],
