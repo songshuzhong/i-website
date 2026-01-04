@@ -37,7 +37,7 @@ Array.prototype.$supplies = function (target) {
     return result;
   }
   return [];
-}
+};
 /**
  * @desc find the minus of the source array on the target array
  * @param {Array} target - The target array
@@ -56,7 +56,7 @@ Array.prototype.$minus = function (target) {
     return result;
   }
   return [];
-}
+};
 /**
  * @desc
  * @param {String} target - The target Date
@@ -66,7 +66,9 @@ Array.prototype.$minus = function (target) {
 String.prototype.$isLater = function(target) {
   const current = dayjs(this);
   const targetDate = dayjs(target);
-  if (!current.isValid() || !targetDate.isValid()) return false;
+  if (!current.isValid() || !targetDate.isValid()) {
+    return false;
+  }
   return current.isAfter(targetDate);
 };
 /**
@@ -78,7 +80,9 @@ String.prototype.$isLater = function(target) {
 String.prototype.$isBefore = function(target) {
   const current = dayjs(this);
   const targetDate = dayjs(target);
-  if (!current.isValid() || !targetDate.isValid()) return false;
+  if (!current.isValid() || !targetDate.isValid()) {
+    return false;
+  }
   return current.isBefore(targetDate);
 };
 /**
@@ -92,7 +96,9 @@ String.prototype.$isBetween = function(target1, target2) {
   const current = dayjs(this);
   const start = dayjs(target1);
   const end = dayjs(target2);
-  if (!current.isValid() || !start.isValid() || !end.isValid()) return false;
+  if (!current.isValid() || !start.isValid() || !end.isValid()) {
+    return false;
+  }
   return current.isAfter(start) && current.isBefore(end);
 };
 /**
