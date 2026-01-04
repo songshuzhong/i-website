@@ -8,6 +8,7 @@ import registrySw from '../registerServiceWorker';
 import * as ElementPlus from '../plugins/ui.js';
 import {installer} from '../plugins/installer.js';
 import Verify from '../component/Verify';
+import 'i-renderer/dist/js/polyfill';
 import '../utils/debug';
 
 import 'element-plus/dist/index.css';

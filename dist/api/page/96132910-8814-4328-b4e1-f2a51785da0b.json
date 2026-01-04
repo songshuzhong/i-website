@@ -24,6 +24,7 @@
         {
           "renderer": "split",
           "name": "OrgSplit",
+          "useRef": true,
           "panels": [
             {
               "style": {
@@ -31,37 +32,90 @@
               },
               "body": [
                 {
-                  "renderer": "form",
+                  "renderer": "render",
                   "style": {
-                    "position": "fixed"
+                    "position": "fixed",
+                    "margin-top": "-6px"
                   },
-                  "controls": [
-                    {
-                      "renderer": "tree",
-                      "name": "versionId",
-                      "lazy": true,
-                      "showCheckbox": false,
-                      "joinValue": true,
-                      "initApi": {
-                        "url": "/api/mock/org-tree",
-                        "params": {
-                          "code": "${code}"
-                        }
+                  "body": {
+                    "renderer": "form",
+                    "controls": [
+                      {
+                        "renderer": "render",
+                        "classname": "wk-org-form__render",
+                        "body": [
+                          {
+                            "renderer": "html",
+                            "html": "<strong>组织机构</strong>"
+                          },
+                          {
+                            "renderer": "html",
+                            "html": "${$.currentTreeVersion? '（' + $.currentTreeVersion.$format() + '）': ''}"
+                          },
+                          {
+                            "renderer": "dropdown",
+                            "classname": "wk-org-form__dropdown",
+                            "text": {
+                              "renderer": "icon",
+                              "icon": "Timer"
+                            },
+                            "body": [
+                              {
+                                "renderer": "action",
+                                "text": "当前版本",
+                                "isText": true,
+                                "actionType": "custom",
+                                "content": "$app.OrgSplitRef.dispatch({}, {\n  actionType: 'computed',\n  data: {\n    currentTreeVersion: '',\n  }\n});"
+                              },
+                              {
+                                "renderer": "action",
+                                "text": "版本记录",
+                                "isText": true,
+                                "popupType": "over",
+                                "popperWidth": 340,
+                                "body": {
+                                  "renderer": "datepicker",
+                                  "isPanel": true,
+                                  "name": "currentTreeVersion",
+                                  "target": "OrgSplit"
+                                },
+                                "footer": {
+                                  "renderer": "action",
+                                  "size": "small",
+                                  "text": "关闭"
+                                }
+                              }
+                            ]
+                          }
+                        ]
                       },
-                      "defaultProps": {
-                        "isLeaf": "isLeaf",
-                        "children": "children"
-                      },
-                      "nodeKey": "versionId",
-                      "target": "OrgService,CurrentVersionService",
-                      "body": [
-                        {
-                          "renderer": "html",
-                          "html": "<%=$.label%>"
-                        }
-                      ]
-                    }
-                  ]
+                      {
+                        "renderer": "tree",
+                        "name": "versionId",
+                        "lazy": true,
+                        "showCheckbox": false,
+                        "joinValue": true,
+                        "initApi": {
+                          "url": "/api/mock/org-tree",
+                          "params": {
+                            "code": "${orgCode}"
+                          }
+                        },
+                        "defaultProps": {
+                          "isLeaf": "isLeaf",
+                          "children": "children"
+                        },
+                        "nodeKey": "versionId",
+                        "target": "OrgService,CurrentVersionService",
+                        "body": [
+                          {
+                            "renderer": "html",
+                            "html": "${$.label}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
                 }
               ],
               "size": "20%"
@@ -109,11 +163,13 @@
                       "inherit": {
                         "type": "include",
                         "value": [
+                          "currentTreeVersion",
                           "currentOrgVersion",
                           "selectedVersionId",
                           "orgFullName",
                           "versionId",
                           "orgCode",
+                          "status",
                           "id"
                         ]
                       },
@@ -123,7 +179,7 @@
                           "body": [
                             {
                               "renderer": "html",
-                              "html": "<%=$.orgFullName%>",
+                              "html": "${$.orgFullName}",
                               "style": {
                                 "display": "inline",
                                 "float": "left"
@@ -134,10 +190,29 @@
                             {
                               "renderer": "action",
                               "plain": true,
-                              "type": "success",
+                              "type": "primary",
+                              "size": "small",
+                              "visibleOn": "$.status",
+                              "footer": {
+                                "renderer": "mapping",
+                                "name": "status",
+                                "map": {
+                                  "0": "失效",
+                                  "1": "有效"
+                                }
+                              },
+                              "style": {
+                                "margin": "9px",
+                                "float": "left"
+                              }
+                            },
+                            {
+                              "renderer": "action",
+                              "plain": true,
+                              "type": "warning",
                               "size": "small",
                               "visibleOn": "$.selectedVersionId",
-                              "text": "查看版本：<%=$.selectedVersionId%>",
+                              "text": "查看版本：${$.selectedVersionId}",
                               "style": {
                                 "margin": "9px",
                                 "float": "left"
@@ -167,6 +242,14 @@
                           "deps": [
                             "isVersionType",
                             "isLangType"
+                          ]
+                        },
+                        {
+                          "renderer": "computed",
+                          "name": "isVersionType",
+                          "exp": "$.currentTreeVersion",
+                          "deps": [
+                            "currentTreeVersion"
                           ]
                         },
                         {
@@ -238,6 +321,7 @@
                                 {
                                   "renderer": "cards",
                                   "classname": "wk-org__version-cards",
+                                  "computedClass": "$.selectedVersionId == $.versionId? 'active': ''",
                                   "initApi": {
                                     "url": "/api/mock/org-version"
                                   },
@@ -254,12 +338,12 @@
                                           "label": "面板",
                                           "header": {
                                             "renderer": "html",
-                                            "html": "<strong><%=$.versionName%></strong>"
+                                            "html": "<strong>${$.versionName}</strong>"
                                           },
                                           "body": [
                                             {
                                               "renderer": "html",
-                                              "html": "<div>创建人：<%=$.createBy%></div><div>创建时间：<%=$.createTime%></div>",
+                                              "html": "<div>创建人：${$.createBy}</div><div>创建时间：${($.createTime + '').$format()}</div>",
                                               "events": {
                                                 "click": {
                                                   "actions": [
@@ -284,7 +368,7 @@
                                               "body": [
                                                 {
                                                   "renderer": "action",
-                                                  "visibleOn": "$.selectedVersionId == $.versionId",
+                                                  "visibleOn": "$.currentTreeVersion && $.currentTreeVersion.$isBetween($.effectiveStart, $.effectiveEnd)",
                                                   "classname": "wk-org__version-tag",
                                                   "plain": true,
                                                   "type": "success",
@@ -354,11 +438,11 @@
                                             "renderer": "html",
                                             "classname": "wk-org__language-icon",
                                             "inline": true,
-                                            "html": "<%=$.code%>"
+                                            "html": "${$.code}"
                                           },
                                           {
                                             "renderer": "html",
-                                            "html": "<%=$.name%>",
+                                            "html": "${$.name}",
                                             "inline": true,
                                             "classname": "wk-org__language-name"
                                           },
@@ -406,7 +490,7 @@
                                         {
                                           "renderer": "html",
                                           "inline": true,
-                                          "html": "<div><%=$.changedAt%></div><strong><%=$.changedByName%></strong>"
+                                          "html": "<div>${$.changedAt}</div><strong>${$.changedByName}</strong>"
                                         },
                                         {
                                           "renderer": "mapping",
@@ -441,14 +525,14 @@
                                             "renderer": "html",
                                             "visibleOn": "$.isVersionChange",
                                             "classname": "wk-org__history-text",
-                                            "html": "版本由【<%=$.fromVersionId%>】变更为【<%=$.toVersionId%>】",
+                                            "html": "版本由【${$.fromVersionId}】变更为【${$.toVersionId}】",
                                             "style": {
                                               "padding": "0 20px 10px 20px"
                                             }
                                           },
                                           {
                                             "renderer": "html",
-                                            "html": "<h4>字段变更(<%=$.totalChanges%>)</h4>"
+                                            "html": "<h4>字段变更(${$.totalChanges})</h4>"
                                           },
                                           {
                                             "renderer": "each",
@@ -456,7 +540,7 @@
                                             "body": {
                                               "renderer": "html",
                                               "classname": "wk-org__history-text",
-                                              "html": "<div>字段【<%=$.label%>】由【<%=$.old_value%>】变更为【<%=$.new_value%>】</div>",
+                                              "html": "<div>字段【${$.label}】由【${$.old_value}】变更为【${$.new_value}】</div>",
                                               "style": {
                                                 "padding": "0 20px 10px 20px"
                                               }
@@ -466,7 +550,7 @@
                                         "footer": [
                                           {
                                             "renderer": "html",
-                                            "html": "<%=$.changedBy + '&nbsp;&nbsp;' + $.changedAt%>",
+                                            "html": "${$.changedBy + '&nbsp;&nbsp;' + $.changedAt}",
                                             "style": {
                                               "text-align": "left"
                                             }
@@ -535,11 +619,11 @@
                                         "renderer": "html",
                                         "classname": "wk-org__language-icon",
                                         "inline": true,
-                                        "html": "<%=$.code%>"
+                                        "html": "${$.code}"
                                       },
                                       {
                                         "renderer": "html",
-                                        "html": "<%=$.name%>",
+                                        "html": "${$.name}",
                                         "inline": true,
                                         "classname": "wk-org__language-name"
                                       },
@@ -996,23 +1080,20 @@
                           "renderer": "table",
                           "name": "BizTable",
                           "visibleOn": "!$.onlyShowEditable",
+                          "initApi": {
+                            "url": "/api/mock/videos"
+                          },
                           "columns": [
                             {
                               "label": "序号",
-                              "name": "id",
+                              "name": "videoId",
                               "fixed": "left",
                               "renderer": "column",
                               "width": "100"
                             },
                             {
                               "label": "组织机构代码",
-                              "name": "orgCode",
-                              "renderer": "column",
-                              "width": "180"
-                            },
-                            {
-                              "label": "组织机构名称",
-                              "name": "fullPathName",
+                              "name": "name",
                               "renderer": "column",
                               "width": "180"
                             },
@@ -1051,7 +1132,13 @@
                               "renderer": "column",
                               "body": [
                                 {
-                                  "renderer": "action"
+                                  "renderer": "action",
+                                  "text": "详情",
+                                  "size": "small",
+                                  "actionType": "ajax",
+                                  "actionApi": {
+                                    "url": "/org/${videoId}"
+                                  }
                                 }
                               ],
                               "header": [],
@@ -1067,13 +1154,17 @@
                       "renderer": "computed",
                       "name": "versionId",
                       "exp": "$.isVersionType? $.versionId: $.currentOrgVersion",
-                      "deps": ["isVersionType"]
+                      "deps": [
+                        "isVersionType"
+                      ]
                     },
                     {
                       "renderer": "computed",
                       "name": "selectedVersionId",
                       "exp": "$.isVersionType? $.versionId: ''",
-                      "deps": ["isVersionType"]
+                      "deps": [
+                        "isVersionType"
+                      ]
                     }
                   ]
                 }
@@ -1083,7 +1174,7 @@
           ]
         }
       ],
-      "innerStyle": ".wk-org-page {\r\n  height: 100%;\r\n  .wk-org-header {\r\n    line-height: 42px;\r\n    text-align: right;\r\n    &.with-collapse {\r\n      .i-wrapper__container__footer {\r\n        border-left: 1px solid var(--el-border-color-lighter);\r\n      }\r\n    }\r\n    &>.i-wrapper__container__body {\r\n      position: fixed;\r\n      top: calc(60px + var(--i-admin-header-height));\r\n      width: -webkit-fill-available;\r\n      margin-left: -19px;\r\n      z-index: 10;\r\n      background: var(--el-fill-color-lighter);\r\n      padding: 0 20px;\r\n    }\r\n    &>.i-wrapper__container__footer {\r\n      position: fixed;\r\n      right: 0;\r\n      top: 132px;\r\n      width: 260px;\r\n      .el-tab-pane {\r\n        height: calc(100vh - 230px);\r\n        overflow-y: auto;\r\n      }\r\n    }\r\n  }\r\n  .wk-org-header.with-collapse + .wk-org-form__wrapper {\r\n    padding-right: 260px;\r\n  }\r\n  .wk-org-header__title {\r\n    font-size: 16px;\r\n    font-weight: bold;\r\n  }\r\n  .wk-org-form__wrapper {\r\n    padding-top: 30px;\r\n  }\r\n  .wk-org__languages__wrapper {\r\n    height: calc(100vh - 180px);\r\n    padding: 0 10px 50px 10px;\r\n  }\r\n  .wk-org__version-cards {\r\n    padding: 0 10px 50px 10px;\r\n    .el-col {\r\n      margin-bottom: 0;\r\n    }\r\n    .el-card {\r\n      border: none;\r\n    }\r\n    .el-pagination {\r\n      position: fixed;\r\n      bottom: 50px;\r\n      background: var(--el-bg-color);\r\n    }\r\n    .i-card__body {\r\n      padding: 0;\r\n    }\r\n  }\r\n  .wk-org__version-tags {\r\n    position: absolute;\r\n    right: 30px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__version-collapse {\r\n    border-bottom: 0;\r\n    overflow: hidden;\r\n    .i-collapse__container__title {\r\n      display: none;\r\n    }\r\n    .i-collapse__container__actions {\r\n      left: -10px;\r\n      text-align: left;\r\n    }\r\n    .el-collapse-item {\r\n      &:hover {\r\n        .el-collapse-item__header,\r\n        .el-collapse-item__wrap {\r\n          background: var(--el-color-primary-light-9);\r\n        }\r\n      }\r\n    }\r\n  }\r\n  .wk-org__language-item {\r\n    padding: 0 20px;\r\n    text-align: left;\r\n    cursor: pointer;\r\n    &:hover {\r\n      background: var(--el-color-primary-light-9);\r\n    }\r\n  }\r\n  .wk-org__language-name {\r\n    font-weight: bold;\r\n  }\r\n  .wk-org__language-icon {\r\n    border: 1px solid var(--el-border-color-lighter);\r\n    font-size: 12px;\r\n    padding: 4px;\r\n    margin-right: 10px;\r\n  }\r\n  .wk-org__language-tag {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-icon {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-text {\r\n    padding: 0 10px 10px 20px;\r\n  }\r\n  .demo-grid-form {\r\n    .i-form__container__fieldset__items {\r\n      display: grid;\r\n      grid-template-columns: repeat(3, 33.3%);\r\n    }\r\n    .field-1,\r\n    .field-4,\r\n    .field-7,\r\n    .field-10 {\r\n      padding-right: 20px;\r\n    }\r\n    .field-2,\r\n    .field-5,\r\n    .field-8,\r\n    .field-11 {\r\n      padding: 0 10px;\r\n    }\r\n    .field-3,\r\n    .field-6,\r\n    .field-9,\r\n    .field-12 {\r\n      padding-left: 20px;\r\n    }\r\n  }\r\n}"
+      "innerStyle": ".wk-org-page {\r\n  height: 100%;\r\n  .wk-org-form__render {\r\n    position: relative;\r\n  display: flex;\r\n  align-items: center;\r\n   }\r\n  .wk-org-header {\r\n    line-height: 42px;\r\n    text-align: right;\r\n    &.with-collapse {\r\n      .i-wrapper__container__footer {\r\n        border-left: 1px solid var(--el-border-color-lighter);\r\n      }\r\n    }\r\n    &>.i-wrapper__container__body {\r\n      position: fixed;\r\n      top: calc(60px + var(--i-admin-header-height));\r\n      width: -webkit-fill-available;\r\n      margin-left: -19px;\r\n      z-index: 10;\r\n      background: var(--el-fill-color-lighter);\r\n      padding: 0 20px;\r\n    }\r\n    &>.i-wrapper__container__footer {\r\n      position: fixed;\r\n      right: 0;\r\n      top: 132px;\r\n      width: 260px;\r\n      .el-tab-pane {\r\n        height: calc(100vh - 230px);\r\n        overflow-y: auto;\r\n      }\r\n    }\r\n  }\r\n  .wk-org-header.with-collapse + .wk-org-form__wrapper {\r\n    padding-right: 260px;\r\n  }\r\n  .wk-org-header__title {\r\n    font-size: 16px;\r\n    font-weight: bold;\r\n  }\r\n  .wk-org-form__wrapper {\r\n    padding-top: 30px;\r\n  }\r\n  .wk-org__languages__wrapper {\r\n    height: calc(100vh - 180px);\r\n    padding: 0 10px 50px 10px;\r\n  }\r\n  .wk-org__version-cards {\r\n    padding: 0 10px 50px 10px;\r\n    .el-col {\r\n      margin-bottom: 0;\r\n    }\r\n    .el-card {\r\n      border: none;\r\n    }\r\n    .el-pagination {\r\n      position: fixed;\r\n      bottom: 50px;\r\n      background: var(--el-bg-color);\r\n    }\r\n    .i-card__body {\r\n      padding: 0;\r\n    }\r\n    .el-card {\r\n      &.active {\r\n        .el-collapse-item__header,\r\n        .el-collapse-item__wrap {\r\n          background: var(--el-color-primary-light-9);\r\n        }\r\n      }\r\n    }\r\n  }\r\n  .wk-org__version-tags {\r\n    position: absolute;\r\n    right: 30px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__version-collapse {\r\n    border-bottom: 0;\r\n    overflow: hidden;\r\n    .i-collapse__container__title {\r\n      display: none;\r\n    }\r\n    .i-collapse__container__actions {\r\n      left: -10px;\r\n      text-align: left;\r\n    }\r\n    .el-collapse-item {\r\n      &:hover {\r\n        .el-collapse-item__header,\r\n        .el-collapse-item__wrap {\r\n          background: var(--el-color-primary-light-9);\r\n        }\r\n      }\r\n    }\r\n  }\r\n  .wk-org__language-item {\r\n    padding: 0 20px;\r\n    text-align: left;\r\n    cursor: pointer;\r\n    &:hover {\r\n      background: var(--el-color-primary-light-9);\r\n    }\r\n  }\r\n  .wk-org__language-name {\r\n    font-weight: bold;\r\n  }\r\n  .wk-org__language-icon {\r\n    border: 1px solid var(--el-border-color-lighter);\r\n    font-size: 12px;\r\n    padding: 4px;\r\n    margin-right: 10px;\r\n  }\r\n  .wk-org__language-tag {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-icon {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-text {\r\n    padding: 0 10px 10px 20px;\r\n  }\r\n  .demo-grid-form {\r\n    .i-form__container__fieldset__items {\r\n      display: grid;\r\n      grid-template-columns: repeat(3, 33.3%);\r\n    }\r\n    .field-1,\r\n    .field-4,\r\n    .field-7,\r\n    .field-10 {\r\n      padding-right: 20px;\r\n    }\r\n    .field-2,\r\n    .field-5,\r\n    .field-8,\r\n    .field-11 {\r\n      padding: 0 10px;\r\n    }\r\n    .field-3,\r\n    .field-6,\r\n    .field-9,\r\n    .field-12 {\r\n      padding-left: 20px;\r\n    }\r\n  }\r\n}"
     },
     "version": 0,
     "status": 1,

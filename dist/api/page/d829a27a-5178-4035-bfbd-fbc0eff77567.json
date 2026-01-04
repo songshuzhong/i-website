@@ -37,12 +37,12 @@
             },
             {
               "renderer": "html",
-              "html": "<h1>\r\n  共得分:<%=$.count%>\r\n</h1>",
+              "html": "<h1>\r\n  共得分:${$.count}\r\n</h1>",
               "inline": true
             },
             {
               "renderer": "html",
-              "html": "<div class=\"container\">\r\n  <div class=\"item item0<%=$.active === 0? ' active': ''%>\"></div>\r\n  <div class=\"item item1<%=$.active === 1? ' active': ''%>\"></div>\r\n  <div class=\"item item2<%=$.active === 2? ' active': ''%>\"></div>\r\n  <div class=\"item item3<%=$.active === 3? ' active': ''%>\"></div>\r\n</div>",
+              "html": "<div class=\"container\">\r\n  <div class=\"item item0${$.active === 0? ' active': ''}\"></div>\r\n  <div class=\"item item1${$.active === 1? ' active': ''}\"></div>\r\n  <div class=\"item item2${$.active === 2? ' active': ''}\"></div>\r\n  <div class=\"item item3${$.active === 3? ' active': ''}\"></div>\r\n</div>",
               "inline": true,
               "events": {
                 "click": {

@@ -34,7 +34,7 @@
               "body": [
                 {
                   "renderer": "html",
-                  "html": "<%=$.question%>",
+                  "html": "${$.question}",
                   "style": {
                     "display": "inline-block",
                     "padding": "6px",
@@ -52,7 +52,7 @@
                   "body": [
                     {
                       "renderer": "http://localhost:8080/js/Typewriter.vue",
-                      "text": "<%=$.chunk%>",
+                      "text": "${$.chunk}",
                       "style": {
                         "background": "var(--el-color-success)",
                         "margin-top": "20px",

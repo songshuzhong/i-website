@@ -24,7 +24,7 @@
             {
               "renderer": "html",
               "inline": true,
-              "html": "<span><%=$.date%></span>\r\n<h1 class=\"time__container\">\r\n  <span class=\"time\"><%=$.hours%></span>\r\n  <span>:</span>\r\n  <span class=\"time\"><%=$.min%></span>\r\n  <span class=\"time\">:</span>\r\n  <span class=\"time\"><%=$.sec%></span>\r\n</h1>"
+              "html": "<span>${$.date}</span>\r\n<h1 class=\"time__container\">\r\n  <span class=\"time\">${$.hours}</span>\r\n  <span>:</span>\r\n  <span class=\"time\">${$.min}</span>\r\n  <span class=\"time\">:</span>\r\n  <span class=\"time\">${$.sec}</span>\r\n</h1>"
             }
           ],
           "promiseType": "sw",
