@@ -475,6 +475,128 @@
               "extends": true
             },
             {
+              "renderer": "combo",
+              "name": "excuteTime",
+              "label": "执行时间",
+              "controls": [
+                {
+                  "renderer": "select",
+                  "name": "type",
+                  "label": "",
+                  "options": [
+                    {
+                      "text": "按年",
+                      "value": "year"
+                    },
+                    {
+                      "text": "按月",
+                      "value": "month"
+                    },
+                    {
+                      "text": "按周",
+                      "value": "week"
+                    },
+                    {
+                      "text": "按天",
+                      "value": "day"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "input",
+                  "name": "each",
+                  "label": "每",
+                  "placeholder": "请输入",
+                  "visibleOn": "$.type",
+                  "rules": [
+                    {
+                      "type": "exp",
+                      "exp": "$.each < 1",
+                      "message": "请输入大于等于1的正整数"
+                    }
+                  ],
+                  "footer": {
+                    "renderer": "mapping",
+                    "name": "type",
+                    "map": {
+                      "year": "年",
+                      "month": "月",
+                      "week": "周",
+                      "day": "天"
+                    }
+                  }
+                },
+                {
+                  "renderer": "select",
+                  "name": "selectedMonth",
+                  "label": "",
+                  "placeholder": "请选择月份",
+                  "visibleOn": "'year'.includes($.type)",
+                  "promiseType": "sw",
+                  "deps": [
+                    "type"
+                  ]
+                },
+                {
+                  "renderer": "select",
+                  "name": "selectedDay",
+                  "label": "",
+                  "placeholder": "请选择几号",
+                  "visibleOn": "'year,month'.includes($.type)",
+                  "promiseType": "sw",
+                  "deps": [
+                    "selectedMonth"
+                  ]
+                },
+                {
+                  "renderer": "select",
+                  "name": "selectedWeek",
+                  "placeholder": "请选择星期几",
+                  "visibleOn": "$.type === 'week'",
+                  "teleported": true,
+                  "maxCollapseTags": 1,
+                  "options": [
+                    {
+                      "text": "周一",
+                      "value": "1"
+                    },
+                    {
+                      "text": "周二",
+                      "value": "2"
+                    },
+                    {
+                      "text": "周三",
+                      "value": "3"
+                    },
+                    {
+                      "text": "周四",
+                      "value": "4"
+                    },
+                    {
+                      "text": "周五",
+                      "value": "5"
+                    },
+                    {
+                      "text": "周六",
+                      "value": "6"
+                    },
+                    {
+                      "text": "周日",
+                      "value": "7"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "timepicker",
+                  "name": "selectedTime",
+                  "label": "",
+                  "placeholder": "请选择时间",
+                  "visibleOn": "'year,month,week,day'.includes($.type)"
+                }
+              ],
+              "inline": true
+            },
+            {
               "renderer": "action",
               "actionType": "extends",
               "text": "保存",
@@ -484,7 +606,8 @@
           "classname": "actions-fixed--bottom"
         }
       ],
-      "innerStyle": ".viewer__collapse {\n  width: 40px !important;\n  padding-left: 20px;\n  white-space: nowrap;\n  .i-carousel__container,\n  .i-html__container {\n    display: none;\n  }\n}\n.el-table__header,\n.el-table__body {\n  width: unset !important;\n}"
+      "innerStyle": ".viewer__collapse {\n  width: 40px !important;\n  padding-left: 20px;\n  white-space: nowrap;\n  .i-carousel__container,\n  .i-html__container {\n    display: none;\n  }\n}\n.el-table__header,\n.el-table__body {\n  width: unset !important;\n}",
+      "worker": "e => {\r\n  if (/^\\/page\\/body\\/0\\/controls\\/\\d+\\/controls\\/2$/.test(e.track)) {\r\n    return Promise.resolve(Array.from({ length: 12 }).map((_, i) => {\r\n      const m = i + 1;\r\n      return {\r\n        text: `${m}月`,\r\n        value: m,\r\n      };\r\n    }));\r\n  } else if (/^\\/page\\/body\\/0\\/controls\\/\\d+\\/controls\\/3$/.test(e.track)) {\r\n    const year = new Date().getFullYear();\r\n    const month = e.data.selectedMonth;\r\n    const days = new Date(year, month, 0).getDate();\r\n    return Promise.resolve(Array.from({ length: days }).map((_, i) => {\r\n      const m = i + 1;\r\n      return {\r\n        text: `${m}号`,\r\n        value: m,\r\n      };\r\n    }));\r\n  }\r\n}"
     },
     "version": 0,
     "status": 1,
