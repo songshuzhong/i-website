@@ -25,6 +25,7 @@ export {
   ElCollapseItem,
   ElCollapseTransition,
   ElColorPicker,
+  ElColorPickerPanel,
   ElConfigProvider,
   ElContainer,
   ElAside,

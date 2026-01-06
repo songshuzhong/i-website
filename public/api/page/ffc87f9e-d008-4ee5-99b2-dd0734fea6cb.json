@@ -478,6 +478,7 @@
               "renderer": "combo",
               "name": "excuteTime",
               "label": "执行时间",
+              "border": false,
               "controls": [
                 {
                   "renderer": "select",
