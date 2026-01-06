@@ -341,6 +341,21 @@ html {
   .el-skeleton {
     padding: 20px;
   }
+  .i-admin__main {
+    height: unset !important;
+  }
+  .i-admin__header__tags {
+    display: none;
+  }
+  .i-admin__footer {
+    position: relative;
+  }
+  .i-avatar__container.i-action.el-tooltip__trigger {
+    position: fixed;
+    right: 100px;
+    bottom: 100px;
+    z-index: 200;
+  }
 }
 .i-home__carousel__item {
   width: 686px;
@@ -490,6 +505,7 @@ html {
   }
 }
 .i-home__footer {
+  position: relative;
   width: 100%;
   height: 220px;
   margin-top: 40px;
@@ -674,6 +690,7 @@ html {
 }
 .i-home__particle {
   position: absolute;
+  left: 0;
   width: 100% !important;
   height: 509px !important;
   background: linear-gradient(180deg, var(--el-color-white), var(--el-color-primary-light-7));

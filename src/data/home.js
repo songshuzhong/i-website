@@ -409,6 +409,7 @@ export default {
           text: ' ',
           category: 'image',
           size: 'large',
+          classname: 'i-home__question',
           icon: 'http://songshuzhong.github.io/i-assets/public/img/question.png',
           body: [
             {

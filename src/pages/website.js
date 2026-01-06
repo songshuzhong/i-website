@@ -1,4 +1,5 @@
 import {createApp} from 'vue';
+import * as vue from 'vue';
 import {IRenderer, api} from  '../utils/lib.js';
 import createRoutes from '../router/website';
 import ToMobile from '../component/ToMobile.vue';
@@ -123,3 +124,5 @@ api()
       proxy = null;
     }, 12000);
   });
+
+window.vue = vue;

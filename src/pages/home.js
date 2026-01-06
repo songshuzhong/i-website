@@ -1,4 +1,5 @@
 import {createApp} from 'vue';
+import * as vue from 'vue';
 import * as ElementPlus from '../plugins/ui.js';
 import {installer} from '../plugins/installer.js';
 import {IRenderer} from  '../utils/lib.js';
@@ -29,5 +30,6 @@ app
   .use(routers)
   .mount('.i-renderer-app__container');
 
+window.vue = vue;
 registrySw(process.env.VUE_APP_SERVICE_WORKER, app);
 
