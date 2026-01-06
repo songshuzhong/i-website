@@ -690,9 +690,10 @@ html {
 }
 .i-home__particle {
   position: absolute;
+  top: 0;
   left: 0;
   width: 100% !important;
-  height: 509px !important;
+  height: 609px !important;
   background: linear-gradient(180deg, var(--el-color-white), var(--el-color-primary-light-7));
 }
 @keyframes grow {

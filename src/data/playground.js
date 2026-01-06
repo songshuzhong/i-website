@@ -6,5 +6,5 @@ export default {
       src: process.env.VUE_APP_PAGE_PLAYGROUND
     }
   ],
-  innerStyle: '.i-frame__container {\n  height: 737px;\n}'
+  innerStyle: '.i-frame__container {\n  height: calc(100vh - 120px) !important;\n}'
 };
