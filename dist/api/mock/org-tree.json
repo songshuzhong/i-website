@@ -3,15 +3,15 @@
   "message": "成功",
   "data": {
     "id": 32,
-    "title": "异步校验",
+    "title": "组织机构树",
     "method": "get",
-    "path": "/org-details",
+    "path": "/org-tree",
     "namespace": "联通",
-    "description": "异步校验",
+    "description": "组织机构树",
     "delay": null,
     "createdBy": "admin",
     "createdAt": "2024-03-29T23:04:44.000Z",
     "updatedAt": "2024-03-30T01:31:59.000Z",
-    "schema": "({ _req }) => {\r\n  let { code } = _req.query;\r\n  if (!code) {\r\n    code = 1;\r\n  } else {\r\n    code += '_1';\r\n  }\r\n  return [\r\n    {\r\n      \"orgCode\": code,\r\n      \"versionId\": 1,\r\n      \"label\": `集团${code}号`,\r\n      \"isLeaf\": false,\r\n      \"children\": []\r\n    }\r\n  ];\r\n}"
+    "schema": "({ _req }) => {\r\n  let { code, queryTime } = _req.query;\r\n  if (!code) {\r\n    code = 1;\r\n  } else {\r\n    code += '_1';\r\n  }\r\n  return [\r\n    {\r\n      \"orgCode\": code,\r\n      \"versionId\": queryTime? queryTime.split('-').join('') + 1: 1,\r\n      \"label\": `集团${code}号`,\r\n      \"isLeaf\": false,\r\n      \"children\": []\r\n    }\r\n  ];\r\n}"
   }
 }
