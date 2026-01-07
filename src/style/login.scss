@@ -101,7 +101,7 @@ html {
     top: -50%;
     right: 350px;
     transform: translateY(100%);
-    background-color: #79bbff;
+    background-color: var(--i-renderer-home-text-color);
   }
 
   &::after {
