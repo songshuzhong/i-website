@@ -161,7 +161,6 @@ html {
   position: relative;
   height: 100%;
   .el-menu {
-    backdrop-filter: saturate(50%) blur(4px);
     background: transparent;
     border: 0;
     .i-wrapper__container {
@@ -341,14 +340,39 @@ html {
   .el-skeleton {
     padding: 20px;
   }
+  &.i-admin__container {
+    .i-admin__header {
+      font-size: 18px;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      .i-avatar__container.with-info {
+        background: transparent;
+        &:after {
+          background: transparent;
+        }
+        .i-avatar__title {
+          background: linear-gradient(120deg, var(--el-color-danger) 30%, var(--el-color-primary));
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          -webkit-box-reflect: below 0 -webkit-linear-gradient(transparent, transparent 50%, rgba(255, 255, 255, 0.3));
+        }
+      }
+    }
+  }
   .i-admin__main {
     height: unset !important;
+    padding-top: 60px !important;
+    padding-bottom: 0 !important;
   }
   .i-admin__header__tags {
     display: none;
   }
   .i-admin__footer {
     position: relative;
+    border-top: 0;
   }
   .i-avatar__container.i-action.el-tooltip__trigger {
     position: fixed;
