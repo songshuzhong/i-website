@@ -45,7 +45,7 @@ export default {
             {
               renderer: 'html',
               classname: 'i-home__banner__desc',
-              html: '百搭云是基于Vue框架和ElementPlus组件库研发的用于快速搭建企业级信息管理系统的低代码平台，用来帮助开发者聚焦业务，提高开发效率，节省研发成本。'
+              html: '百搭云是基于Vue框架和ElementPlus组件库研发的用于快速搭建企业级信息管理系统的低代码平台，旨在帮助开发者聚焦业务逻辑、节省项目成本、提高开发效率。'
             },
             {
               renderer: 'action',

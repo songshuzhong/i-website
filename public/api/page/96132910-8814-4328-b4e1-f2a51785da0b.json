@@ -662,7 +662,8 @@
                           "controls": [
                             {
                               "renderer": "divider",
-                              "text": "基础信息"
+                              "text": "基础信息",
+                              "foldable": false
                             },
                             {
                               "label": "组织机构代码",

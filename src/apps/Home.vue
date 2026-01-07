@@ -19,6 +19,11 @@ export default defineComponent({
       proxy.$message.success('切换到PC端体验更加哦！');
     };
     onMounted(() => {
+      const color = ['primary', 'success', 'danger'][Math.floor(Math.random() * 3)];
+      const root = document.documentElement.style;
+      root.setProperty('--i-renderer-home-ball-color', `var(--el-color-${color}-light-3)`);
+      root.setProperty('--i-renderer-home-particle-color', `var(--el-color-${color}-light-7)`);
+      root.setProperty('--i-renderer-home-text-color', `var(--el-color-${color})`);
       const isMobile = uaManager
         .setNotice(notice)
         .setWidth(window.innerHeight)
