@@ -1,3 +1,9 @@
+const color = document.documentElement.style.getPropertyValue('--i-renderer-home-text-color');
+const colors = {
+  'var(--el-color-primary)': 'primary',
+  'var(--el-color-success)': 'success',
+  'var(--el-color-danger)': 'danger',
+};
 const assets = [
   `${process.env.VUE_APP_PUBLIC_ASSETS}/js/Particle.6d8915.min.js`
 ];
@@ -410,7 +416,7 @@ export default {
           category: 'image',
           size: 'large',
           classname: 'i-home__question',
-          icon: 'http://songshuzhong.github.io/i-assets/public/img/question.png',
+          icon: `${process.env.VUE_APP_PUBLIC_ASSETS}/img/icons/question-${colors[color]}.svg`,
           body: [
             {
               renderer: 'issues',

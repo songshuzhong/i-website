@@ -60,7 +60,7 @@
           {
             "type": "year",
             "each": "1",
-            "month": 6,
+            "month": 2,
             "day": 8,
             "time": "13:52:21"
           },
@@ -638,7 +638,7 @@
         }
       ],
       "innerStyle": ".viewer__collapse {\n  width: 40px !important;\n  padding-left: 20px;\n  white-space: nowrap;\n  .i-carousel__container,\n  .i-html__container {\n    display: none;\n  }\n}\n.el-table__header,\n.el-table__body {\n  width: unset !important;\n}",
-      "worker": "e => {\r\n  if (/^\\/page\\/body\\/0\\/controls\\/\\d+\\/controls\\/2$/.test(e.track)) {\r\n    return Promise.resolve(Array.from({ length: 12 }).map((_, i) => {\r\n      const m = i + 1;\r\n      return {\r\n        text: `${m}月`,\r\n        value: m,\r\n      };\r\n    }));\r\n  } else if (/^\\/page\\/body\\/0\\/controls\\/\\d+\\/controls\\/3$/.test(e.track)) {\r\n    const year = new Date().getFullYear();\r\n    const month = e.data.selectedMonth || 1;\r\n    const days = new Date(year, month, 0).getDate();\r\n    return Promise.resolve(Array.from({ length: days }).map((_, i) => {\r\n      const m = i + 1;\r\n      return {\r\n        text: `${m}号`,\r\n        value: m,\r\n      };\r\n    }));\r\n  }\r\n}"
+      "worker": "e => {\r\n  if (/^\\/page\\/body\\/0\\/controls\\/\\d+\\/controls\\/2$/.test(e.track)) {\r\n    return Promise.resolve(Array.from({ length: 12 }).map((_, i) => {\r\n      const m = i + 1;\r\n      return {\r\n        text: `${m}月`,\r\n        value: m,\r\n      };\r\n    }));\r\n  } else if (/^\\/page\\/body\\/0\\/controls\\/\\d+\\/controls\\/3$/.test(e.track)) {\r\n    const year = new Date().getFullYear();\r\n    const month = e.data.month || 1;\r\n    const days = new Date(year, month, 0).getDate();\r\n    return Promise.resolve(Array.from({ length: days }).map((_, i) => {\r\n      const m = i + 1;\r\n      return {\r\n        text: `${m}号`,\r\n        value: m,\r\n      };\r\n    }));\r\n  }\r\n}"
     },
     "version": 0,
     "status": 1,
