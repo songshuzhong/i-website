@@ -8,7 +8,6 @@ import '../utils/debug';
 
 import 'element-plus/dist/index.css';
 import 'element-plus/theme-chalk/dark/css-vars.css';
-import 'i-renderer/dist/css/index.css';
 
 const app = createApp(Application);
 const isGPOrDev = process.env.VUE_APP_API_NODE_ENV === 'gp' || process.env.VUE_APP_API_NODE_ENV === 'dev';

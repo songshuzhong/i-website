@@ -7,7 +7,6 @@ import registrySw from '../registerServiceWorker';
 import '../utils/debug';
 
 import 'element-plus/dist/index.css';
-import 'i-renderer/dist/css/index.css';
 import '../style/mobile.scss';
 
 const app = createApp(Application);

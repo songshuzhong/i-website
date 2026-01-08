@@ -13,8 +13,6 @@ import '../utils/polyfill';
 import '../utils/debug';
 
 import 'element-plus/dist/index.css';
-import 'element-plus/theme-chalk/dark/css-vars.css';
-import 'i-renderer/dist/css/index.css';
 import '../style/index.scss';
 import '../style/reset.scss';
 

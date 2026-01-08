@@ -344,8 +344,8 @@ html {
     .i-admin__header {
       background: rgba(255, 255, 255, 0.15);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      border-bottom: 0;
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       .i-avatar__container.with-info {
         background: transparent;
         &:after {
@@ -360,7 +360,6 @@ html {
     }
   }
   .i-admin__main {
-    height: unset !important;
     padding-top: 60px !important;
     padding-bottom: 0 !important;
   }
