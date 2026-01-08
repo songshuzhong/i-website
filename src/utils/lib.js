@@ -1,4 +1,5 @@
 import IRenderer from 'i-renderer/dist/js/renderer';
+import 'i-renderer/dist/css/index.css';
 
 export const loadEditor = () => import('i-renderer/dist/js/editor');
 export {IRenderer};
