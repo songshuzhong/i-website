@@ -1108,7 +1108,7 @@ export default {
       renderer: 'html',
       html: '更新日志',
       style: {
-        width: '55%',
+        width: '60%',
         margin: 'auto',
         padding: '40px 20px 0 20px',
         fontSize: '24px',
@@ -1118,7 +1118,7 @@ export default {
     {
       renderer: 'service',
       style: {
-        width: '55%',
+        width: '60%',
         margin: 'auto',
         padding: '30px 20px 0 20px'
       },
