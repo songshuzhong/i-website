@@ -190,6 +190,9 @@ export default {
       body: [
         {
           renderer: 'card',
+          style: {
+            marginTop: '40px'
+          },
           header: {
             renderer: 'image',
             src: 'https://songshuzhong.github.io/i-assets/public/img/jigsaw.png'
@@ -220,6 +223,9 @@ export default {
         },
         {
           renderer: 'card',
+          style: {
+            marginTop: '40px'
+          },
           header: {
             renderer: 'image',
             src: 'https://songshuzhong.github.io/i-assets/public/img/rocket.png'
@@ -250,6 +256,9 @@ export default {
         },
         {
           renderer: 'card',
+          style: {
+            marginTop: '40px'
+          },
           header: {
             renderer: 'image',
             src: 'https://songshuzhong.github.io/i-assets/public/img/bar.png'
@@ -280,6 +289,9 @@ export default {
         },
         {
           renderer: 'card',
+          style: {
+            marginTop: '40px'
+          },
           header: {
             renderer: 'image',
             src: 'https://songshuzhong.github.io/i-assets/public/img/friendly.png'
