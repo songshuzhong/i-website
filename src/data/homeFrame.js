@@ -56,7 +56,45 @@ export default {
       }
     },
   },
-  header: {},
+  header: {
+    renderer: 'header',
+    body: [
+      {
+        renderer: 'dropdown',
+        body: [
+          {
+            renderer: 'action',
+            text: '冰河蓝染',
+            actionType: 'custom',
+            isText: true,
+            tag: 'div',
+            content: 'const root = document.documentElement.style;\nroot.setProperty(\'--i-renderer-home-ball-color\', \'var(--el-color-primary-light-3)\');\nroot.setProperty(\'--i-renderer-home-particle-color\', \'var(--el-color-primary-light-7)\');\nroot.setProperty(\'--i-renderer-home-text-color\', \'var(--el-color-primary)\');',
+            body: []
+          },
+          {
+            renderer: 'action',
+            text: '林间晨露',
+            tag: 'div',
+            actionType: 'custom',
+            isText: true,
+            content: 'const root = document.documentElement.style;\nroot.setProperty(\'--i-renderer-home-ball-color\', \'var(--el-color-success-light-3)\');\nroot.setProperty(\'--i-renderer-home-particle-color\', \'var(--el-color-success-light-7)\');\nroot.setProperty(\'--i-renderer-home-text-color\', \'var(--el-color-success)\');'
+          },
+          {
+            renderer: 'action',
+            text: '赤焰幻影',
+            isText: true,
+            tag: 'div',
+            actionType: 'custom',
+            content: 'const root = document.documentElement.style;\nroot.setProperty(\'--i-renderer-home-ball-color\', \'var(--el-color-danger-light-3)\');\nroot.setProperty(\'--i-renderer-home-particle-color\', \'var(--el-color-danger-light-7)\');\nroot.setProperty(\'--i-renderer-home-text-color\', \'var(--el-color-danger)\');'
+          }
+        ],
+        text: '主题设置',
+        type: 'primary',
+        size: 'medium',
+        trigger: 'hover'
+      }
+    ]
+  },
   body: {},
   footer: [
     {

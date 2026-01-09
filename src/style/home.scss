@@ -381,6 +381,11 @@ html {
       color: var(--i-renderer-home-text-color);
     }
   }
+  .i-admin__header__actions {
+    flex: 1;
+    padding-right: 10px;
+    text-align: right;
+  }
   .i-avatar__container.i-action.el-tooltip__trigger {
     position: fixed;
     right: 100px;
