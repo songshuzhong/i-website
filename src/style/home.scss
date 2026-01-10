@@ -386,11 +386,15 @@ html {
     padding-right: 10px;
     text-align: right;
   }
-  .i-avatar__container.i-action.el-tooltip__trigger {
+  .i-home__question.i-action {
     position: fixed;
     right: 100px;
     bottom: 100px;
+    border-radius: 100%;
     z-index: 200;
+    transform: scale(0.35);
+    background: transparent;
+    cursor: pointer;
   }
 }
 .i-home__carousel__item {

@@ -1,5 +1,6 @@
 export default {
   renderer: 'admin',
+  name: 'HomeAdmin',
   classname: 'i-home__page',
   logo: 'https://songshuzhong.github.io/i-assets/public/img/shuttle.png',
   title: '百搭云平台',
