@@ -1,22 +1,3 @@
-const page = (t, lang) => {
-  const text = t('el.table.emptyText');
-  return {
-    renderer: 'page',
-    body: [
-      {
-        renderer: 'card',
-        body: [
-          {
-            renderer: 'html',
-            html: '${$.title}'
-          }
-        ],
-        footer: text
-      }
-    ]
-  };
-}
-
 export const pageData = {
   title: '来自测试页面的数据',
 };

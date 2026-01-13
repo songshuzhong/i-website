@@ -50,7 +50,7 @@ const svg = [
 export {
   assets
 };
-const page = (t, options) => {
+const page = () => {
   return {
     renderer: 'container',
     direction: 'vertical',
@@ -101,7 +101,10 @@ const page = (t, options) => {
                 text: '登录',
                 actionType: 'url',
                 classname: 'i-breathe-border3',
-                url: process.env.VUE_APP_PAGE_LOGIN
+                url: process.env.VUE_APP_PAGE_LOGIN,
+                style: {
+                  marginLeft: '-21px'
+                }
               },
               {
                 renderer: 'action',
@@ -122,11 +125,16 @@ const page = (t, options) => {
               },
               {
                 renderer: 'action',
-                text: 'lang',
-                actionType: 'trigger',
-                triggered: 'HomeAdmin.refresh',
-                initData: {
-                  lang: 'zh'
+                type: 'warning',
+                round: true,
+                text: '当前页面源代码',
+                actionType: 'drawer',
+                body: {
+                  renderer: 'drawer',
+                  resizable: true,
+                  body: {
+                    renderer: 'code'
+                  }
                 }
               }
             ]

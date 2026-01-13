@@ -6,6 +6,7 @@ import {IRenderer} from  '../utils/lib.js';
 import routers from '../router/home';
 import Application from '../apps/Home.vue';
 import Issue from '../component/Issues.vue';
+import Code from '../component/Code.vue';
 import registrySw from '../registerServiceWorker';
 import '../utils/debug';
 
@@ -18,7 +19,7 @@ const isGPOrDev = process.env.VUE_APP_API_NODE_ENV === 'gp' || process.env.VUE_A
 installer(app, ElementPlus);
 app
   .use(IRenderer, {
-    renderers: [Issue],
+    renderers: [Issue, Code],
     permissions: [],
     roles: [],
     adaptor: {
