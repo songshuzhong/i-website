@@ -1,5 +1,5 @@
 const assets = [
-  `${process.env.VUE_APP_PUBLIC_ASSETS}/js/Particle.6d8915.min.js`
+  // `${process.env.VUE_APP_PUBLIC_ASSETS}/js/Particle.6d8915.min.js`
 ];
 const svg = [
   {
@@ -68,7 +68,7 @@ const page = () => {
         classname: 'i-home__ball'
       },
       {
-        renderer: 'Particle',
+        renderer: 'particle',
         lazy: true,
         r: 15,
         height: 509,
