@@ -493,6 +493,66 @@ const page = () => {
         renderer: 'html',
         html: '<h2>开始使用</h2>现在你可以启动项目了。 对于每个组件都有对应的可视化属性配置面板，面板自带关键属性的解释说明，相信聪明的你一定能立马上手！<h4>run bro!</h4><h3>run!</h3>'
       },
+      {
+        renderer: 'action',
+        isText: true,
+        type: 'info',
+        text: '当前页面源代码',
+        actionType: 'drawer',
+        style: {
+          position: 'fixed',
+          top: '16px',
+          right: '96px',
+          zIndex: 2024
+        },
+        body: {
+          renderer: 'drawer',
+          resizable: true,
+          body: {
+            renderer: 'code'
+          }
+        }
+      },
+      {
+        renderer: 'wrapper',
+        style: {
+          position: 'fixed',
+          top: '120px',
+          right: '20px',
+          width: '200px',
+          zIndex: 10
+        },
+        body: {
+          renderer: 'anchor',
+          options: [
+            {
+              href: '/page/body/0',
+              title: '快速开始'
+            },
+            {
+              href: '/page/body/1',
+              title: '下载安装'
+            },
+            {
+              href: '/page/body/3',
+              title: '用法'
+            },
+            {
+              href: '/page/body/4',
+              title: '完整引入'
+            },
+            {
+              href: '/page/body/6',
+              title: '按需导入'
+            },
+            {
+              href: '/page/body/8',
+              title: '更灵活的用法'
+            }
+          ],
+          target: '.i-renderer-app__container'
+        }
+      }
     ]
   };
 };

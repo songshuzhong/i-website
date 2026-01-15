@@ -1214,7 +1214,27 @@ export default {
           ],
         }
       ]
-    }
+    },
+    {
+      renderer: 'action',
+      isText: true,
+      type: 'info',
+      text: '当前页面源代码',
+      actionType: 'drawer',
+      style: {
+        position: 'fixed',
+        top: '16px',
+        right: '96px',
+        zIndex: 2024
+      },
+      body: {
+        renderer: 'drawer',
+        resizable: true,
+        body: {
+          renderer: 'code'
+        }
+      }
+    },
   ],
   worker: 'e => {\n  if (e.track === \'/page/body/1/body/1/body/0\') {\n    let details = null;\n    for (let i = 0; i < e.data.rows.length; i++) {\n      if (e.data.rows[i].version === e.data.selectedVersion) {\n        details = e.data.rows[i];\n      }\n    }\n    return Promise.resolve(details);\n  }\n}'
 };
