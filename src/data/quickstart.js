@@ -146,9 +146,9 @@ export const router = createRouter({
 });
 `);
 const demoJs = escaped(`
-import B from '@/component/B.vue';
+import Hi from '@/components/Hi.vue';
 
-export const assets = ['https://xxx.com/cdn/a.umd.js'];
+export const assets = ['https://www.xxx.com/cdn/todo.umd.hash.min.js'];
 export const pageDesc = '页面描述';
 export const pageTitle = '这是页面标题';
 export const visible = [1, 8 34];
@@ -166,11 +166,11 @@ const page = () => {
        html: 'Hello ${t}, nice to meet you。'
      },
      {
-       renderer: 'A',
+       renderer: 'Todo',
        description: '来自cdn依赖的组件'
      },
      {
-       renderer: B,
+       renderer: Hi,
        description: '来自项目的组件'
      }
     ]
@@ -195,6 +195,38 @@ const testJs = escaped(`
   }
 }
 `);
+const typePage = escaped(`
+interface IRendererModel {
+  renderer: string | URL | VNode
+  header?: string | IRendererModel | IRendererModel[]
+  body?: string | IRendererModel | IRendererModel[]
+  footer?: string | IRendererModel | IRendererModel[]
+  initData?: any
+  [key: string]: any
+}
+
+interface IPageModel {
+  pageId: string                       // 页面Id
+  pageSchema: string | IRendererModel  // 页面配置
+  pageTitle: string                    // 页面标题
+  pageIcon: string                     // 页面icon 
+  pageDesc: string                     // 页面描述
+  pageData: any                        // 初始化数据
+  version: number                      // 迭代版本号
+  status: number                       // 可用状态
+  hidden: boolean                      // 隐藏页
+  visible: number[]                    // 可见角色列表
+  assets: string[]                     // 远程依赖资源
+  updatedBy: string                    // 更新人
+  updatedCause: string                 // 更新原因
+  createdAt: timestamp                 // 创建时间
+  updatedAt: timestamp                 // 更新时间
+  groupBy: string                      // 分组 
+  projectId: string                    // 项目Id  
+  namespace: string                    // 命名空间
+}
+`);
+
 const page = () => {
   return {
     renderer: 'page',
@@ -385,7 +417,7 @@ const page = () => {
         },
         panels: [
           {
-            label: 'router.js',
+            label: '/src/router.ts',
             body: {
               renderer: 'html',
               style: {
@@ -395,7 +427,7 @@ const page = () => {
             }
           },
           {
-            label: 'demo.ts(来自es模块)',
+            label: '/src/pages/demo.ts',
             body: {
               renderer: 'html',
               style: {
@@ -405,7 +437,18 @@ const page = () => {
             }
           },
           {
-            label: 'pageId: 1234(来自接口)',
+            label: '/src/types/page.ts',
+            body: {
+              renderer: 'html',
+              style: {
+                marginTop: '-38px',
+                lineHeight: '20px'
+              },
+              html: `<pre>${typePage}</pre>`
+            }
+          },
+          {
+            label: 'server api',
             body: {
               renderer: 'html',
               style: {
@@ -415,7 +458,7 @@ const page = () => {
             }
           },
           {
-            label: 'main.ts',
+            label: '/src/main.ts',
             body: {
               renderer: 'html',
               style: {
@@ -428,7 +471,7 @@ const page = () => {
             }
           },
           {
-            label: 'App.vue',
+            label: '/src/App.vue',
             body: {
               renderer: 'html',
               style: {

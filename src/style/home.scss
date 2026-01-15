@@ -749,6 +749,9 @@ html {
 .i-breathe-border3 {
   animation: breathe3 1500ms 0s ease-in-out infinite alternate;
 }
+.i-breathe-border4 {
+  animation: breathe3 2000ms 0s ease-in-out infinite alternate;
+}
 @keyframes grow {
   from {
     transform: scaleX(0);

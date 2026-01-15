@@ -129,6 +129,7 @@ const page = () => {
                 round: true,
                 text: '当前页面源代码',
                 actionType: 'drawer',
+                classname: 'i-breathe-border4',
                 body: {
                   renderer: 'drawer',
                   resizable: true,
