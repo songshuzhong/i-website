@@ -397,6 +397,19 @@ html {
     cursor: pointer;
   }
 }
+.i-home-quickstart {
+  .el-tabs__item {
+    .i-icon__container {
+      width: 30px;
+      height: 30px;
+      transform: scale(0.5) translateY(2px);
+    }
+  }
+}
+.i-home__banner__size {
+  padding-left: 14px;
+  font-size: 12px;
+}
 .i-home__carousel__item {
   width: 686px;
   height: 100%;

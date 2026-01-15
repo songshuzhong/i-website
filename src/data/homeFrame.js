@@ -18,8 +18,8 @@ export default {
         icon: 'HomeFilled'
       },
       {
-        name: 'playground',
-        title: '即刻体验',
+        name: 'quickstart',
+        title: '快速开始',
         renderer: 'menuitem',
         icon: 'LocationInformation'
       },

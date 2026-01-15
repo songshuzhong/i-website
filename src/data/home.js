@@ -87,7 +87,7 @@ const page = () => {
               {
                 renderer: 'html',
                 classname: 'i-home__banner__title',
-                html: '百搭云'
+                html: '百搭云<span class="i-home__banner__size">大小：114.32KB</span>'
               },
               {
                 renderer: 'html',

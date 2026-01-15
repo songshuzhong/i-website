@@ -19,6 +19,13 @@ const router = createRouter({
       },
     },
     {
+      path: '/quickstart',
+      component: Schema,
+      props: {
+        initSchema: () => import('../data/quickstart.js')
+      },
+    },
+    {
       path: '/logs',
       component: Schema,
       props: {
