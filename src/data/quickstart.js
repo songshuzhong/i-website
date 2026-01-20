@@ -96,30 +96,20 @@ const json = ref({
 `);
 const partEdit = escaped(`
 <template>
-  <i-editor
-    v-if="isReady"
-    :is-json="false"
-    :nimble="true"
-  />
-  <div v-else class="i-editor__container-loading" />
+  <Suspense>
+    <template #default>
+      <AsyncEditor :is-json="false" :nimble="true" />
+    </template>
+    <template #fallback>
+      <div class="i-editor__container-loading" />
+    </template>
+  </Suspense>
 </template>
 
 <script setup lang="ts">
-import {onMounted, ref} from 'vue';
+import { defineAsyncComponent } from 'vue';
 
-const {proxy} = getCurrentInstance();
-const isReady = ref(false);
-
-onMounted(() => {
-  import('i-renderer/dist/js/editor')
-    .then(res => {
-      const {Editor} = res;
-      proxy.$.appContext.components['i-editor'] = Editor;
-      isReady.value = true;
-    }).catch(e => {
-      console.error(e);
-    })
-});
+const AsyncEditor = defineAsyncComponent(() => import('i-renderer/dist/js/editor').then(module => module.Editor));
 </script>
 `);
 const routerJs = escaped(`
@@ -148,10 +138,10 @@ export const router = createRouter({
 const demoJs = escaped(`
 import Hi from '@/components/Hi.vue';
 
-export const assets = ['https://www.xxx.com/cdn/todo.umd.hash.min.js'];
+export const assets = ['https://www.xxx.com/cdn/Todo.umd.hash.min.js'];
 export const pageDesc = '页面描述';
 export const pageTitle = '这是页面标题';
-export const visible = [1, 8 34];
+export const visible = [1, 8, 34];
 export const pageData = {
   from: 'this message is from server!',
   name: 'Server',
@@ -240,7 +230,19 @@ const page = () => {
     body: [
       {
         renderer: 'html',
-        html: '<h1>快速开始</h1>本节将介绍如何在项目中使用i-renderer。'
+        html: '<h1>快速开始</h1>本节将介绍如何在项目中使用i-renderer。',
+        events: {
+          click: {
+            actions: [
+              {
+                actionType: 'custom',
+                content: (context, app) => {
+                  console.log(context, app);
+                }
+              }
+            ]
+          }
+        }
       },
       {
         renderer: 'html',
@@ -248,6 +250,8 @@ const page = () => {
       },
       {
         renderer: 'tabs',
+        useRef: true,
+        name: 'Tabs',
         style: {
           marginTop: '20px',
           padding: '0 20px',
@@ -548,12 +552,25 @@ const page = () => {
             {
               href: '/page/body/8',
               title: '更灵活的用法'
+            },
+            {
+              href: '/page/body/11',
+              title: '开始使用'
             }
           ],
           target: '.i-renderer-app__container'
         }
+      },
+      {
+        renderer: 'computed',
+        name: 'ss',
+        useWorker: true
       }
-    ]
+    ],
+    worker: (e) => {
+      console.log(e);
+      return Promise.resolve('this message is from worker.');
+    }
   };
 };
 
