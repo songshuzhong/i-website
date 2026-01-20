@@ -122,7 +122,7 @@ export const router = createRouter({
       path: '/demo',
       component: Schema,
       props: {
-        initSchema: () => import('@/data/demo'),
+        initSchema: () => import('@/pages/demo'),
       },
     },
     {
@@ -147,7 +147,7 @@ export const pageData = {
   name: 'Server',
 };
 
-const page = () => {
+export default function() {
   return {
     renderer: 'page',
     body: [
@@ -166,8 +166,6 @@ const page = () => {
     ]
   };
 };
-
-export default page;
 `);
 const testJs = escaped(`
 {
@@ -217,7 +215,7 @@ interface IPageModel {
 }
 `);
 
-const page = () => {
+export default function() {
   return {
     renderer: 'page',
     classname: 'i-home-quickstart',
@@ -560,18 +558,7 @@ const page = () => {
           ],
           target: '.i-renderer-app__container'
         }
-      },
-      {
-        renderer: 'computed',
-        name: 'ss',
-        useWorker: true
       }
-    ],
-    worker: (e) => {
-      console.log(e);
-      return Promise.resolve('this message is from worker.');
-    }
+    ]
   };
-};
-
-export default page;
+}
