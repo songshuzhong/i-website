@@ -103,7 +103,7 @@ const page = () => {
                 classname: 'i-breathe-border3',
                 url: process.env.VUE_APP_PAGE_LOGIN,
                 style: {
-                  marginLeft: '-6px'
+                  marginLeft: '-21px'
                 },
               },
               {

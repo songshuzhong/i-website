@@ -41,7 +41,8 @@ export default defineComponent({
     width: { type: Number, default: 0 },
     height: { type: Number, default: 0 },
     classname: { type: String, default: '' },
-    particleCount: { type: Number, default: 80 }
+    particleCount: { type: Number, default: 80 },
+    action: Function,
   },
   setup(props) {
     const canvas = ref(null);

@@ -1100,27 +1100,30 @@ const options = logs.map(i => ({text: i.version, value: i.version}));
 export const pageData = {rows: logs};
 export default {
   renderer: 'page',
+  style: {
+    padding: '10px 20px 0px',
+    color: 'var(--el-text-color-regular)',
+  },
   initData: {
     selectedVersion: logs[0].version
   },
   body: [
     {
       renderer: 'html',
-      html: '更新日志',
+      html: '<h1>更新日志</h1>',
       style: {
-        width: '60%',
+        width: '62%',
         margin: 'auto',
-        padding: '40px 20px 0 20px',
-        fontSize: '24px',
+        padding: '0 20px 0 20px',
         fontWeight: 'bold'
       },
     },
     {
       renderer: 'service',
       style: {
-        width: '60%',
+        width: '62%',
         margin: 'auto',
-        padding: '30px 20px 0 20px'
+        padding: '0 20px 0 20px'
       },
       body: [
         {
