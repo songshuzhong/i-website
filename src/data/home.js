@@ -103,8 +103,8 @@ const page = () => {
                 classname: 'i-breathe-border3',
                 url: process.env.VUE_APP_PAGE_LOGIN,
                 style: {
-                  marginLeft: '-21px'
-                }
+                  marginLeft: '-6px'
+                },
               },
               {
                 renderer: 'action',
@@ -130,6 +130,9 @@ const page = () => {
                 text: '当前页面源代码',
                 actionType: 'drawer',
                 classname: 'i-breathe-border4',
+                style: {
+                  marginRight: '-18px'
+                },
                 body: {
                   renderer: 'drawer',
                   resizable: true,
