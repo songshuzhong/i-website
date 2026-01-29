@@ -27,7 +27,7 @@ export default defineComponent({
     const formData = ref({code: ''});
     const controls = ref([]);
     onMounted(() => {
-      const height = window.innerHeight - 120;
+      const height = window.innerHeight - 130;
       controls.value = [{
         renderer: 'monaco',
         label: '',

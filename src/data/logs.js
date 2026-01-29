@@ -1096,7 +1096,10 @@ const logs = [
   }
 ];
 
-export const pageData = {rows: logs};
+export const pageData = {
+  rows: logs,
+  selectedVersion: logs[0].version
+};
 
 export default function () {
   return {
@@ -1107,15 +1110,11 @@ export default function () {
       padding: '10px 20px 0px',
       color: 'var(--el-text-color-regular)',
     },
-    initData: {
-      selectedVersion: logs[0].version
-    },
     body: [
       {
         renderer: 'html',
         html: '<h1>更新日志</h1>',
         style: {
-          margin: 'auto',
           fontWeight: 'bold'
         },
       },
