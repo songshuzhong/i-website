@@ -1244,4 +1244,4 @@ export default function () {
       }
     }
   };
-};
+}
