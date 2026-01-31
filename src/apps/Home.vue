@@ -40,7 +40,7 @@ export default defineComponent({
           import('element-plus/es/locale/lang/en'),
           loadEn(),
         ];
-      } else if (val === 'jp') {
+      } else if (val === 'ja') {
         promise = [
           import('../local/ja'),
           import('../data/homeFrame.ja'),
