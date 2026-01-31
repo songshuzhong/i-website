@@ -1103,6 +1103,12 @@ const i18n = {
     select: 'select version：',
     time: 'Date：${data.timestamp}',
   },
+  ja: {
+    title: '<h1>更新ログ</h1>',
+    desc: '<strong>IRenderer</strong>は通常、<strong>毎週</strong>のリリース戦略を採用していますが、重大なバグ修正にはホットフィックスが必要となるため、実際のリリースバージョンは<strong>週1回以上</strong>になる可能性があります。',
+    select: 'バージョンを選択：',
+    time: '時間：${data.timestamp}'
+  },
   zh: {
     title: '<h1>更新日志</h1>',
     desc: '<strong>IRenderer</strong>在正常情况下使用<strong>每周</strong>发布策略，但关键的bug修复将需要热修复，所以实际发布版本<strong>可能</strong>每周超过1次。',

@@ -11,7 +11,7 @@
 
 <script>
 import {defineComponent, getCurrentInstance, onBeforeMount, onMounted, ref} from 'vue';
-import {loadZh, loadEn} from '../utils/lib';
+import {loadZh, loadEn, loadJa} from '../utils/lib';
 import zhFrame from '../data/homeFrame';
 import uaManager from '../utils/ua';
 
@@ -39,6 +39,13 @@ export default defineComponent({
           import('../data/homeFrame.en'),
           import('element-plus/es/locale/lang/en'),
           loadEn(),
+        ];
+      } else if (val === 'jp') {
+        promise = [
+          import('../local/ja'),
+          import('../data/homeFrame.ja'),
+          import('element-plus/es/locale/lang/ja'),
+          loadJa(),
         ];
       }
       Promise

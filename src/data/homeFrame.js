@@ -79,9 +79,13 @@ export default {
             value: 'zh'
           },
           {
-            text: 'english',
+            text: 'English',
             value: 'en'
-          }
+          },
+          {
+            text: 'にほんご',
+            value: 'ja'
+          },
         ]
       },
       {

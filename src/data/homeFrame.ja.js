@@ -3,7 +3,7 @@ export default {
   name: 'HomeAdmin',
   classname: 'i-home__page',
   logo: 'https://songshuzhong.github.io/i-assets/public/img/shuttle.png',
-  title: 'BaiDa Cloud Platform', // 百搭云平台
+  title: '百搭云プラットフォーム',
   layout: 'horizontal',
   menu: {
     renderer: 'menu',
@@ -14,38 +14,38 @@ export default {
     body: [
       {
         name: '/',
-        title: 'Home', // 首页
+        title: 'ホーム',
         renderer: 'menuitem',
         icon: 'HomeFilled'
       },
       {
         name: 'quickstart',
-        title: 'Quick Start', // 快速开始
+        title: 'クイックスタート',
         renderer: 'menuitem',
         icon: 'LocationInformation'
       },
       {
         name: process.env.VUE_APP_PAGE_WEBSITE,
-        title: 'Cases', // 案例合集
+        title: ' ケース集',
         renderer: 'menuitem',
         icon: 'DataBoard',
         extra: true
       },
       {
         name: 'logs',
-        title: 'Changelog', // 更新日志
+        title: '更新ログ',
         renderer: 'menuitem',
         icon: 'Tickets'
       },
       {
         name: 'quality',
-        title: 'Certifications', // 荣誉资质
+        title: '栄誉資格',
         renderer: 'menuitem',
         icon: 'Aim'
       },
       {
         name: 'me',
-        title: 'About Me', // 关于我
+        title: '私について',
         renderer: 'menuitem',
         icon: 'Avatar',
         extra: true
@@ -93,7 +93,7 @@ export default {
         body: [
           {
             renderer: 'action',
-            text: 'Ice Blue', // 冰河蓝染
+            text: '氷河ブルー',
             actionType: 'custom',
             isText: true,
             tag: 'div',
@@ -102,7 +102,7 @@ export default {
           },
           {
             renderer: 'action',
-            text: 'Forest Dew', // 林间晨露
+            text: '森の朝露',
             tag: 'div',
             actionType: 'custom',
             isText: true,
@@ -110,14 +110,14 @@ export default {
           },
           {
             renderer: 'action',
-            text: 'Flame Shadow', // 赤焰幻影
+            text: '赤炎ファントム',
             isText: true,
             tag: 'div',
             actionType: 'custom',
             content: 'const root = document.documentElement.style;\nroot.setProperty(\'--i-renderer-home-ball-color\', \'var(--el-color-danger-light-3)\');\nroot.setProperty(\'--i-renderer-home-particle-color\', \'var(--el-color-danger-light-7)\');\nroot.setProperty(\'--i-renderer-home-text-color\', \'var(--el-color-danger)\');'
           }
         ],
-        text: 'Theme Settings', // 主题设置
+        text: 'テーマ設定',
         type: 'primary',
         size: 'medium',
         trigger: 'hover'
@@ -135,26 +135,26 @@ export default {
           body: [
             {
               renderer: 'html',
-              html: 'Links' // 链接
+              html: 'リンク'
             },
             {
               renderer: 'action',
               isText: true,
-              text: 'Code Repository', // 代码仓库
+              text: 'コードリポジトリ',
               actionType: 'url',
               url: 'https://songshuzhong.github.io/i-website/dist/index.html'
             },
             {
               renderer: 'action',
               isText: true,
-              text: 'Changelog', // 更新日志
+              text: '更新ログ',
               actionType: 'url',
               url: 'https://songshuzhong.github.io/i-website/dist/index.html'
             },
             {
               renderer: 'action',
               isText: true,
-              text: 'Design Philosophy', // 设计理念
+              text: 'デザイン理念',
               actionType: 'url',
               url: 'https://songshuzhong.github.io/i-website/dist/index.html'
             }
@@ -165,19 +165,19 @@ export default {
           body: [
             {
               renderer: 'html',
-              html: 'Related' // 相关
+              html: '関連'
             },
             {
               renderer: 'action',
               isText: true,
-              text: 'React',
+              text: 'react',
               actionType: 'url',
               url: 'https://react.docschina.org/'
             },
             {
               renderer: 'action',
               isText: true,
-              text: 'Vue',
+              text: 'vue',
               actionType: 'url',
               url: 'https://cn.vuejs.org/index.html'
             }
@@ -188,26 +188,26 @@ export default {
           body: [
             {
               renderer: 'html',
-              html: 'Contact' // 联系
+              html: '連絡先'
             },
             {
               renderer: 'action',
               isText: true,
-              text: 'QQ: 1462026137',
+              text: 'qq: 1462026137',
               actionType: 'copy',
               content: '1462026137'
             },
             {
               renderer: 'action',
               isText: true,
-              text: 'Phone: 15510351839',
+              text: '電話: 15510351839',
               actionType: 'copy',
               content: '15510351839'
             },
             {
               renderer: 'action',
               isText: true,
-              text: 'E-mail: sshuzhong@outlook.com',
+              text: 'e-mail: sshuzhong@outlook.com',
               actionType: 'mail'
             }
           ]
@@ -217,7 +217,7 @@ export default {
     {
       renderer: 'footer',
       classname: 'i-home__copyright',
-      body: 'Copyright © 2022 sshuzhong@outlook.com'
+      body: 'copyright © 2022 sshuzhong@outlook.com'
     }
   ],
 };

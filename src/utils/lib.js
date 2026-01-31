@@ -3,6 +3,7 @@ import 'i-renderer/dist/css/index.css';
 
 export const loadEn = () => import('i-renderer/dist/js/en');
 export const loadZh = () => import('i-renderer/dist/js/zh');
+export const loadJa = () => import('i-renderer/dist/js/ja');
 export const loadEditor = () => import('i-renderer/dist/js/editor');
 
 export {IRenderer};
