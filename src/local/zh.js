@@ -1,5 +1,12 @@
 export default {
-  el: {
-    org: '',
+  website: {
+    error: {
+      backHome: '返回首页',
+      backUp: '返回上一页',
+      notFound: '地址错误，请重新输入地址',
+      notFoundTip: '您可以先检查网址，然后重新输入或给我们反馈问题',
+      forbidden: '抱歉，您没有操作权限',
+      forbiddenTip: '联系方式：sshuzhong@outlook.com',
+    },
   }
 };

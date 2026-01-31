@@ -72,7 +72,17 @@ export default {
           display: 'inline-block',
           marginTop: '0',
           transform: 'translateY(4px)',
-        }
+        },
+        languages: [
+          {
+            text: '中文',
+            value: 'zh'
+          },
+          {
+            text: 'english',
+            value: 'en'
+          }
+        ]
       },
       {
         renderer: 'dropdown',

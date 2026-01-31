@@ -1,0 +1,12 @@
+export default {
+  website: {
+    error: {
+      backHome: 'back home',
+      backUp: 'back up',
+      notFound: 'Address error, please re-enter the address',
+      notFoundTip: 'You can first check the website address, then re-enter it or give us feedback on the issue',
+      forbidden: 'Sorry, you do not have operational permissions',
+      forbiddenTip: 'Contact Information：sshuzhong@outlook.com',
+    },
+  }
+};

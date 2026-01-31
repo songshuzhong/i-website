@@ -1,3 +1,43 @@
+const i18n = {
+  en: {
+    start: '<h1>Quick Start</h1>This section will introduce how to use i-renderer in a project.',
+    download: '<h2>Download and Install</h2>',
+    usage: '<h2>Usage</h2>',
+    full: '<h3>Complete</h3>If you are not very concerned about the size of the packaged file, then using a full import would be more convenient.\n',
+    part: '<h3>Part</h3>If you have requirements for the volume of the packaged product, you need to separate the editing and rendering states and import them separately.\n',
+    flexible: '<h2>More flexible usage\n</h2>',
+    tip: 'Handwritten code is used for pages with high personalization and complex interaction, while other pages are built through configuration. This routing level hybrid rendering framework design is more robust.',
+    end: '<h2>Get started</h2>Now you can start the project. For each component, there is a corresponding visualization property configuration panel, which comes with explanations of key properties. I believe that smart you will be able to get started immediately!<h4>run bro!</h4><h3>run!</h3>',
+    anchor: [
+      'Quick Start',
+      'D & I',
+      'Usage',
+      'Complete',
+      'Part',
+      'Flexible',
+      'Run',
+    ],
+  },
+  zh: {
+    start: '<h1>快速开始</h1>本节将介绍如何在项目中使用i-renderer。',
+    download: '<h2>下载安装</h2>',
+    usage: '<h2>用法</h2>',
+    full: '<h3>完整引入</h3>如果你对打包后的文件大小不是很在乎，那么使用完整导入会更方便。',
+    part: '<h3>按需导入</h3>如果您对打包产物的体积有要求，那就需要分离出编辑态和渲染态，分开导入即可。',
+    flexible: '<h2>更灵活的用法</h2>',
+    tip: '让个性化程度高、交互复杂度大的页面手写代码，相反的，其他页面则通过配置搭建。这种路由级混合渲染的框架设计更为健壮。',
+    end: '<h2>开始使用</h2>现在你可以启动项目了。 对于每个组件都有对应的可视化属性配置面板，面板自带关键属性的解释说明，相信聪明的你一定能立马上手！<h4>run bro!</h4><h3>run!</h3>',
+    anchor: [
+      '快速开始',
+      '下载安装',
+      '用法',
+      '完整引入',
+      '按需导入',
+      '更灵活的用法',
+      '开始使用',
+    ],
+  },
+};
 const escaped = str => {
   return str.replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -215,7 +255,8 @@ interface IPageModel {
 }
 `);
 
-export default function() {
+export default function(options) {
+  const tokens = i18n[options.language || 'zh'];
   return {
     renderer: 'page',
     classname: 'i-home-quickstart',
@@ -228,7 +269,7 @@ export default function() {
     body: [
       {
         renderer: 'html',
-        html: '<h1>快速开始</h1>本节将介绍如何在项目中使用i-renderer。',
+        html: tokens.start,
         events: {
           click: {
             actions: [
@@ -244,7 +285,7 @@ export default function() {
       },
       {
         renderer: 'html',
-        html: '<h2>下载安装</h2>'
+        html: tokens.download,
       },
       {
         renderer: 'tabs',
@@ -323,11 +364,11 @@ export default function() {
       },
       {
         renderer: 'html',
-        html: '<h2>用法</h2>'
+        html: tokens.usage,
       },
       {
         renderer: 'html',
-        html: '<h3>完整引入</h3>如果你对打包后的文件大小不是很在乎，那么使用完整导入会更方便。'
+        html: tokens.full,
       },
       {
         renderer: 'tabs',
@@ -362,7 +403,7 @@ export default function() {
       },
       {
         renderer: 'html',
-        html: '<h3>按需导入</h3>如果您对打包产物的体积有要求，那就需要分离出编辑态和渲染态，分开导入即可。'
+        html: tokens.part
       },
       {
         renderer: 'tabs',
@@ -407,7 +448,7 @@ export default function() {
       },
       {
         renderer: 'html',
-        html: '<h2>更灵活的用法</h2>'
+        html: tokens.flexible
       },
       {
         renderer: 'tabs',
@@ -489,11 +530,11 @@ export default function() {
       },
       {
         renderer: 'html',
-        html: '让个性化程度高、交互复杂度大的页面手写代码，相反的，其他页面则通过配置搭建。这种路由级混合渲染的框架设计更为健壮。'
+        html: tokens.tip
       },
       {
         renderer: 'html',
-        html: '<h2>开始使用</h2>现在你可以启动项目了。 对于每个组件都有对应的可视化属性配置面板，面板自带关键属性的解释说明，相信聪明的你一定能立马上手！<h4>run bro!</h4><h3>run!</h3>'
+        html: tokens.end
       },
       {
         renderer: 'action',
@@ -501,12 +542,6 @@ export default function() {
         type: 'info',
         text: '当前页面源代码',
         actionType: 'drawer',
-        style: {
-          position: 'fixed',
-          top: '16px',
-          right: '96px',
-          zIndex: 2024
-        },
         body: {
           renderer: 'drawer',
           resizable: true,
@@ -529,31 +564,31 @@ export default function() {
           options: [
             {
               href: '/page/body/0',
-              title: '快速开始'
+              title: tokens.anchor[0],
             },
             {
               href: '/page/body/1',
-              title: '下载安装'
+              title: tokens.anchor[1],
             },
             {
               href: '/page/body/3',
-              title: '用法'
+              title: tokens.anchor[2],
             },
             {
               href: '/page/body/4',
-              title: '完整引入'
+              title: tokens.anchor[3],
             },
             {
               href: '/page/body/6',
-              title: '按需导入'
+              title: tokens.anchor[4],
             },
             {
               href: '/page/body/8',
-              title: '更灵活的用法'
+              title: tokens.anchor[5],
             },
             {
               href: '/page/body/11',
-              title: '开始使用'
+              title: tokens.anchor[6],
             }
           ],
           target: '.i-renderer-app__container'

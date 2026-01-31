@@ -1,19 +1,6 @@
 const logs = [
   {
     bugs: [
-      '- Renderers[form-item] fix data backfilling when invisible or visible'
-    ],
-    refactors: [
-      '- Renderers[switch] delete requiredOn props',
-    ],
-    features: [
-      '- Renderers[setting] support custom configuration items',
-    ],
-    timestamp: '2026-01-31',
-    version: '1.0.2-bata.34'
-  },
-  {
-    bugs: [
       '- Env fix env overwrite',
       '- Renderers[service] fix sw',
       '- Renderers[form] fix reset',
@@ -1109,12 +1096,27 @@ const logs = [
   }
 ];
 
+const i18n = {
+  en: {
+    title: '<h1>Change Log</h1>',
+    desc: '<strong>IRenderer</strong> usually releases <strong>weekly</strong>, but critical bug fixes may prompt extra hotfix releases, <strong>exceeding once a week</strong>.',
+    select: 'select version：',
+    time: 'Date：${data.timestamp}',
+  },
+  zh: {
+    title: '<h1>更新日志</h1>',
+    desc: '<strong>IRenderer</strong>在正常情况下使用<strong>每周</strong>发布策略，但关键的bug修复将需要热修复，所以实际发布版本<strong>可能</strong>每周超过1次。',
+    select: '选择版本：',
+    time: '时间：${data.timestamp}',
+  },
+};
 export const pageData = {
   rows: logs,
   selectedVersion: logs[0].version
 };
 
-export default function () {
+export default function (options) {
+  const tokens = i18n[options.language || 'zh'];
   return {
     renderer: 'page',
     style: {
@@ -1126,14 +1128,14 @@ export default function () {
     body: [
       {
         renderer: 'html',
-        html: '<h1>更新日志</h1>',
+        html: tokens.title,
         style: {
           fontWeight: 'bold'
         },
       },
       {
         renderer: 'html',
-        html: '<strong>IRenderer</strong>在正常情况下使用<strong>每周</strong>发布策略，但关键的bug修复将需要热修复，所以实际发布版本<strong>可能</strong>每周超过1次。',
+        html: tokens.desc,
         style: {
           fontSize: '16px',
           marginBottom: '20px'
@@ -1150,7 +1152,7 @@ export default function () {
               {
                 renderer: 'select',
                 name: 'selectedVersion',
-                label: '选择版本:',
+                label: tokens.select,
                 multiple: false,
                 clearable: false,
                 target: 'VersionDetails',
@@ -1176,7 +1178,7 @@ export default function () {
             header: [
               {
                 renderer: 'html',
-                html: '时间：${data.timestamp}'
+                html: tokens.time,
               }
             ],
             body: [

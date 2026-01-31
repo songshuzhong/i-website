@@ -1,9 +1,9 @@
 <template>
   <i-schema
-    ref="homeFrameRef"
-    :init-schema="frameSchema"
+    :init-schema="initSchema"
     :updatable="false"
     :tokens="tokens"
+    ref="homeFrameRef"
     classname="i-renderer-website-schema__container"
     @update:lang="updateLang"
   />
@@ -13,7 +13,6 @@
 import {defineComponent, getCurrentInstance, onBeforeMount, onMounted, ref} from 'vue';
 import {loadZh, loadEn} from '../utils/lib';
 import zhFrame from '../data/homeFrame';
-import enFrame from '../data/homeFrame.en';
 import uaManager from '../utils/ua';
 
 export default defineComponent({
@@ -21,7 +20,6 @@ export default defineComponent({
   setup() {
     const {proxy} = getCurrentInstance();
     const homeFrameRef = ref();
-    const frameSchema = ref(proxy.$iRenderConfig.language === 'zh'? zhFrame: enFrame);
     const tokens = ref({});
     const notice = () => {
       proxy.$message.success('切换到PC端体验更加哦！');
@@ -29,16 +27,27 @@ export default defineComponent({
     const updateLang = (val) => {
       let promise;
       if (val === 'zh') {
-        promise = [import('element-plus/es/locale/lang/zh-cn'), loadZh()];
+        promise = [
+          import('../local/zh'),
+          import('../data/homeFrame'),
+          import('element-plus/es/locale/lang/zh-cn'),
+          loadZh(),
+        ];
       } else if (val === 'en') {
-        promise = [import('element-plus/es/locale/lang/en'), loadEn()];
+        promise = [
+          import('../local/en'),
+          import('../data/homeFrame.en'),
+          import('element-plus/es/locale/lang/en'),
+          loadEn(),
+        ];
       }
       Promise
         .all(promise)
-        .then(([el, renderer]) => {
-          homeFrameRef.value?.updatePageSchema(proxy.$iRenderConfig.language === 'zh'? zhFrame: enFrame, true);
+        .then(([local, frameSchema, el, renderer]) => {
+          homeFrameRef.value?.updatePageSchema(frameSchema.default, true);
           tokens.value = {
             ...el.default,
+            ...local.default,
             ...renderer.default,
           };
         })
@@ -66,9 +75,9 @@ export default defineComponent({
       }
     });
     return {
+      initSchema: zhFrame,
       updateLang,
       homeFrameRef,
-      frameSchema,
       tokens,
     };
   }
