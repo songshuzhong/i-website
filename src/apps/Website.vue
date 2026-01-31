@@ -2,18 +2,39 @@
   <i-schema
     :init-schema="frameSchema"
     :updatable="false"
+    :tokens="tokens"
+    @update:lang="updateLang"
   />
 </template>
 
 <script>
-import {defineComponent, onBeforeMount, onMounted, getCurrentInstance} from 'vue';
+import {defineComponent, onBeforeMount, onMounted, getCurrentInstance, ref} from 'vue';
+import {loadEditor, loadEn, loadZh} from '../utils/lib.js';
 import frameSchema from '../data/websiteFrame.js';
-import {loadEditor} from '../utils/lib.js';
 
 export default defineComponent({
   name: 'Application',
   setup() {
     const { proxy } = getCurrentInstance();
+    const tokens = ref({});
+    const updateLang = (val) => {
+      let promise;
+      if (val === 'zh') {
+        promise = [import('element-plus/es/locale/lang/zh-cn'), loadZh()];
+      } else if (val === 'en') {
+        promise = [import('element-plus/es/locale/lang/en'), loadEn()];
+      }
+      Promise.all(promise)
+        .then(([el, renderer]) => {
+          tokens.value = {
+            ...el.default,
+            ...renderer.default,
+          };
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    };
     const appendAssets = () => {
       return new Promise((resolve, reject) => {
         const script = document.createElement('script');
@@ -64,6 +85,7 @@ export default defineComponent({
         );
       }
       isMobile && proxy.$message.success('切换到PC端体验更加哦！');
+      updateLang(proxy.$iRenderConfig.language);
     });
     onMounted(() => {
       const timer = setTimeout(() => {
@@ -82,6 +104,8 @@ export default defineComponent({
     });
 
     return {
+      updateLang,
+      tokens,
       frameSchema: {
         renderer: 'admin',
         ...frameSchema

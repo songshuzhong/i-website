@@ -1,23 +1,54 @@
 <template>
   <i-schema
+    ref="homeFrameRef"
     :init-schema="frameSchema"
     :updatable="false"
+    :tokens="tokens"
     classname="i-renderer-website-schema__container"
+    @update:lang="updateLang"
   />
 </template>
 
 <script>
-import {defineComponent, getCurrentInstance, onMounted} from 'vue';
-import frameSchema from '../data/homeFrame.js';
+import {defineComponent, getCurrentInstance, onBeforeMount, onMounted, ref} from 'vue';
+import {loadZh, loadEn} from '../utils/lib';
+import zhFrame from '../data/homeFrame';
+import enFrame from '../data/homeFrame.en';
 import uaManager from '../utils/ua';
 
 export default defineComponent({
   name: 'Application',
   setup() {
     const {proxy} = getCurrentInstance();
+    const homeFrameRef = ref();
+    const frameSchema = ref(proxy.$iRenderConfig.language === 'zh'? zhFrame: enFrame);
+    const tokens = ref({});
     const notice = () => {
       proxy.$message.success('切换到PC端体验更加哦！');
     };
+    const updateLang = (val) => {
+      let promise;
+      if (val === 'zh') {
+        promise = [import('element-plus/es/locale/lang/zh-cn'), loadZh()];
+      } else if (val === 'en') {
+        promise = [import('element-plus/es/locale/lang/en'), loadEn()];
+      }
+      Promise
+        .all(promise)
+        .then(([el, renderer]) => {
+          homeFrameRef.value?.updatePageSchema(proxy.$iRenderConfig.language === 'zh'? zhFrame: enFrame, true);
+          tokens.value = {
+            ...el.default,
+            ...renderer.default,
+          };
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    };
+    onBeforeMount(() => {
+      updateLang(proxy.$iRenderConfig.language);
+    });
     onMounted(() => {
       const color = ['primary', 'success', 'danger'][Math.floor(Math.random() * 3)];
       const root = document.documentElement.style;
@@ -35,7 +66,10 @@ export default defineComponent({
       }
     });
     return {
-      frameSchema
+      updateLang,
+      homeFrameRef,
+      frameSchema,
+      tokens,
     };
   }
 });

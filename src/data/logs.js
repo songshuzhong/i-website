@@ -1,6 +1,19 @@
 const logs = [
   {
     bugs: [
+      '- Renderers[form-item] fix data backfilling when invisible or visible'
+    ],
+    refactors: [
+      '- Renderers[switch] delete requiredOn props',
+    ],
+    features: [
+      '- Renderers[setting] support custom configuration items',
+    ],
+    timestamp: '2026-01-31',
+    version: '1.0.2-bata.34'
+  },
+  {
+    bugs: [
       '- Env fix env overwrite',
       '- Renderers[service] fix sw',
       '- Renderers[form] fix reset',
@@ -1206,27 +1219,7 @@ export default function () {
             },
           }
         ],
-      },
-      {
-        renderer: 'action',
-        isText: true,
-        type: 'info',
-        text: '当前页面源代码',
-        actionType: 'drawer',
-        style: {
-          position: 'fixed',
-          top: '16px',
-          right: '96px',
-          zIndex: 2024
-        },
-        body: {
-          renderer: 'drawer',
-          resizable: true,
-          body: {
-            renderer: 'code'
-          }
-        }
-      },
+      }
     ],
     worker: e => {
       if (e.track === '/page/body/2/header/0/controls/0') {
