@@ -65,6 +65,7 @@ export default {
         renderer: 'setting',
         fields: {
           language: {
+            clearable: false,
             options: [
               {
                 text: '中文',
