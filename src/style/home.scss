@@ -397,6 +397,11 @@ html {
     background: transparent;
     cursor: pointer;
   }
+  .i-setting__container {
+    .el-form-item__label-wrap {
+      display: none;
+    }
+  }
 }
 .i-home-quickstart {
   .el-tabs__item {
