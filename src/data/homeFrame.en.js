@@ -117,7 +117,7 @@ export default {
             content: 'const root = document.documentElement.style;\nroot.setProperty(\'--i-renderer-home-ball-color\', \'var(--el-color-danger-light-3)\');\nroot.setProperty(\'--i-renderer-home-particle-color\', \'var(--el-color-danger-light-7)\');\nroot.setProperty(\'--i-renderer-home-text-color\', \'var(--el-color-danger)\');'
           }
         ],
-        text: 'Theme Settings', // 主题设置
+        text: 'Theme', // 主题设置
         type: 'primary',
         size: 'medium',
         trigger: 'hover'

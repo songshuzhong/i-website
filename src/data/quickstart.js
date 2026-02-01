@@ -8,6 +8,7 @@ const i18n = {
     flexible: '<h2>More flexible usage\n</h2>',
     tip: 'Handwritten code is used for pages with high personalization and complex interaction, while other pages are built through configuration. This routing level hybrid rendering framework design is more robust.',
     end: '<h2>Get started</h2>Now you can start the project. For each component, there is a corresponding visualization property configuration panel, which comes with explanations of key properties. I believe that smart you will be able to get started immediately!<h4>run bro!</h4><h3>run!</h3>',
+    schema: 'Schema',
     anchor: [
       'Quick Start',
       'D & I',
@@ -27,6 +28,7 @@ const i18n = {
     flexible: '<h2>より柔軟な使用方法</h2>',
     tip: '個性化の度合いが高く、インタラクションの複雑度が高いページは手書きのコードで作成し、逆に、他のページは設定で構築します。このようなルーティングレベルのハイブリッドレンダリングフレームワークの設計はより堅固です。',
     end: '<h2>使用開始</h2>これでプロジェクトを起動できます。 各コンポーネントには対応するビジュアル属性設定パネルがあり、パネルには重要な属性の説明が付いているので、賢いあなたならすぐに使いこなせるでしょう！<h4>やってみろ！</h4><h3>やるぞ！</h3>',
+    schema: 'スキーマ',
     anchor: [
       'クイックスタート',
       'ダウンロードとインストール',
@@ -46,6 +48,7 @@ const i18n = {
     flexible: '<h2>更灵活的用法</h2>',
     tip: '让个性化程度高、交互复杂度大的页面手写代码，相反的，其他页面则通过配置搭建。这种路由级混合渲染的框架设计更为健壮。',
     end: '<h2>开始使用</h2>现在你可以启动项目了。 对于每个组件都有对应的可视化属性配置面板，面板自带关键属性的解释说明，相信聪明的你一定能立马上手！<h4>run bro!</h4><h3>run!</h3>',
+    schema: '当前页面源代码',
     anchor: [
       '快速开始',
       '下载安装',
@@ -559,8 +562,16 @@ export default function(options) {
         renderer: 'action',
         isText: true,
         type: 'info',
-        text: '当前页面源代码',
+        text: tokens.schema,
         actionType: 'drawer',
+        classname: 'appear',
+        style: {
+          position: 'fixed',
+          top: '13px',
+          right: '300px',
+          fontSize: '12px',
+          zIndex: 2025
+        },
         body: {
           renderer: 'drawer',
           resizable: true,
