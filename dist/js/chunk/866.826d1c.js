@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunki_website"]=self["webpackChunki_website"]||[]).push([[866],{46866:function(e,r,n){n.r(r),r["default"]={renderer:"page",body:[{renderer:"frame",src:"http://www.i-renderer.love/playground"}],innerStyle:".i-frame__container {\n  height: calc(100vh - 120px) !important;\n}"}}}]);

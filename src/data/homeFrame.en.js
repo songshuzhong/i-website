@@ -63,30 +63,31 @@ export default {
     body: [
       {
         renderer: 'setting',
-        fields: [
-          'language'
-        ],
+        fields: {
+          language: {
+            options: [
+              {
+                text: '中文',
+                value: 'zh'
+              },
+              {
+                text: 'English',
+                value: 'en'
+              },
+              {
+                text: 'にほんご',
+                value: 'ja'
+              },
+            ]
+          }
+        },
         labelPosition: 'left',
         style: {
           width: '200px',
           display: 'inline-block',
           marginTop: '0',
           transform: 'translateY(4px)',
-        },
-        languages: [
-          {
-            text: '中文',
-            value: 'zh'
-          },
-          {
-            text: 'English',
-            value: 'en'
-          },
-          {
-            text: 'にほんご',
-            value: 'ja'
-          },
-        ]
+        }
       },
       {
         renderer: 'dropdown',
