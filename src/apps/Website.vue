@@ -9,7 +9,7 @@
 
 <script>
 import {defineComponent, onBeforeMount, onMounted, getCurrentInstance, ref} from 'vue';
-import {loadEditor, loadEn, loadZh} from '../utils/lib.js';
+import {loadEditor, loadEn, loadJa, loadZh, loadEditorZh, loadEditorEn, loadEditorJa} from '../utils/lib.js';
 import frameSchema from '../data/websiteFrame.js';
 
 export default defineComponent({
@@ -20,15 +20,18 @@ export default defineComponent({
     const updateLang = (val) => {
       let promise;
       if (val === 'zh') {
-        promise = [import('element-plus/es/locale/lang/zh-cn'), loadZh()];
+        promise = [import('element-plus/es/locale/lang/zh-cn'), loadZh(), loadEditorZh()];
       } else if (val === 'en') {
-        promise = [import('element-plus/es/locale/lang/en'), loadEn()];
+        promise = [import('element-plus/es/locale/lang/en'), loadEn(), loadEditorEn()];
+      } else if (val === 'ja') {
+        promise = [import('element-plus/es/locale/lang/ja'), loadJa(), loadEditorJa()];
       }
       Promise.all(promise)
-        .then(([el, renderer]) => {
+        .then(([el, renderer, editor]) => {
           tokens.value = {
             ...el.default,
             ...renderer.default,
+            ...editor.default,
           };
         })
         .catch((e) => {
