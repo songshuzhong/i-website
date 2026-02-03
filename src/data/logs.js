@@ -1,6 +1,30 @@
 const logs = [
   {
     bugs: [
+      '- Renderers[form] fix abnormal scope data retrieval during initialization',
+      '- Renderers[monaco] fix missing animation during loading',
+      '- Renderers[dropdown] fix scope loss',
+    ],
+    refactors: [
+      '- Renderers[page] adjust page margins',
+      '- Renderers[schema] schema renderer config provider',
+      '- Renderers[admin] admin uses CSS variables for layout',
+    ],
+    features: [
+      '- Renderers[select] supports sw api',
+      '- Renderers[color-picker] add color picker panel',
+      '- Renderers[chart] supports responsive height',
+      '- Renderers[admin] supports linkage',
+      '- Renderers[page] schema supports es module',
+      '- Renderers[setting] supports custom configuration items',
+      '- Renderers support  i18n',
+      '- Editor support  i18n'
+    ],
+    timestamp: '2026-01-31',
+    version: '1.0.2-unreleased'
+  },
+  {
+    bugs: [
       '- Env fix env overwrite',
       '- Renderers[service] fix sw',
       '- Renderers[form] fix reset',
