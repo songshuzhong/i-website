@@ -1,6 +1,30 @@
 const logs = [
   {
     bugs: [
+      '- Renderers[form] fix abnormal scope data retrieval during initialization',
+      '- Renderers[monaco] fix missing animation during loading',
+      '- Renderers[dropdown] fix scope loss',
+    ],
+    refactors: [
+      '- Renderers[page] adjust page margins',
+      '- Renderers[schema] schema renderer config provider',
+      '- Renderers[admin] admin uses CSS variables for layout',
+    ],
+    features: [
+      '- Renderers[select] supports sw api',
+      '- Renderers[color-picker] add color picker panel',
+      '- Renderers[chart] supports responsive height',
+      '- Renderers[admin] supports linkage',
+      '- Renderers[page] schema supports es module',
+      '- Renderers[setting] supports custom configuration items',
+      '- Renderers support  i18n',
+      '- Editor support  i18n'
+    ],
+    timestamp: '2026-01-31',
+    version: '1.0.2-unreleased'
+  },
+  {
+    bugs: [
       '- Env fix env overwrite',
       '- Renderers[service] fix sw',
       '- Renderers[form] fix reset',
@@ -1095,149 +1119,154 @@ const logs = [
     version: '1.0.1-bata.1'
   }
 ];
-const options = logs.map(i => ({text: i.version, value: i.version}));
 
-export const pageData = {rows: logs};
-export default {
-  renderer: 'page',
-  style: {
-    padding: '10px 20px 0px',
-    color: 'var(--el-text-color-regular)',
+const i18n = {
+  en: {
+    title: '<h1>Change Log</h1>',
+    desc: '<strong>IRenderer</strong> usually releases <strong>weekly</strong>, but critical bug fixes may prompt extra hotfix releases, <strong>exceeding once a week</strong>.',
+    select: 'select version：',
+    time: 'Date：${data.timestamp}',
   },
-  initData: {
-    selectedVersion: logs[0].version
+  ja: {
+    title: '<h1>更新ログ</h1>',
+    desc: '<strong>IRenderer</strong>は通常、<strong>毎週</strong>のリリース戦略を採用していますが、重大なバグ修正にはホットフィックスが必要となるため、実際のリリースバージョンは<strong>週1回以上</strong>になる可能性があります。',
+    select: 'バージョンを選択：',
+    time: '時間：${data.timestamp}'
   },
-  body: [
-    {
-      renderer: 'html',
-      html: '<h1>更新日志</h1>',
-      style: {
-        width: '62%',
-        margin: 'auto',
-        padding: '0 20px 0 20px',
-        fontWeight: 'bold'
-      },
+  zh: {
+    title: '<h1>更新日志</h1>',
+    desc: '<strong>IRenderer</strong>在正常情况下使用<strong>每周</strong>发布策略，但关键的bug修复将需要热修复，所以实际发布版本<strong>可能</strong>每周超过1次。',
+    select: '选择版本：',
+    time: '时间：${data.timestamp}',
+  },
+};
+export const pageData = {
+  rows: logs,
+  selectedVersion: logs[0].version
+};
+
+export default function (options) {
+  const tokens = i18n[options.language || 'zh'];
+  return {
+    renderer: 'page',
+    style: {
+      width: '62%',
+      margin: 'auto',
+      padding: '10px 20px 0px',
+      color: 'var(--el-text-color-regular)',
     },
-    {
-      renderer: 'service',
-      style: {
-        width: '62%',
-        margin: 'auto',
-        padding: '0 20px 0 20px'
-      },
-      body: [
-        {
-          renderer: 'html',
-          html: '<strong>IRenderer</strong>在正常情况下使用<strong>每周</strong>发布策略，但关键的bug修复将需要热修复，所以实际发布版本<strong>可能</strong>每周超过1次。',
-          style: {
-            fontSize: '16px',
-            marginBottom: '20px'
-          }
+    body: [
+      {
+        renderer: 'html',
+        html: tokens.title,
+        style: {
+          fontWeight: 'bold'
         },
-        {
-          renderer: 'card',
-          name: 'VersionDetails',
-          visibleOn: '$.rows',
-          header: [
-            {
-              renderer: 'form',
-              controls: [
-                {
-                  renderer: 'select',
-                  name: 'selectedVersion',
-                  label: '选择版本:',
-                  multiple: false,
-                  clearable: false,
-                  target: 'VersionDetails',
-                  options
-                }
-              ]
-            }
-          ],
-          body: [
-            {
-              renderer: 'computed',
-              useWorker: true,
-              name: 'selectedDetails',
-              deps: [
-                'selectedVersion',
-                'rows'
+      },
+      {
+        renderer: 'html',
+        html: tokens.desc,
+        style: {
+          fontSize: '16px',
+          marginBottom: '20px'
+        }
+      },
+      {
+        renderer: 'card',
+        name: 'VersionDetails',
+        visibleOn: '$.rows',
+        header: [
+          {
+            renderer: 'form',
+            controls: [
+              {
+                renderer: 'select',
+                name: 'selectedVersion',
+                label: tokens.select,
+                multiple: false,
+                clearable: false,
+                target: 'VersionDetails',
+                promiseType: 'sw',
+                deps: [],
+              }
+            ]
+          }
+        ],
+        body: [
+          {
+            renderer: 'computed',
+            useWorker: true,
+            name: 'selectedDetails',
+            deps: [
+              'selectedVersion',
+              'rows'
+            ]
+          },
+          {
+            renderer: 'wrapper',
+            classname: 'i-home-logs__wrapper',
+            header: [
+              {
+                renderer: 'html',
+                html: tokens.time,
+              }
+            ],
+            body: [
+              {
+                renderer: 'html',
+                html: '<h3>${$?.features?.length? "Features": ""}</h3>',
+                inline: true
+              },
+              {
+                renderer: 'each',
+                name: 'features',
+                body: '${$}'
+              },
+              {
+                renderer: 'html',
+                html: '<h3>${$?.bugs?.length? "Bug fixes": ""}</h3>',
+                inline: true
+              },
+              {
+                renderer: 'each',
+                name: 'bugs',
+                body: '${$}'
+              },
+              {
+                renderer: 'html',
+                html: '<h3>${$?.refactors?.length? "Refactors": ""}</h3>',
+                inline: true
+              },
+              {
+                renderer: 'each',
+                name: 'refactors',
+                body: '${$}'
+              }
+            ],
+            inherit: {
+              type: 'deconstruct',
+              value: [
+                'selectedDetails'
               ]
             },
-            {
-              renderer: 'wrapper',
-              classname: 'i-home-logs__wrapper',
-              header: [
-                {
-                  renderer: 'html',
-                  html: '时间：${data.timestamp}'
-                }
-              ],
-              body: [
-                {
-                  renderer: 'html',
-                  html: '<h3>${$?.features?.length? "Features": ""}</h3>',
-                  inline: true
-                },
-                {
-                  renderer: 'each',
-                  name: 'features',
-                  body: '${$}'
-                },
-                {
-                  renderer: 'html',
-                  html: '<h3>${$?.bugs?.length? "Bug fixes": ""}</h3>',
-                  inline: true
-                },
-                {
-                  renderer: 'each',
-                  name: 'bugs',
-                  body: '${$}'
-                },
-                {
-                  renderer: 'html',
-                  html: '<h3>${$?.refactors?.length? "Refactors": ""}</h3>',
-                  inline: true
-                },
-                {
-                  renderer: 'each',
-                  name: 'refactors',
-                  body: '${$}'
-                }
-              ],
-              footer: [],
-              inherit: {
-                type: 'deconstruct',
-                value: [
-                  'selectedDetails'
-                ]
-              },
-              initData: {}
-            }
-          ],
-        }
-      ]
-    },
-    {
-      renderer: 'action',
-      isText: true,
-      type: 'info',
-      text: '当前页面源代码',
-      actionType: 'drawer',
-      style: {
-        position: 'fixed',
-        top: '16px',
-        right: '96px',
-        zIndex: 2024
-      },
-      body: {
-        renderer: 'drawer',
-        resizable: true,
-        body: {
-          renderer: 'code'
-        }
+          }
+        ],
       }
-    },
-  ],
-  worker: 'e => {\n  if (e.track === \'/page/body/1/body/1/body/0\') {\n    let details = null;\n    for (let i = 0; i < e.data.rows.length; i++) {\n      if (e.data.rows[i].version === e.data.selectedVersion) {\n        details = e.data.rows[i];\n      }\n    }\n    return Promise.resolve(details);\n  }\n}'
-};
+    ],
+    worker: e => {
+      if (e.track === '/page/body/2/header/0/controls/0') {
+        const options = e.data.rows.map(i => ({text: i.version, value: i.version}));
+        return Promise.resolve(options);
+      }
+      if (e.track === '/page/body/2/body/0') {
+        let details = null;
+        for (let i = 0; i < e.data.rows.length; i++) {
+          if (e.data.rows[i].version === e.data.selectedVersion) {
+            details = e.data.rows[i];
+          }
+        }
+        return Promise.resolve(details);
+      }
+    }
+  };
+}

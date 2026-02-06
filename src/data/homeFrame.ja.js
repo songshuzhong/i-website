@@ -3,7 +3,7 @@ export default {
   name: 'HomeAdmin',
   classname: 'i-home__page',
   logo: 'https://songshuzhong.github.io/i-assets/public/img/shuttle.png',
-  title: '百搭云平台',
+  title: '百搭云プラットフォーム',
   layout: 'horizontal',
   menu: {
     renderer: 'menu',
@@ -14,38 +14,38 @@ export default {
     body: [
       {
         name: '/',
-        title: '首页',
+        title: 'ホーム',
         renderer: 'menuitem',
         icon: 'HomeFilled'
       },
       {
         name: 'quickstart',
-        title: '快速开始',
+        title: 'クイックスタート',
         renderer: 'menuitem',
         icon: 'LocationInformation'
       },
       {
         name: process.env.VUE_APP_PAGE_WEBSITE,
-        title: ' 案例合集',
+        title: ' ケース集',
         renderer: 'menuitem',
         icon: 'DataBoard',
         extra: true
       },
       {
         name: 'logs',
-        title: '更新日志',
+        title: '更新ログ',
         renderer: 'menuitem',
         icon: 'Tickets'
       },
       {
         name: 'quality',
-        title: '荣誉资质',
+        title: '栄誉資格',
         renderer: 'menuitem',
         icon: 'Aim'
       },
       {
         name: 'me',
-        title: '关于我',
+        title: '私について',
         renderer: 'menuitem',
         icon: 'Avatar',
         extra: true
@@ -95,7 +95,7 @@ export default {
         body: [
           {
             renderer: 'action',
-            text: '冰河蓝染',
+            text: '氷河ブルー',
             actionType: 'custom',
             isText: true,
             tag: 'div',
@@ -104,7 +104,7 @@ export default {
           },
           {
             renderer: 'action',
-            text: '林间晨露',
+            text: '森の朝露',
             tag: 'div',
             actionType: 'custom',
             isText: true,
@@ -112,14 +112,14 @@ export default {
           },
           {
             renderer: 'action',
-            text: '赤焰幻影',
+            text: '赤炎ファントム',
             isText: true,
             tag: 'div',
             actionType: 'custom',
             content: 'const root = document.documentElement.style;\nroot.setProperty(\'--i-renderer-home-ball-color\', \'var(--el-color-danger-light-3)\');\nroot.setProperty(\'--i-renderer-home-particle-color\', \'var(--el-color-danger-light-7)\');\nroot.setProperty(\'--i-renderer-home-text-color\', \'var(--el-color-danger)\');'
           }
         ],
-        text: '主题色',
+        text: 'テーマ',
         type: 'primary',
         size: 'medium',
         trigger: 'hover'
@@ -137,26 +137,26 @@ export default {
           body: [
             {
               renderer: 'html',
-              html: '链接'
+              html: 'リンク'
             },
             {
               renderer: 'action',
               isText: true,
-              text: '代码仓库',
+              text: 'コードリポジトリ',
               actionType: 'url',
               url: 'https://songshuzhong.github.io/i-website/dist/index.html'
             },
             {
               renderer: 'action',
               isText: true,
-              text: '更新日志',
+              text: '更新ログ',
               actionType: 'url',
               url: 'https://songshuzhong.github.io/i-website/dist/index.html'
             },
             {
               renderer: 'action',
               isText: true,
-              text: '设计理念',
+              text: 'デザイン理念',
               actionType: 'url',
               url: 'https://songshuzhong.github.io/i-website/dist/index.html'
             }
@@ -167,7 +167,7 @@ export default {
           body: [
             {
               renderer: 'html',
-              html: '相关'
+              html: '関連'
             },
             {
               renderer: 'action',
@@ -190,7 +190,7 @@ export default {
           body: [
             {
               renderer: 'html',
-              html: '联系'
+              html: '連絡先'
             },
             {
               renderer: 'action',
@@ -202,7 +202,7 @@ export default {
             {
               renderer: 'action',
               isText: true,
-              text: 'phone: 15510351839',
+              text: '電話: 15510351839',
               actionType: 'copy',
               content: '15510351839'
             },

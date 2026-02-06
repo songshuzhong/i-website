@@ -47,10 +47,94 @@ const svg = [
     fill: 'rgb(0,119,206)'
   }
 ];
+const i18n = {
+  en: {
+    size: 'BaiDa<span class="i-home__banner__size">size：114.32KB</span>',
+    remark: 'Baida Cloud is a low-code platform built on Vue and Element Plus, enabling rapid development of enterprise info systems, cutting costs and boosting efficiency.',
+    login: 'Login',
+    play: 'Playground',
+    editor: 'Editor',
+    code: 'Code',
+    desc1: 'Rich component selection, powerful feature support, and more free combination of web pages',
+    desc2: 'Comes with a built-in visual editor and documentation, with knowledge of CSS and JavaScript to get started',
+    desc3: 'Open plugin mall for co creation and sharing',
+    desc4: 'Make the development experience as smooth and beautiful as Dove',
+    detail: 'Learn more',
+    start: 'Quick Start',
+    download: 'Click to download the demo project',
+    feat1Title: 'Robust and easy to expand',
+    feat1: 'Compatible with custom components, interface adaptation, and style adaptation.',
+    feat2Title: 'Quickly Build',
+    feat2: 'Almost zero code, can be built on the entire site (such as this site) or referenced locally.',
+    feat3Title: 'visualization',
+    feat3: 'Visual editing with built-in documentation and annotations, zero cost to get started.',
+    feat4Title: 'Simple and elegant',
+    feat4: 'The appearance is simple yet exquisite, with rich and elegant interaction.',
+    wechat: 'WeChat',
+    sponsor: 'Sponsor',
+    qq: 'QQ',
+    taunt: 'Your likes or roast are the motivation of the author\'s progress！'
+  },
+  ja: {
+    size: '百搭云<span class="i-home__banner__size">サイズ：114.32KB</span>',
+    remark: '百搭云はVueフレームワークとElementPlusコンポーネントライブラリをベースに開発された、エンタープライズレベルの情報管理システムを迅速に構築するためのローコードプラットフォームです。開発者がビジネスロジックに集中し、プロジェクトコストを削減し、開発効率を向上させることを目的としています。',
+    login: 'ログイン',
+    play: '今すぐ体験',
+    editor: 'エディタ',
+    code: 'スキーマ',
+    desc1: '豊富なコンポーネント選択、強力な機能サポートにより、より自由にウェブページを組み合わせることができます',
+    desc2: 'ビジュアルエディタと説明文書が付属しており、CSSとJavaScriptを理解しているだけで使い始められます',
+    desc3: 'オープンなプラグインストアで、共同作成と共有が可能です',
+    desc4: '開発体験をドーブのように滑らかで素晴らしいものにします',
+    detail: '詳細を見る',
+    start: 'クイックスタート',
+    download: 'デモプロジェクトをダウンロード',
+    feat1Title: '堅牢で拡張性に優れる',
+    feat1: 'カスタムコンポーネント、インターフェース適合、スタイル適合に対応しています。',
+    feat2Title: '迅速な構築',
+    feat2: 'ほぼゼロコードで、全サイトの構築（このサイトのような）も部分的な引用も可能です。',
+    feat3Title: 'ビジュアル化',
+    feat3: 'ビジュアル編集で、文書とコメントが付属しており、ゼロコストで使い始められます。',
+    feat4Title: 'シンプルでエレガント',
+    feat4: '外観はシンプルで美しく、インタラクションは豊富でエレガントです。',
+    wechat: '公式アカウント',
+    sponsor: '寄付',
+    qq: 'ディスカッショングループ',
+    taunt: 'あなたの高評価や苦情は、作者の進歩の原動力です！'
+  },
+  zh: {
+    size: '百搭云<span class="i-home__banner__size">大小：114.32KB</span>',
+    remark: '百搭云是基于Vue框架和ElementPlus组件库研发的用于快速搭建企业级信息管理系统的低代码平台，旨在帮助开发者聚焦业务逻辑、节省项目成本、提高开发效率。',
+    login: '登录',
+    play: '即刻体验',
+    editor: '编辑器',
+    code: '当前页面源代码',
+    desc1: '丰富的组件选择、强大的功能支持，更加自由的搭配组合网页',
+    desc2: '自带可视化编辑器、说明文档，了解css、javascript即可上手',
+    desc3: '开放的插件商城，共创共享',
+    desc4: '让开发体验如德芙般丝滑、美好',
+    detail: '了解详情',
+    start: '快速开始',
+    download: '点击下载demo工程',
+    feat1Title: '健壮易扩展',
+    feat1: '兼容自定义组件、接口适配、样式适配。',
+    feat2Title: '快速构建',
+    feat2: '几近零代码，可全站搭建（如本站）也可局部引用。',
+    feat3Title: '可视化',
+    feat3: '可视化编辑，自带文档与注释，零成本上手。',
+    feat4Title: '简约优雅',
+    feat4: '外观简约而不失精美，交互丰富且兼具优雅。',
+    wechat: '公众号',
+    sponsor: '打赏',
+    qq: '讨论群',
+    taunt: '您的点赞或吐槽都是作者进步的动力！'
+  },
+};
 export {
   assets
 };
-const page = () => {
+const page = (options) => {
+  const tokens = i18n[options.language || 'zh'];
   return {
     renderer: 'container',
     direction: 'vertical',
@@ -87,18 +171,18 @@ const page = () => {
               {
                 renderer: 'html',
                 classname: 'i-home__banner__title',
-                html: '百搭云<span class="i-home__banner__size">大小：114.32KB</span>'
+                html: tokens.size
               },
               {
                 renderer: 'html',
                 classname: 'i-home__banner__desc',
-                html: '百搭云是基于Vue框架和ElementPlus组件库研发的用于快速搭建企业级信息管理系统的低代码平台，旨在帮助开发者聚焦业务逻辑、节省项目成本、提高开发效率。'
+                html: tokens.remark,
               },
               {
                 renderer: 'action',
                 type: 'success',
                 round: true,
-                text: '登录',
+                text: tokens.login,
                 actionType: 'url',
                 classname: 'i-breathe-border3',
                 url: process.env.VUE_APP_PAGE_LOGIN,
@@ -109,7 +193,7 @@ const page = () => {
               {
                 renderer: 'action',
                 round: true,
-                text: '即刻体验',
+                text: tokens.play,
                 actionType: 'url',
                 classname: 'i-breathe-border',
                 url: '/playground'
@@ -118,7 +202,7 @@ const page = () => {
                 renderer: 'action',
                 type: 'danger',
                 round: true,
-                text: '编辑器',
+                text: tokens.editor,
                 actionType: 'url',
                 classname: 'i-breathe-border2',
                 url: process.env.VUE_APP_PAGE_EDITING
@@ -127,7 +211,7 @@ const page = () => {
                 renderer: 'action',
                 type: 'warning',
                 round: true,
-                text: '当前页面源代码',
+                text: tokens.code,
                 actionType: 'drawer',
                 classname: 'i-breathe-border4',
                 style: {
@@ -171,7 +255,7 @@ const page = () => {
                       },
                       {
                         renderer: 'html',
-                        html: '丰富的组件选择、强大的功能支持，更加自由的搭配组合网页',
+                        html: tokens.desc1,
                       }
                     ]
                   },
@@ -190,7 +274,7 @@ const page = () => {
                       },
                       {
                         renderer: 'html',
-                        html: '自带可视化编辑器、说明文档，了解css、javascript即可上手'
+                        html: tokens.desc2
                       }
                     ]
                   },
@@ -209,7 +293,7 @@ const page = () => {
                       },
                       {
                         renderer: 'html',
-                        html: '开放的插件商城，共创共享'
+                        html: tokens.desc3
                       }
                     ]
                   },
@@ -228,7 +312,7 @@ const page = () => {
                       },
                       {
                         renderer: 'html',
-                        html: '让开发体验如德芙般丝滑、美好'
+                        html: tokens.desc4
                       }
                     ]
                   }
@@ -236,7 +320,7 @@ const page = () => {
               },
               {
                 renderer: 'action',
-                text: '了解详情',
+                text: tokens.detail,
                 actionType: 'url',
                 classname: 'i-home__details-action',
                 url: process.env.VUE_APP_PAGE_WEBSITE
@@ -263,21 +347,21 @@ const page = () => {
               {
                 renderer: 'html',
                 classname: 'i-home__card__title',
-                html: '健壮易扩展'
+                html: tokens.feat1Title
               },
               {
                 renderer: 'html',
                 classname: 'i-home__card__content',
-                html: '兼容自定义组件、接口适配、样式适配。'
+                html: tokens.feat1
               }
             ],
             footer: {
               renderer: 'tooltip',
-              content: '点击下载demo工程',
+              content: tokens.download,
               body: {
                 renderer: 'action',
                 isText: true,
-                text: '快速开始',
+                text: tokens.start,
                 actionType: 'url',
                 url: 'https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master'
               }
@@ -296,21 +380,21 @@ const page = () => {
               {
                 renderer: 'html',
                 classname: 'i-home__card__title',
-                html: '快速构建'
+                html: tokens.feat2Title
               },
               {
                 renderer: 'html',
                 classname: 'i-home__card__content',
-                html: '几近零代码，可全站搭建（如本站）也可局部引用。'
+                html: tokens.feat2
               }
             ],
             footer: {
               renderer: 'tooltip',
-              content: '点击下载demo工程',
+              content: tokens.download,
               body: {
                 renderer: 'action',
                 isText: true,
-                text: '快速开始',
+                text: tokens.start,
                 actionType: 'url',
                 url: 'https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master'
               }
@@ -329,21 +413,21 @@ const page = () => {
               {
                 renderer: 'html',
                 classname: 'i-home__card__title',
-                html: '可视化'
+                html: tokens.feat3Title
               },
               {
                 renderer: 'html',
                 classname: 'i-home__card__content',
-                html: '可视化编辑，自带文档与注释，零成本上手。'
+                html: tokens.feat3,
               }
             ],
             footer: {
               renderer: 'tooltip',
-              content: '点击下载demo工程',
+              content: tokens.download,
               body: {
                 renderer: 'action',
                 isText: true,
-                text: '快速开始',
+                text: tokens.start,
                 actionType: 'url',
                 url: 'https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master'
               }
@@ -362,21 +446,21 @@ const page = () => {
               {
                 renderer: 'html',
                 classname: 'i-home__card__title',
-                html: '简约优雅'
+                html: tokens.feat4Title
               },
               {
                 renderer: 'html',
                 classname: 'i-home__card__content',
-                html: '外观简约而不失精美，交互丰富且兼具优雅。'
+                html: tokens.feat4
               }
             ],
             footer: {
               renderer: 'tooltip',
-              content: '点击下载demo工程',
+              content: tokens.download,
               body: {
                 renderer: 'action',
                 isText: true,
-                text: '快速开始',
+                text: tokens.start,
                 actionType: 'url',
                 url: 'https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master'
               }
@@ -453,7 +537,7 @@ const page = () => {
         body: [
           {
             renderer: 'avatar',
-            title: '公众号',
+            title: tokens.wechat,
             src: 'https://songshuzhong.github.io/i-assets/public/img/wx-irenderer.jpg',
             size: 150,
             shape: 'square',
@@ -464,7 +548,7 @@ const page = () => {
           },
           {
             renderer: 'avatar',
-            title: '打赏',
+            title: tokens.sponsor,
             src: 'https://songshuzhong.github.io/i-assets/public/img/charge.png',
             size: 150,
             shape: 'square',
@@ -475,7 +559,7 @@ const page = () => {
           },
           {
             renderer: 'avatar',
-            title: '讨论群',
+            title: tokens.qq,
             src: 'https://songshuzhong.github.io/i-assets/public/img/QQ.png',
             size: 150,
             shape: 'square',
@@ -502,7 +586,7 @@ const page = () => {
             popupType: 'over',
             popoverPlacement: 'left-start',
             popperClass: 'i-home__question__pop',
-            popoverTitle: '您的点赞或吐槽都是作者进步的动力！'
+            popoverTitle: tokens.taunt,
           }
         ],
         footer: []
