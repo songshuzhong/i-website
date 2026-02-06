@@ -220,7 +220,7 @@ export default function() {
     renderer: 'page',
     classname: 'i-home-quickstart',
     style: {
-      width: '60%',
+      width: '66%',
       margin: 'auto',
       padding: '10px 20px 0 20px',
       color: 'var(--el-text-color-regular)',
