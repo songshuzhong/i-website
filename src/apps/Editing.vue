@@ -3,7 +3,12 @@
     :is="isEditorReady? 'el-config-provider': 'div'"
     :locale="tokens"
   >
-    <component v-bind:is="'i-editor'" :is-json="false" :nimble="true"/>
+    <component
+      v-bind:is="'i-editor'"
+      v-if="isEditorReady && tokens"
+      :is-json="false"
+      :nimble="true"
+    />
   </component>
 </template>
 
@@ -16,7 +21,7 @@ export default defineComponent({
   setup() {
     const {proxy} = getCurrentInstance();
     const isEditorReady = ref(false);
-    const tokens = ref({});
+    const tokens = ref(null);
     const updateLang = (val) => {
       let promise;
       if (val === 'zh') {
