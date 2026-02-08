@@ -185,6 +185,7 @@ export default {
             },
             body: {
               width: 100,
+              zIndex: 2010,
               appendToBody: true,
               classname: 'i-website__drawer',
               body: [
@@ -297,6 +298,7 @@ export default {
                 ],
                 body: {
                   width: 100,
+                  zIndex: 2010,
                   appendToBody: true,
                   classname: 'i-website__drawer',
                   body: [
