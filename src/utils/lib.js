@@ -12,8 +12,7 @@ export const loadEditor = () => import('i-renderer/dist/js/editor');
 export {IRenderer};
 export {Schema, checkPermission, api} from 'i-renderer/dist/js/renderer';
 
-/*
-import IRenderer from '../../../i-renderer/packages/renderer/index';
+/*import IRenderer from '../../../i-renderer/packages/renderer/index';
 import '../../../i-renderer/packages/assets/styles/index.scss';
 
 export const loadEn = () => import('../../../i-renderer/packages/locale/en');
