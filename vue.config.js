@@ -175,6 +175,15 @@ module.exports = {
           });
         }
       });
+      devServer.app.post('/v1/ajax/submit', (req, res) => {
+        res.json({
+          message: 'success',
+          code: 200,
+          data: {
+            from: 'dev server'
+          },
+        });
+      });
       return middlewares;
     },
     client: {
