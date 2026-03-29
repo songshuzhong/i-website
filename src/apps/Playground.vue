@@ -5,14 +5,26 @@
       <el-splitter>
         <el-splitter-panel collapsible>
           <div v-if="!isEditorReady" v-loading="!isEditorReady" class="i-editor__container" />
-          <component v-else v-bind:is="'i-editor'" :is-json="false"/>
+          <component
+            v-if="isTokenReady && isEditorReady"
+            :is="'el-config-provider'"
+            :locale="tokens"
+          >
+            <component
+              v-bind:is="'i-editor'"
+              :is-json="false"
+            />
+          </component>
         </el-splitter-panel>
         <el-splitter-panel collapsible>
           <i-schema
+            v-if="isTokenReady"
             :init-schema="initSchema"
             :updatable="false"
-            track="/editor"
+            :tokens="tokens"
+            ref="homeFrameRef"
             classname="i-home__playground__preview"
+            @update:lang="updateLang"
           />
         </el-splitter-panel>
       </el-splitter>
@@ -23,8 +35,8 @@
 <script>
 import {defineComponent, getCurrentInstance, onBeforeMount, onMounted, ref} from 'vue';
 import PLAYGROUND_SCHEMA from '../data/demo';
+import {loadEditor, loadEditorEn, loadEditorJa, loadEditorZh, loadEn, loadJa, loadZh} from '../utils/lib';
 import uaManager from '../utils/ua';
-import {loadEditor} from '../utils/lib';
 
 const DEFAULT_SCHEMA = PLAYGROUND_SCHEMA;
 export default defineComponent({
@@ -32,7 +44,45 @@ export default defineComponent({
   setup() {
     const {proxy} = getCurrentInstance();
     const isEditorReady = ref(false);
+    const isTokenReady = ref(false);
+    const tokens = ref({});
+    const homeFrameRef = ref();
     let notice;
+    const updateLang = (val) => {
+      let promise;
+      if (val === 'zh') {
+        promise = [
+          import('element-plus/es/locale/lang/zh-cn'),
+          loadZh(),
+          loadEditorZh(),
+        ];
+      } else if (val === 'en') {
+        promise = [
+          import('element-plus/es/locale/lang/en'),
+          loadEn(),
+          loadEditorEn(),
+        ];
+      } else if (val === 'ja') {
+        promise = [
+          import('element-plus/es/locale/lang/ja'),
+          loadJa(),
+          loadEditorJa(),
+        ];
+      }
+      Promise
+        .all(promise)
+        .then(([el, renderer, editor]) => {
+          tokens.value = {
+            ...el.default,
+            ...renderer.default,
+            ...editor.default,
+          };
+          isTokenReady.value = true;
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    };
     onBeforeMount(() => {
       proxy.$.appContext.$IRenderer = {
         pageSchema: DEFAULT_SCHEMA
@@ -41,6 +91,7 @@ export default defineComponent({
       notice = proxy.$message.success('编辑器加载中，请稍等...');
     });
     onMounted(() => {
+      updateLang(proxy.$iRenderConfig.language);
       loadEditor().then(res => {
         const {Editor} = res;
         proxy.$.appContext.components['i-editor'] = Editor;
@@ -52,6 +103,10 @@ export default defineComponent({
     });
     return {
       initSchema: DEFAULT_SCHEMA,
+      updateLang,
+      tokens,
+      homeFrameRef,
+      isTokenReady,
       isEditorReady
     };
   }

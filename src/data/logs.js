@@ -1,6 +1,7 @@
 const logs = [
   {
     bugs: [
+      '- Renderers[action] fix floating layer disappears and flashes',
       '- Renderers[form] fix abnormal scope data retrieval during initialization',
       '- Renderers[monaco] fix missing animation during loading',
       '- Renderers[dropdown] fix scope loss',

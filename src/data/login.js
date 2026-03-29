@@ -1,6 +1,9 @@
 /* eslint-disable */
 export default {
   "renderer": "page",
+  "style": {
+    "margin": 0
+  },
   "body": [
     {
       "renderer": "avatar",
