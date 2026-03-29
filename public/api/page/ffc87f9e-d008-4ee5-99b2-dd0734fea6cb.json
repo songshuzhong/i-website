@@ -28,20 +28,16 @@
         },
         "tabs": [
           {
-            "radio": "value2",
-            "input": "1"
+            "label": "value2",
+            "value": "1"
           },
           {
-            "radio": "value1",
-            "input": "2"
+            "label": "value1",
+            "value": "2"
           },
           {
-            "radio": "value2",
-            "input": "3"
-          },
-          {
-            "radio": "value1",
-            "input": "4"
+            "label": "value2",
+            "value": "3"
           }
         ],
         "conditions": [
@@ -81,6 +77,10 @@
             "each": "4",
             "time": "06:53:24"
           }
+        ],
+        "defaultValue": [
+          "1",
+          "2"
         ]
       },
       "body": [
@@ -159,15 +159,29 @@
               "isTab": true,
               "controls": [
                 {
-                  "renderer": "radio",
-                  "label": "radio",
-                  "name": "radio",
+                  "renderer": "checkbox",
+                  "label": "",
+                  "labelWidth": "50px",
+                  "name": "defaultValue",
+                  "namePath": "defaultValue",
+                  "disabledOn": "!$.value",
+                  "options": [
+                    {
+                      "value": "$.value",
+                      "text": ""
+                    }
+                  ]
+                },
+                {
+                  "renderer": "input",
+                  "label": "label",
+                  "name": "label",
                   "requiredOn": "1"
                 },
                 {
                   "renderer": "input",
-                  "label": "input",
-                  "name": "input",
+                  "label": "value",
+                  "name": "value",
                   "requiredOn": "1"
                 },
                 {
@@ -176,6 +190,7 @@
                   "icon": "Delete",
                   "actionType": "extends",
                   "triggered": "delete",
+                  "labelWidth": "50px",
                   "size": 12,
                   "header": {
                     "renderer": "action",
