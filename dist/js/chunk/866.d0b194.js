@@ -1,1 +1,0 @@
-"use strict";(self["webpackChunki_website"]=self["webpackChunki_website"]||[]).push([[866],{46866:function(e,t,i){i.r(t),t["default"]={renderer:"page",style:{margin:0},body:[{renderer:"frame",src:"https://songshuzhong.github.io/i-website/dist/playground.html"}],innerStyle:".i-frame__container {\n  height: calc(100vh - 60px) !important;\n}"}}}]);
