@@ -157,6 +157,7 @@
               "label": "选项卡",
               "requiredOn": 1,
               "isTab": true,
+              "unique": true,
               "controls": [
                 {
                   "renderer": "checkbox",
