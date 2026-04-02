@@ -244,7 +244,7 @@
           }
         }
       ],
-      "innerStyle": ".virus-page {\n  position: relative;\n  h1 {\n    margin: 0;\n  }\n}\n.preview-date {\n  position: absolute;\n  top: 100px;\n  right: 20px;\n  width: 200px;\n  height: 144px;\n  padding: 10px;\n  margin-bottom: 3rem;\n  border-radius: 6px;\n  color: #474747;\n  border: 1px solid #cccccc;\n  backdrop-filter: blur(5px);\n  background-color: rgba(255, 255, 255, .8);  \n}\n.preview-country {\n  position: absolute;\n  top: 100px;\n  right: 20px;\n  width: 200px;\n  padding: 10px;\n  margin-bottom: 3rem;\n  border-radius: 6px;\n  color: #474747;\n  border: 1px solid #cccccc;\n  backdrop-filter: blur(5px);\n  background-color: rgba(255, 255, 255, .8);\n}"
+      "innerStyle": ".virus-page {\n  position: relative;\n  h1 {\n    margin: 0;\n  }\n}\n.preview-date {\n  position: absolute;\n  top: 100px;\n  right: 20px;\n  width: 200px;\n  height: 144px;\n  padding: 10px;\n  margin-bottom: 3rem;\n  border-radius: 6px;\n  color: #474747;\n  border: 1px solid #cccccc;\n  backdrop-filter: blur(5px);\n  background-color: rgba(255, 255, 255, .8);  \n}\n.preview-country {\n  position: absolute;\n  top: 100px;\n  right: 20px;\n  width: 220px;\n  padding: 10px;\n  margin-bottom: 3rem;\n  border-radius: 6px;\n  color: #474747;\n  border: 1px solid #cccccc;\n  backdrop-filter: blur(5px);\n  background-color: rgba(255, 255, 255, .8);\n}"
     },
     "version": 0,
     "status": 1,
