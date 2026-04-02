@@ -39,10 +39,34 @@
               "renderer": "wrapper",
               "name": "PreviewDate",
               "bodyClassname": "preview-country swing_scale_1",
-              "body": {
-                "renderer": "html",
-                "html": "<h3>${data.name} ${('' + $.update_time).$format()}</h3><h1 style=\"color: #ffb600;\">${data.confirmed_count}</h1>\n<div>confirmed_count</div>\n<h1 style=\"color: blue;\">${data.suspected_count}</h1>\n<div>suspected_count</div>\n<h1 style=\"color: green;\">${data.cured_count}</h1>\n<div>cured_count</div>\n<h1 style=\"color: red;\">${data.dead_count}</h1>\n<div>dead_count</div>"
-              }
+              "body": [
+                {
+                  "renderer": "html",
+                  "inline": true,
+                  "html": "${data.name}",
+                  "style": {
+                    "marginRight": "6px",
+                    "fontSize": "16px",
+                    "fontWeight": "bold",
+                    "lineHeight": "30px"
+                  }
+                },
+                {
+                  "renderer": "tooltip",
+                  "content": "${$.comment || '无'}",
+                  "body": {
+                    "renderer": "icon",
+                    "icon": "ChatLineRound",
+                    "style": {
+                      "transform": "translateY(-2px)"
+                    }
+                  }
+                },
+                {
+                  "renderer": "html",
+                  "html": "${('' + $.update_time).$format()}<h1 style=\"color: #ffb600;\">${data.confirmed_count}</h1>\n<div>confirmed_count</div>\n<h1 style=\"color: blue;\">${data.suspected_count}</h1>\n<div>suspected_count</div>\n<h1 style=\"color: green;\">${data.cured_count}</h1>\n<div>cured_count</div>\n<h1 style=\"color: red;\">${data.dead_count}</h1>\n<div>dead_count</div>"
+                }
+              ]
             }
           ]
         },
@@ -244,7 +268,7 @@
           }
         }
       ],
-      "innerStyle": ".virus-page {\n  position: relative;\n  h1 {\n    margin: 0;\n  }\n}\n.preview-date {\n  position: absolute;\n  top: 100px;\n  right: 20px;\n  width: 200px;\n  height: 144px;\n  padding: 10px;\n  margin-bottom: 3rem;\n  border-radius: 6px;\n  color: #474747;\n  border: 1px solid #cccccc;\n  backdrop-filter: blur(5px);\n  background-color: rgba(255, 255, 255, .8);  \n}\n.preview-country {\n  position: absolute;\n  top: 100px;\n  right: 20px;\n  width: 220px;\n  padding: 10px;\n  margin-bottom: 3rem;\n  border-radius: 6px;\n  color: #474747;\n  border: 1px solid #cccccc;\n  backdrop-filter: blur(5px);\n  background-color: rgba(255, 255, 255, .8);\n}"
+      "innerStyle": ".virus-page {\n  position: relative;\n  h1 {\n    margin: 0;\n  }\n}\n.preview-date {\n  position: absolute;\n  top: 100px;\n  right: 20px;\n  width: 200px;\n  height: 144px;\n  padding: 10px;\n  margin-bottom: 3rem;\n  border-radius: 6px;\n  color: #474747;\n  border: 1px solid #cccccc;\n  backdrop-filter: blur(5px);\n  background-color: rgba(255, 255, 255, .8);  \n}\n.preview-country {\n  position: absolute;\n  z-index: 26;\n top: 100px;\n  right: 20px;\n  width: 220px;\n  padding: 10px;\n  margin-bottom: 3rem;\n  border-radius: 6px;\n  color: #474747;\n  border: 1px solid #cccccc;\n  backdrop-filter: blur(5px);\n  background-color: rgba(255, 255, 255, .8);\n}"
     },
     "version": 0,
     "status": 1,
