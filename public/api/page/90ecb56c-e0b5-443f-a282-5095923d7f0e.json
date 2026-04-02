@@ -111,7 +111,16 @@
             ]
           },
           "height": 570,
-          "target": "PreviewDate"
+          "events": {
+            "click": {
+              "actions": [
+                {
+                  "actionType": "trigger",
+                  "triggered": "PreviewDate"
+                }
+              ]
+            }
+          }
         },
         {
           "renderer": "divider",
