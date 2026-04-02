@@ -50,8 +50,12 @@
                         "disabledOn": ""
                       }
                     ],
-                    "classname": "flex a-s d-c",
-                    "target": "SceneCards"
+                    "target": "SceneCards",
+                    "style": {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "alignItems": "stretch"
+                    }
                   }
                 ],
                 "labelPosition": "top"
