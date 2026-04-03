@@ -13,7 +13,7 @@ export default {
     target: 'IWebsiteContainer',
     title: '',
     initApi: {
-      url: `${process.env.VUE_APP_PUBLIC_PATH}/api/menu`
+      url: '/api/menu'
     },
     tracks: {
       init: {
@@ -45,7 +45,7 @@ export default {
         classname: 'i-website__header__service',
         silentLoading: true,
         initApi: {
-          url: `${process.env.VUE_APP_PUBLIC_PATH}/api/user`,
+          url: '/api/user',
           cached: true
         },
         tracks: {

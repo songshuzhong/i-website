@@ -49,7 +49,7 @@ const config = {
     }
     return res;
   },
-  domains: [process.env.VUE_APP_API_BASE]
+  activeDomain: process.env.VUE_APP_API_BASE
 };
 const isGPOrDev = process.env.VUE_APP_API_NODE_ENV === 'gp' || process.env.VUE_APP_API_NODE_ENV === 'dev';
 config.adaptor = {
