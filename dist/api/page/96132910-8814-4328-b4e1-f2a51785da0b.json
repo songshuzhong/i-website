@@ -402,7 +402,10 @@
                                     "total": "count",
                                     "rows": "rows",
                                     "iLayout": [
-                                      "slot"
+                                      "prev",
+                                      "jumper",
+                                      "total",
+                                      "next"
                                     ]
                                   }
                                 }
@@ -567,7 +570,10 @@
                                     "total": "count",
                                     "rows": "rows",
                                     "iLayout": [
-                                      "slot"
+                                      "prev",
+                                      "jumper",
+                                      "total",
+                                      "next"
                                     ]
                                   }
                                 }
