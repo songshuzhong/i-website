@@ -16,7 +16,421 @@
     "assets": [],
     "visible": null,
     "pageDesc": null,
-    "pageSchema": "{\n  \"renderer\": \"page\",\n  \"body\": [\n    {\n      \"renderer\": \"table\",\n      \"name\": \"CouponTasksList\",\n      \"maxHeight\": 570,\n      \"showExport\": true,\n      \"initApi\": {\n        \"url\": \"/api/mock/coupon/task/list\",\n        \"method\": \"get\"\n      },\n      \"pageConfig\": {\n        \"pageIndex\": \"pageIndex\",\n        \"pageSize\": \"pageSize\",\n        \"total\": \"total\",\n        \"rows\": \"items\"\n      },\n      \"columns\": [\n        {\n          \"name\": \"taskId\",\n          \"label\": \"任务Id\",\n          \"body\": []\n        },\n        {\n          \"name\": \"taskName\",\n          \"label\": \"任务名称\",\n          \"body\": []\n        },\n        {\n          \"name\": \"couponNum\",\n          \"label\": \"发行量\",\n          \"body\": []\n        },\n        {\n          \"name\": \"sendNum\",\n          \"label\": \"已发行\",\n          \"body\": []\n        },\n        {\n          \"label\": \"进度\",\n          \"body\": [\n            {\n              \"renderer\": \"progress\",\n              \"showText\": true,\n              \"exp\": \"(data.sendNum*100/data.couponNum).toFixed(2)\",\n              \"color\": [\n                {\n                  \"color\": \"#f56c6c\",\n                  \"percentage\": 20\n                },\n                {\n                  \"color\": \"#e6a23c\",\n                  \"percentage\": 40\n                },\n                {\n                  \"color\": \"#5cb87a\",\n                  \"percentage\": 60\n                },\n                {\n                  \"color\": \"#1989fa\",\n                  \"percentage\": 80\n                },\n                {\n                  \"color\": \"#6f7ad3\",\n                  \"percentage\": 100\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"name\": \"taskStatus\",\n          \"label\": \"任务状态\",\n          \"body\": [\n            {\n              \"renderer\": \"mapping\",\n              \"value\": \"${data.taskStatus}\",\n              \"map\": {\n                \"1\": \"未执行\",\n                \"2\": \"执行中\",\n                \"3\": \"执行成功\",\n                \"4\": \"暂停中\",\n                \"5\": \"已暂停\"\n              }\n            }\n          ]\n        },\n        {\n          \"name\": \"taskStatus\",\n          \"label\": \"操作\",\n          \"body\": [\n            {\n              \"renderer\": \"action\",\n              \"text\": \"启动\",\n              \"size\": \"small\",\n              \"type\": \"primary\",\n              \"plain\": true,\n              \"actionType\": \"ajax\",\n              \"actionApi\": {\n                \"url\": \"/api/mock/tast/start\",\n                \"method\": \"post\",\n                \"params\": \"*\"\n              },\n              \"target\": \"LoopService\",\n              \"disabledOn\": \"data.taskStatus == 2\",\n              \"visibleOn\": \"![2,3].includes(data.taskStatus)\"\n            },\n            {\n              \"renderer\": \"action\",\n              \"text\": \"执行中\",\n              \"size\": \"small\",\n              \"type\": \"primary\",\n              \"plain\": true,\n              \"visibleOn\": \"data.taskStatus == 2\",\n              \"disabledOn\": \"data.taskStatus == 2\"\n            },\n            {\n              \"renderer\": \"action\",\n              \"text\": \"暂停\",\n              \"size\": \"small\",\n              \"type\": \"primary\",\n              \"plain\": true,\n              \"actionType\": \"ajax\",\n              \"disabledOn\": \"data.taskStatus == 4\",\n              \"visibleOn\": \"data.taskStatus == 2\",\n              \"actionApi\": {\n                \"url\": \"/api/mock/coupon/task/stop\",\n                \"method\": \"post\",\n                \"params\": \"*\"\n              },\n              \"target\": \"LoopService\"\n            },\n            {\n              \"renderer\": \"action\",\n              \"text\": \"暂停中\",\n              \"size\": \"small\",\n              \"type\": \"warning\",\n              \"plain\": true,\n              \"actionType\": \"ajax\",\n              \"disabledOn\": \"data.taskStatus == 4\",\n              \"visibleOn\": \"data.taskStatus == 4\"\n            },\n            {\n              \"renderer\": \"action\",\n              \"text\": \"执行成功\",\n              \"size\": \"small\",\n              \"type\": \"success\",\n              \"plain\": true,\n              \"visibleOn\": \"data.taskStatus == 3\",\n              \"disabledOn\": \"data.taskStatus == 3\"\n            },\n            {\n              \"renderer\": \"action\",\n              \"text\": \"已暂停\",\n              \"size\": \"small\",\n              \"type\": \"info\",\n              \"plain\": true,\n              \"visibleOn\": \"data.taskStatus == 5\",\n              \"disabledOn\": \"data.taskStatus == 5\"\n            },\n            {\n              \"url\": \"http://terra.biz.weibo.com/fansManage/v1/export/coupon/success?taskId=${taskId}\",\n              \"text\": \"导出成功ID\",\n              \"size\": \"small\",\n              \"type\": \"primary\",\n              \"plain\": true,\n              \"visibleOn\": \"data.taskStatus == 3\",\n              \"blank\": true,\n              \"renderer\": \"action\",\n              \"actionType\": \"url\"\n            },\n            {\n              \"url\": \"http://terra.biz.weibo.com/fansManage/v1/export/coupon/original?taskId=${taskId}\",\n              \"text\": \"导出上传ID\",\n              \"size\": \"small\",\n              \"type\": \"primary\",\n              \"plain\": true,\n              \"visibleOn\": \"data.taskStatus == 3\",\n              \"blank\": true,\n              \"renderer\": \"action\",\n              \"actionType\": \"url\"\n            },\n            {\n              \"renderer\": \"action\",\n              \"size\": \"small\",\n              \"plain\": true,\n              \"text\": \"任务详情\",\n              \"visibleOn\": \"true\",\n              \"actionType\": \"dialog\",\n              \"body\": {\n                \"title\": \"任务详情\",\n                \"body\": {\n                  \"renderer\": \"static\",\n                  \"column\": 2,\n                  \"controls\": [\n                    {\n                      \"name\": \"taskName\",\n                      \"label\": \"任务名称\"\n                    },\n                    {\n                      \"name\": \"taskReason\",\n                      \"label\": \"任务描述\"\n                    },\n                    {\n                      \"name\": \"couponNum\",\n                      \"label\": \"后台记录发行量\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"sendNum\",\n                      \"label\": \"后台记录已发行量\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"circulation\",\n                      \"label\": \"优惠券系统记录发行量\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"receiveNum\",\n                      \"label\": \"优惠券系统记录已发行量\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"usageNum\",\n                      \"label\": \"已使用券数量\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"title\",\n                      \"label\": \"标题\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"type\",\n                      \"label\": \"优惠券类型\",\n                      \"body\": {\n                        \"renderer\": \"mapping\",\n                        \"value\": \"${data.type}\",\n                        \"map\": {\n                          \"1\": \"满减\",\n                          \"2\": \"折扣\",\n                          \"3\": \"代金券\"\n                        }\n                      }\n                    },\n                    {\n                      \"name\": \"discountRate\",\n                      \"label\": \"折扣率(非折扣券默认1)\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"fullPrice\",\n                      \"label\": \"满减券的满额(元)\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"discountPrice\",\n                      \"label\": \"优惠金额(元)\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"scope\",\n                      \"label\": \"券使用范围\",\n                      \"body\": {\n                        \"renderer\": \"mapping\",\n                        \"value\": \"${data.scope}\",\n                        \"initApi\": {\n                          \"url\": \"/fansManage/v1/coupon/task/scope\",\n                          \"method\": \"get\",\n                          \"cached\": true\n                        },\n                        \"silentMessage\": true\n                      }\n                    },\n                    {\n                      \"name\": \"useRule\",\n                      \"label\": \"券使用规则\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"endValidTime\",\n                      \"label\": \"券码有效期结束时间\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"beginValidTime\",\n                      \"label\": \"券码有效期开始时间\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"endTime\",\n                      \"label\": \"券模版有效期结束时间\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"beginTime\",\n                      \"label\": \"券模版有效期开始时间\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"createTime\",\n                      \"label\": \"创建券模版时间\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"updateTime\",\n                      \"label\": \"券模版更新时间\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"operator\",\n                      \"label\": \"任务操作人\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"taskStatus\",\n                      \"label\": \"任务状态\",\n                      \"width\": \"100\",\n                      \"body\": {\n                        \"renderer\": \"mapping\",\n                        \"value\": \"${data.taskStatus}\",\n                        \"map\": {\n                          \"1\": \"未执行\",\n                          \"2\": \"执行中\",\n                          \"3\": \"执行成功\",\n                          \"4\": \"暂停中\",\n                          \"5\": \"已暂停\"\n                        }\n                      }\n                    },\n                    {\n                      \"name\": \"extend\",\n                      \"label\": \"扩展字段\",\n                      \"width\": \"100\"\n                    },\n                    {\n                      \"name\": \"dateType\",\n                      \"label\": \"优惠券有效期类型\",\n                      \"width\": \"100\",\n                      \"body\": {\n                        \"renderer\": \"mapping\",\n                        \"value\": \"${data.dateType}\",\n                        \"map\": {\n                          \"0\": \"自然天\",\n                          \"1\": \"精确到秒\"\n                        }\n                      }\n                    }\n                  ],\n                  \"columns\": [\n                    {\n                      \"label\": \"优惠券名称\",\n                      \"name\": \"taskName\",\n                      \"align\": \"\",\n                      \"body\": []\n                    },\n                    {\n                      \"label\": \"已下发\",\n                      \"name\": \"sendNum\",\n                      \"align\": \"\",\n                      \"body\": []\n                    },\n                    {\n                      \"label\": \"优惠券总数\",\n                      \"name\": \"couponNum\",\n                      \"align\": \"\",\n                      \"body\": []\n                    }\n                  ],\n                  \"border\": true\n                },\n                \"fullscreen\": false,\n                \"center\": false,\n                \"draggable\": false,\n                \"closeOnClickModal\": true,\n                \"closeOnPressEscape\": true\n              },\n              \"actionApi\": {\n                \"url\": \"\",\n                \"method\": \"post\",\n                \"params\": {}\n              },\n              \"params\": {}\n            },\n            {\n              \"renderer\": \"service\",\n              \"name\": \"LoopService\",\n              \"silentMessage\": true,\n              \"silentLoading\": true,\n              \"initApi\": {\n                \"url\": \"/api/mock/bp/state\",\n                \"method\": \"get\",\n                \"params\": \"*\"\n              },\n              \"linkedOn\": \"data.taskId == target.taskId\",\n              \"sendOn\": \"[2,4,'2','4'].includes(data.taskStatus)\",\n              \"reload\": \"CouponTasksList\",\n              \"stopAutoRefreshWhen\": \"[3,\\\"3\\\",5,\\\"5\\\"].includes(data.taskStatus)\",\n              \"interval\": 3000,\n              \"timeout\": 200000\n            }\n          ]\n        }\n      ],\n      \"actions\": [],\n      \"hasPageInfo\": false,\n      \"reactive\": true,\n      \"highlightCurrentRow\": false,\n      \"rowKey\": \"taskId\"\n    }\n  ]\n}",
+    "pageSchema": {
+      "renderer": "page",
+      "body": [
+        {
+          "renderer": "table",
+          "name": "CouponTasksList",
+          "maxHeight": 570,
+          "showExport": true,
+          "initApi": {
+            "url": "/api/mock/coupon/task/list",
+            "method": "get"
+          },
+          "pageConfig": {
+            "pageIndex": "pageIndex",
+            "pageSize": "pageSize",
+            "total": "total",
+            "rows": "items"
+          },
+          "columns": [
+            {
+              "name": "taskId",
+              "label": "任务Id",
+              "width": "100"
+            },
+            {
+              "name": "taskName",
+              "label": "任务名称",
+              "body": []
+            },
+            {
+              "name": "couponNum",
+              "label": "发行量",
+              "body": []
+            },
+            {
+              "name": "sendNum",
+              "label": "已发行",
+              "body": []
+            },
+            {
+              "label": "进度",
+              "body": [
+                {
+                  "renderer": "progress",
+                  "showText": true,
+                  "exp": "(data.sendNum*100/data.couponNum).toFixed(2)",
+                  "color": [
+                    {
+                      "color": "#f56c6c",
+                      "percentage": 20
+                    },
+                    {
+                      "color": "#e6a23c",
+                      "percentage": 40
+                    },
+                    {
+                      "color": "#5cb87a",
+                      "percentage": 60
+                    },
+                    {
+                      "color": "#1989fa",
+                      "percentage": 80
+                    },
+                    {
+                      "color": "#6f7ad3",
+                      "percentage": 100
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "taskStatus",
+              "label": "任务状态",
+              "body": [
+                {
+                  "renderer": "mapping",
+                  "value": "${data.taskStatus}",
+                  "map": {
+                    "1": "未执行",
+                    "2": "执行中",
+                    "3": "执行成功",
+                    "4": "暂停中",
+                    "5": "已暂停"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "taskStatus",
+              "label": "操作",
+              "width": "375",
+              "body": [
+                {
+                  "renderer": "action",
+                  "text": "启动",
+                  "size": "small",
+                  "type": "primary",
+                  "plain": true,
+                  "actionType": "ajax",
+                  "actionApi": {
+                    "url": "/api/mock/tast/start",
+                    "method": "get",
+                    "params": "*"
+                  },
+                  "target": "LoopService",
+                  "disabledOn": "data.taskStatus == 2",
+                  "visibleOn": "![2,3].includes(data.taskStatus)"
+                },
+                {
+                  "renderer": "action",
+                  "text": "执行中",
+                  "size": "small",
+                  "type": "primary",
+                  "plain": true,
+                  "visibleOn": "data.taskStatus == 2",
+                  "disabledOn": "data.taskStatus == 2"
+                },
+                {
+                  "renderer": "action",
+                  "text": "暂停",
+                  "size": "small",
+                  "type": "primary",
+                  "plain": true,
+                  "actionType": "ajax",
+                  "disabledOn": "data.taskStatus == 4",
+                  "visibleOn": "data.taskStatus == 2",
+                  "actionApi": {
+                    "url": "/api/mock/coupon/task/stop",
+                    "method": "get",
+                    "params": "*"
+                  },
+                  "target": "LoopService"
+                },
+                {
+                  "renderer": "action",
+                  "text": "暂停中",
+                  "size": "small",
+                  "type": "warning",
+                  "plain": true,
+                  "actionType": "ajax",
+                  "disabledOn": "data.taskStatus == 4",
+                  "visibleOn": "data.taskStatus == 4"
+                },
+                {
+                  "renderer": "action",
+                  "text": "执行成功",
+                  "size": "small",
+                  "type": "success",
+                  "plain": true,
+                  "visibleOn": "data.taskStatus == 3",
+                  "disabledOn": "data.taskStatus == 3"
+                },
+                {
+                  "renderer": "action",
+                  "text": "已暂停",
+                  "size": "small",
+                  "type": "info",
+                  "plain": true,
+                  "visibleOn": "data.taskStatus == 5",
+                  "disabledOn": "data.taskStatus == 5"
+                },
+                {
+                  "url": "http://terra.biz.weibo.com/fansManage/v1/export/coupon/success?taskId=${taskId}",
+                  "text": "导出成功ID",
+                  "size": "small",
+                  "type": "primary",
+                  "plain": true,
+                  "visibleOn": "data.taskStatus == 3",
+                  "blank": true,
+                  "renderer": "action",
+                  "actionType": "url"
+                },
+                {
+                  "url": "http://terra.biz.weibo.com/fansManage/v1/export/coupon/original?taskId=${taskId}",
+                  "text": "导出上传ID",
+                  "size": "small",
+                  "type": "primary",
+                  "plain": true,
+                  "visibleOn": "data.taskStatus == 3",
+                  "blank": true,
+                  "renderer": "action",
+                  "actionType": "url"
+                },
+                {
+                  "renderer": "action",
+                  "size": "small",
+                  "plain": true,
+                  "text": "任务详情",
+                  "visibleOn": "true",
+                  "actionType": "dialog",
+                  "body": {
+                    "title": "任务详情",
+                    "body": {
+                      "renderer": "static",
+                      "column": 2,
+                      "controls": [
+                        {
+                          "name": "taskName",
+                          "label": "任务名称"
+                        },
+                        {
+                          "name": "taskReason",
+                          "label": "任务描述"
+                        },
+                        {
+                          "name": "couponNum",
+                          "label": "后台记录发行量",
+                          "width": "100"
+                        },
+                        {
+                          "name": "sendNum",
+                          "label": "后台记录已发行量",
+                          "width": "100"
+                        },
+                        {
+                          "name": "circulation",
+                          "label": "优惠券系统记录发行量",
+                          "width": "100"
+                        },
+                        {
+                          "name": "receiveNum",
+                          "label": "优惠券系统记录已发行量",
+                          "width": "100"
+                        },
+                        {
+                          "name": "usageNum",
+                          "label": "已使用券数量",
+                          "width": "100"
+                        },
+                        {
+                          "name": "title",
+                          "label": "标题",
+                          "width": "100"
+                        },
+                        {
+                          "name": "type",
+                          "label": "优惠券类型",
+                          "body": {
+                            "renderer": "mapping",
+                            "value": "${data.type}",
+                            "map": {
+                              "1": "满减",
+                              "2": "折扣",
+                              "3": "代金券"
+                            }
+                          }
+                        },
+                        {
+                          "name": "discountRate",
+                          "label": "折扣率(非折扣券默认1)",
+                          "width": "100"
+                        },
+                        {
+                          "name": "fullPrice",
+                          "label": "满减券的满额(元)",
+                          "width": "100"
+                        },
+                        {
+                          "name": "discountPrice",
+                          "label": "优惠金额(元)",
+                          "width": "100"
+                        },
+                        {
+                          "name": "scope",
+                          "label": "券使用范围",
+                          "body": {
+                            "renderer": "mapping",
+                            "value": "${data.scope}",
+                            "initApi": {
+                              "url": "/fansManage/v1/coupon/task/scope",
+                              "method": "get",
+                              "cached": true
+                            },
+                            "silentMessage": true
+                          }
+                        },
+                        {
+                          "name": "useRule",
+                          "label": "券使用规则",
+                          "width": "100"
+                        },
+                        {
+                          "name": "endValidTime",
+                          "label": "券码有效期结束时间",
+                          "width": "100"
+                        },
+                        {
+                          "name": "beginValidTime",
+                          "label": "券码有效期开始时间",
+                          "width": "100"
+                        },
+                        {
+                          "name": "endTime",
+                          "label": "券模版有效期结束时间",
+                          "width": "100"
+                        },
+                        {
+                          "name": "beginTime",
+                          "label": "券模版有效期开始时间",
+                          "width": "100"
+                        },
+                        {
+                          "name": "createTime",
+                          "label": "创建券模版时间",
+                          "width": "100"
+                        },
+                        {
+                          "name": "updateTime",
+                          "label": "券模版更新时间",
+                          "width": "100"
+                        },
+                        {
+                          "name": "operator",
+                          "label": "任务操作人",
+                          "width": "100"
+                        },
+                        {
+                          "name": "taskStatus",
+                          "label": "任务状态",
+                          "width": "100",
+                          "body": {
+                            "renderer": "mapping",
+                            "value": "${data.taskStatus}",
+                            "map": {
+                              "1": "未执行",
+                              "2": "执行中",
+                              "3": "执行成功",
+                              "4": "暂停中",
+                              "5": "已暂停"
+                            }
+                          }
+                        },
+                        {
+                          "name": "extend",
+                          "label": "扩展字段",
+                          "width": "100"
+                        },
+                        {
+                          "name": "dateType",
+                          "label": "优惠券有效期类型",
+                          "width": "100",
+                          "body": {
+                            "renderer": "mapping",
+                            "value": "${data.dateType}",
+                            "map": {
+                              "0": "自然天",
+                              "1": "精确到秒"
+                            }
+                          }
+                        }
+                      ],
+                      "columns": [
+                        {
+                          "label": "优惠券名称",
+                          "name": "taskName",
+                          "align": "",
+                          "body": []
+                        },
+                        {
+                          "label": "已下发",
+                          "name": "sendNum",
+                          "align": "",
+                          "body": []
+                        },
+                        {
+                          "label": "优惠券总数",
+                          "name": "couponNum",
+                          "align": "",
+                          "body": []
+                        }
+                      ],
+                      "border": true
+                    },
+                    "fullscreen": false,
+                    "center": false,
+                    "draggable": false,
+                    "closeOnClickModal": true,
+                    "closeOnPressEscape": true
+                  },
+                  "actionApi": {
+                    "url": "",
+                    "method": "get",
+                    "params": {}
+                  },
+                  "params": {}
+                },
+                {
+                  "renderer": "service",
+                  "name": "LoopService",
+                  "silentMessage": true,
+                  "silentLoading": true,
+                  "initApi": {
+                    "url": "/api/mock/bp/state",
+                    "method": "get",
+                    "params": "*"
+                  },
+                  "linkedOn": "data.taskId == target.taskId",
+                  "sendOn": "[2,4,'2','4'].includes(data.taskStatus)",
+                  "reload": "CouponTasksList",
+                  "stopAutoRefreshWhen": "[3,\"3\",5,\"5\"].includes(data.taskStatus)",
+                  "interval": 3000,
+                  "timeout": 200000
+                }
+              ]
+            }
+          ],
+          "actions": [],
+          "hasPageInfo": false,
+          "reactive": true,
+          "highlightCurrentRow": false,
+          "rowKey": "taskId"
+        }
+      ]
+    },
     "version": 0,
     "status": 1,
     "createdAt": "2023-11-25T15:20:50.000Z",
