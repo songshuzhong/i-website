@@ -107,7 +107,7 @@
             {
               "name": "taskStatus",
               "label": "操作",
-              "width": "356",
+              "width": "375",
               "body": [
                 {
                   "renderer": "action",
