@@ -16,7 +16,169 @@
     "assets": [],
     "visible": null,
     "pageDesc": null,
-    "pageSchema": "{\n  \"renderer\": \"page\",\n  \"body\": [\n    {\n      \"renderer\": \"table\",\n      \"height\": 460,\n      \"updateOnRowId\": \"name\",\n      \"columns\": [\n        {\n          \"type\": \"selection\",\n          \"body\": [],\n          \"fixed\": false,\n          \"align\": \"none\",\n          \"label\": \"\",\n          \"name\": \"\"\n        },\n        {\n          \"sortable\": false,\n          \"fixed\": false,\n          \"type\": \"-\",\n          \"align\": \"none\",\n          \"body\": [\n            {\n              \"renderer\": \"html\",\n              \"html\": \"${data.label}\",\n              \"inline\": true\n            }\n          ],\n          \"label\": \"进度\",\n          \"name\": \"name\"\n        },\n        {\n          \"sortable\": false,\n          \"fixed\": false,\n          \"type\": \"-\",\n          \"align\": \"none\",\n          \"body\": [\n            {\n              \"renderer\": \"mapping\",\n              \"value\": \"status\",\n              \"optionConfig\": {},\n              \"map\": {\n                \"0\": \"待启动\",\n                \"1\": \"启动中\",\n                \"2\": \"部署中\",\n                \"3\": \"上线中\",\n                \"4\": \"已上线\"\n              },\n              \"status\": \"status\"\n            }\n          ],\n          \"label\": \"状态\",\n          \"name\": \"status\"\n        },\n        {\n          \"sortable\": false,\n          \"fixed\": false,\n          \"type\": \"-\",\n          \"align\": \"none\",\n          \"body\": [],\n          \"label\": \"机器\",\n          \"name\": \"status\"\n        },\n        {\n          \"sortable\": false,\n          \"fixed\": false,\n          \"type\": \"-\",\n          \"align\": \"none\",\n          \"body\": [\n            {\n              \"renderer\": \"progress\",\n              \"exp\": \"data.status * 25\",\n              \"color\": []\n            }\n          ],\n          \"label\": \"进度\",\n          \"name\": \"status\"\n        },\n        {\n          \"sortable\": false,\n          \"fixed\": false,\n          \"type\": \"-\",\n          \"align\": \"none\",\n          \"body\": [\n            {\n              \"renderer\": \"action\",\n              \"text\": \"暂停\",\n              \"size\": \"small\",\n              \"body\": {},\n              \"disabledOn\": \"data.status==0||data.status==4\"\n            },\n            {\n              \"renderer\": \"action\",\n              \"text\": \"预览\",\n              \"size\": \"small\",\n              \"body\": {},\n              \"disabledOn\": \"data.status!=4\"\n            },\n            {\n              \"renderer\": \"service\",\n              \"sendOn\": \"data.status==1 || data.status ==2 || data.status==3\",\n              \"initApi\": {\n                \"url\": \"/api/mock/tasks?count=${count}\",\n                \"method\": \"post\",\n                \"params\": {\n                  \"*\": \"*\"\n                }\n              },\n              \"stopAutoRefreshWhen\": \"data.status==3\",\n              \"interval\": 2000,\n              \"linkedOn\": \"data.name == target.name\",\n              \"timeout\": 10000,\n              \"reload\": \"Tasks2Table\",\n              \"silentLoading\": true\n            }\n          ],\n          \"label\": \"操作\"\n        }\n      ],\n      \"actions\": [\n        {\n          \"renderer\": \"action\",\n          \"text\": \"上线\",\n          \"size\": \"small\",\n          \"actionType\": \"ajax\",\n          \"actionApi\": {\n            \"url\": \"/api/mock/tasks\",\n            \"method\": \"post\",\n            \"params\": {}\n          },\n          \"body\": {},\n          \"reload\": \"Tasks2Table\"\n        }\n      ],\n      \"initApi\": {\n        \"url\": \"/api/mock/tasks2\",\n        \"method\": \"get\",\n        \"params\": {}\n      },\n      \"name\": \"Tasks2Table\",\n      \"showDynamicColumn\": true,\n      \"title\": \"部署上线\",\n      \"pageConfig\": {\n        \"pageIndex\": \"pageIndex\",\n        \"pageSize\": \"pageSize\",\n        \"total\": \"total\",\n        \"rows\": \"rows\",\n        \"iLayout\": [\n          \"prev\",\n          \"pager\",\n          \"next\",\n          \"jumper\",\n          \"sizes\",\n          \"total\"\n        ]\n      },\n      \"hasPageInfo\": false,\n      \"reactive\": true,\n      \"highlightCurrentRow\": false,\n      \"rowKey\": \"label\"\n    }\n  ]\n}",
+    "pageSchema": {
+      "renderer": "page",
+      "body": [
+        {
+          "renderer": "table",
+          "height": 460,
+          "updateOnRowId": "name",
+          "columns": [
+            {
+              "type": "selection",
+              "body": [],
+              "fixed": false,
+              "align": "none",
+              "label": "",
+              "name": ""
+            },
+            {
+              "sortable": false,
+              "fixed": false,
+              "type": "-",
+              "align": "none",
+              "body": [
+                {
+                  "renderer": "html",
+                  "html": "${data.label}",
+                  "inline": true
+                }
+              ],
+              "label": "进度",
+              "name": "name"
+            },
+            {
+              "sortable": false,
+              "fixed": false,
+              "type": "-",
+              "align": "none",
+              "body": [
+                {
+                  "renderer": "mapping",
+                  "value": "status",
+                  "optionConfig": {},
+                  "map": {
+                    "0": "待启动",
+                    "1": "启动中",
+                    "2": "部署中",
+                    "3": "上线中",
+                    "4": "已上线"
+                  },
+                  "status": "status"
+                }
+              ],
+              "label": "状态",
+              "name": "status"
+            },
+            {
+              "sortable": false,
+              "fixed": false,
+              "type": "-",
+              "align": "none",
+              "body": [],
+              "label": "机器",
+              "name": "status"
+            },
+            {
+              "sortable": false,
+              "fixed": false,
+              "type": "-",
+              "align": "none",
+              "body": [
+                {
+                  "renderer": "progress",
+                  "exp": "data.status * 25",
+                  "color": []
+                }
+              ],
+              "label": "进度",
+              "name": "status"
+            },
+            {
+              "sortable": false,
+              "fixed": false,
+              "type": "-",
+              "align": "none",
+              "body": [
+                {
+                  "renderer": "action",
+                  "text": "暂停",
+                  "size": "small",
+                  "body": {},
+                  "disabledOn": "data.status==0||data.status==4"
+                },
+                {
+                  "renderer": "action",
+                  "text": "预览",
+                  "size": "small",
+                  "body": {},
+                  "disabledOn": "data.status!=4"
+                },
+                {
+                  "renderer": "service",
+                  "sendOn": "data.status==1 || data.status ==2 || data.status==3",
+                  "initApi": {
+                    "url": "/api/mock/tasks?count=${count}",
+                    "method": "get",
+                    "params": {
+                      "*": "*"
+                    }
+                  },
+                  "stopAutoRefreshWhen": "data.status==3",
+                  "interval": 2000,
+                  "linkedOn": "data.name == target.name",
+                  "timeout": 10000,
+                  "reload": "Tasks2Table",
+                  "silentLoading": true
+                }
+              ],
+              "label": "操作"
+            }
+          ],
+          "actions": [
+            {
+              "renderer": "action",
+              "text": "上线",
+              "size": "small",
+              "actionType": "ajax",
+              "actionApi": {
+                "url": "/api/mock/tasks",
+                "method": "get",
+                "params": {}
+              },
+              "body": {},
+              "reload": "Tasks2Table"
+            }
+          ],
+          "initApi": {
+            "url": "/api/mock/tasks2",
+            "method": "get",
+            "params": {}
+          },
+          "name": "Tasks2Table",
+          "showDynamicColumn": true,
+          "title": "部署上线",
+          "pageConfig": {
+            "pageIndex": "pageIndex",
+            "pageSize": "pageSize",
+            "total": "total",
+            "rows": "rows",
+            "iLayout": [
+              "prev",
+              "pager",
+              "next",
+              "jumper",
+              "sizes",
+              "total"
+            ]
+          },
+          "hasPageInfo": false,
+          "reactive": true,
+          "highlightCurrentRow": false,
+          "rowKey": "label"
+        }
+      ]
+    },
     "version": 0,
     "status": 1,
     "createdAt": "2023-11-25T15:21:13.000Z",

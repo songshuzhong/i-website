@@ -15,7 +15,263 @@
     "assets": [],
     "visible": null,
     "pageDesc": null,
-    "pageSchema": "{\n  \"renderer\": \"page\",\n  \"initData\": {},\n  \"body\": [\n    {\n      \"renderer\": \"cards\",\n      \"shadow\": \"hover\",\n      \"span\": 24,\n      \"initApi\": {\n        \"url\": \"/api/mock/rb/campaign\",\n        \"method\": \"get\",\n        \"params\": {}\n      },\n      \"body\": [\n        {\n          \"renderer\": \"static\",\n          \"columns\": [\n            {\n              \"label\": \"计划名称：\",\n              \"name\": \"campaign_name\",\n              \"align\": \"\",\n              \"body\": []\n            },\n            {\n              \"label\": \"计划来源：\",\n              \"name\": \"source_name\",\n              \"align\": \"\",\n              \"body\": []\n            },\n            {\n              \"label\": \"监测类型：\",\n              \"name\": \"monitor_type_name\",\n              \"align\": \"\",\n              \"body\": []\n            },\n            {\n              \"label\": \"预估达标：\",\n              \"name\": \"progress_desc\",\n              \"align\": \"\",\n              \"body\": []\n            },\n            {\n              \"label\": \"广告位：\",\n              \"name\": \"position_name\",\n              \"align\": \"\",\n              \"body\": []\n            },\n            {\n              \"label\": \"售卖类型：\",\n              \"name\": \"sales_type_name\",\n              \"align\": \"\",\n              \"body\": []\n            },\n            {\n              \"label\": \"媒体类型：\",\n              \"name\": \"media_type_name\",\n              \"align\": \"\",\n              \"body\": []\n            },\n            {\n              \"label\": \"互动类型：\",\n              \"name\": \"interaction_type_name\",\n              \"align\": \"\",\n              \"body\": []\n            },\n            {\n              \"label\": \"增值类型：\",\n              \"name\": \"increment_type_name\",\n              \"align\": \"\",\n              \"body\": []\n            },\n            {\n              \"label\": \"定向设置：\",\n              \"name\": \"condition_setting\",\n              \"align\": \"\",\n              \"body\": []\n            },\n            {\n              \"label\": \"客户微博昵称：\",\n              \"name\": \"customer_name\",\n              \"align\": \"\",\n              \"body\": []\n            },\n            {\n              \"label\": \"客户UID：\",\n              \"name\": \"customer_id\",\n              \"align\": \"\",\n              \"body\": []\n            },\n            {\n              \"label\": \"上传人：\",\n              \"name\": \"media_name\",\n              \"align\": \"\",\n              \"body\": []\n            },\n            {\n              \"label\": \"审核人：\",\n              \"name\": \"ae_name\",\n              \"align\": \"\",\n              \"body\": []\n            }\n          ],\n          \"size\": \"small\",\n          \"column\": 5,\n          \"classname\": \"crud-static appear\",\n          \"width\": 80\n        },\n        {\n          \"renderer\": \"wrapper\",\n          \"classname\": \"crud-progress appear\",\n          \"body\": [\n            {\n              \"renderer\": \"mapping\",\n              \"name\": \"campaign_status\",\n              \"status\": \"campaign_status\",\n              \"optionConfig\": {},\n              \"map\": {\n                \"0\": \"待投\",\n                \"1\": \"在投\",\n                \"2\": \"暂停\",\n                \"3\": \"结束\",\n                \"4\": \"待审\",\n                \"5\": \"驳回\"\n              }\n            },\n            {\n              \"renderer\": \"progress\",\n              \"type\": \"dashboard\",\n              \"exp\": \"data.target_impression\",\n              \"color\": [],\n              \"strokeWidth\": 11,\n              \"strokeLinecap\": \"round\",\n              \"text\": \" \",\n              \"status\": \"success\",\n              \"width\": 110\n            }\n          ]\n        }\n      ],\n      \"header\": [\n        {\n          \"renderer\": \"wrapper\",\n          \"body\": [\n            {\n              \"renderer\": \"action\",\n              \"text\": \"创意ID：${data. creative_id}\",\n              \"size\": \"small\",\n              \"body\": {},\n              \"isText\": true,\n              \"icon\": \"Calendar\"\n            },\n            {\n              \"renderer\": \"action\",\n              \"text\": \"计划ID：${data. campaign_id}\",\n              \"isText\": true,\n              \"body\": {},\n              \"icon\": \"ArrowRight\",\n              \"size\": \"small\"\n            },\n            {\n              \"renderer\": \"action\",\n              \"text\": \"资源ID：${data. contract_no}\",\n              \"isText\": true,\n              \"body\": {},\n              \"icon\": \"ArrowRight\",\n              \"size\": \"small\"\n            }\n          ],\n          \"classname\": \"crud-card_header-left\"\n        },\n        {\n          \"renderer\": \"wrapper\",\n          \"body\": [\n            {\n              \"renderer\": \"action\",\n              \"text\": \"${data.start_date+'-'+data.end_date}\",\n              \"isText\": true,\n              \"icon\": \"AlarmClock\",\n              \"body\": {}\n            },\n            {\n              \"renderer\": \"wrapper\",\n              \"body\": [\n                {\n                  \"renderer\": \"action\",\n                  \"text\": \"策略设置\",\n                  \"isText\": true,\n                  \"icon\": \"Sort\",\n                  \"visibleOn\": \"data.pdps=='PDPS000000058408'\",\n                  \"body\": {\n                    \"renderer\": \"drawer\",\n                    \"title\": \"策略调整\",\n                    \"width\": 30,\n                    \"closeOnClickModal\": true,\n                    \"body\": []\n                  },\n                  \"actionType\": \"drawer\"\n                },\n                {\n                  \"renderer\": \"action\",\n                  \"text\": \"启动\",\n                  \"isText\": true,\n                  \"icon\": \"VideoPlay\",\n                  \"body\": {},\n                  \"actionType\": \"ajax\",\n                  \"actionApi\": {\n                    \"url\": \"/api/start\",\n                    \"method\": \"post\",\n                    \"params\": {}\n                  },\n                  \"visibleOn\": \"data.campaign_status == 2\"\n                },\n                {\n                  \"renderer\": \"action\",\n                  \"text\": \"暂停\",\n                  \"isText\": true,\n                  \"icon\": \"VideoPause\",\n                  \"body\": {},\n                  \"type\": \"success\",\n                  \"actionType\": \"ajax\",\n                  \"actionApi\": {\n                    \"url\": \"/api/pause\",\n                    \"method\": \"post\",\n                    \"params\": {}\n                  },\n                  \"visibleOn\": \"data.campaign_status == 1\"\n                },\n                {\n                  \"renderer\": \"action\",\n                  \"text\": \"停止\",\n                  \"type\": \"warning\",\n                  \"body\": {},\n                  \"isText\": true,\n                  \"icon\": \"Remove\",\n                  \"actionType\": \"ajax\",\n                  \"actionApi\": {\n                    \"url\": \"/api/stop\",\n                    \"method\": \"post\",\n                    \"params\": {}\n                  }\n                }\n              ],\n              \"classname\": \"crud-card__header__actions\"\n            }\n          ],\n          \"classname\": \"crud-card_header-right\",\n          \"bodyClassname\": \"crud-card_header-right-body\"\n        }\n      ],\n      \"bodyClass\": \"crud-card\",\n      \"updateOnRowId\": \"campaign_id\",\n      \"skeletons\": 3,\n      \"virtual\": false\n    }\n  ],\n  \"innerStyle\": \".crud-card {\\n  .i-card__header {\\n    display: flex;\\n    align-items: center;\\n    padding: 6px 20px;\\n    background: var(--el-fill-color-lighter);\\n  }\\n  &:hover {\\n    border: 1px solid var(--el-color-primary);\\n    box-shadow: 0 2px 10px 1px var(--el-color-primary-light-9);\\n    .crud-card_header-right-body {\\n      &>.el-button {\\n        display: none;\\n      }\\n    }\\n    .crud-card__header__actions {\\n      display: block;\\n    }\\n  }\\n}\\n.crud-card_header-left {\\n  width: 65%;\\n  text-align: left;\\n}\\n.crud-card_header-right {\\n  width: 35%;\\n  text-align: right;\\n  &>.el-button {\\n    display: block;\\n  }\\n}\\n.crud-card__header__actions {\\n  display: none;\\n}\\n.crud-static {\\n  margin-right: 20%;\\n}\\n.crud-progress {\\n  position: absolute !important;\\n  top: 0;\\n  right: 0;\\n  width: 20%;\\n  padding-top: 20px;\\n  text-align: center;\\n  &:before {\\n    position: absolute;\\n    top: 50%;\\n    left: 0;\\n    width: 1px;\\n    height: 80%;\\n    content: \\\"\\\";\\n    background: var(--el-border-color-lighter);\\n    transform: translateY(-50%);\\n  }\\n  .i-mapping__container {\\n    position: absolute;\\n    bottom: 5px;\\n    right: -27px;\\n    width: 80px;\\n    padding: 4px;\\n    margin-right: 5px;\\n    text-align: center;\\n    color: white;\\n    transform: rotateZ(-45deg);\\n    &.primary {\\n      background: var(--el-color-primary);\\n    }\\n    &.success {\\n      background: var(--el-color-success);\\n    }\\n    &.danger {\\n      background: var(--el-color-danger);\\n    }\\n    &.warning {\\n      background: var(--el-color-warning);\\n    }\\n    .el-badge {\\n      display: none;\\n    }\\n  }\\n}\"\n}",
+    "pageSchema": {
+      "renderer": "page",
+      "initData": {},
+      "body": [
+        {
+          "renderer": "cards",
+          "shadow": "hover",
+          "span": 24,
+          "initApi": {
+            "url": "/api/mock/rb/campaign",
+            "method": "get",
+            "params": {}
+          },
+          "body": [
+            {
+              "renderer": "static",
+              "columns": [
+                {
+                  "label": "计划名称：",
+                  "name": "campaign_name",
+                  "align": "",
+                  "body": []
+                },
+                {
+                  "label": "计划来源：",
+                  "name": "source_name",
+                  "align": "",
+                  "body": []
+                },
+                {
+                  "label": "监测类型：",
+                  "name": "monitor_type_name",
+                  "align": "",
+                  "body": []
+                },
+                {
+                  "label": "预估达标：",
+                  "name": "progress_desc",
+                  "align": "",
+                  "body": []
+                },
+                {
+                  "label": "广告位：",
+                  "name": "position_name",
+                  "align": "",
+                  "body": []
+                },
+                {
+                  "label": "售卖类型：",
+                  "name": "sales_type_name",
+                  "align": "",
+                  "body": []
+                },
+                {
+                  "label": "媒体类型：",
+                  "name": "media_type_name",
+                  "align": "",
+                  "body": []
+                },
+                {
+                  "label": "互动类型：",
+                  "name": "interaction_type_name",
+                  "align": "",
+                  "body": []
+                },
+                {
+                  "label": "增值类型：",
+                  "name": "increment_type_name",
+                  "align": "",
+                  "body": []
+                },
+                {
+                  "label": "定向设置：",
+                  "name": "condition_setting",
+                  "align": "",
+                  "body": []
+                },
+                {
+                  "label": "客户微博昵称：",
+                  "name": "customer_name",
+                  "align": "",
+                  "body": []
+                },
+                {
+                  "label": "客户UID：",
+                  "name": "customer_id",
+                  "align": "",
+                  "body": []
+                },
+                {
+                  "label": "上传人：",
+                  "name": "media_name",
+                  "align": "",
+                  "body": []
+                },
+                {
+                  "label": "审核人：",
+                  "name": "ae_name",
+                  "align": "",
+                  "body": []
+                }
+              ],
+              "size": "small",
+              "column": 5,
+              "classname": "crud-static appear",
+              "width": 80
+            },
+            {
+              "renderer": "wrapper",
+              "classname": "crud-progress appear",
+              "body": [
+                {
+                  "renderer": "mapping",
+                  "name": "campaign_status",
+                  "status": "campaign_status",
+                  "optionConfig": {},
+                  "map": {
+                    "0": "待投",
+                    "1": "在投",
+                    "2": "暂停",
+                    "3": "结束",
+                    "4": "待审",
+                    "5": "驳回"
+                  }
+                },
+                {
+                  "renderer": "progress",
+                  "type": "dashboard",
+                  "exp": "data.target_impression",
+                  "color": [],
+                  "strokeWidth": 11,
+                  "strokeLinecap": "round",
+                  "text": " ",
+                  "status": "success",
+                  "width": 110
+                }
+              ]
+            }
+          ],
+          "header": [
+            {
+              "renderer": "wrapper",
+              "body": [
+                {
+                  "renderer": "action",
+                  "text": "创意ID：${data. creative_id}",
+                  "size": "small",
+                  "body": {},
+                  "isText": true,
+                  "icon": "Calendar"
+                },
+                {
+                  "renderer": "action",
+                  "text": "计划ID：${data. campaign_id}",
+                  "isText": true,
+                  "body": {},
+                  "icon": "ArrowRight",
+                  "size": "small"
+                },
+                {
+                  "renderer": "action",
+                  "text": "资源ID：${data. contract_no}",
+                  "isText": true,
+                  "body": {},
+                  "icon": "ArrowRight",
+                  "size": "small"
+                }
+              ],
+              "classname": "crud-card_header-left"
+            },
+            {
+              "renderer": "wrapper",
+              "body": [
+                {
+                  "renderer": "action",
+                  "text": "${data.start_date+'-'+data.end_date}",
+                  "isText": true,
+                  "icon": "AlarmClock",
+                  "body": {}
+                },
+                {
+                  "renderer": "wrapper",
+                  "body": [
+                    {
+                      "renderer": "action",
+                      "text": "策略设置",
+                      "isText": true,
+                      "icon": "Sort",
+                      "visibleOn": "data.pdps=='PDPS000000058408'",
+                      "body": {
+                        "renderer": "drawer",
+                        "title": "策略调整",
+                        "width": 30,
+                        "closeOnClickModal": true,
+                        "body": []
+                      },
+                      "actionType": "drawer"
+                    },
+                    {
+                      "renderer": "action",
+                      "text": "启动",
+                      "isText": true,
+                      "icon": "VideoPlay",
+                      "body": {},
+                      "actionType": "ajax",
+                      "actionApi": {
+                        "url": "/api/start",
+                        "method": "post",
+                        "params": {}
+                      },
+                      "visibleOn": "data.campaign_status == 2"
+                    },
+                    {
+                      "renderer": "action",
+                      "text": "暂停",
+                      "isText": true,
+                      "icon": "VideoPause",
+                      "body": {},
+                      "type": "success",
+                      "actionType": "ajax",
+                      "actionApi": {
+                        "url": "/api/pause",
+                        "method": "post",
+                        "params": {}
+                      },
+                      "visibleOn": "data.campaign_status == 1"
+                    },
+                    {
+                      "renderer": "action",
+                      "text": "停止",
+                      "type": "warning",
+                      "body": {},
+                      "isText": true,
+                      "icon": "Remove",
+                      "actionType": "ajax",
+                      "actionApi": {
+                        "url": "/api/stop",
+                        "method": "post",
+                        "params": {}
+                      }
+                    }
+                  ],
+                  "classname": "crud-card__header__actions"
+                }
+              ],
+              "classname": "crud-card_header-right",
+              "bodyClassname": "crud-card_header-right-body"
+            }
+          ],
+          "bodyClass": "crud-card",
+          "updateOnRowId": "campaign_id",
+          "skeletons": 3,
+          "virtual": false
+        }
+      ],
+      "innerStyle": ".crud-card {\n  .i-card__header {\n    display: flex;\n    align-items: center;\n    padding: 6px 20px;\n    background: var(--el-fill-color-lighter);\n  }\n  .i-card__body {\n    overflow: hidden;\n  }\n  &:hover {\n    border: 1px solid var(--el-color-primary);\n    box-shadow: 0 2px 10px 1px var(--el-color-primary-light-9);\n    .crud-card_header-right-body {\n      &>.el-button {\n        display: none;\n      }\n    }\n    .crud-card__header__actions {\n      display: block;\n    }\n  }\n}\n.crud-card_header-left {\n  width: 65%;\n  text-align: left;\n}\n.crud-card_header-right {\n  width: 35%;\n  text-align: right;\n  &>.el-button {\n    display: block;\n  }\n}\n.crud-card__header__actions {\n  display: none;\n}\n.crud-static {\n  margin-right: 20%;\n}\n.crud-progress {\n  position: absolute !important;\n  top: 0;\n  right: 0;\n  width: 20%;\n  padding-top: 20px;\n  text-align: center;\n  &:before {\n    position: absolute;\n    top: 50%;\n    left: 0;\n    width: 1px;\n    height: 80%;\n    content: \"\";\n    background: var(--el-border-color-lighter);\n    transform: translateY(-50%);\n  }\n  .i-mapping__container {\n    position: absolute;\n    bottom: 5px;\n    right: -27px;\n    width: 80px;\n    padding: 4px;\n    margin-right: 5px;\n    text-align: center;\n    color: white;\n    transform: rotateZ(-45deg);\n    &.primary {\n      background: var(--el-color-primary);\n    }\n    &.success {\n      background: var(--el-color-success);\n    }\n    &.danger {\n      background: var(--el-color-danger);\n    }\n    &.warning {\n      background: var(--el-color-warning);\n    }\n    .el-badge {\n      display: none;\n    }\n  }\n}"
+    },
     "version": 0,
     "status": 1,
     "createdAt": "2023-11-25T16:08:22.000Z",

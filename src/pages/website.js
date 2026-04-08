@@ -49,7 +49,7 @@ const config = {
     }
     return res;
   },
-  domains: [process.env.VUE_APP_API_BASE]
+  activeDomain: process.env.VUE_APP_API_BASE
 };
 const isGPOrDev = process.env.VUE_APP_API_NODE_ENV === 'gp' || process.env.VUE_APP_API_NODE_ENV === 'dev';
 config.adaptor = {
@@ -73,7 +73,7 @@ if (${isGPOrDev} && url.includes("/api/mock")) {
     functionBody = match[3].trim();
     try {
       const fun = new Function("_req", "_res", functionBody);
-      res.data = fun({ params, query: params }, res);
+      res.data = fun({ params, body: params, query: params }, res);
     } catch (error) {
       res.data = error;
     }
