@@ -4,6 +4,7 @@ import {IRenderer, api} from  '../utils/lib.js';
 import createRoutes from '../router/website';
 import ToMobile from '../component/ToMobile.vue';
 import Ai from '../component/Ai.vue';
+import Three from '../component/ThreeJS.vue';
 import Application from '../apps/Website.vue';
 import registrySw from '../registerServiceWorker';
 import * as ElementPlus from '../plugins/ui.js';
@@ -26,7 +27,7 @@ const config = {
       console.log(name, info);
     }
   },
-  renderers: [ToMobile, Verify, Ai],
+  renderers: [ToMobile, Verify, Ai, Three],
   actions: {
     logout: function(proxy, config, context, onActionFeedback) {
       localStorage.removeItem('token');
