@@ -233,7 +233,7 @@ $i-monaco-primary: #282a36 !default;
     height: 4px;
     background: linear-gradient(to right, var(--el-color-primary-light-8), var(--el-color-primary));
     transform-origin: -50% 50%;
-    animation: grow 1s ease-in-out;
+    animation: grow 1.2s ease-in-out;
   }
   .el-loading-spinner {
     top: 30px;
@@ -243,8 +243,8 @@ $i-monaco-primary: #282a36 !default;
       top: 0;
       right: 0;
       left: unset;
-      height: 25px !important;
-      width: 25px !important;
+      height: 30px !important;
+      width: 30px !important;
       display: inline;
       background-image: url('../../public/circle.svg');
       background-position: center;
@@ -257,7 +257,7 @@ $i-monaco-primary: #282a36 !default;
       animation: loading-dash 1.5s ease-in-out infinite;
       stroke-dasharray: 90,150;
       stroke-dashoffset: 0;
-      stroke-width: 4;
+      stroke-width: 6;
       stroke: var(--el-color-primary);
       stroke-linecap: round;
     }

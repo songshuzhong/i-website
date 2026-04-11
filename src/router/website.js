@@ -61,7 +61,7 @@ const createRoutes = () => {
         routerMask.close();
         clearTimeout(timer);
       }
-    }, 1000);
+    }, 1200);
   });
   return router;
 };

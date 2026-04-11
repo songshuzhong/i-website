@@ -123,6 +123,6 @@ router.afterEach((to, from) => {
       routerMask.close();
       clearTimeout(timer);
     }
-  }, 1000);
+  }, 1200);
 });
 export default router;

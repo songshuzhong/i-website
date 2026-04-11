@@ -711,7 +711,7 @@ html {
     height: 4px;
     background: linear-gradient(to right, var(--i-renderer-home-particle-color), var(--i-renderer-home-text-color));
     transform-origin: -50% 50%;
-    animation: grow 1s ease-in-out;
+    animation: grow 1.2s ease-in-out;
   }
   .el-loading-spinner {
     top: 30px;
@@ -721,8 +721,8 @@ html {
       top: 0;
       right: 0;
       left: unset;
-      height: 25px !important;
-      width: 25px !important;
+      height: 30px !important;
+      width: 30px !important;
       display: inline;
       background-image: url('../../public/circle.svg');
       background-position: center;
@@ -735,7 +735,7 @@ html {
       animation: loading-dash 1.5s ease-in-out infinite;
       stroke-dasharray: 90,150;
       stroke-dashoffset: 0;
-      stroke-width: 4;
+      stroke-width: 6;
       stroke: var(--i-renderer-home-text-color);
       stroke-linecap: round;
     }
