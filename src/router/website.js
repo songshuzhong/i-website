@@ -39,7 +39,7 @@ const createRoutes = () => {
   });
 
   router.beforeEach((to, from, next) => {
-    if (to.path !== from.path) {
+    if (to.path !== from.path || (from.path === '/' && to.path === '/')) {
       routerMask = ElLoading.service({
         fullscreen: true,
         customClass: 'i-website__router__loader'
