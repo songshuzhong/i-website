@@ -707,10 +707,8 @@ html {
   &::before {
     content: '';
     display: block;
-    width: 100%;
     height: 4px;
     background: linear-gradient(to right, var(--i-renderer-home-particle-color), var(--i-renderer-home-text-color));
-    transform-origin: -50% 50%;
     animation: grow 1.2s ease-in-out;
   }
   .el-loading-spinner {
@@ -761,10 +759,10 @@ html {
 }
 @keyframes grow {
   from {
-    transform: scaleX(0);
+    width: 0;
   }
   to {
-    transform: scaleX(1);
+    width: 100%;
   }
 }
 @keyframes fillbgcolor {
