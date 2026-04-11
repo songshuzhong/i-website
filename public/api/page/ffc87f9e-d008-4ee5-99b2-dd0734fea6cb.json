@@ -521,6 +521,65 @@
             },
             {
               "renderer": "combo",
+              "name": "cron",
+              "label": "执行日期",
+              "border": false,
+              "inline": true,
+              "extends": true,
+              "type": "multiple",
+              "controls": [
+                {
+                  "renderer": "computed",
+                  "name": "cronIndex",
+                  "exp": "$.comboIndex"
+                },
+                {
+                  "renderer": "radio",
+                  "name": "cronType",
+                  "namePath": "cronType",
+                  "options": [
+                    {
+                      "text": "",
+                      "value": "$.cronIndex"
+                    }
+                  ]
+                },
+                {
+                  "renderer": "html",
+                  "html": "每一年",
+                  "visibleOn": "$.cronIndex == 0"
+                },
+                {
+                  "renderer": "html",
+                  "html": "每隔",
+                  "visibleOn": "$.cronIndex == 1"
+                },
+                {
+                  "renderer": "input",
+                  "name": "year",
+                  "label": "",
+                  "visibleOn": "$.cronIndex == 1"
+                },
+                {
+                  "renderer": "html",
+                  "html": "年执行 从",
+                  "visibleOn": "$.cronIndex == 1"
+                },
+                {
+                  "renderer": "input",
+                  "name": "yearStart",
+                  "label": "",
+                  "visibleOn": "$.cronIndex == 1"
+                },
+                {
+                  "renderer": "html",
+                  "html": "年开始",
+                  "visibleOn": "$.cronIndex == 1"
+                }
+              ]
+            },
+            {
+              "renderer": "combo",
               "name": "executeTime",
               "label": "执行时间",
               "border": false,

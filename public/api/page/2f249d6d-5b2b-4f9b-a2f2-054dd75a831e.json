@@ -1,0 +1,37 @@
+{
+  "code": 200,
+  "data": {
+    "pageId": "1f149d6d-5b2b-4f9b-a2f2-054dd75a831e",
+    "id": 112,
+    "projectId": "4",
+    "pageTitle": "threeJS",
+    "pageName": "threeJS",
+    "namespace": "联通",
+    "pageIcon": null,
+    "groupBy": "crud",
+    "updatedBy": "admin",
+    "updatedCause": null,
+    "hidden": false,
+    "assets": [
+      "http://localhost:8080/js/three.min.js?version=1.0.1",
+      "http://localhost:8080/js/gsap.min.js?version=1.0.1"
+    ],
+    "visible": [
+      8
+    ],
+    "pageDesc": null,
+    "pageSchema": {
+      "renderer": "page",
+      "body": [
+        {
+          "renderer": "three"
+        }
+      ]
+    },
+    "version": 0,
+    "status": 1,
+    "createdAt": "2025-01-17T11:42:39.000Z",
+    "updatedAt": "2025-01-17T11:43:57.000Z"
+  },
+  "describe": "请求成功"
+}
