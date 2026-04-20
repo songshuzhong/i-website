@@ -130,7 +130,7 @@
           "renderer": "chart",
           "name": "HKMap",
           "height": 626,
-          "mapArea": "HK",
+          "mapArea": "hk",
           "config": {
             "title": {
               "text": "Population Density of Hong Kong （2011）",
