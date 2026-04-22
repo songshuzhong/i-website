@@ -184,6 +184,15 @@ module.exports = {
           },
         });
       });
+      devServer.app.post('/v1/ajax/upload', (req, res) => {
+        res.json({
+          message: 'success',
+          code: 200,
+          data: {
+            filename: 'server.zip'
+          },
+        });
+      });
       return middlewares;
     },
     client: {

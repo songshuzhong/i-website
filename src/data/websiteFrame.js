@@ -207,7 +207,7 @@ export default {
           {
             renderer: 'action',
             category: 'image',
-            icon: '${avatar}',
+            icon: `${process.env.VUE_APP_PUBLIC_PATH}/logo/me.jpg`,
             popupType: 'over',
             popperWidth: '210px',
             popperClass: 'i-website__header__upload',
@@ -241,7 +241,8 @@ export default {
                   requiredOn: 'true'
                 }
               ]
-            }
+            },
+            circle: true
           },
           {
             renderer: 'dropdown',
@@ -311,7 +312,7 @@ export default {
               },
               {
                 renderer: 'avatar',
-                src: 'https://songshuzhong.github.io/i-website/dist/img/icons/favicon-32x32.png',
+                src: `${process.env.VUE_APP_PUBLIC_PATH}/logo/me.jpg`,
                 title: '令狐瓜子',
                 subTitle: 'sshuzhong@outlook.com',
                 actions: [
