@@ -25,7 +25,7 @@
         },
         "controls": [
           {
-            "renderer": "list",
+            "renderer": "radio",
             "name": "marketing-goals",
             "classname": "sf-marketing-goals__list",
             "label": "营销目标",

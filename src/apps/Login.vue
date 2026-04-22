@@ -27,16 +27,16 @@ export default defineComponent({
         promise = [import('element-plus/es/locale/lang/ja'), loadJa(), loadEditorJa()];
       }
       Promise.all(promise)
-          .then(([el, renderer, editor]) => {
-            tokens.value = {
-              ...el.default,
-              ...renderer.default,
-              ...editor.default,
-            };
-          })
-          .catch((e) => {
-            console.error(e);
-          });
+        .then(([el, renderer, editor]) => {
+          tokens.value = {
+            ...el.default,
+            ...renderer.default,
+            ...editor.default,
+          };
+        })
+        .catch((e) => {
+          console.error(e);
+        });
     };
     onBeforeMount(() => {
       updateLang(proxy.$iRenderConfig.language);

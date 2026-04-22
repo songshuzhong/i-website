@@ -548,6 +548,21 @@
             "assets": [],
             "pageDesc": null,
             "schemaUrl": "/api/page/d829a27a-5178-4035-bfbd-fbc0eff77567"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "su7",
+            "title": "小米su7",
+            "icon": "",
+            "pageId": "90ecb56c-e0b5-443f-a282-5095923d7faa",
+            "groupBy": "other",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/90ecb56c-e0b5-443f-a282-5095923d7faa"
           }
         ]
       },

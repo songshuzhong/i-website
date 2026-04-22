@@ -1,0 +1,33 @@
+{
+  "code": 200,
+  "data": {
+    "pageId": "2b7900e7-2236-4257-a2a6-3cac14b5862f",
+    "id": 33,
+    "projectId": "4",
+    "pageTitle": "ThreeJS",
+    "pageName": "map",
+    "namespace": "联通",
+    "pageIcon": "",
+    "groupBy": "依赖库",
+    "updatedBy": "admin",
+    "updatedCause": null,
+    "hidden": null,
+    "assets": [
+      "/js/three.min.js",
+      "/js/gui.min.js"
+    ],
+    "visible": null,
+    "pageDesc": null,
+    "pageSchema": {
+      "renderer": "page",
+      "body": {
+        "renderer": "three"
+      }
+    },
+    "version": 0,
+    "status": 1,
+    "createdAt": "2023-11-25T15:25:54.000Z",
+    "updatedAt": "2023-11-27T06:18:45.000Z"
+  },
+  "describe": "请求成功"
+}
