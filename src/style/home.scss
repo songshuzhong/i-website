@@ -21,30 +21,15 @@ html {
     .el-message {
       min-width: 95%;
     }
-    .el-menu {
-      &.el-menu--horizontal {
-        align-items: center;
-      }
-      .i-image__container {
-        width: 20px;
-      }
-      .i-html__container {
-        font-size: 12px;
-      }
-      .el-menu-item {
-        padding-right: 0;
-        padding-left: 10px;
-      }
-      .el-menu-item__title {
-        display: none;
-      }
-    }
     .i-main__container {
       .i-main__container {
         overflow: hidden;
       }
     }
     .i-home__page {
+      .el-menu {
+        background: var(--el-color-white);
+      }
       .i-home__banner__container {
         .i-home__banner__wrapper {
           padding: 0;
@@ -58,6 +43,14 @@ html {
           display: none;
         }
       }
+      .i-grid__container {
+        padding: 0;
+      }
+    }
+    .i-page__container {
+      width: 100% !important;
+      margin: 0;
+      overflow-x: hidden;
     }
     .i-home__thanks__images {
       padding: 30px 30px 40px 30px;
@@ -90,6 +83,9 @@ html {
     .i-home__footer {
       padding: 30px 0;
       text-align: center;
+    }
+    .i-admin__menu-expand {
+      color: var(--el-text-color-regular);
     }
     .el-carousel__container .i-wrapper__container__body {
       padding: 0;
@@ -386,7 +382,13 @@ html {
       color: var(--i-renderer-home-text-color);
     }
   }
+  .i-setting__container {
+    margin-top: 0;
+  }
   .i-admin__header__actions {
+    display: flex;
+    align-items: center;
+    justify-content: end;
     flex: 1;
     padding-right: 10px;
     text-align: right;

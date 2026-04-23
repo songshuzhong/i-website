@@ -67,6 +67,7 @@ export default {
           language: {
             clearable: false,
             size: 'default',
+            label: '',
             prefix: [
               {
                 d: 'M515.072 0a512 512 0 1 0 0.064 1024.064A512 512 0 0 0 515.072 0zM512 960A448 448 0 1 1 512 64a448 448 0 0 1 0 896z',
@@ -94,12 +95,6 @@ export default {
           }
         },
         labelPosition: 'left',
-        style: {
-          width: '200px',
-          display: 'inline-block',
-          marginTop: '0',
-          transform: 'translateY(4px)',
-        }
       },
       {
         renderer: 'dropdown',
@@ -134,9 +129,6 @@ export default {
         type: 'primary',
         size: 'medium',
         trigger: 'hover',
-        style: {
-          transform: 'translateY(4px)'
-        }
       }
     ]
   },
@@ -223,7 +215,7 @@ export default {
             {
               renderer: 'action',
               isText: true,
-              text: 'e-mail: sshuzhong@outlook.com',
+              text: 'mail: sshuzhong@outlook.com',
               actionType: 'mail'
             }
           ]

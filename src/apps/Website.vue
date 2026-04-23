@@ -69,25 +69,6 @@ export default defineComponent({
       });
     };
     onBeforeMount(() => {
-      const isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
-      if (isMobile) {
-        proxy.$dispatchAction(
-          proxy,
-          {
-            renderer: 'action',
-            actionType: 'trigger',
-            triggered: 'IWebsiteNav'
-          },
-          {
-            renderer: 'action',
-            actionType: 'trigger',
-            triggered: 'IWebsiteNav'
-          },
-          {},
-          () => {},
-        );
-      }
-      isMobile && proxy.$message.success('切换到PC端体验更加哦！');
       updateLang(proxy.$iRenderConfig.language);
     });
     onMounted(() => {
