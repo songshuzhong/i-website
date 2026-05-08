@@ -711,13 +711,14 @@ html {
   }
 }
 .i-website__router__loader {
-  height: 0;
+  background: transparent;
   &::before {
-    content: '';
-    display: block;
     height: 4px;
+    display: block;
     background: linear-gradient(to right, var(--i-renderer-home-particle-color), var(--i-renderer-home-text-color));
     animation: grow 1.2s ease-in-out;
+    transform: translateX(-120%);
+    content: '';
   }
   .el-loading-spinner {
     top: 30px;
@@ -768,9 +769,11 @@ html {
 @keyframes grow {
   from {
     width: 0;
+    transform: translateX(-120%);
   }
   to {
     width: 100%;
+    transform: translateX(0);
   }
 }
 @keyframes fillbgcolor {
