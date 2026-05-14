@@ -235,6 +235,40 @@
               ]
             },
             {
+              "renderer": "radio",
+              "name": "connect",
+              "label": "按钮单选框",
+              "tip": "联系方式",
+              "type": "button",
+              "defaultValue": "0",
+              "options": [
+                {
+                  "value": "0",
+                  "text": "电话"
+                },
+                {
+                  "value": "1",
+                  "text": "邮箱"
+                }
+              ]
+            },
+            {
+              "renderer": "input",
+              "name": "mail",
+              "label": "邮件",
+              "tip": "填写邮箱",
+              "visibleOn": "data.connect == 1",
+              "placeholder": "请填写邮箱"
+            },
+            {
+              "renderer": "input",
+              "name": "phone",
+              "label": "电话",
+              "tip": "预留电话",
+              "visibleOn": "data.connect == 0",
+              "placeholder": "请填写电话"
+            },
+            {
               "renderer": "select",
               "name": "role",
               "label": "下拉框",
@@ -291,40 +325,6 @@
                   "text": "妹妹"
                 }
               ]
-            },
-            {
-              "renderer": "radio",
-              "name": "connect",
-              "label": "按钮单选框",
-              "tip": "联系方式",
-              "type": "button",
-              "defaultValue": "0",
-              "options": [
-                {
-                  "value": "0",
-                  "text": "电话"
-                },
-                {
-                  "value": "1",
-                  "text": "邮箱"
-                }
-              ]
-            },
-            {
-              "renderer": "input",
-              "name": "mail",
-              "label": "邮件",
-              "tip": "填写邮箱",
-              "visibleOn": "data.connect == 1",
-              "placeholder": "请填写邮箱"
-            },
-            {
-              "renderer": "input",
-              "name": "phone",
-              "label": "电话",
-              "tip": "预留电话",
-              "visibleOn": "data.connect == 0",
-              "placeholder": "请填写电话"
             },
             {
               "renderer": "checkbox",
@@ -397,7 +397,19 @@
               "type": "datetime",
               "readonly": false,
               "disabledOn": "data.name=='shuzhong'",
-              "label": "日期选择器3",
+              "label": "日期",
+              "format": "YYYY-MM-DD",
+              "rules": []
+            },
+            {
+              "renderer": "datepicker",
+              "name": "createdAt",
+              "tip": "日期面板",
+              "type": "datetime",
+              "isPanel": true,
+              "readonly": false,
+              "disabledOn": "data.name=='shuzhong'",
+              "label": "日期面板",
               "format": "YYYY-MM-DD",
               "rules": []
             },
@@ -434,6 +446,10 @@
               "isPanel": true,
               "rules": [],
               "multiple": true
+            },
+            {
+              "renderer": "divider",
+              "text": "组合控件"
             },
             {
               "renderer": "combo",
@@ -500,41 +516,8 @@
               "type": "map"
             },
             {
-              "renderer": "list",
-              "name": "ll",
-              "label": "多选组",
-              "options": [
-                {
-                  "name": "key1",
-                  "value": "value1",
-                  "src": "",
-                  "title": "项1",
-                  "desc": "这是选项1"
-                },
-                {
-                  "name": "key2",
-                  "value": "value2",
-                  "src": "",
-                  "title": "项2",
-                  "desc": "那是选项2"
-                }
-              ],
-              "body": [
-                {
-                  "renderer": "avatar",
-                  "shape": "square",
-                  "borderRadius": 0,
-                  "color": "#606266",
-                  "bgColor": "#ffffff",
-                  "icon": "Avatar",
-                  "invert": true
-                },
-                {
-                  "renderer": "html",
-                  "html": "<div class='ulist-demo'><h4>${data.title}</h4><span>${data.desc}</span></div>"
-                }
-              ],
-              "rules": []
+              "renderer": "divider",
+              "text": "上传控件"
             },
             {
               "renderer": "upload",
