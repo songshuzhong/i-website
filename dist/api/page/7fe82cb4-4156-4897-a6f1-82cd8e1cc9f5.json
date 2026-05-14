@@ -25,12 +25,15 @@
     "pageSchema": {
       "renderer": "page",
       "initData": {
-        "name": "frfafad",
+        "name": "renderer",
+        "inputTag": ["1", "0", "1"],
+        "inputOtp": "123456",
         "syncValid": 123,
+        "checkbox": ["value1"],
         "sex": "0",
         "role": "9",
         "connect": "0",
-        "mail": "fasdgre@jl.com",
+        "mail": "sshuzhong@outlook.com",
         "phone": "4665432465",
         "createdAt": "2025-09-08",
         "adult": true,
@@ -39,7 +42,7 @@
         "switch_check": true,
         "textarea": "234",
         "richtxt": "eee",
-        "asyncValid": "12",
+        "asyncValid": 12,
         "image": "https://songshuzhong.github.io/i-assets/public/img/shuttle.png",
         "files": {
           "src": "https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
@@ -124,7 +127,9 @@
             "input": "1"
           }
         ],
-        "map": null,
+        "map": {
+          "key1": "value1"
+        },
         "ll": [
           "value1"
         ]
@@ -148,11 +153,46 @@
             {
               "renderer": "input",
               "name": "name",
-              "label": "姓名",
+              "label": "输入框",
               "tip": "请填写姓名",
               "placeholder": "请填写姓名",
               "requiredOn": true,
               "type": "text",
+              "validType": "normal"
+            },
+            {
+              "renderer": "inputtag",
+              "name": "inputTag",
+              "label": "标签输入框",
+              "requiredOn": true
+            },
+            {
+              "renderer": "inputotp",
+              "name": "inputOtp",
+              "label": "密码输入框",
+              "requiredOn": true
+            },
+            {
+              "renderer": "number",
+              "name": "asyncValid",
+              "label": "数字输入框",
+              "tip": "异步校验",
+              "placeholder": "异步校验",
+              "validType": "async",
+              "rules": [
+                {
+                  "exp": "/api/mock/form/verify?asyncValid=${asyncValid}",
+                  "type": "api",
+                  "trigger": "blur"
+                }
+              ]
+            },
+            {
+              "renderer": "input",
+              "name": "textarea",
+              "label": "文本框",
+              "placeholder": "占位符",
+              "type": "textarea",
               "validType": "normal"
             },
             {
@@ -180,25 +220,9 @@
               "rules": []
             },
             {
-              "renderer": "input",
-              "name": "asyncValid",
-              "label": "异步校验",
-              "tip": "异步校验",
-              "placeholder": "异步校验",
-              "type": "number",
-              "validType": "async",
-              "rules": [
-                {
-                  "exp": "/api/mock/form/verify?asyncValid=${asyncValid}",
-                  "type": "api",
-                  "trigger": "blur"
-                }
-              ]
-            },
-            {
               "renderer": "radio",
               "name": "sex",
-              "label": "性别",
+              "label": "单选框",
               "tip": "性别",
               "defaultValue": "0",
               "options": [
@@ -213,81 +237,11 @@
               ]
             },
             {
-              "renderer": "select",
-              "name": "role",
-              "label": "角色",
-              "tip": "请选择角色",
-              "visibleOn": "data.sex == 1",
-              "options": [
-                {
-                  "value": "1",
-                  "text": "爷爷"
-                },
-                {
-                  "value": "2",
-                  "text": "大伯"
-                },
-                {
-                  "value": "3",
-                  "text": "叔叔"
-                },
-                {
-                  "value": "4",
-                  "text": "哥哥"
-                },
-                {
-                  "value": "5",
-                  "text": "弟弟"
-                }
-              ]
-            },
-            {
-              "renderer": "select",
-              "name": "role",
-              "label": "角色",
-              "tip": "请选择角色",
-              "visibleOn": "data.sex == 0",
-              "options": [
-                {
-                  "value": "6",
-                  "text": "奶奶"
-                },
-                {
-                  "value": "7",
-                  "text": "大姑"
-                },
-                {
-                  "value": "8",
-                  "text": "小姑"
-                },
-                {
-                  "value": "9",
-                  "text": "姐姐"
-                },
-                {
-                  "value": "0",
-                  "text": "妹妹"
-                }
-              ]
-            },
-            {
-              "renderer": "cascader",
-              "name": "cascader",
-              "label": "级联",
-              "initApi": {
-                "url": "/api/mock/cities",
-                "method": "get"
-              },
-              "placeholder": "请输入",
-              "isPanel": true,
-              "rules": [],
-              "multiple": true
-            },
-            {
               "renderer": "radio",
               "name": "connect",
-              "label": "联系方式",
+              "label": "按钮单选框",
               "tip": "联系方式",
+              "type": "button",
               "defaultValue": "0",
               "options": [
                 {
@@ -317,27 +271,149 @@
               "placeholder": "请填写电话"
             },
             {
+              "renderer": "select",
+              "name": "role",
+              "label": "下拉框",
+              "tip": "请选择角色",
+              "visibleOn": "data.sex == 1",
+              "options": [
+                {
+                  "value": "1",
+                  "text": "爷爷"
+                },
+                {
+                  "value": "2",
+                  "text": "大伯"
+                },
+                {
+                  "value": "3",
+                  "text": "叔叔"
+                },
+                {
+                  "value": "4",
+                  "text": "哥哥"
+                },
+                {
+                  "value": "5",
+                  "text": "弟弟"
+                }
+              ]
+            },
+            {
+              "renderer": "select",
+              "name": "role",
+              "label": "下拉框",
+              "tip": "请选择角色",
+              "visibleOn": "data.sex == 0",
+              "options": [
+                {
+                  "value": "6",
+                  "text": "奶奶"
+                },
+                {
+                  "value": "7",
+                  "text": "大姑"
+                },
+                {
+                  "value": "8",
+                  "text": "小姑"
+                },
+                {
+                  "value": "9",
+                  "text": "姐姐"
+                },
+                {
+                  "value": "0",
+                  "text": "妹妹"
+                }
+              ]
+            },
+            {
+              "renderer": "checkbox",
+              "name": "checkbox",
+              "label": "复选框",
+              "options": [
+                {
+                  "text": "文案1",
+                  "value": "value1"
+                },
+                {
+                  "text": "文案2",
+                  "value": "value2"
+                },
+                {
+                  "text": "文案3",
+                  "value": "value3"
+                }
+              ]
+            },
+            {
+              "renderer": "checkbox",
+              "name": "checkbox",
+              "label": "按钮复选框",
+              "type": "button",
+              "options": [
+                {
+                  "text": "文案1",
+                  "value": "value1"
+                },
+                {
+                  "text": "文案2",
+                  "value": "value2"
+                },
+                {
+                  "text": "文案3",
+                  "value": "value3"
+                }
+              ]
+            },
+            {
+              "renderer": "checkbox",
+              "name": "checkbox",
+              "label": "自定义复选框",
+              "options": [
+                {
+                  "text": "文案1",
+                  "value": "value1"
+                },
+                {
+                  "text": "文案2",
+                  "value": "value2"
+                },
+                {
+                  "text": "文案3",
+                  "value": "value3"
+                }
+              ],
+              "body": [
+                {
+                  "renderer": "html",
+                  "html": "<h1>${$.text}</h1>"
+                }
+              ]
+            },
+            {
               "renderer": "datepicker",
               "name": "createdAt",
-              "tip": "请选择派送日期",
+              "tip": "日期",
               "type": "datetime",
               "readonly": false,
               "disabledOn": "data.name=='shuzhong'",
-              "label": "日期选择器3",
+              "label": "日期",
               "format": "YYYY-MM-DD",
               "rules": []
             },
             {
-              "renderer": "switch",
-              "name": "adult",
-              "label": "成年",
-              "defaultValue": true,
-              "tip": "已满十八岁"
-            },
-            {
-              "renderer": "colorpicker",
-              "name": "color",
-              "label": "颜色"
+              "renderer": "datepicker",
+              "name": "createdAt",
+              "tip": "日期面板",
+              "type": "datetime",
+              "isPanel": true,
+              "readonly": false,
+              "disabledOn": "data.name=='shuzhong'",
+              "label": "日期面板",
+              "format": "YYYY-MM-DD",
+              "rules": []
             },
             {
               "renderer": "rate",
@@ -345,12 +421,37 @@
               "label": "评论"
             },
             {
-              "renderer": "input",
-              "name": "textarea",
-              "label": "文本框",
-              "placeholder": "占位符",
-              "type": "textarea",
-              "validType": "normal"
+              "renderer": "slider",
+              "name": "slider",
+              "label": "滑块"
+            },
+            {
+              "renderer": "colorpicker",
+              "name": "color",
+              "label": "颜色"
+            },
+            {
+              "renderer": "colorpicker",
+              "name": "color",
+              "isPanel": true,
+              "label": "颜色面板"
+            },
+            {
+              "renderer": "cascader",
+              "name": "cascader",
+              "label": "级联选择框",
+              "initApi": {
+                "url": "/api/mock/cities",
+                "method": "get"
+              },
+              "placeholder": "请输入",
+              "isPanel": true,
+              "rules": [],
+              "multiple": true
+            },
+            {
+              "renderer": "divider",
+              "text": "组合控件"
             },
             {
               "renderer": "combo",
@@ -397,7 +498,17 @@
                   "renderer": "radio",
                   "label": "radio",
                   "name": "radio",
-                  "requiredOn": "1"
+                  "requiredOn": "1",
+                  "options": [
+                    {
+                      "text": "value1",
+                      "value": "value1"
+                    },
+                    {
+                      "text": "value2",
+                      "value": "value2"
+                    }
+                  ]
                 },
                 {
                   "renderer": "input",
@@ -417,41 +528,8 @@
               "type": "map"
             },
             {
-              "renderer": "list",
-              "name": "ll",
-              "label": "多选组",
-              "options": [
-                {
-                  "name": "key1",
-                  "value": "value1",
-                  "src": "",
-                  "title": "项1",
-                  "desc": "这是选项1"
-                },
-                {
-                  "name": "key2",
-                  "value": "value2",
-                  "src": "",
-                  "title": "项2",
-                  "desc": "那是选项2"
-                }
-              ],
-              "body": [
-                {
-                  "renderer": "avatar",
-                  "shape": "square",
-                  "borderRadius": 0,
-                  "color": "#606266",
-                  "bgColor": "#ffffff",
-                  "icon": "Avatar",
-                  "invert": true
-                },
-                {
-                  "renderer": "html",
-                  "html": "<div class='ulist-demo'><h4>${data.title}</h4><span>${data.desc}</span></div>"
-                }
-              ],
-              "rules": []
+              "renderer": "divider",
+              "text": "上传控件"
             },
             {
               "renderer": "upload",

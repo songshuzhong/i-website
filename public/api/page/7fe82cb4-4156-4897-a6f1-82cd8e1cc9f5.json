@@ -127,7 +127,9 @@
             "input": "1"
           }
         ],
-        "map": null,
+        "map": {
+          "key1": "value1"
+        },
         "ll": [
           "value1"
         ]
@@ -496,7 +498,17 @@
                   "renderer": "radio",
                   "label": "radio",
                   "name": "radio",
-                  "requiredOn": "1"
+                  "requiredOn": "1",
+                  "options": [
+                    {
+                      "text": "value1",
+                      "value": "value1"
+                    },
+                    {
+                      "text": "value2",
+                      "value": "value2"
+                    }
+                  ]
                 },
                 {
                   "renderer": "input",

@@ -107,10 +107,12 @@ String.prototype.$isBetween = function(target1, target2) {
  * @returns {String}
  * <Greeting name="sshuzhong@outlook.com" />
  */
-String.prototype.$format = function(goal = 'YYYY年MM月DD日') {
+String.prototype.$format = function(goal = 'YYYY/MM/DD HH:mm:ss') {
   try {
-    const current = /^\d{13}$/.test(this) || !/^[+-]?\d+$/.test(this)? this: this * 1000;
-    return dayjs(current).format(goal);
+    if (/^\d+(\.\d+)?$/.test(this)) {
+      return dayjs(Number(this)).format(goal);
+    }
+    return this;
   } catch (e) {
     return this;
   }
