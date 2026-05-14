@@ -50,6 +50,7 @@ export {
   ElInput,
   ElInputNumber,
   ElInputTag,
+  ElInputOtp,
   ElLink,
   ElMenu,
   ElMenuItem,
