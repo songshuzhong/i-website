@@ -420,6 +420,7 @@
                 {
                   "renderer": "action",
                   "size": "small",
+                  "plain": true,
                   "body": [
                     {
                       "renderer": "action",
@@ -602,14 +603,25 @@
               "renderer": "column"
             }
           ],
-          "actions": [
+          "header": [
             {
-              "renderer": "action",
-              "text": "已选${$.selectedRows.length}条数据",
-              "size": "small",
-              "type": "success",
-              "isText": true,
-              "visibleOn": "data.selectedRows.length"
+              "renderer": "countdown",
+              "type": "digital",
+              "format": "ss",
+              "value": "2500",
+              "hidden": true,
+              "body": {
+                "renderer": "html",
+                "html": "<strong>已选 ${$.selectedRows.length} 条数据</strong>",
+                "style": {
+                  "fontSize": "14"
+                }
+              },
+              "visibleOn": "data.selectedRows.length",
+              "style": {
+                "flex": 1,
+                "textAlign": "left"
+              }
             },
             {
               "renderer": "action",
@@ -652,79 +664,95 @@
             },
             {
               "renderer": "action",
-              "text": "批量启用",
               "size": "small",
-              "type": "success",
-              "actionType": "ajax",
-              "actionApi": {
-                "url": "/api/mock/user",
-                "method": "get",
-                "params": {
-                  "state": "1",
-                  "selectedRows": "${selectedRows}"
+              "plain": true,
+              "body": [
+                {
+                  "renderer": "action",
+                  "text": "批量启用",
+                  "size": "small",
+                  "type": "success",
+                  "actionType": "ajax",
+                  "actionApi": {
+                    "url": "/api/mock/user",
+                    "method": "get",
+                    "params": {
+                      "state": "1",
+                      "selectedRows": "${selectedRows}"
+                    },
+                    "silentMessage": true
+                  },
+                  "plain": true,
+                  "disabledOn": "!data.selectedRows.length",
+                  "icon": "VideoPlay",
+                  "reload": "DeleteResultDialog"
                 },
-                "silentMessage": true
-              },
-              "plain": true,
-              "visibleOn": "data.selectedRows.length",
-              "icon": "VideoPlay",
-              "reload": "DeleteResultDialog"
-            },
-            {
-              "renderer": "action",
-              "text": "批量停用",
-              "type": "warning",
-              "size": "small",
-              "actionType": "ajax",
-              "actionApi": {
-                "url": "/api/mock/user",
-                "method": "get",
-                "params": {
-                  "state": "0",
-                  "selectedRows": "${selectedRows}"
+                {
+                  "renderer": "action",
+                  "text": "批量停用",
+                  "type": "warning",
+                  "size": "small",
+                  "actionType": "ajax",
+                  "actionApi": {
+                    "url": "/api/mock/user",
+                    "method": "get",
+                    "params": {
+                      "state": "0",
+                      "selectedRows": "${selectedRows}"
+                    },
+                    "silentMessage": true
+                  },
+                  "plain": true,
+                  "disabledOn": "!data.selectedRows.length",
+                  "icon": "VideoPause",
+                  "reload": "DeleteResultDialog"
                 },
-                "silentMessage": true
-              },
-              "plain": true,
-              "visibleOn": "data.selectedRows.length",
-              "icon": "VideoPause",
-              "reload": "DeleteResultDialog"
-            },
-            {
-              "renderer": "action",
-              "text": "批量删除",
-              "size": "small",
-              "type": "danger",
-              "actionType": "ajax",
-              "actionApi": {
-                "url": "/api/mock/user",
-                "method": "get",
-                "params": {
-                  "textarea": "${textarea}",
-                  "selectedRows": "${selectedRows}"
+                {
+                  "renderer": "action",
+                  "text": "批量删除",
+                  "size": "small",
+                  "type": "danger",
+                  "actionType": "ajax",
+                  "actionApi": {
+                    "url": "/api/mock/user",
+                    "method": "get",
+                    "params": {
+                      "textarea": "${textarea}",
+                      "selectedRows": "${selectedRows}"
+                    },
+                    "silentMessage": true
+                  },
+                  "plain": true,
+                  "disabledOn": "!data.selectedRows.length",
+                  "icon": "Delete",
+                  "reload": "DeleteResultDialog"
                 },
-                "silentMessage": true
-              },
-              "plain": true,
-              "visibleOn": "data.selectedRows.length",
-              "icon": "Delete",
-              "reload": "DeleteResultDialog"
-            },
-            {
-              "renderer": "action",
-              "size": "small",
-              "icon": "Printer",
-              "actionType": "print",
-              "text": "打印",
-              "plain": true,
-              "target": "UserTable"
+                {
+                  "renderer": "action",
+                  "text": "导入"
+                },
+                {
+                  "renderer": "action",
+                  "text": "导出"
+                },
+                {
+                  "renderer": "action",
+                  "size": "small",
+                  "icon": "Printer",
+                  "actionType": "print",
+                  "text": "打印",
+                  "plain": true,
+                  "target": "UserTable"
+                }
+              ]
             }
           ],
           "updateOnRowId": "uid",
           "showDynamicColumn": true,
           "reactive": true
         }
-      ]
+      ],
+      "innerStyle": ".el-statistic__content {\n  display: none;\n}"
     },
     "version": 0,
     "status": 1,
