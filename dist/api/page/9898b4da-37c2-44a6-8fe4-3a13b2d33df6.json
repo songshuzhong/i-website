@@ -309,10 +309,7 @@
           "selectableOn": "data.name!='1345'",
           "columns": [
             {
-              "type": "index",
-              "body": [],
-              "align": "none",
-              "fixed": "left"
+              "type": "selection"
             },
             {
               "label": "uid",
@@ -328,8 +325,7 @@
               ],
               "align": "center",
               "visibleOn": "data.type!=1",
-              "fixed": "left",
-              "type": "-"
+              "renderer": "column"
             },
             {
               "name": "name",
@@ -390,9 +386,6 @@
               "sortable": true
             },
             {
-              "fixed": false,
-              "sortable": false,
-              "type": "none",
               "align": "center",
               "body": [
                 {
@@ -401,27 +394,24 @@
                   "map": {
                     "0": "女",
                     "1": "男"
-                  }
+                  },
+                  "name": "sex"
                 }
-              ]
+              ],
+              "renderer": "column",
+              "label": "性别",
+              "name": "sex"
             },
             {
               "label": "创建时间",
               "name": "createdAt",
-              "fixed": false,
-              "sortable": false,
-              "type": "",
               "align": "center",
-              "body": []
+              "renderer": "column"
             },
             {
               "label": "更新时间",
               "name": "updatedAt",
-              "fixed": false,
-              "sortable": false,
-              "type": "",
-              "align": "center",
-              "body": []
+              "align": "center"
             },
             {
               "label": "操作",
@@ -430,6 +420,7 @@
                 {
                   "renderer": "action",
                   "size": "small",
+                  "plain": true,
                   "body": [
                     {
                       "renderer": "action",
@@ -583,13 +574,11 @@
                       "confirmTitle": "确定删除吗？",
                       "actionType": "ajax",
                       "actionApi": {
-                        "url": "/api/user?id=${id}",
-                        "method": "delete",
-                        "params": {}
+                        "url": "/api/user.json?id=${id}",
+                        "method": "get",
+                        "params": {},
+                        "silentMessage": true
                       },
-                      "reload": "UserTable",
-                      "params": {},
-                      "body": {},
                       "disabledOn": "$.id === 'fake-list-2'",
                       "messageBoxExp": "$.id",
                       "popoverTitle": "确定要删除吗？",
@@ -610,68 +599,169 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "renderer": "column"
             }
           ],
-          "actions": [
+          "header": [
             {
-              "renderer": "Extable",
-              "lazy": true,
-              "name": "extable",
-              "target": "UserTable"
-            },
-            {
-              "renderer": "action",
-              "text": "批量删除",
-              "size": "small",
-              "actionType": "ajax",
-              "actionApi": {
-                "url": "/api/users",
-                "method": "delete",
-                "params": {
-                  "*": "*"
+              "renderer": "countdown",
+              "type": "digital",
+              "format": "ss",
+              "value": "2500",
+              "hidden": true,
+              "body": {
+                "renderer": "html",
+                "html": "<strong>已选 ${$.selectedRows.length} 条数据</strong>",
+                "style": {
+                  "fontSize": "14"
                 }
               },
-              "params": {},
-              "body": {},
-              "plain": true,
-              "disabledOn": "!data.selectedRows.length",
-              "icon": "Delete"
+              "visibleOn": "data.selectedRows.length",
+              "style": {
+                "flex": 1,
+                "textAlign": "left"
+              }
+            },
+            {
+              "renderer": "action",
+              "name": "DeleteResultDialog",
+              "immediateOn": "$.notices",
+              "style": {
+                "visibility": "hidden"
+              },
+              "text": "删除结果弹窗",
+              "actionType": "dialog",
+              "body": {
+                "renderer": "dialog",
+                "body": [
+                  {
+                    "renderer": "form",
+                    "controls": [
+                      {
+                        "renderer": "table",
+                        "name": "notices",
+                        "hasPageInfo": false,
+                        "columns": [
+                          {
+                            "label": "id",
+                            "name": "id"
+                          },
+                          {
+                            "label": "标题",
+                            "name": "title"
+                          },
+                          {
+                            "label": "类型",
+                            "name": "type"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
             },
             {
               "renderer": "action",
               "size": "small",
-              "icon": "Printer",
-              "actionType": "print",
-              "actionApi": {
-                "url": "",
-                "method": "post",
-                "params": {}
-              },
-              "params": {},
-              "body": {},
-              "text": "打印",
               "plain": true,
-              "target": "UserTable"
+              "body": [
+                {
+                  "renderer": "action",
+                  "text": "批量启用",
+                  "size": "small",
+                  "type": "success",
+                  "actionType": "ajax",
+                  "actionApi": {
+                    "url": "/api/mock/user",
+                    "method": "get",
+                    "params": {
+                      "state": "1",
+                      "selectedRows": "${selectedRows}"
+                    },
+                    "silentMessage": true
+                  },
+                  "plain": true,
+                  "disabledOn": "!data.selectedRows.length",
+                  "icon": "VideoPlay",
+                  "reload": "DeleteResultDialog",
+                  "popupType": "dialog",
+                  "confirmTitle": "确定启用吗？",
+                  "popoverTitle": "确定启用吗？"
+                },
+                {
+                  "renderer": "action",
+                  "text": "批量停用",
+                  "type": "warning",
+                  "size": "small",
+                  "actionType": "ajax",
+                  "actionApi": {
+                    "url": "/api/mock/user",
+                    "method": "get",
+                    "params": {
+                      "state": "0",
+                      "selectedRows": "${selectedRows}"
+                    },
+                    "silentMessage": true
+                  },
+                  "plain": true,
+                  "disabledOn": "!data.selectedRows.length",
+                  "icon": "VideoPause",
+                  "reload": "DeleteResultDialog",
+                  "popupType": "dialog",
+                  "confirmTitle": "确定停用吗？",
+                  "popoverTitle": "确定停用吗？"
+                },
+                {
+                  "renderer": "action",
+                  "text": "批量删除",
+                  "size": "small",
+                  "type": "danger",
+                  "actionType": "ajax",
+                  "actionApi": {
+                    "url": "/api/mock/user",
+                    "method": "get",
+                    "params": {
+                      "textarea": "${textarea}",
+                      "selectedRows": "${selectedRows}"
+                    },
+                    "silentMessage": true
+                  },
+                  "plain": true,
+                  "disabledOn": "!data.selectedRows.length",
+                  "icon": "Delete",
+                  "reload": "DeleteResultDialog",
+                  "popupType": "dialog",
+                  "confirmTitle": "确定删除吗？",
+                  "popoverTitle": "确定删除吗？"
+                },
+                {
+                  "renderer": "action",
+                  "text": "导入"
+                },
+                {
+                  "renderer": "action",
+                  "text": "导出"
+                },
+                {
+                  "renderer": "action",
+                  "size": "small",
+                  "icon": "Printer",
+                  "actionType": "print",
+                  "text": "打印",
+                  "plain": true,
+                  "target": "UserTable"
+                }
+              ]
             }
           ],
           "updateOnRowId": "uid",
           "showDynamicColumn": true,
-          "pageConfig": {
-            "pageIndex": "pageIndex",
-            "pageSize": "pageSize",
-            "total": "count",
-            "rows": "rows",
-            "iLayout": [
-              "prev",
-              "pager",
-              "next",
-              "total"
-            ]
-          },
           "reactive": true
         }
-      ]
+      ],
+      "innerStyle": ".el-statistic__content {\n  display: none;\n}"
     },
     "version": 0,
     "status": 1,

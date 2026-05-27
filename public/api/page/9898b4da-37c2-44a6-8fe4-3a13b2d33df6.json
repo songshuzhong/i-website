@@ -685,7 +685,10 @@
                   "plain": true,
                   "disabledOn": "!data.selectedRows.length",
                   "icon": "VideoPlay",
-                  "reload": "DeleteResultDialog"
+                  "reload": "DeleteResultDialog",
+                  "popupType": "dialog",
+                  "confirmTitle": "确定启用吗？",
+                  "popoverTitle": "确定启用吗？"
                 },
                 {
                   "renderer": "action",
@@ -705,7 +708,10 @@
                   "plain": true,
                   "disabledOn": "!data.selectedRows.length",
                   "icon": "VideoPause",
-                  "reload": "DeleteResultDialog"
+                  "reload": "DeleteResultDialog",
+                  "popupType": "dialog",
+                  "confirmTitle": "确定停用吗？",
+                  "popoverTitle": "确定停用吗？"
                 },
                 {
                   "renderer": "action",
@@ -725,7 +731,10 @@
                   "plain": true,
                   "disabledOn": "!data.selectedRows.length",
                   "icon": "Delete",
-                  "reload": "DeleteResultDialog"
+                  "reload": "DeleteResultDialog",
+                  "popupType": "dialog",
+                  "confirmTitle": "确定删除吗？",
+                  "popoverTitle": "确定删除吗？"
                 },
                 {
                   "renderer": "action",

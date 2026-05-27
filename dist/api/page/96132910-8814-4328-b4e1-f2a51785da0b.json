@@ -635,154 +635,157 @@
                                                   "name": "taskInsts",
                                                   "body": [
                                                     {
-                                                      "renderer": "render",
-                                                      "style": {
-                                                        "position": "absolute",
-                                                        "left": "-30px",
-                                                        "marginTop": "-34px",
-                                                        "display": "flex",
-                                                        "justifyContent": "flex-start",
-                                                        "alignItems": "center",
-                                                        "gap": "16px",
-                                                        "fontSize": "12px"
-                                                      },
-                                                      "body": [
+                                                      "renderer": "wrapper",
+                                                      "header": [
                                                         {
-                                                          "renderer": "icon",
-                                                          "visibleOn": "'adminTerminate,return,formWithdraws'.includes($.approvalOperationType)",
-                                                          "custom": true,
-                                                          "icon": [
+                                                          "renderer": "render",
+                                                          "style": {
+                                                            "position": "absolute",
+                                                            "left": "-30px",
+                                                            "marginTop": "-34px",
+                                                            "display": "flex",
+                                                            "justifyContent": "flex-start",
+                                                            "alignItems": "center",
+                                                            "gap": "16px",
+                                                            "fontSize": "12px"
+                                                          },
+                                                          "body": [
                                                             {
-                                                              "d": "M581.056 288.32H232.96l108.352-102.208c15.552-15.744 19.456-31.104 4.16-46.208-16.064-15.872-32.576-15.808-48.64 0l-145.92 144.768c-8.768 8.832-23.488 20.608-22.08 32.448l0.64 4.8-0.64 4.864c-1.344 11.776 6.4 18.24 14.848 26.816l147.648 145.216c16.064 15.808 38.08 20.992 54.144 5.12 15.296-15.104 3.84-38.208-11.328-53.504L233.152 353.6 581.056 352c126.464 0 250.944 111.488 250.944 236.16C832 712.832 707.52 832 581.056 832H246.4c-22.592 0-29.696 9.6-29.696 32.256s7.04 31.744 29.696 31.744H581.12C755.136 896 896 757.696 896 588.16c0-169.408-140.8-299.84-314.944-299.84z",
-                                                              "fill": "#606266"
+                                                              "renderer": "icon",
+                                                              "visibleOn": "'adminTerminate,return,formWithdraws'.includes($.approvalOperationType)",
+                                                              "custom": true,
+                                                              "icon": [
+                                                                {
+                                                                  "d": "M581.056 288.32H232.96l108.352-102.208c15.552-15.744 19.456-31.104 4.16-46.208-16.064-15.872-32.576-15.808-48.64 0l-145.92 144.768c-8.768 8.832-23.488 20.608-22.08 32.448l0.64 4.8-0.64 4.864c-1.344 11.776 6.4 18.24 14.848 26.816l147.648 145.216c16.064 15.808 38.08 20.992 54.144 5.12 15.296-15.104 3.84-38.208-11.328-53.504L233.152 353.6 581.056 352c126.464 0 250.944 111.488 250.944 236.16C832 712.832 707.52 832 581.056 832H246.4c-22.592 0-29.696 9.6-29.696 32.256s7.04 31.744 29.696 31.744H581.12C755.136 896 896 757.696 896 588.16c0-169.408-140.8-299.84-314.944-299.84z",
+                                                                  "fill": "#606266"
+                                                                },
+                                                                {
+                                                                  "d": "M323.392 192a32 32 0 1 1 0-64 32 32 0 0 1 0 64zM320.192 514.048a32 32 0 1 1 0-64 32 32 0 0 1 0 64zM237.824 896a32 32 0 1 1 0-64 32 32 0 0 1 0 64z",
+                                                                  "fill": "#606266"
+                                                                }
+                                                              ],
+                                                              "style": {
+                                                                "--gbColor": "var(--el-color-white)",
+                                                                "z-index": 10
+                                                              }
                                                             },
                                                             {
-                                                              "d": "M323.392 192a32 32 0 1 1 0-64 32 32 0 0 1 0 64zM320.192 514.048a32 32 0 1 1 0-64 32 32 0 0 1 0 64zM237.824 896a32 32 0 1 1 0-64 32 32 0 0 1 0 64z",
-                                                              "fill": "#606266"
+                                                              "renderer": "icon",
+                                                              "visibleOn": "'Start'.includes($.approvalOperationType)",
+                                                              "icon": "Position",
+                                                              "style": {
+                                                                "--gbColor": "var(--el-color-white)",
+                                                                "z-index": 10
+                                                              }
+                                                            },
+                                                            {
+                                                              "renderer": "icon",
+                                                              "visibleOn": "'approved'.includes($.approvalOperationType)",
+                                                              "icon": "Check",
+                                                              "style": {
+                                                                "--gbColor": "var(--el-color-white)",
+                                                                "z-index": 10
+                                                              }
+                                                            },
+                                                            {
+                                                              "renderer": "icon",
+                                                              "visibleOn": "'active'.includes($.approvalOperationType)",
+                                                              "icon": "InfoFilled",
+                                                              "style": {
+                                                                "--gbColor": "var(--el-color-white)",
+                                                                "z-index": 10
+                                                              }
+                                                            },
+                                                            {
+                                                              "renderer": "mapping",
+                                                              "name": "approvalOperationType",
+                                                              "map": {
+                                                                "active": "待办",
+                                                                "adminTerminate": "管理员终止",
+                                                                "approved": "同意",
+                                                                "return": "退回",
+                                                                "Start": "开始",
+                                                                "formWithdraws": "表单撤回"
+                                                              }
                                                             }
-                                                          ],
-                                                          "style": {
-                                                            "--gbColor": "var(--el-color-white)",
-                                                            "z-index": 10
-                                                          }
+                                                          ]
                                                         },
                                                         {
-                                                          "renderer": "icon",
-                                                          "visibleOn": "'Start'.includes($.approvalOperationType)",
-                                                          "icon": "Position",
-                                                          "style": {
-                                                            "--gbColor": "var(--el-color-white)",
-                                                            "z-index": 10
-                                                          }
+                                                          "renderer": "avatar",
+                                                          "title": "${$.createdByName}",
+                                                          "shape": "circle",
+                                                          "borderRadius": 100,
+                                                          "color": "#606266",
+                                                          "bgColor": "#ffffff",
+                                                          "icon": "Avatar",
+                                                          "size": 18
                                                         },
                                                         {
-                                                          "renderer": "icon",
-                                                          "visibleOn": "'approved'.includes($.approvalOperationType)",
-                                                          "icon": "Check",
-                                                          "style": {
-                                                            "--gbColor": "var(--el-color-white)",
-                                                            "z-index": 10
-                                                          }
+                                                          "renderer": "switch",
+                                                          "name": "isEdit",
+                                                          "type": "icon",
+                                                          "activeText": "Comment",
+                                                          "inactiveText": "Comment",
+                                                          "classname": "is-edit"
                                                         },
                                                         {
-                                                          "renderer": "icon",
-                                                          "visibleOn": "'active'.includes($.approvalOperationType)",
-                                                          "icon": "InfoFilled",
+                                                          "renderer": "html",
+                                                          "html": "${$.operationalOpinions}",
+                                                          "visibleOn": "'return,formWithdraws'.includes($.approvalOperationType)",
                                                           "style": {
-                                                            "--gbColor": "var(--el-color-white)",
-                                                            "z-index": 10
-                                                          }
+                                                            "display": "block",
+                                                            "margin-top": "-10px",
+                                                            "text-align": "left",
+                                                            "font-size": "12px"
+                                                          },
+                                                          "inline": true
                                                         },
                                                         {
-                                                          "renderer": "mapping",
-                                                          "name": "approvalOperationType",
-                                                          "map": {
-                                                            "active": "待办",
-                                                            "adminTerminate": "管理员终止",
-                                                            "approved": "同意",
-                                                            "return": "退回",
-                                                            "Start": "开始",
-                                                            "formWithdraws": "表单撤回"
-                                                          }
+                                                          "renderer": "html",
+                                                          "html": "${$.startDate.$format()}",
+                                                          "style": {
+                                                            "display": "block",
+                                                            "margin-top": "-22px",
+                                                            "text-align": "left",
+                                                            "font-size": "12px"
+                                                          },
+                                                          "inline": true
                                                         }
-                                                      ]
-                                                    },
-                                                    {
-                                                      "renderer": "avatar",
-                                                      "title": "${$.createdByName}",
-                                                      "shape": "circle",
-                                                      "borderRadius": 100,
-                                                      "color": "#606266",
-                                                      "bgColor": "#ffffff",
-                                                      "icon": "Avatar",
-                                                      "size": 18
-                                                    },
-                                                    {
-                                                      "renderer": "switch",
-                                                      "name": "isEdit",
-                                                      "type": "icon",
-                                                      "activeText": "Comment",
-                                                      "inactiveText": "Comment",
-                                                      "classname": "is-edit"
-                                                    },
-                                                    {
-                                                      "renderer": "html",
-                                                      "html": "${$.operationalOpinions}",
-                                                      "visibleOn": "'return,formWithdraws'.includes($.approvalOperationType)",
-                                                      "style": {
-                                                        "display": "block",
-                                                        "margin-top": "-10px",
-                                                        "text-align": "left",
-                                                        "font-size": "12px"
-                                                      },
-                                                      "inline": true
-                                                    },
-                                                    {
-                                                      "renderer": "html",
-                                                      "html": "${$.startDate.$format()}",
-                                                      "style": {
-                                                        "display": "block",
-                                                        "margin-top": "-22px",
-                                                        "text-align": "left",
-                                                        "font-size": "12px"
-                                                      },
-                                                      "inline": true
-                                                    }
-                                                  ]
-                                                }
-                                              ],
-                                              "body": [
-                                                {
-                                                  "renderer": "wrapper",
-                                                  "visibleOn": "$.isEdit",
-                                                  "body": [
-                                                    {
-                                                      "renderer": "form",
-                                                      "style": {
-                                                        "padding-top": "10px"
-                                                      },
-                                                      "controls": [
+                                                      ],
+                                                      "body": [
                                                         {
-                                                          "renderer": "input",
-                                                          "name": "comment",
-                                                          "type": "textarea",
-                                                          "maxlength": 200,
-                                                          "showWordLimit": true
-                                                        },
-                                                        {
-                                                          "renderer": "action",
-                                                          "text": "取消",
-                                                          "size": "small",
-                                                          "round": true,
-                                                          "type": "info",
-                                                          "plain": true
-                                                        },
-                                                        {
-                                                          "renderer": "action",
-                                                          "text": "评论",
-                                                          "disabledOn": "!$.comment.length",
-                                                          "size": "small",
-                                                          "round": true
+                                                          "renderer": "wrapper",
+                                                          "visibleOn": "$.isEdit",
+                                                          "body": {
+                                                            "renderer": "form",
+                                                            "style": {
+                                                              "padding-top": "10px"
+                                                            },
+                                                            "controls": [
+                                                              {
+                                                                "renderer": "input",
+                                                                "name": "comment",
+                                                                "type": "textarea",
+                                                                "maxlength": 200,
+                                                                "showWordLimit": true
+                                                              },
+                                                              {
+                                                                "renderer": "action",
+                                                                "text": "取消",
+                                                                "size": "small",
+                                                                "round": true,
+                                                                "type": "info",
+                                                                "plain": true
+                                                              },
+                                                              {
+                                                                "renderer": "action",
+                                                                "text": "评论",
+                                                                "disabledOn": "!$.comment.length",
+                                                                "size": "small",
+                                                                "round": true
+                                                              }
+                                                            ]
+                                                          }
                                                         }
                                                       ]
                                                     }
