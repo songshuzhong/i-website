@@ -600,7 +600,8 @@
                   ]
                 }
               ],
-              "renderer": "column"
+              "renderer": "column",
+              "width": "220"
             }
           ],
           "header": [
@@ -738,10 +739,12 @@
                 },
                 {
                   "renderer": "action",
+                  "icon": "Upload",
                   "text": "导入"
                 },
                 {
                   "renderer": "action",
+                  "icon": "Download",
                   "text": "导出"
                 },
                 {

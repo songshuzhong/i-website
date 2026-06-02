@@ -51,16 +51,20 @@
                   "promiseType": "any",
                   "initApi": [
                     {
-                      "url": "/api/mock/news",
-                      "method": "get",
-                      "cached": false,
-                      "params": {}
+                      "initApi": {
+                        "url": "/api/mock/news",
+                        "method": "get",
+                        "cached": false,
+                        "params": {}
+                      }
                     },
                     {
-                      "url": "/api/mock/permissions",
-                      "method": "get",
-                      "cached": false,
-                      "params": {}
+                      "initApi": {
+                        "url": "/api/mock/permissions",
+                        "method": "get",
+                        "cached": false,
+                        "params": {}
+                      }
                     }
                   ],
                   "body": [
@@ -81,16 +85,20 @@
                   "promiseType": "race",
                   "initApi": [
                     {
-                      "url": "/api/mock/news",
-                      "method": "get",
-                      "cached": false,
-                      "params": {}
+                      "initApi": {
+                        "url": "/api/mock/news",
+                        "method": "get",
+                        "cached": false,
+                        "params": {}
+                      }
                     },
                     {
-                      "url": "/api/mock/permissions",
-                      "method": "get",
-                      "cached": false,
-                      "params": {}
+                      "initApi": {
+                        "url": "/api/mock/permissions",
+                        "method": "get",
+                        "cached": false,
+                        "params": {}
+                      }
                     }
                   ],
                   "body": [
@@ -111,16 +119,20 @@
                   "promiseType": "all",
                   "initApi": [
                     {
-                      "url": "/api/mock/news",
-                      "method": "get",
-                      "cached": false,
-                      "params": {}
+                      "initApi": {
+                        "url": "/api/mock/news",
+                        "method": "get",
+                        "cached": false,
+                        "params": {}
+                      }
                     },
                     {
-                      "url": "/api/mock/permissions",
-                      "method": "get",
-                      "cached": false,
-                      "params": {}
+                      "initApi": {
+                        "url": "/api/mock/permissions",
+                        "method": "get",
+                        "cached": false,
+                        "params": {}
+                      }
                     }
                   ],
                   "body": [
@@ -141,16 +153,20 @@
                   "promiseType": "allSettled",
                   "initApi": [
                     {
-                      "url": "/api/mock/news",
-                      "method": "get",
-                      "cached": false,
-                      "params": {}
+                      "initApi": {
+                        "url": "/api/mock/news",
+                        "method": "get",
+                        "cached": false,
+                        "params": {}
+                      }
                     },
                     {
-                      "url": "/api/mock/permissions",
-                      "method": "get",
-                      "cached": false,
-                      "params": {}
+                      "initApi": {
+                        "url": "/api/mock/permissions",
+                        "method": "get",
+                        "cached": false,
+                        "params": {}
+                      }
                     }
                   ],
                   "body": [
