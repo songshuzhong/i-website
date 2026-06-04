@@ -453,8 +453,8 @@
                             "renderer": "form",
                             "name": "UpdateForm",
                             "actionApi": {
-                              "url": "/api/user?id=${id}",
-                              "method": "put",
+                              "url": "/v1/ajax/submit",
+                              "method": "post",
                               "params": {
                                 "*": "*"
                               }
@@ -759,7 +759,8 @@
               ]
             }
           ],
-          "updateOnRowId": "uid",
+          "rowKey": "id",
+          "updateOnRowId": "id",
           "showDynamicColumn": true,
           "reactive": true
         }
