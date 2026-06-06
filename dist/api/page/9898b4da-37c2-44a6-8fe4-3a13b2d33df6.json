@@ -453,8 +453,8 @@
                             "renderer": "form",
                             "name": "UpdateForm",
                             "actionApi": {
-                              "url": "/api/user?id=${id}",
-                              "method": "put",
+                              "url": "/v1/ajax/submit",
+                              "method": "post",
                               "params": {
                                 "*": "*"
                               }
@@ -600,7 +600,8 @@
                   ]
                 }
               ],
-              "renderer": "column"
+              "renderer": "column",
+              "width": "220"
             }
           ],
           "header": [
@@ -738,10 +739,12 @@
                 },
                 {
                   "renderer": "action",
+                  "icon": "Upload",
                   "text": "导入"
                 },
                 {
                   "renderer": "action",
+                  "icon": "Download",
                   "text": "导出"
                 },
                 {
@@ -756,7 +759,8 @@
               ]
             }
           ],
-          "updateOnRowId": "uid",
+          "rowKey": "id",
+          "updateOnRowId": "id",
           "showDynamicColumn": true,
           "reactive": true
         }

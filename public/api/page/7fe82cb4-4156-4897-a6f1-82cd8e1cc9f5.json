@@ -14,9 +14,9 @@
     "updatedCause": "o",
     "hidden": null,
     "assets": [
-      "https://songshuzhong.github.io/i-assets/public/js/spark-md5.min.js",
-      "https://songshuzhong.github.io/i-assets/public/js/Schedule.394219.min.js",
-      "https://songshuzhong.github.io/i-assets/public/js/Richtxt.fca61a.min.js?version=1.0.1"
+      "https://songshuzhong.github.io/i-website/dist/js/spark-md5.worker.js",
+      "https://songshuzhong.github.io/i-website/dist/js/Schedule.394219.min.js",
+      "https://songshuzhong.github.io/i-website/dist/js/Richtxt.fca61a.min.js?version=1.0.1"
     ],
     "visible": [
       8
@@ -57,7 +57,7 @@
           "cover": "https://songshuzhong.github.io/i-assets/public/ironMan.jpeg",
           "src": "https://songshuzhong.github.io/i-assets/public/IronMan.mp4"
         },
-        "calendar": "2026-02-11T06:03:24.328Z",
+        "calendar": "2026-06-11T06:03:24.328Z",
         "richtext": "<p>Hello, World!</p>",
         "schedule_date": {
           "1": [
@@ -139,15 +139,17 @@
           "c": 12345.01,
           "d": 12345,
           "e": 12345.01,
-          "f": 12
-        }
+          "asyncValid": 12
+        },
+        "slider": 26
       },
       "body": [
         {
           "renderer": "form",
           "disabledOn": "data.isFormDisabled",
+          "silentMessage": false,
           "actionApi": {
-            "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/form/submit",
+            "url": "/v1/ajax/submit",
             "params": {
               "*": "*"
             },
@@ -228,15 +230,15 @@
                 },
                 {
                   "renderer": "number",
-                  "name": "f",
+                  "name": "asyncValid",
                   "desc": "异步校验",
                   "placeholder": "异步校验",
                   "validType": "async",
+                  "requiredOn": "1",
                   "rules": [
                     {
-                      "exp": "/api/mock/form/verify?asyncValid=${f}",
-                      "type": "api",
-                      "trigger": "blur"
+                      "exp": "/api/mock/form/verify?asyncValid=${asyncValid}",
+                      "type": "api"
                     }
                   ]
                 }
@@ -533,7 +535,7 @@
               "requiredOn": "1",
               "inline": false,
               "type": "custom",
-              "labelWidth": "80px",
+              "labelWidth": 60,
               "controls": [
                 {
                   "renderer": "input",
@@ -556,7 +558,7 @@
               "requiredOn": 1,
               "inline": false,
               "type": "multiple",
-              "labelWidth": "80px",
+              "labelWidth": 60,
               "controls": [
                 {
                   "renderer": "radio",
@@ -586,7 +588,7 @@
               "renderer": "combo",
               "name": "map",
               "label": "简单字典",
-              "labelWidth": "80px",
+              "labelWidth": 30,
               "requiredOn": "1",
               "inline": false,
               "type": "map"

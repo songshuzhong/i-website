@@ -176,11 +176,13 @@ module.exports = {
         }
       });
       devServer.app.post('/v1/ajax/submit', (req, res) => {
+        const params = req.body || {};
         res.json({
           message: 'success',
           code: 200,
           data: {
-            from: 'dev server'
+            from: 'dev server',
+            ...params,
           },
         });
       });
