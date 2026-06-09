@@ -90,7 +90,7 @@
             23
           ]
         },
-        "switch1": false,
+        "switch": false,
         "switch_button": false,
         "cascader": [
           [
@@ -135,11 +135,11 @@
         ],
         "numbers": {
           "a": 12345,
-          "b": 12345.01,
-          "c": 12345.01,
+          "b": 12345,
+          "c": 12345,
           "d": 12345,
-          "e": 12345.01,
-          "asyncValid": 12
+          "e": 12345,
+          "asyncValid": 12345
         },
         "slider": 26
       },
@@ -254,21 +254,21 @@
             },
             {
               "renderer": "switch",
+              "name": "switch",
               "defaultValue": false,
               "confirmTitle": "确定吗？",
               "rules": [],
-              "label": "开 关",
-              "name": "switch1"
+              "label": "开 关"
             },
             {
               "renderer": "switch",
-              "name": "switch_check",
+              "name": "switch",
               "label": "开关选择框",
               "type": "checkbox"
             },
             {
               "renderer": "switch",
-              "name": "switch_button",
+              "name": "switch",
               "label": "开关按钮",
               "type": "button",
               "defaultValue": false,
@@ -453,7 +453,7 @@
               "renderer": "datepicker",
               "name": "createdAt",
               "tip": "日期",
-              "type": "datetime",
+              "type": "date",
               "readonly": false,
               "disabledOn": "data.name=='shuzhong'",
               "label": "日期",
@@ -464,7 +464,7 @@
               "renderer": "datepicker",
               "name": "createdAt",
               "tip": "日期面板",
-              "type": "datetime",
+              "type": "date",
               "isPanel": true,
               "readonly": false,
               "disabledOn": "data.name=='shuzhong'",

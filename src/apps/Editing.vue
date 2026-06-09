@@ -1,15 +1,11 @@
 <template>
-  <component
-    :is="isEditorReady? 'el-config-provider': 'div'"
-    :locale="tokens"
-  >
-    <component
-      v-bind:is="'i-editor'"
-      v-if="isEditorReady && tokens"
-      :is-json="false"
-      :nimble="true"
-    />
-  </component>
+  <i-schema
+    v-if="isEditorReady"
+    :init-schema="initSchema"
+    :updatable="false"
+    :tokens="tokens"
+    @update:lang="updateLang"
+  />
 </template>
 
 <script>
@@ -67,8 +63,13 @@ export default defineComponent({
       });
     });
     return {
-      tokens,
+      initSchema: {
+        renderer: 'editor',
+        isJson: false,
+        nimble: true,
+      },
       updateLang,
+      tokens,
       isEditorReady
     };
   }
