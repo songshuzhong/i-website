@@ -29,6 +29,11 @@
         "inputTag": ["1", "0", "1"],
         "inputOtp": "123456",
         "syncValid": 123,
+        "mention": "@label_1_3 ",
+        "autocomplete": "label_2_3",
+        "transfer": [
+          "label_2_2"
+        ],
         "checkbox": ["value1"],
         "sex": "0",
         "role": "9",
@@ -245,12 +250,41 @@
               ]
             },
             {
+              "renderer": "mention",
+              "initApi": {
+                "url": "/api/mock/dynamicSelect",
+                "method": "get",
+                "params": {}
+              },
+              "name": "mention",
+              "label": "提及",
+              "optionConfig": {
+                "text": "label",
+                "value": "value"
+              }
+            },
+            {
+              "renderer": "autocomplete",
+              "name": "autocomplete",
+              "label": "自动补全",
+              "initApi": {
+                "url": "/api/mock/dynamicSelect",
+                "method": "get",
+                "params": {}
+              },
+              "optionConfig": {
+                "text": "label",
+                "value": "value"
+              }
+            },
+            {
               "renderer": "input",
               "name": "textarea",
               "label": "文本框",
               "placeholder": "占位符",
               "type": "textarea",
-              "validType": "normal"
+              "validType": "normal",
+              "rows": 1
             },
             {
               "renderer": "switch",
@@ -505,6 +539,16 @@
               "isPanel": true,
               "rules": [],
               "multiple": true
+            },
+            {
+              "renderer": "transfer",
+              "initApi": {
+                "url": "/api/mock/dynamicSelect",
+                "method": "get",
+                "params": {}
+              },
+              "name": "transfer",
+              "label": "穿梭框"
             },
             {
               "renderer": "viewer",
