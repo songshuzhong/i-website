@@ -26,7 +26,11 @@
       "renderer": "page",
       "initData": {
         "name": "renderer",
-        "inputTag": ["1", "0", "1"],
+        "inputTag": [
+          "1",
+          "0",
+          "1"
+        ],
         "inputOtp": "123456",
         "syncValid": 123,
         "mention": "@label_1_3 ",
@@ -34,7 +38,9 @@
         "transfer": [
           "label_2_2"
         ],
-        "checkbox": ["value1"],
+        "checkbox": [
+          "value1"
+        ],
         "sex": "0",
         "role": "9",
         "connect": "0",
@@ -146,7 +152,8 @@
           "e": 12345,
           "asyncValid": 12345
         },
-        "slider": 26
+        "slider": 26,
+        "code": "import { createApp } from 'vue';\nimport ElementPlus from 'element-plus';\nimport IRenderer from 'i-renderer/dist/js/renderer';\nimport App from './App.vue';\n\nimport 'element-plus/dist/index.css'\nimport 'i-renderer/dist/css/index.css';\n\nconst app = createApp(App);\n\napp\n  .use(ElementPlus)\n  .use(IRenderer)\n  .mount('#app');\n  "
       },
       "body": [
         {
@@ -769,6 +776,19 @@
               "name": "richtext",
               "label": "富文本",
               "requiredOn": "true"
+            },
+            {
+              "renderer": "monaco",
+              "name": "code",
+              "label": "代码编辑器",
+              "requiredOn": "true",
+              "language": "javascript",
+              "config": {
+                "lineNumbers": "on",
+                "minimap": {
+                  "enabled": true
+                }
+              }
             },
             {
               "renderer": "action",
