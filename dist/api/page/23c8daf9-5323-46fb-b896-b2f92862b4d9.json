@@ -122,14 +122,7 @@
               "body": [
                 {
                   "renderer": "mapping",
-                  "distributes": [
-                    "type"
-                  ],
-                  "body": [],
-                  "optionConfig": {
-                    "text": "",
-                    "value": ""
-                  },
+                  "name": "type",
                   "map": {
                     "1": "创意",
                     "2": "wax",
