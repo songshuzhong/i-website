@@ -92,7 +92,7 @@
               "name": "deliver_scope",
               "type": "button",
               "defaultValue": "0",
-              "tip": "微博站内",
+              "tip": "小粉书站内",
               "options": [
                 {
                   "value": "0",
@@ -100,7 +100,7 @@
                 },
                 {
                   "value": "1",
-                  "text": "微博站内"
+                  "text": "小粉书站内"
                 }
               ],
               "requiredOn": "true"
@@ -463,7 +463,7 @@
               "defaultValue": [
                 "0"
               ],
-              "tip": "新用户注册微博的时间",
+              "tip": "新用户注册小粉书的时间",
               "options": [
                 {
                   "text": "不限",
