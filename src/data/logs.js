@@ -1266,7 +1266,7 @@ export default function (options) {
             details = e.data.rows[i];
           }
         }
-        return Promise.resolve(details);
+        return Promise.resolve({data: details});
       }
     }
   };
