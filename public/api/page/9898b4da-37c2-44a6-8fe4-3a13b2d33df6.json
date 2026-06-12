@@ -887,6 +887,7 @@
           "reactive": true
         }
       ],
+      "innerStyle": ".el-statistic__content \n {\n display: none; \n}",
       "worker": "e => {\n  if (e.track === '/page/body/1/header/2') {\n    const ctx = e.data;\n    let count = 0;\n    if (ctx.msgOrigin) {\n      count += 1;\n    }\n    if (ctx.msgType) {\n      count += 1;\n    }\n    if (ctx.msgDate) {\n      count += 1;\n    }\n    return Promise.resolve({\n      data: count,\n      id: e.id,\n      track: e.track,\n      status: 'resolve'\n    });\n  } else if (e.track === '/page/body/1/header/3/header/2') {\n    return Promise.resolve({\n      id: e.id,\n      status: 'resolve',\n      data: {\n        msgDate: null,\n        msgType: '',\n        msgOrigin: '',\n      }\n    });\n  }\n}"
     },
     "version": 0,

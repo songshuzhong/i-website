@@ -51,7 +51,7 @@
         "color": "#456533",
         "rate": 5,
         "switch_check": true,
-        "textarea": "234",
+        "textarea": "textarea",
         "richtxt": "eee",
         "asyncValid": 12,
         "image": "https://songshuzhong.github.io/i-assets/public/img/shuttle.png",
@@ -292,6 +292,22 @@
               "type": "textarea",
               "validType": "normal",
               "rows": 1
+            },
+            {
+              "renderer": "computed",
+              "name": "computed",
+              "exp": "`输入框【${$.name||'-'}】文本框【${$.textarea||'-'}】`",
+              "deps": ["name", "textarea"]
+            },
+            {
+              "renderer": "html",
+              "label": "计算属性",
+              "html": "${$.computed}",
+              "desc": "当输入框和文本框字段改变时，该值会重新计算",
+              "style": {
+                "font-weight": 900,
+                "color": "var(--el-color-danger)"
+              }
             },
             {
               "renderer": "switch",
@@ -732,15 +748,6 @@
               "feedbackConfig": []
             },
             {
-              "renderer": "viewer",
-              "body": [
-                {
-                  "renderer": "data"
-                }
-              ],
-              "classname": "swing_skew_1"
-            },
-            {
               "renderer": "divider",
               "text": "扩展控件"
             },
@@ -789,6 +796,15 @@
                   "enabled": true
                 }
               }
+            },
+            {
+              "renderer": "viewer",
+              "body": [
+                {
+                  "renderer": "data"
+                }
+              ],
+              "classname": "swing_skew_1"
             },
             {
               "renderer": "action",
