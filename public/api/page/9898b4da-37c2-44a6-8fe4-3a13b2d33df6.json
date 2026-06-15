@@ -20,25 +20,11 @@
     "pageDesc": null,
     "pageSchema": {
       "renderer": "page",
-      "initData": {
-        "name": "",
-        "syncValid": 123,
-        "sex": "0",
-        "role": [],
-        "connect": "0",
-        "mail": "fasdgre@jl.com",
-        "phone": "4665432465",
-        "createdAt": "",
-        "adult": true,
-        "color": "#456533",
-        "rate": 5,
-        "textarea": "234",
-        "richtxt": "eee"
-      },
       "body": [
         {
           "renderer": "form",
           "size": "small",
+          "submitType": "target",
           "target": "UserTable",
           "actionApi": {
             "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/form/submit",

@@ -79,18 +79,6 @@
               "span": 4,
               "name": "SceneCards",
               "gutter": 10,
-              "events": {
-                "click": {
-                  "actions": [
-                    {
-                      "content": "${$.description}",
-                      "reload": "${$.text}",
-                      "actionType": "notify",
-                      "type": "primary"
-                    }
-                  ]
-                }
-              },
               "footer": [
                 {
                   "renderer": "action",
@@ -134,7 +122,19 @@
                 {
                   "renderer": "image",
                   "src": "${previewImg}",
-                  "previews": []
+                  "previews": [],
+                  "events": {
+                  "click": {
+                    "actions": [
+                      {
+                        "content": "${$.description}",
+                        "reload": "${$.text}",
+                        "actionType": "notify",
+                        "type": "primary"
+                      }
+                    ]
+                  }
+                }
                 }
               ],
               "hasPageInfo": false,
