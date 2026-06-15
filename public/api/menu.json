@@ -29,22 +29,23 @@
           },
           {
             "renderer": "menuitem",
-            "name": "visible",
-            "title": "复杂显隐与校验",
+            "name": "steps",
+            "title": "分步表单",
             "icon": "",
-            "pageId": "ffe4aede-ba56-4bb0-8673-48918154a175",
+            "pageId": "fc3a856e-46ff-4012-a1e7-70677a98d29c",
             "groupBy": "form",
             "hidden": null,
             "visible": [
               0
             ],
+            "assets": [],
             "pageDesc": null,
-            "schemaUrl": "/api/page/ffe4aede-ba56-4bb0-8673-48918154a175"
+            "schemaUrl": "/api/page/fc3a856e-46ff-4012-a1e7-70677a98d29c"
           },
           {
             "renderer": "menuitem",
             "name": "formDisabled",
-            "title": "禁用",
+            "title": "禁用表单",
             "icon": "",
             "pageId": "96932910-8814-4428-b4e1-f2a91785da0b",
             "groupBy": "form",
@@ -62,7 +63,7 @@
           {
             "renderer": "menuitem",
             "name": "foldingForm",
-            "title": "折叠",
+            "title": "折叠表单",
             "icon": "",
             "pageId": "9898b4da-37c2-44a6-8fe4-3a13b2d33df6",
             "groupBy": "form",
@@ -75,21 +76,6 @@
             ],
             "pageDesc": null,
             "schemaUrl": "/api/page/9898b4da-37c2-44a6-8fe4-3a13b2d33df6"
-          },
-          {
-            "renderer": "menuitem",
-            "name": "steps",
-            "title": "分步",
-            "icon": "",
-            "pageId": "fc3a856e-46ff-4012-a1e7-70677a98d29c",
-            "groupBy": "form",
-            "hidden": null,
-            "visible": [
-              0
-            ],
-            "assets": [],
-            "pageDesc": null,
-            "schemaUrl": "/api/page/fc3a856e-46ff-4012-a1e7-70677a98d29c"
           },
           {
             "renderer": "menuitem",
@@ -108,8 +94,22 @@
           },
           {
             "renderer": "menuitem",
+            "name": "visible",
+            "title": "复杂显隐与校验",
+            "icon": "",
+            "pageId": "ffe4aede-ba56-4bb0-8673-48918154a175",
+            "groupBy": "form",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/ffe4aede-ba56-4bb0-8673-48918154a175"
+          },
+          {
+            "renderer": "menuitem",
             "name": "inputValid",
-            "title": "校验",
+            "title": "校验表单",
             "icon": "",
             "pageId": "3381e12c-a587-47bb-8874-71055f0f11df",
             "groupBy": "form",
@@ -120,21 +120,6 @@
             "assets": [],
             "pageDesc": null,
             "schemaUrl": "/api/page/3381e12c-a587-47bb-8874-71055f0f11df"
-          },
-          {
-            "renderer": "menuitem",
-            "name": "comboPerformance",
-            "title": "组合性能",
-            "icon": "",
-            "pageId": "70428cf7-c5b2-472d-b670-d3e9542b2f4d",
-            "groupBy": "form",
-            "hidden": null,
-            "visible": [
-              0
-            ],
-            "assets": [],
-            "pageDesc": null,
-            "schemaUrl": "/api/page/70428cf7-c5b2-472d-b670-d3e9542b2f4d"
           },
           {
             "renderer": "menuitem",
@@ -150,6 +135,21 @@
             "assets": [],
             "pageDesc": null,
             "schemaUrl": "/api/page/ffc87f9e-d008-4ee5-99b2-dd0734fea6cb"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "comboPerformance",
+            "title": "组合性能",
+            "icon": "",
+            "pageId": "70428cf7-c5b2-472d-b670-d3e9542b2f4d",
+            "groupBy": "form",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/70428cf7-c5b2-472d-b670-d3e9542b2f4d"
           },
           {
             "renderer": "menuitem",
