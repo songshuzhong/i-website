@@ -151,6 +151,7 @@
           "asyncValid": 12345
         },
         "slider": 26,
+        "time": "17:30:00",
         "code": "import { createApp } from 'vue';\nimport ElementPlus from 'element-plus';\nimport IRenderer from 'i-renderer/dist/js/renderer';\nimport App from './App.vue';\n\nimport 'element-plus/dist/index.css'\nimport 'i-renderer/dist/css/index.css';\n\nconst app = createApp(App);\n\napp\n  .use(ElementPlus)\n  .use(IRenderer)\n  .mount('#app');\n  "
       },
       "body": [
@@ -488,6 +489,11 @@
                   "html": "<h1>${$.text}</h1>"
                 }
               ]
+            },
+            {
+              "renderer": "timepicker",
+              "name": "time",
+              "label": "时间"
             },
             {
               "renderer": "datepicker",
