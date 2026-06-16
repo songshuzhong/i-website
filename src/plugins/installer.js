@@ -3,7 +3,7 @@ export const installer = (app, components) => {
     if (['ElLoading', 'ElMessage', 'ElMessageBox', 'ElNotification', 'ElPopoverDirective'].includes(key)) {
       app.use(components[key]);
     } else {
-      app.component(key, components[key]);
+      app.component(components[key].name, components[key]);
     }
   }
 };
