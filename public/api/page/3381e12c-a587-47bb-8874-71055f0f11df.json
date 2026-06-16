@@ -13,7 +13,6 @@
     "updatedBy": "admin",
     "updatedCause": null,
     "hidden": null,
-    "assets": ["http://localhost:3000/js/dayjs.worker.js"],
     "visible": null,
     "pageDesc": null,
     "pageSchema": {
@@ -390,7 +389,7 @@
       ],
       "innerStyle": ".i-form__container__fieldset {\n  &.noViewer {\n    .el-collapse-item__header {\n      display: none;\n    }\n  }\n}",
       "req": "if(url.includes('/api/submit')) {\n  params.url = encodeURIComponent(params.url);\n}",
-      "worker": "e => {\r\n  if (e.track === '/page/body/0/controls/17') {\r\n    return Array.from({ length: 7 }, (_, i) =>\r\n      dayjs().add(i + 1, 'day').format('YYYY-MM-DD 00:00:00')\r\n    );\r\n  }\r\n  let { start, end } = e.data;\r\n  start = dayjs(start);\r\n  end = dayjs(end);\r\n  if (start.isAfter(end)) {\r\n    return Promise.reject({message: '结束日期小于开始日期！'});\r\n  }\r\n  return Promise.resolve();\r\n}"
+      "worker": "e => {\r\n  if (e.track === '/page/body/0/controls/17') {\r\n    return {\r\n      data: Array.from({ length: 7 }, (_, i) => {\r\n        const d = new Date(Date.now() + i * 86400000)\r\n        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`\r\n      })\r\n    };\r\n  }\r\n  let { start, end } = e.data;\r\n  start = dayjs(start);\r\n  end = dayjs(end);\r\n  if (start.isAfter(end)) {\r\n    return Promise.reject({ message: '结束日期小于开始日期！' });\r\n  }\r\n  return Promise.resolve();\r\n}"
     },
     "version": 0,
     "status": 1,

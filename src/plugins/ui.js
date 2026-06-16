@@ -115,4 +115,5 @@ export {
   ElSplitter,
   ElSplitterPanel,
   ElDatePickerPanel,
+  FixedSizeList,
 } from 'element-plus';
