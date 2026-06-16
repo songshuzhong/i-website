@@ -153,6 +153,7 @@
           "asyncValid": 12345
         },
         "slider": 26,
+        "segmented": "1",
         "time": "17:30:00",
         "code": "import { createApp } from 'vue';\nimport ElementPlus from 'element-plus';\nimport IRenderer from 'i-renderer/dist/js/renderer';\nimport App from './App.vue';\n\nimport 'element-plus/dist/index.css'\nimport 'i-renderer/dist/css/index.css';\n\nconst app = createApp(App);\n\napp\n  .use(ElementPlus)\n  .use(IRenderer)\n  .mount('#app');\n  "
       },
@@ -333,6 +334,27 @@
               "activeText": "开 启",
               "inactiveText": "关 闭",
               "rules": []
+            },
+            {
+              "renderer": "segmented",
+              "name": "segmented",
+              "label": "分段控制器",
+              "tip": "分段控制器",
+              "defaultValue": "1",
+              "options": [
+                {
+                  "value": "1",
+                  "text": "选项一"
+                },
+                {
+                  "value": "2",
+                  "text": "选项二"
+                },
+                {
+                  "value": "3",
+                  "text": "选项三"
+                }
+              ]
             },
             {
               "renderer": "radio",

@@ -12,14 +12,19 @@
     "updatedBy": "admin",
     "updatedCause": null,
     "hidden": false,
-    "assets": ["http://localhost:3000/js/spark-md5.worker.js"],
     "visible": [],
     "pageDesc": null,
     "pageSchema": {
       "renderer": "page",
+      "initData": {
+        "sec": ""
+      },
       "body": [
         {
           "renderer": "service",
+          "deps": [
+            "sec"
+          ],
           "body": [
             {
               "renderer": "html",
@@ -29,10 +34,7 @@
           ],
           "promiseType": "sw",
           "silentLoading": true,
-          "deps": [
-            "*"
-          ],
-          "interval": 1000
+          "interval": 1001
         },
         {
           "renderer": "form",
@@ -61,7 +63,7 @@
           "inline": true
         }
       ],
-      "worker": "e => {\r\n  if (e.track == '/page/body/1/controls/0') {\r\n    console.log(SparkMD5); return Promise.reject({ message: 'sw校验不通过' });\r\n  }\r\n  var monthNames = [\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];\r\n  var dayNames = [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"]\r\n\r\n  var today = new Date();\r\n\r\n  var date = (dayNames[today.getDay()] + \" \" +\r\n    today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear());\r\n\r\n  var h = today.getHours();\r\n  var m = today.getMinutes();\r\n  var s = today.getSeconds();\r\n  var day = h < 11 ? 'AM' : 'PM';\r\n\r\n  h = h < 10 ? '0' + h : h;\r\n  m = m < 10 ? '0' + m : m;\r\n  s = s < 10 ? '0' + s : s;\r\n  return {\r\n    hours: h,\r\n    min: m,\r\n    sec: s,\r\n    day,\r\n    date\r\n  };\r\n}"
+      "worker": "e => {\r\n  if (e.track == '/page/body/1/controls/0') {\r\n    console.log(SparkMD5); return Promise.reject({ message: 'sw校验不通过' });\r\n  }\r\n  var monthNames = [\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];\r\n  var dayNames = [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"]\r\n\r\n  var today = new Date();\r\n\r\n  var date = (dayNames[today.getDay()] + \" \" +\r\n    today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear());\r\n\r\n  var h = today.getHours();\r\n  var m = today.getMinutes();\r\n  var s = today.getSeconds();\r\n  var day = h < 11 ? 'AM' : 'PM';\r\n\r\n  h = h < 10 ? '0' + h : h;\r\n  m = m < 10 ? '0' + m : m;\r\n  s = s < 10 ? '0' + s : s;\r\n  return Promise.resolve({\r\n    hours: h,\r\n    min: m,\r\n    sec: s,\r\n    day,\r\n    date\r\n  });\r\n}"
     },
     "version": 1,
     "status": 1,
