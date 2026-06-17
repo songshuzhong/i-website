@@ -33,7 +33,7 @@ export default defineComponent({
         label: '',
         name: 'code',
         language: 'json',
-        options: {
+        config: {
           height
         }
       }];

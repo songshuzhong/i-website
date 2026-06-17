@@ -769,7 +769,7 @@
               "size": "small",
               "popoverTitle": "筛选条件",
               "popupType": "over",
-              "popperWidth": 380
+              "popperWidth": 300
             },
             {
               "renderer": "action",

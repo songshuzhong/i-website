@@ -97,6 +97,36 @@ export default {
         labelPosition: 'left',
       },
       {
+        renderer: 'setting',
+        fields: {
+          darkness: {
+            renderer: 'select',
+            clearable: false,
+            size: 'default',
+            label: '',
+            defaultValue: 'auto',
+            options: [
+              {
+                text: '系统',
+                value: 'auto'
+              },
+              {
+                text: '明亮',
+                value: 'light'
+              },
+              {
+                text: '黑暗',
+                value: 'darkness'
+              }
+            ]
+          }
+        },
+        labelPosition: 'left',
+        style: {
+          paddingLeft: '10px'
+        }
+      },
+      {
         renderer: 'dropdown',
         body: [
           {
