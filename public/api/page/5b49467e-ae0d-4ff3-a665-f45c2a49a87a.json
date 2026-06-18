@@ -48,7 +48,8 @@
                   "title": "计划名称"
                 }
               ],
-              "offset": 130
+              "offset": 130,
+              "target": ".i-renderer-app__container"
             },
             {
               "renderer": "action",

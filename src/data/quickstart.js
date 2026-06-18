@@ -621,7 +621,8 @@ export default function(options) {
               title: tokens.anchor[6],
             }
           ],
-          target: '.i-renderer-app__container'
+          target: '.i-renderer-app__container',
+          bound: 120
         }
       }
     ]
