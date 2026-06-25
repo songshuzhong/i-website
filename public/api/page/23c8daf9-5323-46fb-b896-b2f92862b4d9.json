@@ -29,7 +29,7 @@
               "classname": "scene_aside__wrapper",
               "body": {
                 "renderer": "form",
-                "classname": "scene_aside__form",
+                "classname": "scene_aside__form move_4",
                 "controls": [
                   {
                     "renderer": "radio",
@@ -124,17 +124,17 @@
                   "src": "${previewImg}",
                   "previews": [],
                   "events": {
-                  "click": {
-                    "actions": [
-                      {
-                        "content": "${$.description}",
-                        "reload": "${$.text}",
-                        "actionType": "notify",
-                        "type": "primary"
-                      }
-                    ]
+                    "click": {
+                      "actions": [
+                        {
+                          "content": "${$.description}",
+                          "reload": "${$.text}",
+                          "actionType": "notify",
+                          "type": "primary"
+                        }
+                      ]
+                    }
                   }
-                }
                 }
               ],
               "hasPageInfo": false,

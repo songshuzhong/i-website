@@ -43,7 +43,7 @@ export default {
             {
               "renderer": "static",
               "column": 1,
-              "columns": [
+              "panels": [
                 {
                   "name": "name",
                   "label": "姓名"
@@ -69,7 +69,7 @@ export default {
             {
               "renderer": "static",
               "column": 1,
-              "columns": [
+              "panels": [
                 {
                   "name": "phone",
                   "label": "手机"
@@ -99,7 +99,7 @@ export default {
             {
               "renderer": "static",
               "column": 1,
-              "columns": [
+              "panels": [
                 {
                   "name": "Javascript",
                   "label": "Javascript",
@@ -141,7 +141,7 @@ export default {
             {
               "renderer": "static",
               "column": 1,
-              "columns": [
+              "panels": [
                 {
                   "name": "frondEnd",
                   "label": "前端"
@@ -533,10 +533,10 @@ export default {
               "text": "技能总结"
             },
             {
-              "renderer": "static",
+              "renderer": "html",
               "classname": "font-size-14",
               "table": false,
-              "columns": [
+              "html": [
                 "熟悉百度开发、提测、部署、维护等流程和做事风格",
                 "熟悉百度 amis 平台开发",
                 "熟悉百度 yog2 开发规范",

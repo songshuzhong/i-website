@@ -28,11 +28,11 @@ export default {
                 "previews": []
               },
               {
-                "renderer": "static",
+                "renderer": "html",
                 "table": false,
                 "column": 0,
                 "width": 0,
-                "columns": [
+                "html": [
                   "第一步：项目立项(/系统配置/项目管理)",
                   "第二步：创建项目页面(/系统配置/页面管理)",
                   "第三步：编辑页面信息",
@@ -222,9 +222,13 @@ export default {
           ],
           "body": [
             {
-              "renderer": "static",
-              "table": false,
-              "columns": [
+              "renderer": "html",
+              "style": {
+                "lineHeight": "0.8rem",
+                "fontWeight": 600,
+                "fontSize": "16px"
+              },
+              "html": [
                 "默认基础库vue3.0+elementplus+echarts5.0",
                 "提供开箱即用的项目模板",
                 "提供可视化页面编辑器",
@@ -327,9 +331,13 @@ export default {
           ],
           "body": [
             {
-              "renderer": "static",
-              "table": false,
-              "columns": [
+              "renderer": "html",
+              "style": {
+                "lineHeight": "0.8rem",
+                "fontWeight": 600,
+                "fontSize": "16px"
+              },
+              "html": [
                 "扩充非常用表单控件",
                 "丰富常用第三方依赖",
                 "集成fontawesome图标",
@@ -364,12 +372,14 @@ export default {
           "classname": "margin-bottom-20 margin-top-20",
           "body": [
             {
-              "renderer": "static",
+              "renderer": "html",
               "classname": "suitable-ul",
-              "table": false,
-              "column": 0,
-              "width": 0,
-              "columns": [
+              "style": {
+                "lineHeight": "0.8rem",
+                "fontWeight": 600,
+                "fontSize": "16px"
+              },
+              "html": [
                 "没有或缺少前端开发人员的小型公司",
                 "公司内部使用的平台系统",
                 "重功能轻UI、交互的项目",

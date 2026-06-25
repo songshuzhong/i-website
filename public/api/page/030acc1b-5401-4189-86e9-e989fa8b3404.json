@@ -212,7 +212,7 @@
                     "body": {
                       "renderer": "static",
                       "column": 2,
-                      "controls": [
+                      "panels": [
                         {
                           "name": "taskName",
                           "label": "任务名称"

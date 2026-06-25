@@ -179,7 +179,7 @@
                   "body": [
                     {
                       "renderer": "static",
-                      "columns": [
+                      "panels": [
                         {
                           "label": "vue",
                           "name": "vue",

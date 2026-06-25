@@ -797,18 +797,6 @@
             },
             {
               "renderer": "action",
-              "triggered": "previous",
-              "actionType": "extends",
-              "text": "上一步"
-            },
-            {
-              "renderer": "action",
-              "triggered": "next",
-              "actionType": "extends",
-              "text": "下一步"
-            },
-            {
-              "renderer": "action",
               "triggered": "submit",
               "actionType": "extends",
               "text": "提交"

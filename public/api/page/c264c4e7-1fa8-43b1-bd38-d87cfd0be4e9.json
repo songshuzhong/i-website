@@ -105,10 +105,10 @@
           ],
           "footer": [
             {
-              "renderer": "static",
+              "renderer": "html",
               "table": false,
               "classname": "item2-list",
-              "columns": [
+              "html": [
                 "考研报班需要注意什么？",
                 "考研自学好还是报班好?",
                 "本科成绩很差，可以考研吗？",
@@ -206,8 +206,8 @@
               "inline": true
             },
             {
-              "renderer": "static",
-              "columns": [
+              "renderer": "html",
+              "html": [
                 "专业课课程",
                 "专业课辅导资料",
                 "专业课测试",

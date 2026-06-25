@@ -31,7 +31,7 @@
           "body": [
             {
               "renderer": "static",
-              "columns": [
+              "panels": [
                 {
                   "label": "计划名称：",
                   "name": "campaign_name",
