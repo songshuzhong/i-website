@@ -51,7 +51,7 @@
                   "body": [
                     {
                       "renderer": "static",
-                      "columns": [
+                      "panels": [
                         {
                           "label": "电话",
                           "name": "isPhone",
