@@ -51,6 +51,12 @@ module.exports = {
       filename: 'js/[name].[contenthash:6].js',
       chunkFilename: 'js/chunk/[name].[contenthash:6].js',
     },
+    resolve: {
+      alias: {
+        '@vueuse/core': path.resolve(__dirname, 'node_modules/@vueuse/core'),
+        '@vueuse/shared': path.resolve(__dirname, 'node_modules/@vueuse/shared')
+      }
+    },
     plugins: [
       new MonacoWebpackPlugin({
         filename: 'js/worker/[name].worker.js',
