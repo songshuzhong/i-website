@@ -28,248 +28,252 @@
             "method": "get",
             "params": {}
           },
-          "body": [
-            {
-              "renderer": "static",
-              "panels": [
-                {
-                  "label": "计划名称：",
-                  "name": "campaign_name",
-                  "align": "",
-                  "body": []
-                },
-                {
-                  "label": "计划来源：",
-                  "name": "source_name",
-                  "align": "",
-                  "body": []
-                },
-                {
-                  "label": "监测类型：",
-                  "name": "monitor_type_name",
-                  "align": "",
-                  "body": []
-                },
-                {
-                  "label": "预估达标：",
-                  "name": "progress_desc",
-                  "align": "",
-                  "body": []
-                },
-                {
-                  "label": "广告位：",
-                  "name": "position_name",
-                  "align": "",
-                  "body": []
-                },
-                {
-                  "label": "售卖类型：",
-                  "name": "sales_type_name",
-                  "align": "",
-                  "body": []
-                },
-                {
-                  "label": "媒体类型：",
-                  "name": "media_type_name",
-                  "align": "",
-                  "body": []
-                },
-                {
-                  "label": "互动类型：",
-                  "name": "interaction_type_name",
-                  "align": "",
-                  "body": []
-                },
-                {
-                  "label": "增值类型：",
-                  "name": "increment_type_name",
-                  "align": "",
-                  "body": []
-                },
-                {
-                  "label": "定向设置：",
-                  "name": "condition_setting",
-                  "align": "",
-                  "body": []
-                },
-                {
-                  "label": "客户小粉书昵称：",
-                  "name": "customer_name",
-                  "align": "",
-                  "body": []
-                },
-                {
-                  "label": "客户UID：",
-                  "name": "customer_id",
-                  "align": "",
-                  "body": []
-                },
-                {
-                  "label": "上传人：",
-                  "name": "media_name",
-                  "align": "",
-                  "body": []
-                },
-                {
-                  "label": "审核人：",
-                  "name": "ae_name",
-                  "align": "",
-                  "body": []
-                }
-              ],
-              "size": "small",
-              "column": 5,
-              "classname": "crud-static appear",
-              "width": 80
-            },
-            {
-              "renderer": "wrapper",
-              "classname": "crud-progress appear",
-              "body": [
-                {
-                  "renderer": "mapping",
-                  "name": "campaign_status",
-                  "status": "campaign_status",
-                  "optionConfig": {},
-                  "map": {
-                    "0": "待投",
-                    "1": "在投",
-                    "2": "暂停",
-                    "3": "结束",
-                    "4": "待审",
-                    "5": "驳回"
+          "body": {
+            "renderer": "card",
+            "classname": "crud-card",
+            "body": [
+              {
+                "renderer": "static",
+                "panels": [
+                  {
+                    "label": "计划名称：",
+                    "name": "campaign_name",
+                    "align": "",
+                    "body": []
+                  },
+                  {
+                    "label": "计划来源：",
+                    "name": "source_name",
+                    "align": "",
+                    "body": []
+                  },
+                  {
+                    "label": "监测类型：",
+                    "name": "monitor_type_name",
+                    "align": "",
+                    "body": []
+                  },
+                  {
+                    "label": "预估达标：",
+                    "name": "progress_desc",
+                    "align": "",
+                    "body": []
+                  },
+                  {
+                    "label": "广告位：",
+                    "name": "position_name",
+                    "align": "",
+                    "body": []
+                  },
+                  {
+                    "label": "售卖类型：",
+                    "name": "sales_type_name",
+                    "align": "",
+                    "body": []
+                  },
+                  {
+                    "label": "媒体类型：",
+                    "name": "media_type_name",
+                    "align": "",
+                    "body": []
+                  },
+                  {
+                    "label": "互动类型：",
+                    "name": "interaction_type_name",
+                    "align": "",
+                    "body": []
+                  },
+                  {
+                    "label": "增值类型：",
+                    "name": "increment_type_name",
+                    "align": "",
+                    "body": []
+                  },
+                  {
+                    "label": "定向设置：",
+                    "name": "condition_setting",
+                    "align": "",
+                    "body": []
+                  },
+                  {
+                    "label": "客户小粉书昵称：",
+                    "name": "customer_name",
+                    "align": "",
+                    "body": []
+                  },
+                  {
+                    "label": "客户UID：",
+                    "name": "customer_id",
+                    "align": "",
+                    "body": []
+                  },
+                  {
+                    "label": "上传人：",
+                    "name": "media_name",
+                    "align": "",
+                    "body": []
+                  },
+                  {
+                    "label": "审核人：",
+                    "name": "ae_name",
+                    "align": "",
+                    "body": []
                   }
-                },
-                {
-                  "renderer": "progress",
-                  "type": "dashboard",
-                  "exp": "data.target_impression",
-                  "color": [],
-                  "strokeWidth": 11,
-                  "strokeLinecap": "round",
-                  "text": " ",
-                  "status": "success",
-                  "width": 110
-                }
-              ]
-            },
-            {
-              "renderer": "mapping",
-              "name": "campaign_status",
-              "status": "campaign_status",
-              "classname": "card"
-            }
-          ],
-          "header": [
-            {
-              "renderer": "wrapper",
-              "body": [
-                {
-                  "renderer": "action",
-                  "text": "创意ID：${data. creative_id}",
-                  "size": "small",
-                  "body": {},
-                  "isText": true,
-                  "icon": "Calendar"
-                },
-                {
-                  "renderer": "action",
-                  "text": "计划ID：${data. campaign_id}",
-                  "isText": true,
-                  "body": {},
-                  "icon": "ArrowRight",
-                  "size": "small"
-                },
-                {
-                  "renderer": "action",
-                  "text": "资源ID：${data. contract_no}",
-                  "isText": true,
-                  "body": {},
-                  "icon": "ArrowRight",
-                  "size": "small"
-                }
-              ],
-              "classname": "crud-card_header-left"
-            },
-            {
-              "renderer": "wrapper",
-              "body": [
-                {
-                  "renderer": "action",
-                  "text": "${data.start_date+'-'+data.end_date}",
-                  "isText": true,
-                  "icon": "AlarmClock",
-                  "body": {}
-                },
-                {
-                  "renderer": "wrapper",
-                  "body": [
-                    {
-                      "renderer": "action",
-                      "text": "策略设置",
-                      "isText": true,
-                      "icon": "Sort",
-                      "visibleOn": "data.pdps=='PDPS000000058408'",
-                      "body": {
-                        "renderer": "drawer",
-                        "title": "策略调整",
-                        "width": 30,
-                        "closeOnClickModal": true,
-                        "body": []
-                      },
-                      "actionType": "drawer"
-                    },
-                    {
-                      "renderer": "action",
-                      "text": "启动",
-                      "isText": true,
-                      "icon": "VideoPlay",
-                      "body": {},
-                      "actionType": "ajax",
-                      "actionApi": {
-                        "url": "/api/start",
-                        "method": "post",
-                        "params": {}
-                      },
-                      "visibleOn": "data.campaign_status == 2"
-                    },
-                    {
-                      "renderer": "action",
-                      "text": "暂停",
-                      "isText": true,
-                      "icon": "VideoPause",
-                      "body": {},
-                      "type": "success",
-                      "actionType": "ajax",
-                      "actionApi": {
-                        "url": "/api/pause",
-                        "method": "post",
-                        "params": {}
-                      },
-                      "visibleOn": "data.campaign_status == 1"
-                    },
-                    {
-                      "renderer": "action",
-                      "text": "停止",
-                      "type": "warning",
-                      "body": {},
-                      "isText": true,
-                      "icon": "Remove",
-                      "actionType": "ajax",
-                      "actionApi": {
-                        "url": "/api/stop",
-                        "method": "post",
-                        "params": {}
-                      }
+                ],
+                "size": "small",
+                "column": 5,
+                "classname": "crud-static appear",
+                "width": 80
+              },
+              {
+                "renderer": "wrapper",
+                "classname": "crud-progress appear",
+                "body": [
+                  {
+                    "renderer": "mapping",
+                    "name": "campaign_status",
+                    "status": "campaign_status",
+                    "optionConfig": {},
+                    "map": {
+                      "0": "待投",
+                      "1": "在投",
+                      "2": "暂停",
+                      "3": "结束",
+                      "4": "待审",
+                      "5": "驳回"
                     }
-                  ],
-                  "classname": "crud-card__header__actions"
-                }
-              ],
-              "classname": "crud-card_header-right",
-              "bodyClassname": "crud-card_header-right-body"
-            }
-          ],
+                  },
+                  {
+                    "renderer": "progress",
+                    "type": "dashboard",
+                    "exp": "data.target_impression",
+                    "color": [],
+                    "strokeWidth": 11,
+                    "strokeLinecap": "round",
+                    "text": " ",
+                    "status": "success",
+                    "width": 110
+                  }
+                ]
+              },
+              {
+                "renderer": "mapping",
+                "name": "campaign_status",
+                "status": "campaign_status",
+                "classname": "card"
+              }
+            ],
+            "header": [
+              {
+                "renderer": "wrapper",
+                "body": [
+                  {
+                    "renderer": "action",
+                    "text": "创意ID：${data. creative_id}",
+                    "size": "small",
+                    "body": {},
+                    "isText": true,
+                    "icon": "Calendar"
+                  },
+                  {
+                    "renderer": "action",
+                    "text": "计划ID：${data. campaign_id}",
+                    "isText": true,
+                    "body": {},
+                    "icon": "ArrowRight",
+                    "size": "small"
+                  },
+                  {
+                    "renderer": "action",
+                    "text": "资源ID：${data. contract_no}",
+                    "isText": true,
+                    "body": {},
+                    "icon": "ArrowRight",
+                    "size": "small"
+                  }
+                ],
+                "classname": "crud-card_header-left"
+              },
+              {
+                "renderer": "wrapper",
+                "body": [
+                  {
+                    "renderer": "action",
+                    "text": "${data.start_date+'-'+data.end_date}",
+                    "isText": true,
+                    "icon": "AlarmClock",
+                    "body": {}
+                  },
+                  {
+                    "renderer": "wrapper",
+                    "body": [
+                      {
+                        "renderer": "action",
+                        "text": "策略设置",
+                        "isText": true,
+                        "icon": "Sort",
+                        "visibleOn": "data.pdps=='PDPS000000058408'",
+                        "body": {
+                          "renderer": "drawer",
+                          "title": "策略调整",
+                          "width": 30,
+                          "closeOnClickModal": true,
+                          "body": []
+                        },
+                        "actionType": "drawer"
+                      },
+                      {
+                        "renderer": "action",
+                        "text": "启动",
+                        "isText": true,
+                        "icon": "VideoPlay",
+                        "body": {},
+                        "actionType": "ajax",
+                        "actionApi": {
+                          "url": "/api/start",
+                          "method": "post",
+                          "params": {}
+                        },
+                        "visibleOn": "data.campaign_status == 2"
+                      },
+                      {
+                        "renderer": "action",
+                        "text": "暂停",
+                        "isText": true,
+                        "icon": "VideoPause",
+                        "body": {},
+                        "type": "success",
+                        "actionType": "ajax",
+                        "actionApi": {
+                          "url": "/api/pause",
+                          "method": "post",
+                          "params": {}
+                        },
+                        "visibleOn": "data.campaign_status == 1"
+                      },
+                      {
+                        "renderer": "action",
+                        "text": "停止",
+                        "type": "warning",
+                        "body": {},
+                        "isText": true,
+                        "icon": "Remove",
+                        "actionType": "ajax",
+                        "actionApi": {
+                          "url": "/api/stop",
+                          "method": "post",
+                          "params": {}
+                        }
+                      }
+                    ],
+                    "classname": "crud-card__header__actions"
+                  }
+                ],
+                "classname": "crud-card_header-right",
+                "bodyClassname": "crud-card_header-right-body"
+              }
+            ]
+          },
           "bodyClass": "crud-card",
           "updateOnRowId": "campaign_id",
           "skeletons": 3,

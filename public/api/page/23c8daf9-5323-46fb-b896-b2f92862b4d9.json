@@ -79,64 +79,67 @@
               "span": 4,
               "name": "SceneCards",
               "gutter": 10,
-              "footer": [
-                {
-                  "renderer": "action",
-                  "text": "${data.text}",
-                  "isText": true,
-                  "plain": true,
-                  "body": {},
-                  "tipContent": "${description}",
-                  "actionType": "url",
-                  "url": "/superfans/discoveryView",
-                  "params": {
-                    "id": "${id}"
+              "body": {
+                "renderer": "card",
+                "footer": [
+                  {
+                    "renderer": "action",
+                    "text": "${data.text}",
+                    "isText": true,
+                    "plain": true,
+                    "body": {},
+                    "tipContent": "${description}",
+                    "actionType": "url",
+                    "url": "/superfans/discoveryView",
+                    "params": {
+                      "id": "${id}"
+                    },
+                    "type": "info",
+                    "size": "small"
                   },
-                  "type": "info",
-                  "size": "small"
-                },
-                {
-                  "renderer": "action",
-                  "text": " ",
-                  "category": "icon",
-                  "icon": "QuestionFilled",
-                  "popupType": "tip",
-                  "tipContent": "${description}",
-                  "body": {},
-                  "size": 12,
-                  "static": true
-                }
-              ],
-              "body": [
-                {
-                  "renderer": "mapping",
-                  "name": "type",
-                  "map": {
-                    "1": "创意",
-                    "2": "wax",
-                    "3": "标准"
+                  {
+                    "renderer": "action",
+                    "text": " ",
+                    "category": "icon",
+                    "icon": "QuestionFilled",
+                    "popupType": "tip",
+                    "tipContent": "${description}",
+                    "body": {},
+                    "size": 12,
+                    "static": true
+                  }
+                ],
+                "body": [
+                  {
+                    "renderer": "mapping",
+                    "name": "type",
+                    "map": {
+                      "1": "创意",
+                      "2": "wax",
+                      "3": "标准"
+                    },
+                    "value": "type",
+                    "status": "type"
                   },
-                  "value": "type",
-                  "status": "type"
-                },
-                {
-                  "renderer": "image",
-                  "src": "${previewImg}",
-                  "previews": [],
-                  "events": {
-                    "click": {
-                      "actions": [
-                        {
-                          "content": "${$.description}",
-                          "reload": "${$.text}",
-                          "actionType": "notify",
-                          "type": "primary"
-                        }
-                      ]
+                  {
+                    "renderer": "image",
+                    "src": "${previewImg}",
+                    "previews": [],
+                    "events": {
+                      "click": {
+                        "actions": [
+                          {
+                            "content": "${$.description}",
+                            "reload": "${$.text}",
+                            "actionType": "notify",
+                            "type": "primary"
+                          }
+                        ]
+                      }
                     }
                   }
-                }
-              ],
+                ]
+              },
               "hasPageInfo": false,
               "style": {
                 "overflow-x": "hidden"

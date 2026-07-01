@@ -68,7 +68,6 @@
           "cover": "https://songshuzhong.github.io/i-assets/public/ironMan.jpeg",
           "src": "https://songshuzhong.github.io/i-assets/public/IronMan.mp4"
         },
-        "calendar": "2026-06-11T06:03:24.328Z",
         "richtext": "<p>Hello, World!</p>",
         "schedule_date": {
           "1": [
@@ -164,10 +163,10 @@
           "silentMessage": false,
           "actionApi": {
             "url": "/v1/ajax/submit",
+            "method": "post",
             "params": {
               "*": "*"
-            },
-            "method": "post"
+            }
           },
           "controls": [
             {
@@ -299,7 +298,10 @@
               "renderer": "computed",
               "name": "computed",
               "exp": "`输入框【${$.name||'-'}】文本框【${$.textarea||'-'}】`",
-              "deps": ["name", "textarea"]
+              "deps": [
+                "name",
+                "textarea"
+              ]
             },
             {
               "renderer": "html",
@@ -797,7 +799,8 @@
                   "html": "${data.value}"
                 }
               ],
-              "label": "排期"
+              "label": "排期",
+              "visibleOn": "$.timestamp"
             },
             {
               "renderer": "Schedule",
@@ -835,6 +838,18 @@
               "classname": "swing_skew_1"
             },
             {
+              "renderer": "service",
+              "promiseType": "sw",
+              "deps": [
+                "name"
+              ],
+              "inherit": {
+                "type": "none",
+                "value": []
+              },
+              "target": "DemoForm"
+            },
+            {
               "renderer": "action",
               "actionType": "submit",
               "text": "提交",
@@ -870,9 +885,11 @@
             }
           ],
           "labelWidth": "120px",
-          "classname": "actions-fixed--top"
+          "classname": "actions-fixed--top",
+          "name": "DemoForm"
         }
-      ]
+      ],
+      "worker": "e => {\n  if (e.track === '/page/body/0/controls/49') {\n    const date = new Date();\n    const calendar = date.toLocaleDateString('zh-CN', {\n      year: 'numeric',\n      month: '2-digit',\n      day: '2-digit'\n    }).replace(/\\//g, '-');\n    return Promise.resolve({\n      calendar,\n    });\n  }\n}"
     },
     "version": 1,
     "status": 1,

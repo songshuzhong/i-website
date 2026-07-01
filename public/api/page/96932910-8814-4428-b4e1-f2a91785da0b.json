@@ -66,7 +66,6 @@
           "cover": "https://songshuzhong.github.io/i-assets/public/ironMan.jpeg",
           "src": "https://songshuzhong.github.io/i-assets/public/IronMan.mp4"
         },
-        "calendar": "2026-06-11T06:03:24.328Z",
         "richtext": "<p>Hello, World!</p>",
         "schedule_date": {
           "1": [
@@ -157,6 +156,7 @@
       "body": [
         {
           "renderer": "form",
+          "name": "DemoForm",
           "disabledOn": "data.isFormDisabled",
           "actionApi": {
             "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/form/submit",
@@ -281,7 +281,10 @@
               "renderer": "computed",
               "name": "computed",
               "exp": "`输入框【${$.name||'-'}】文本框【${$.textarea||'-'}】`",
-              "deps": ["name", "textarea"]
+              "deps": [
+                "name",
+                "textarea"
+              ]
             },
             {
               "renderer": "html",
@@ -743,6 +746,7 @@
             {
               "renderer": "calendar",
               "name": "calendar",
+              "visibleOn": "$.timestamp",
               "required": true,
               "initApi": {
                 "url": "/api/mock/calendar",
@@ -796,6 +800,18 @@
               "classname": "swing_skew_1"
             },
             {
+              "renderer": "service",
+              "promiseType": "sw",
+              "deps": [
+                "name"
+              ],
+              "inherit": {
+                "type": "none",
+                "value": []
+              },
+              "target": "DemoForm"
+            },
+            {
               "renderer": "action",
               "triggered": "submit",
               "actionType": "extends",
@@ -815,7 +831,8 @@
           "labelWidth": "120px",
           "classname": "actions-fixed--top"
         }
-      ]
+      ],
+      "worker": "() => {\n  const date = new Date();\n  const calendar = date.toLocaleDateString('zh-CN', {\n    year: 'numeric',\n    month: '2-digit',\n    day: '2-digit'\n  }).replace(/\\//g, '-');\n  return Promise.resolve({\n    calendar,\n  });\n}"
     },
     "version": 0,
     "status": 1,
