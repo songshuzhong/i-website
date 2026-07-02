@@ -56,8 +56,28 @@
         "asyncValid": 12,
         "image": "https://songshuzhong.github.io/i-assets/public/img/shuttle.png",
         "files": {
-          "src": "https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
+          "src": "https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
           "name": "i-renderer-sample.zip"
+        },
+        "doc": {
+          "src": "https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
+          "name": "i-renderer-sample.doc"
+        },
+        "xls": {
+          "src": "https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
+          "name": "i-renderer-sample.xls"
+        },
+        "txt": {
+          "src": "https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
+          "name": "i-renderer-sample.txt"
+        },
+        "pdf": {
+          "src": "https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
+          "name": "i-renderer-sample.pdf"
+        },
+        "ppt": {
+          "src": "https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
+          "name": "i-renderer-sample.ppt"
         },
         "video": {
           "cover": "https://songshuzhong.github.io/i-assets/public/ironMan.jpeg",
@@ -751,7 +771,92 @@
               "label": "文件",
               "autoUpload": true,
               "actionUrl": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/upload?type=file",
-              "accept": ".zip,.txt",
+              "accept": ".zip",
+              "type": "file",
+              "spliced": false,
+              "preview": true,
+              "astrict": {
+                "maxByte": "50000"
+              },
+              "data": {},
+              "feedbackConfig": []
+            },
+            {
+              "renderer": "upload",
+              "listType": "picture-card",
+              "name": "doc",
+              "label": "doc",
+              "autoUpload": true,
+              "actionUrl": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/upload?type=file",
+              "accept": ".doc",
+              "type": "file",
+              "spliced": false,
+              "preview": true,
+              "astrict": {
+                "maxByte": "50000"
+              },
+              "data": {},
+              "feedbackConfig": []
+            },
+            {
+              "renderer": "upload",
+              "listType": "picture-card",
+              "name": "ppt",
+              "label": "ppt",
+              "autoUpload": true,
+              "actionUrl": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/upload?type=file",
+              "accept": ".ppt",
+              "type": "file",
+              "spliced": false,
+              "preview": true,
+              "astrict": {
+                "maxByte": "50000"
+              },
+              "data": {},
+              "feedbackConfig": []
+            },
+            {
+              "renderer": "upload",
+              "listType": "picture-card",
+              "name": "pdf",
+              "label": "pdf",
+              "autoUpload": true,
+              "actionUrl": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/upload?type=file",
+              "accept": ".pdf",
+              "type": "file",
+              "spliced": false,
+              "preview": true,
+              "astrict": {
+                "maxByte": "50000"
+              },
+              "data": {},
+              "feedbackConfig": []
+            },
+            {
+              "renderer": "upload",
+              "listType": "picture-card",
+              "name": "xls",
+              "label": "xls",
+              "autoUpload": true,
+              "actionUrl": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/upload?type=file",
+              "accept": ".xls",
+              "type": "file",
+              "spliced": false,
+              "preview": true,
+              "astrict": {
+                "maxByte": "50000"
+              },
+              "data": {},
+              "feedbackConfig": []
+            },
+            {
+              "renderer": "upload",
+              "listType": "picture-card",
+              "name": "txt",
+              "label": "txt",
+              "autoUpload": true,
+              "actionUrl": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/upload?type=file",
+              "accept": ".txt",
               "type": "file",
               "spliced": false,
               "preview": true,
@@ -889,7 +994,7 @@
           "name": "DemoForm"
         }
       ],
-      "worker": "e => {\n  if (e.track === '/page/body/0/controls/49') {\n    const date = new Date();\n    const calendar = date.toLocaleDateString('zh-CN', {\n      year: 'numeric',\n      month: '2-digit',\n      day: '2-digit'\n    }).replace(/\\//g, '-');\n    return Promise.resolve({\n      calendar,\n    });\n  }\n}"
+      "worker": "e => {\n  if (e.track === '/page/body/0/controls/54') {\n    const date = new Date();\n    const calendar = date.toLocaleDateString('zh-CN', {\n      year: 'numeric',\n      month: '2-digit',\n      day: '2-digit'\n    }).replace(/\\//g, '-');\n    return Promise.resolve({\n      calendar,\n    });\n  }\n}"
     },
     "version": 1,
     "status": 1,
