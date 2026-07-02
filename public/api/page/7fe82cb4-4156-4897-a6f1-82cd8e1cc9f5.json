@@ -24,162 +24,9 @@
     "pageDesc": null,
     "pageSchema": {
       "renderer": "page",
-      "initData": {
-        "name": "renderer",
-        "inputTag": [
-          "1",
-          "0",
-          "1"
-        ],
-        "inputOtp": "123456",
-        "syncValid": 123,
-        "mention": "@label_1_3 ",
-        "autocomplete": "label_2_3",
-        "transfer": [
-          "label_2_2"
-        ],
-        "checkbox": [
-          "value1"
-        ],
-        "sex": "0",
-        "role": "9",
-        "connect": "0",
-        "mail": "sshuzhong@outlook.com",
-        "phone": "4665432465",
-        "createdAt": "2025-09-08",
-        "adult": true,
-        "color": "#456533",
-        "rate": 5,
-        "switch_check": true,
-        "textarea": "textarea",
-        "richtxt": "eee",
-        "asyncValid": 12,
-        "image": "https://songshuzhong.github.io/i-assets/public/img/shuttle.png",
-        "files": {
-          "src": "https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
-          "name": "i-renderer-sample.zip"
-        },
-        "doc": {
-          "src": "https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
-          "name": "i-renderer-sample.doc"
-        },
-        "xls": {
-          "src": "https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
-          "name": "i-renderer-sample.xls"
-        },
-        "txt": {
-          "src": "https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
-          "name": "i-renderer-sample.txt"
-        },
-        "pdf": {
-          "src": "https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
-          "name": "i-renderer-sample.pdf"
-        },
-        "ppt": {
-          "src": "https://codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master",
-          "name": "i-renderer-sample.ppt"
-        },
-        "video": {
-          "cover": "https://songshuzhong.github.io/i-assets/public/ironMan.jpeg",
-          "src": "https://songshuzhong.github.io/i-assets/public/IronMan.mp4"
-        },
-        "manual": {
-          "name": "ironMan.mp4",
-          "cover": "https://songshuzhong.github.io/i-assets/public/ironMan.jpeg",
-          "src": "https://songshuzhong.github.io/i-assets/public/IronMan.mp4"
-        },
-        "richtext": "<p>Hello, World!</p>",
-        "schedule_date": {
-          "1": [
-            16,
-            17,
-            18,
-            19,
-            20,
-            21,
-            22,
-            23
-          ],
-          "4": [
-            0,
-            1,
-            2,
-            3,
-            4,
-            5
-          ],
-          "7": [
-            15,
-            16,
-            17,
-            18,
-            19,
-            20,
-            21,
-            22,
-            23
-          ]
-        },
-        "switch": false,
-        "switch_button": false,
-        "cascader": [
-          [
-            "component",
-            "basic",
-            "layout"
-          ],
-          [
-            "component",
-            "basic",
-            "color"
-          ],
-          [
-            "component",
-            "others",
-            "carousel"
-          ],
-          [
-            "component",
-            "others",
-            "collapse"
-          ]
-        ],
-        "array": [
-          "1"
-        ],
-        "custom": {
-          "aaa": "a",
-          "bbb": "b"
-        },
-        "multiplle": [
-          {
-            "radio": "value1",
-            "input": "1"
-          }
-        ],
-        "map": {
-          "key1": "value1"
-        },
-        "ll": [
-          "value1"
-        ],
-        "numbers": {
-          "a": 12345,
-          "b": 12345,
-          "c": 12345,
-          "d": 12345,
-          "e": 12345,
-          "asyncValid": 12345
-        },
-        "slider": 26,
-        "segmented": "1",
-        "time": "17:30:00",
-        "code": "import { createApp } from 'vue';\nimport ElementPlus from 'element-plus';\nimport IRenderer from 'i-renderer/dist/js/renderer';\nimport App from './App.vue';\n\nimport 'element-plus/dist/index.css'\nimport 'i-renderer/dist/css/index.css';\n\nconst app = createApp(App);\n\napp\n  .use(ElementPlus)\n  .use(IRenderer)\n  .mount('#app');\n  "
-      },
       "body": [
         {
           "renderer": "form",
-          "disabledOn": "data.isFormDisabled",
           "silentMessage": false,
           "actionApi": {
             "url": "/v1/ajax/submit",
@@ -187,6 +34,9 @@
             "params": {
               "*": "*"
             }
+          },
+          "initApi": {
+            "url": "/api/mock/allFormData"
           },
           "controls": [
             {
