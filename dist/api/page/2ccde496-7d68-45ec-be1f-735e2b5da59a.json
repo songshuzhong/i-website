@@ -169,7 +169,7 @@
             },
             {
               "label": "2020",
-              "name": "2020",
+              "name": "2020.ratio",
               "body": [
                 {
                   "renderer": "html",
@@ -182,7 +182,7 @@
             },
             {
               "label": "2021",
-              "name": "2021",
+              "name": "2021.ratio",
               "classname": "sales-column-empty",
               "body": [
                 {
@@ -196,7 +196,7 @@
             },
             {
               "label": "2020Q1",
-              "name": "2020Q1",
+              "name": "2020Q1.ratio",
               "classname": "sales-column-success",
               "body": [
                 {
@@ -210,7 +210,7 @@
             },
             {
               "label": "2020Q2",
-              "name": "2020Q2",
+              "name": "2020Q2.ratio",
               "classname": "sales-column-empty",
               "body": [
                 {
@@ -224,7 +224,7 @@
             },
             {
               "label": "2020Q3",
-              "name": "2020Q3",
+              "name": "2020Q3.ratio",
               "classname": "sales-column-empty",
               "body": [
                 {
@@ -238,7 +238,7 @@
             },
             {
               "label": "2020Q4",
-              "name": "2020Q4",
+              "name": "2020Q4.ratio",
               "classname": "sales-column-empty",
               "body": [
                 {
@@ -252,7 +252,7 @@
             },
             {
               "label": "2021Q1",
-              "name": "2021Q1",
+              "name": "2021Q1.ratio",
               "classname": "sales-column-success",
               "body": [
                 {
@@ -266,7 +266,7 @@
             },
             {
               "label": "2021Q2",
-              "name": "2021Q2",
+              "name": "2021Q2.ratio",
               "classname": "sales-column-empty",
               "body": [
                 {
@@ -280,7 +280,7 @@
             },
             {
               "label": "2021Q3",
-              "name": "2021Q3",
+              "name": "2021Q3.ratio",
               "classname": "sales-column-empty",
               "body": [
                 {
@@ -294,7 +294,7 @@
             },
             {
               "label": "2021Q4",
-              "name": "2021Q4",
+              "name": "2021Q4.ratio",
               "classname": "sales-column-empty",
               "body": [
                 {
@@ -318,6 +318,8 @@
             }
           ],
           "border": false,
+          "showSummary": true,
+          "sumText": "${$.index? $.value: '合计'}",
           "height": "240",
           "classname": "sales-table"
         },

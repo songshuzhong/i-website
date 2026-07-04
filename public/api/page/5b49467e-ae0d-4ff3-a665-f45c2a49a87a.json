@@ -260,10 +260,6 @@
                     "initData": {
                       "target_template_id": ""
                     },
-                    "body": {},
-                    "style": {
-                      "position": "absolute"
-                    },
                     "visibleOn": "$.templateVersion"
                   }
                 ]
@@ -508,13 +504,13 @@
             },
             {
               "renderer": "wrapper",
+              "visibleOn": "!$.target_template_id",
               "body": {
                 "renderer": "action",
                 "text": "保存当前定向",
                 "actionType": "sw",
                 "target": "Campaign_form_data",
                 "isText": true,
-                "visibleOn": "!$.target_template_id",
                 "style": {
                   "margin-top": "-20px"
                 }
