@@ -107,6 +107,12 @@
                 "params": {}
               },
               "selectableOn": "data.name!='1345'",
+              "inherit": {
+                "type": "exclude",
+                "value": [
+                  "me"
+                ]
+              },
               "columns": [
                 {
                   "type": "index"
@@ -438,7 +444,7 @@
         },
         {
           "renderer": "divider",
-          "text": "10000条数据压测"
+          "text": "40000条数据压测"
         },
         {
           "renderer": "service",
@@ -467,6 +473,12 @@
                 "desc": "双击行退出编辑时不会远程保存数据",
                 "target": "editable",
                 "linkedOn": "id",
+                "inherit": {
+                  "type": "exclude",
+                  "value": [
+                    "users"
+                  ]
+                },
                 "columns": [
                   {
                     "label": "",
