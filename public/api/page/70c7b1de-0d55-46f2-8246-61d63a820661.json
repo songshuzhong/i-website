@@ -441,13 +441,13 @@
               {
                 "renderer": "divider",
                 "label": "",
-                "text": "40000条数据压测"
+                "text": "1000000条数据压测"
               },
               {
                 "renderer": "table",
                 "virtual": true,
                 "name": "users",
-                "label": "表格项",
+                "label": "虚拟表格项",
                 "width": 1300,
                 "height": 400,
                 "hasPageInfo": false,
@@ -694,6 +694,9 @@
                       "renderer": "action",
                       "size": "small",
                       "labelWidth": 0,
+                      "inherit": {
+                        "deep": true
+                      },
                       "body": [
                         {
                           "renderer": "action",

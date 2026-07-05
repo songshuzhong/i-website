@@ -504,12 +504,15 @@
             },
             {
               "renderer": "wrapper",
-              "visibleOn": "!$.target_template_id",
+              "inherit": {
+                "deep": true
+              },
               "body": {
                 "renderer": "action",
                 "text": "保存当前定向",
                 "actionType": "sw",
                 "target": "Campaign_form_data",
+                "visibleOn": "!$.target_template_id",
                 "isText": true,
                 "style": {
                   "margin-top": "-20px"
