@@ -183,36 +183,6 @@
           },
           {
             "renderer": "menuitem",
-            "name": "chatList",
-            "title": "对话列表",
-            "icon": "",
-            "pageId": "fde6bd44-d592-4f27-b809-f9fd027d84ba",
-            "groupBy": "crud",
-            "hidden": null,
-            "visible": [
-              0
-            ],
-            "assets": [],
-            "pageDesc": null,
-            "schemaUrl": "/api/page/2ccde596-7d78-45ec-be1f-735e2b5da59a"
-          },
-          {
-            "renderer": "menuitem",
-            "name": "cards",
-            "title": "卡片列表",
-            "icon": "",
-            "pageId": "f2f9da99-dd99-4ee1-b227-e821e61d1939",
-            "groupBy": "crud",
-            "hidden": null,
-            "visible": [
-              0
-            ],
-            "assets": [],
-            "pageDesc": null,
-            "schemaUrl": "/api/page/f2f9da99-dd99-4ee1-b227-e821e61d1939"
-          },
-          {
-            "renderer": "menuitem",
             "name": "sheet",
             "title": "表格",
             "icon": "",
@@ -270,21 +240,6 @@
             "assets": [],
             "pageDesc": null,
             "schemaUrl": "/api/page/2ccde496-7d68-45ec-be1f-735e2b5da59a"
-          },
-          {
-            "renderer": "menuitem",
-            "name": "tdSelect",
-            "title": "单元格选择",
-            "icon": "",
-            "pageId": "bfbc45cc-4a8d-4f02-ac7d-0cf2d9929a94",
-            "groupBy": "crud",
-            "hidden": null,
-            "visible": [
-              0
-            ],
-            "assets": [],
-            "pageDesc": null,
-            "schemaUrl": "/api/page/bfbc45cc-4a8d-4f02-ac7d-0cf2d9929a94"
           },
           {
             "renderer": "menuitem",
@@ -406,6 +361,23 @@
           },
           {
             "renderer": "menuitem",
+            "name": "test",
+            "title": "加载失败",
+            "icon": "",
+            "pageId": "baaa7a7c-6280-4961-8b3b-aada78e970f7",
+            "groupBy": "h5",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [
+              "https://songshuzhong.github.io/i-assets/public/js/test2.js"
+            ],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/baaa7a7c-6280-4961-8b3b-aada78e970f7"
+          },
+          {
+            "renderer": "menuitem",
             "name": "home",
             "title": "统计",
             "icon": "",
@@ -453,7 +425,7 @@
           {
             "renderer": "menuitem",
             "name": "tableStressTest",
-            "title": "表格压测",
+            "title": "表格编辑压测",
             "icon": null,
             "pageId": "6989283c-50b6-491a-8f35-95387b287246",
             "groupBy": "crud",

@@ -453,7 +453,6 @@
                 "label": "虚拟表格项",
                 "width": 1300,
                 "height": 400,
-                "updateOnRowId": "uid",
                 "hasPageInfo": false,
                 "tip": "双击行进行编辑",
                 "desc": "双击行退出编辑时不会远程保存数据",
