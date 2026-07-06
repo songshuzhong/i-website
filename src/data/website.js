@@ -359,36 +359,302 @@ export default {
       "gutter": 12,
       "body": [
         {
-          "renderer": "card",
-          "header": [
-            {
-              "renderer": "html",
-              "html": "应用场景",
-              "inline": true,
-              "classname": "font-size-16 text-center font-weight-600"
-            }
-          ],
-          "footer": [],
+          "renderer": "service",
           "classname": "margin-bottom-20 margin-top-20",
-          "body": [
-            {
-              "renderer": "html",
-              "classname": "suitable-ul",
-              "style": {
-                "lineHeight": "0.8rem",
-                "fontWeight": 600,
-                "fontSize": "16px"
+          "style": {
+            "--i-field-color-desc": "red"
+          },
+          "initApi": {
+            "url": "/api/mock/virtualTable",
+            "method": "get"
+          },
+          "body": {
+            "renderer": "form",
+            "size": "small",
+            "readOnly": true,
+            "actionApi": {
+              "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/form/submit",
+              "params": {
+                "*": "*"
               },
-              "html": [
-                "没有或缺少前端开发人员的小型公司",
-                "公司内部使用的平台系统",
-                "重功能轻UI、交互的项目",
-                "业务逻辑偏向于增删改查的项目",
-                "适用于项目多，周期短的紧急项目",
-                "编程萌新、学生、网站开发爱好者"
-              ]
-            }
-          ]
+              "method": "post"
+            },
+            "controls": [
+              {
+                "renderer": "table",
+                "virtual": true,
+                "name": "users",
+                "label": "",
+                "width": 670,
+                "height": 360,
+                "desc": "1000000条数据压测",
+                "updateOnRowId": "uid",
+                "hasPageInfo": false,
+                "inherit": {
+                  "type": "exclude",
+                  "value": [
+                    "users",
+                    "count",
+                    "me",
+                    "names"
+                  ]
+                },
+                "columns": [
+                  {
+                    "label": "",
+                    "name": "id",
+                    "width": 50
+                  },
+                  {
+                    "name": "color",
+                    "label": " 颜色",
+                    "width": 70,
+                    "body": {
+                      "renderer": "colorpicker",
+                      "name": "color",
+                      "labelWidth": 0,
+                      "teleported": true,
+                      "showAlpha": false,
+                      "editableOn": "$.isEditing"
+                    }
+                  },
+                  {
+                    "label": "输入框",
+                    "name": "createdAt",
+                    "body": {
+                      "renderer": "input",
+                      "name": "name",
+                      "placeholder": "createdAt",
+                      "labelWidth": 0,
+                      "requiredOn": true,
+                      "flexible": false,
+                      "editableOn": "$.isEditing"
+                    },
+                    "flexGrow": 0,
+                    "maxWidth": 120,
+                    "width": 120
+                  },
+                  {
+                    "label": "下拉框",
+                    "name": "uid",
+                    "body": {
+                      "renderer": "select",
+                      "name": "sex",
+                      "teleported": true,
+                      "labelWidth": 0,
+                      "options": [
+                        {
+                          "text": "女",
+                          "value": "0",
+                          "disabledOn": ""
+                        },
+                        {
+                          "text": "男",
+                          "value": "1",
+                          "disabledOn": ""
+                        }
+                      ],
+                      "editableOn": "$.isEditing"
+                    },
+                    "width": 140
+                  },
+                  {
+                    "name": "rate",
+                    "label": " 数字",
+                    "width": 140,
+                    "header": [
+                      {
+                        "renderer": "tooltip",
+                        "content": "配置过滤和气泡的表头",
+                        "body": {
+                          "renderer": "html",
+                          "html": "评分",
+                          "inline": true,
+                          "style": {
+                            "padding-right": "40px"
+                          }
+                        }
+                      },
+                      {
+                        "renderer": "action",
+                        "icon": "ZoomIn",
+                        "popupType": "over",
+                        "popperWidth": 250,
+                        "popoverTitle": "请选择",
+                        "footer": [
+                          {
+                            "renderer": "action",
+                            "text": "取消筛选",
+                            "isText": true,
+                            "actionType": "trigger",
+                            "triggered": "OverForm.reset",
+                            "style": {
+                              "margin-right": "28px"
+                            }
+                          },
+                          {
+                            "renderer": "action",
+                            "text": "取消",
+                            "type": "danger",
+                            "plain": true
+                          },
+                          {
+                            "renderer": "action",
+                            "actionType": "trigger",
+                            "triggered": "OverForm.submit",
+                            "text": "确定"
+                          }
+                        ],
+                        "category": "icon",
+                        "size": 16,
+                        "body": [
+                          {
+                            "renderer": "form",
+                            "controls": [
+                              {
+                                "renderer": "select",
+                                "name": "relation",
+                                "multiple": false,
+                                "options": [
+                                  {
+                                    "text": "等于",
+                                    "value": "1",
+                                    "disabledOn": ""
+                                  },
+                                  {
+                                    "text": "大于",
+                                    "value": "2",
+                                    "disabledOn": ""
+                                  },
+                                  {
+                                    "text": "小于",
+                                    "value": "3",
+                                    "disabledOn": ""
+                                  },
+                                  {
+                                    "text": "不等于",
+                                    "value": "4",
+                                    "disabledOn": ""
+                                  },
+                                  {
+                                    "text": "大于等于",
+                                    "value": "5",
+                                    "disabledOn": ""
+                                  },
+                                  {
+                                    "text": "小于等于",
+                                    "value": "6",
+                                    "disabledOn": ""
+                                  }
+                                ],
+                                "requiredOn": "1"
+                              },
+                              {
+                                "renderer": "input",
+                                "name": "relationValue",
+                                "placeholder": "请输入",
+                                "requiredOn": "1"
+                              }
+                            ],
+                            "submitType": "target",
+                            "target": "users",
+                            "name": "OverForm"
+                          }
+                        ]
+                      }
+                    ],
+                    "body": {
+                      "renderer": "number",
+                      "name": "rate",
+                      "labelWidth": 0,
+                      "editableOn": "$.isEditing"
+                    }
+                  },
+                  {
+                    "name": "date",
+                    "label": " 日期",
+                    "width": 160,
+                    "body": {
+                      "renderer": "datepicker",
+                      "name": "date",
+                      "labelWidth": 0,
+                      "format": "YYYY-MM-DD",
+                      "editableOn": "$.isEditing"
+                    }
+                  },
+                  {
+                    "body": [
+                      {
+                        "renderer": "switch",
+                        "name": "isEditing",
+                        "type": "icon",
+                        "activeText": "CircleCloseFilled",
+                        "inactiveText": "Edit",
+                        "visibleOn": "!$.isEditing",
+                        "size": "large"
+                      },
+                      {
+                        "renderer": "action",
+                        "icon": "DocumentChecked",
+                        "actionType": "ajax",
+                        "category": "icon",
+                        "visibleOn": "$.isEditing",
+                        "inherit": {
+                          "deep": true
+                        },
+                        "popupType": "confirm",
+                        "popoverTitle": "确定保存吗？",
+                        "actionApi": {
+                          "url": "/api/mock/user",
+                          "method": "get",
+                          "params": {
+                            "*": "*"
+                          }
+                        }
+                      },
+                      {
+                        "renderer": "action",
+                        "category": "icon",
+                        "icon": "Search",
+                        "actionType": "dialog",
+                        "body": {
+                          "body": [
+                            {
+                              "renderer": "data"
+                            }
+                          ]
+                        },
+                        "inherit": {
+                          "type": "replace",
+                          "value": []
+                        }
+                      },
+                      {
+                        "renderer": "action",
+                        "text": "回滚",
+                        "actionType": "extends",
+                        "triggered": "rollback",
+                        "category": "icon",
+                        "icon": "RefreshLeft",
+                        "visibleOn": "$.isEditing",
+                        "popupType": "confirm",
+                        "popoverTitle": "确定放弃吗？",
+                        "inherit": {
+                          "deep": true
+                        }
+                      }
+                    ],
+                    "width": 100,
+                    "fixed": "right",
+                    "align": "center",
+                    "label": "行为组",
+                    "name": "updatedAt",
+                    "classname": "actions"
+                  }
+                ]
+              }
+            ]
+          }
         },
         {
           "renderer": "carousel",
@@ -467,5 +733,6 @@ export default {
         }
       ]
     }
-  ]
+  ],
+  innerStyle: ".i-crud__container__column.actions {\n  display: inline-flex;\n  justify-content: center;\n  gap: 10px;\n  .el-form-item {\n    display: block;\n  }\n  .i-action+.i-action {\n    margin-left: 0;\n  }\n}"
 }
