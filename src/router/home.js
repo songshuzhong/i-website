@@ -87,7 +87,7 @@ const router = createRouter({
   }
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
   if (to.path !== from.path) {
     routerMask = ElLoading.service({
       fullscreen: true,
@@ -97,10 +97,10 @@ router.beforeEach((to, from, next) => {
   if (to?.meta?.permission) {
     const hasPermission = checkPermission(to.meta.permission);
     if (!hasPermission) {
-      return next('/forbidden');
+      return {path: '/forbidden'};
     }
   }
-  next();
+  return true;
 });
 
 router.afterEach((to, from) => {

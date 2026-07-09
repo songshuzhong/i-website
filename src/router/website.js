@@ -38,7 +38,7 @@ const createRoutes = () => {
     ]
   });
 
-  router.beforeEach((to, from, next) => {
+  router.beforeEach((to, from) => {
     if (to.path !== from.path || (from.path === '/' && to.path === '/')) {
       routerMask = ElLoading.service({
         fullscreen: true,
@@ -49,10 +49,10 @@ const createRoutes = () => {
     if (to?.meta?.permission) {
       const hasPermission = checkPermission(to.meta.permission, 'roles');
       if (!hasPermission) {
-        return next('/forbidden');
+        return {path: '/forbidden'};
       }
     }
-    next();
+    return true;
   });
   router.afterEach((route) => {
     document.title = route?.meta?.title || '零代码-百搭云平台案例';

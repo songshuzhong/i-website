@@ -307,19 +307,13 @@
                       {
                         "renderer": "action",
                         "icon": "DocumentChecked",
-                        "actionType": "ajax",
                         "category": "icon",
                         "visibleOn": "$.isEditing",
                         "inherit": {
                           "deep": true
                         },
-                        "actionApi": {
-                          "url": "/api/mock/user",
-                          "method": "get",
-                          "params": {
-                            "*": "*"
-                          }
-                        }
+                        "actionType": "extends",
+                        "triggered": "saveRow"
                       },
                       {
                         "renderer": "action",

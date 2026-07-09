@@ -371,9 +371,9 @@ export default {
           "body": {
             "renderer": "form",
             "size": "small",
-            "readOnly": true,
+            "hide-required-asterisk": true,
             "actionApi": {
-              "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/form/submit",
+              "url": "/v1/ajax/users",
               "params": {
                 "*": "*"
               },
@@ -383,6 +383,7 @@ export default {
               {
                 "renderer": "table",
                 "virtual": true,
+                "fixed": true,
                 "name": "users",
                 "label": "",
                 "width": 670,
@@ -403,6 +404,7 @@ export default {
                   {
                     "label": "",
                     "name": "id",
+                    "fixed": "left",
                     "width": 50
                   },
                   {
@@ -431,8 +433,7 @@ export default {
                       "editableOn": "$.isEditing"
                     },
                     "flexGrow": 0,
-                    "maxWidth": 120,
-                    "width": 120
+                    "width": 140
                   },
                   {
                     "label": "下拉框",
@@ -461,7 +462,7 @@ export default {
                   {
                     "name": "rate",
                     "label": " 数字",
-                    "width": 140,
+                    "width": 160,
                     "header": [
                       {
                         "renderer": "tooltip",
@@ -573,13 +574,16 @@ export default {
                   {
                     "name": "date",
                     "label": " 日期",
-                    "width": 160,
+                    "width": 140,
                     "body": {
                       "renderer": "datepicker",
                       "name": "date",
                       "labelWidth": 0,
                       "format": "YYYY-MM-DD",
-                      "editableOn": "$.isEditing"
+                      "editableOn": "$.isEditing",
+                      "style": {
+                        "padding-right": "65px"
+                      }
                     }
                   },
                   {
@@ -588,6 +592,7 @@ export default {
                         "renderer": "switch",
                         "name": "isEditing",
                         "type": "icon",
+                        "labelWidth": 0,
                         "activeText": "CircleCloseFilled",
                         "inactiveText": "Edit",
                         "visibleOn": "!$.isEditing",
@@ -596,21 +601,15 @@ export default {
                       {
                         "renderer": "action",
                         "icon": "DocumentChecked",
-                        "actionType": "ajax",
+                        "actionType": "extends",
+                        "triggered": "saveRow",
                         "category": "icon",
                         "visibleOn": "$.isEditing",
                         "inherit": {
                           "deep": true
                         },
                         "popupType": "confirm",
-                        "popoverTitle": "确定保存吗？",
-                        "actionApi": {
-                          "url": "/api/mock/user",
-                          "method": "get",
-                          "params": {
-                            "*": "*"
-                          }
-                        }
+                        "popoverTitle": "确定保存吗？"
                       },
                       {
                         "renderer": "action",
@@ -635,10 +634,8 @@ export default {
                         "actionType": "extends",
                         "triggered": "rollback",
                         "category": "icon",
-                        "icon": "RefreshLeft",
+                        "icon": "CloseBold",
                         "visibleOn": "$.isEditing",
-                        "popupType": "confirm",
-                        "popoverTitle": "确定放弃吗？",
                         "inherit": {
                           "deep": true
                         }
@@ -734,5 +731,5 @@ export default {
       ]
     }
   ],
-  innerStyle: ".i-crud__container__column.actions {\n  display: inline-flex;\n  justify-content: center;\n  gap: 10px;\n  .el-form-item {\n    display: block;\n  }\n  .i-action+.i-action {\n    margin-left: 0;\n  }\n}"
+  innerStyle: ".i-crud__container__column.actions {\n  display: inline-flex;\n  justify-content: center;\n  gap: 10px;\n  .el-form-item__label {\n display: none; \n}\n  .el-form-item {\n    display: block;\n  }\n  .i-action+.i-action {\n    margin-left: 0;\n  }\n}"
 }

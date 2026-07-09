@@ -599,12 +599,12 @@
               "hidden": true,
               "body": {
                 "renderer": "html",
-                "html": "<strong>已选 ${$.selectedRows.length} 条数据</strong>",
+                "html": "<strong>已选 ${$.selectedRows && $.selectedRows.length} 条数据</strong>",
                 "style": {
                   "fontSize": "14"
                 }
               },
-              "visibleOn": "data.selectedRows.length",
+              "visibleOn": "$.selectedRows && $.selectedRows.length",
               "style": {
                 "flex": 1,
                 "textAlign": "left"
@@ -792,7 +792,7 @@
                     "silentMessage": true
                   },
                   "plain": true,
-                  "disabledOn": "!data.selectedRows.length",
+                  "disabledOn": "!($.selectedRows && $.selectedRows.length)",
                   "icon": "VideoPlay",
                   "reload": "DeleteResultDialog",
                   "popupType": "dialog",
@@ -815,7 +815,7 @@
                     "silentMessage": true
                   },
                   "plain": true,
-                  "disabledOn": "!data.selectedRows.length",
+                  "disabledOn": "!($.selectedRows && $.selectedRows.length)",
                   "icon": "VideoPause",
                   "reload": "DeleteResultDialog",
                   "popupType": "dialog",
@@ -838,7 +838,7 @@
                     "silentMessage": true
                   },
                   "plain": true,
-                  "disabledOn": "!data.selectedRows.length",
+                  "disabledOn": "!($.selectedRows && $.selectedRows.length)",
                   "icon": "Delete",
                   "reload": "DeleteResultDialog",
                   "popupType": "dialog",
