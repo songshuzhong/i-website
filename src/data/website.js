@@ -596,7 +596,8 @@ export default {
                         "activeText": "CircleCloseFilled",
                         "inactiveText": "Edit",
                         "visibleOn": "!$.isEditing",
-                        "size": "large"
+                        "size": "large",
+                        "defaultValue": false,
                       },
                       {
                         "renderer": "action",

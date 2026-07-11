@@ -23,6 +23,7 @@
         "names": "renderer",
         "me": [
           {
+            "id": 1,
             "name": "song",
             "syncValid": 123,
             "sex": "0",
@@ -39,6 +40,7 @@
             "rate": 1
           },
           {
+            "id": 2,
             "name": "shu",
             "syncValid": 123,
             "sex": "1",
@@ -55,6 +57,7 @@
             "rate": 3
           },
           {
+            "id": 3,
             "name": "zhong",
             "syncValid": 123,
             "sex": "1",
@@ -84,7 +87,7 @@
             "size": "small",
             "readOnly": true,
             "actionApi": {
-              "url": "https://www.fastmock.site/mock/a93e0b29161761b8153cbc02db04c643/api/form/submit",
+              "url": "/v1/ajax/users",
               "params": {
                 "*": "*"
               },
@@ -714,19 +717,15 @@
                       {
                         "renderer": "action",
                         "icon": "DocumentChecked",
-                        "actionType": "ajax",
+                        "actionType": "extends",
+                        "triggered": "saveRow",
                         "category": "icon",
                         "visibleOn": "$.isEditing",
                         "inherit": {
                           "deep": true
                         },
-                        "actionApi": {
-                          "url": "/api/mock/user",
-                          "method": "get",
-                          "params": {
-                            "*": "*"
-                          }
-                        }
+                        "popupType": "confirm",
+                        "popoverTitle": "确定保存吗？"
                       },
                       {
                         "renderer": "action",
