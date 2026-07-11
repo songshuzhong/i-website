@@ -1,5 +1,6 @@
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const {GenerateSW} = require('workbox-webpack-plugin');
+const bodyParser = require('body-parser');
 const path = require('path');
 const glob = require('glob');
 const fs = require('fs');
@@ -114,6 +115,8 @@ module.exports = {
   devServer: {
     port: 8080,
     setupMiddlewares: (middlewares, devServer) => {
+      const app = devServer.app;
+      app.use(bodyParser.json());
       devServer.app.get('/ajax/stream', (req, res) => {
         res.writeHead(200, {
           'Content-Type': 'text/event-stream',
@@ -192,12 +195,93 @@ module.exports = {
           },
         });
       });
-      devServer.app.post('/v1/ajax/upload', (req, res) => {
+      devServer.app.put('/v1/ajax/users', (req, res) => {
+        const params = req.body || {};
+        const user = params['users'][0];
+        delete user.isEditing;
         res.json({
           message: 'success',
           code: 200,
           data: {
-            filename: 'server.zip'
+            from: 'dev server',
+            ...user,
+          },
+        });
+      });
+      devServer.app.post('/v1/ajax/upload/zip', (req, res) => {
+        res.json({
+          message: 'success',
+          code: 200,
+          data: {
+            src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
+            name: 'i-renderer-sample.zip'
+          },
+        });
+      });
+      devServer.app.post('/v1/ajax/upload/doc', (req, res) => {
+        res.json({
+          message: 'success',
+          code: 200,
+          data: {
+            src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
+            name: 'i-renderer-sample.doc'
+          },
+        });
+      });
+      devServer.app.post('/v1/ajax/upload/ppt', (req, res) => {
+        res.json({
+          message: 'success',
+          code: 200,
+          data: {
+            src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
+            name: 'i-renderer-sample.ppt'
+          },
+        });
+      });
+      devServer.app.post('/v1/ajax/upload/pdf', (req, res) => {
+        res.json({
+          message: 'success',
+          code: 200,
+          data: {
+            src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
+            name: 'i-renderer-sample.pdf'
+          },
+        });
+      });
+      devServer.app.post('/v1/ajax/upload/xls', (req, res) => {
+        res.json({
+          message: 'success',
+          code: 200,
+          data: {
+            src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
+            name: 'i-renderer-sample.xls'
+          },
+        });
+      });
+      devServer.app.post('/v1/ajax/upload/txt', (req, res) => {
+        res.json({
+          message: 'success',
+          code: 200,
+          data: {
+            src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
+            name: 'i-renderer-sample.txt'
+          },
+        });
+      });
+      devServer.app.post('/v1/ajax/upload/img', (req, res) => {
+        res.json({
+          message: 'success',
+          code: 200,
+          data: 'http://localhost:8080/logo/me.jpg',
+        });
+      });
+      devServer.app.post('/v1/ajax/upload/video', (req, res) => {
+        res.json({
+          message: 'success',
+          code: 200,
+          data: {
+            cover: 'https://songshuzhong.github.io/i-assets/public/ironMan.jpeg',
+            src: 'https://songshuzhong.github.io/i-assets/public/IronMan.mp4'
           },
         });
       });

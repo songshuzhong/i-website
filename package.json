@@ -71,5 +71,8 @@
     "vue": "latest",
     "vue-router": "latest",
     "workbox-webpack-plugin": "^7.3.0"
+  },
+  "dependencies": {
+    "body-parser": "^2.3.0"
   }
 }
