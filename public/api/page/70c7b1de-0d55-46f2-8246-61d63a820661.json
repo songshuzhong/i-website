@@ -793,10 +793,7 @@
                 "popupType": "dialog",
                 "messageBoxExp": "$.names === 'fe'",
                 "popoverTitle": "确定提交吗？",
-                "popoverContent": "姓名不合法",
-                "style": {
-                  "marginLeft": "96px"
-                }
+                "popoverContent": "姓名不合法"
               }
             ]
           }

@@ -49,7 +49,7 @@ const svg = [
 ];
 const i18n = {
   en: {
-    size: 'BaiDa<span class="i-home__banner__size">size：105.97KB</span>',
+    size: 'BaiDa<span class="i-home__banner__size">size：104.59KB</span>',
     remark: 'Baida Cloud is a low-code platform built on Vue and Element Plus, enabling rapid development of enterprise info systems, cutting costs and boosting efficiency.',
     login: 'Login',
     play: 'Playground',
@@ -76,7 +76,7 @@ const i18n = {
     taunt: 'Your likes or roast are the motivation of the author\'s progress！'
   },
   ja: {
-    size: '百搭云<span class="i-home__banner__size">サイズ：105.97KB</span>',
+    size: '百搭云<span class="i-home__banner__size">サイズ：104.59KB</span>',
     remark: '百搭云はVueフレームワークとElementPlusコンポーネントライブラリをベースに開発された、エンタープライズレベルの情報管理システムを迅速に構築するためのローコードプラットフォームです。開発者がビジネスロジックに集中し、プロジェクトコストを削減し、開発効率を向上させることを目的としています。',
     login: 'ログイン',
     play: '今すぐ体験',
@@ -103,7 +103,7 @@ const i18n = {
     taunt: 'あなたの高評価や苦情は、作者の進歩の原動力です！'
   },
   zh: {
-    size: '百搭云<span class="i-home__banner__size">大小：105.97KB</span>',
+    size: '百搭云<span class="i-home__banner__size">大小：104.59KB</span>',
     remark: '百搭云是基于Vue框架和ElementPlus组件库研发的用于快速搭建企业级信息管理系统的低代码平台，旨在帮助开发者聚焦业务逻辑、节省项目成本、提高开发效率。',
     login: '登录',
     play: '即刻体验',

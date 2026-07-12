@@ -135,7 +135,7 @@
               "label": "操作"
             }
           ],
-          "actions": [
+          "header": [
             {
               "renderer": "action",
               "text": "上线",
