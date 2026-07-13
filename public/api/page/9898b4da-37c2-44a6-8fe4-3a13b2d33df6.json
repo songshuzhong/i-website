@@ -424,13 +424,8 @@
                         "footer": [
                           {
                             "renderer": "action",
-                            "text": "更新",
+                            "text": "保存并编辑下一个",
                             "actionType": "trigger",
-                            "actionApi": {
-                              "url": "/api/demo",
-                              "method": "post",
-                              "params": {}
-                            },
                             "triggered": "UpdateForm"
                           }
                         ],
@@ -468,14 +463,10 @@
                         ],
                         "fullscreen": false,
                         "center": false,
+                        "closable": true,
                         "autoNext": true,
-                        "draggable": false,
+                        "draggable": true,
                         "renderer": "dialog"
-                      },
-                      "actionApi": {
-                        "url": "",
-                        "method": "post",
-                        "params": {}
                       }
                     },
                     {

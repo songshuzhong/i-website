@@ -116,6 +116,7 @@ module.exports = {
     port: 8080,
     setupMiddlewares: (middlewares, devServer) => {
       const app = devServer.app;
+      const sleep = () => new Promise(resolve => setTimeout(resolve, 3000));
       app.use(bodyParser.json());
       devServer.app.get('/ajax/stream', (req, res) => {
         res.writeHead(200, {
@@ -144,7 +145,8 @@ module.exports = {
           res.end();
         });
       });
-      devServer.app.use('/v1/ajax/tree', (req, res) => {
+      devServer.app.use('/v1/ajax/tree', async (req, res) => {
+        await sleep();
         const code = req.query.code;
         if (code) {
           res.json({
@@ -184,8 +186,9 @@ module.exports = {
           });
         }
       });
-      devServer.app.post('/v1/ajax/submit', (req, res) => {
+      devServer.app.post('/v1/ajax/submit', async(req, res) => {
         const params = req.body || {};
+        await sleep();
         res.json({
           message: 'success',
           code: 200,
@@ -195,10 +198,10 @@ module.exports = {
           },
         });
       });
-      devServer.app.put('/v1/ajax/users', (req, res) => {
+      devServer.app.put('/v1/ajax/users', async (req, res) => {
         const params = req.body || {};
         const user = params['users'][0];
-        delete user.isEditing;
+        await sleep();
         res.json({
           message: 'success',
           code: 200,
@@ -208,7 +211,8 @@ module.exports = {
           },
         });
       });
-      devServer.app.post('/v1/ajax/upload/zip', (req, res) => {
+      devServer.app.post('/v1/ajax/upload/zip', async (req, res) => {
+        await sleep();
         res.json({
           message: 'success',
           code: 200,
@@ -218,7 +222,8 @@ module.exports = {
           },
         });
       });
-      devServer.app.post('/v1/ajax/upload/doc', (req, res) => {
+      devServer.app.post('/v1/ajax/upload/doc', async (req, res) => {
+        await sleep();
         res.json({
           message: 'success',
           code: 200,
@@ -228,7 +233,8 @@ module.exports = {
           },
         });
       });
-      devServer.app.post('/v1/ajax/upload/ppt', (req, res) => {
+      devServer.app.post('/v1/ajax/upload/ppt', async (req, res) => {
+        await sleep();
         res.json({
           message: 'success',
           code: 200,
@@ -238,7 +244,8 @@ module.exports = {
           },
         });
       });
-      devServer.app.post('/v1/ajax/upload/pdf', (req, res) => {
+      devServer.app.post('/v1/ajax/upload/pdf', async (req, res) => {
+        await sleep();
         res.json({
           message: 'success',
           code: 200,
@@ -248,7 +255,8 @@ module.exports = {
           },
         });
       });
-      devServer.app.post('/v1/ajax/upload/xls', (req, res) => {
+      devServer.app.post('/v1/ajax/upload/xls', async (req, res) => {
+        await sleep();
         res.json({
           message: 'success',
           code: 200,
@@ -258,7 +266,8 @@ module.exports = {
           },
         });
       });
-      devServer.app.post('/v1/ajax/upload/txt', (req, res) => {
+      devServer.app.post('/v1/ajax/upload/txt', async (req, res) => {
+        await sleep();
         res.json({
           message: 'success',
           code: 200,
@@ -268,14 +277,16 @@ module.exports = {
           },
         });
       });
-      devServer.app.post('/v1/ajax/upload/img', (req, res) => {
+      devServer.app.post('/v1/ajax/upload/img', async (req, res) => {
+        await sleep();
         res.json({
           message: 'success',
           code: 200,
           data: 'http://localhost:8080/logo/me.jpg',
         });
       });
-      devServer.app.post('/v1/ajax/upload/video', (req, res) => {
+      devServer.app.post('/v1/ajax/upload/video', async (req, res) => {
+        await sleep();
         res.json({
           message: 'success',
           code: 200,
