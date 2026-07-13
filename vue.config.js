@@ -116,7 +116,7 @@ module.exports = {
     port: 8080,
     setupMiddlewares: (middlewares, devServer) => {
       const app = devServer.app;
-      const sleep = () => new Promise(resolve => setTimeout(resolve, 2000));
+      const sleep = () => new Promise(resolve => setTimeout(resolve, Math.floor(Math.random() * (2000 - 50 + 1)) + 50));
       app.use(bodyParser.json());
       devServer.app.get('/ajax/stream', (req, res) => {
         res.writeHead(200, {
