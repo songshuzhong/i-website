@@ -131,9 +131,11 @@
                   "renderer": "service",
                   "name": "CurrentVersionService",
                   "sendOn": "$.orgCode",
+                  "inherit": {
+                    "deep": true
+                  },
                   "initApi": {
                     "url": "/api/mock/current-version",
-                    "deep": true,
                     "params": {
                       "orgCode": "${orgCode}"
                     }
@@ -146,7 +148,6 @@
                   "useRef": true,
                   "initApi": {
                     "url": "/api/mock/org-details",
-                    "deep": true,
                     "params": {
                       "versionId": "${versionId}",
                       "langCode": "${currentLang}"
@@ -154,6 +155,9 @@
                   },
                   "sendOn": "$.versionId && !Array.isArray($.versionId)",
                   "silentMessage": false,
+                  "inherit": {
+                    "deep": true
+                  },
                   "initData": {
                     "langVersionType": "",
                     "currentLang": "",
@@ -417,6 +421,7 @@
                               "body": [
                                 {
                                   "renderer": "service",
+                                  "classname": "wk-org__languages__wrapper",
                                   "initApi": {
                                     "url": "/api/mock/org-language"
                                   },
@@ -492,24 +497,6 @@
                                         "display": "block"
                                       },
                                       "body": [
-                                        {
-                                          "renderer": "html",
-                                          "inline": true,
-                                          "html": "<div>${$.changedAt}</div><strong>${$.changedByName}</strong>"
-                                        },
-                                        {
-                                          "renderer": "mapping",
-                                          "name": "changeType",
-                                          "inline": true,
-                                          "map": {
-                                            "1": "创建了该组织机构",
-                                            "3": "对组织进行了变更",
-                                            "5": "删除了该组织机构",
-                                            "7": "对该组织机构进行了翻译"
-                                          }
-                                        }
-                                      ]
-                                    },
                                     {
                                       "renderer": "action",
                                       "classname": "wk-org__history-icon",
@@ -562,6 +549,24 @@
                                           }
                                         ]
                                       }
+                                    },
+                                        {
+                                          "renderer": "html",
+                                          "inline": true,
+                                          "html": "<div>${$.changedAt}</div><strong>${$.changedByName}</strong>"
+                                        },
+                                        {
+                                          "renderer": "mapping",
+                                          "name": "changeType",
+                                          "inline": true,
+                                          "map": {
+                                            "1": "创建了该组织机构",
+                                            "3": "对组织进行了变更",
+                                            "5": "删除了该组织机构",
+                                            "7": "对该组织机构进行了翻译"
+                                          }
+                                        }
+                                      ]
                                     }
                                   ],
                                   "pageConfig": {
@@ -1411,7 +1416,7 @@
           ]
         }
       ],
-      "innerStyle": ".i-each__container__item {\n background-color: var(--el-fill-color-lighter);\n  padding: 0 12px;\n  margin: 20px 0 10px 0;\n border-radius: 8px; \n} \r\n .el-timeline-item__tail,.el-timeline-item__node {\n z-index: 10; \n}\r\n .el-tabs__nav-wrap { \n padding: 0 10px; \n} \r\n .records-wrapper {\n width: unset; margin-left: -40px;\n  padding: 16px 10px 10px 40px; \n &:hover {\n background-color: var(--el-color-primary-light-9);\n }\n } \n .comment-body__wrapper {\n margin: 20px 0 0 0;\n}\n.is-edit {\n  position: absolute;\n  right: 20px;\n  margin-top: -26px;\n}\r\n.wk-org-page {\r\n  height: 100%;\r\n  padding: 0 20px;\n  margin: 0;\n  .wk-org-form__render {\r\n    position: unset;\r\n  display: flex;\r\n  align-items: center;\r\n   }\r\n  .wk-org-form__dropdown {\r\n  position: absolute;\r\nright: -10px;\r\n}  \r\n  .wk-org-header {\r\n    line-height: 42px;\r\n    text-align: right;\r\n    &.with-collapse {\r\n      .i-wrapper__container__footer {\r\n        border-left: 1px solid var(--el-border-color-lighter);\r\n      }\r\n    }\r\n    &>.i-wrapper__container__body {\r\n      position: fixed;\r\n      top: calc(var(--i-admin-tags-height) + var(--i-admin-header-height));\r\n      width: -webkit-fill-available;\r\n   height: 45px;\r\n   margin-left: -19px;\r\n      z-index: 10;\r\n      background: var(--el-disabled-bg-color);\r\n      padding: 0 20px;\r\n    }\r\n    &>.i-wrapper__container__footer {\r\n      position: fixed;\r\n      right: 0;\r\n      top: 139px;\r\n      width: 260px;\r\n   .el-tab-pane {\r\n        height: calc(100vh - 230px);\r\n        overflow-y: auto;\r\n      }\r\n    }\r\n  }\r\n  .wk-org-header.with-collapse + .wk-org-form__wrapper {\r\n    padding-right: 260px;\r\n  }\r\n  .wk-org-header__title {\r\n    font-size: 16px;\r\n    font-weight: bold;\r\n  }\r\n  .wk-org-form__wrapper {\r\n    padding-top: 40px;\r\n  }\r\n  .wk-org__languages__wrapper {\r\n    height: calc(100vh - 180px);\r\n    padding: 0 10px 50px 10px;\r\n  }\r\n  .wk-org__version-cards {\r\n    padding: 0 10px 50px 10px;\r\n    .el-col {\r\n      margin-bottom: 0;\r\n    }\r\n    .el-card {\r\n      border: none;\r\n    }\r\n    .el-pagination {\r\n      position: fixed;\r\n      bottom: 50px;\r\n      background: var(--el-bg-color);\r\n    }\r\n    .i-card__body {\r\n      padding: 0;\r\n    }\r\n    .el-card {\r\n      &.active {\r\n        .el-collapse-item__header,\r\n        .el-collapse-item__wrap {\r\n          background: var(--el-color-primary-light-9);\r\n        }\r\n      }\r\n    }\r\n  }\r\n  .wk-org__version-tags {\r\n    position: absolute;\r\n    right: 30px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__version-collapse {\r\n    border-bottom: 0;\r\n    overflow: hidden;\r\n    .i-collapse__container__title {\r\n      display: none;\r\n    }\r\n    .i-collapse__container__actions {\r\n      left: -10px;\r\n      text-align: left;\r\n    }\r\n    .el-collapse-item {\r\n      &:hover {\r\n        .el-collapse-item__header,\r\n        .el-collapse-item__wrap {\r\n          background: var(--el-color-primary-light-9);\r\n        }\r\n      }\r\n    }\r\n  }\r\n  .wk-org__language-item {\r\n    padding: 0 20px;\r\n    text-align: left;\r\n    cursor: pointer;\r\n    &:hover {\r\n      background: var(--el-color-primary-light-9);\r\n    }\r\n  }\r\n  .wk-org__language-name {\r\n    font-weight: bold;\r\n  }\r\n  .wk-org__language-icon {\r\n    border: 1px solid var(--el-border-color-lighter);\r\n    font-size: 12px;\r\n    padding: 4px;\r\n    margin-right: 10px;\r\n  }\r\n  .wk-org__language-tag {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-icon {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n  .wk-org__history-text {\r\n    padding: 0 10px 10px 20px;\r\n  }\r\n  .demo-grid-form {\r\n    .i-form__container__fieldset__items {\r\n      display: grid;\r\n      grid-template-columns: repeat(3, 33.3%);\r\n    }\r\n    .field-1,\r\n    .field-4,\r\n    .field-7,\r\n    .field-10 {\r\n      padding-right: 20px;\r\n    }\r\n    .field-2,\r\n    .field-5,\r\n    .field-8,\r\n    .field-11 {\r\n      padding: 0 10px;\r\n    }\r\n    .field-3,\r\n    .field-6,\r\n    .field-9,\r\n    .field-12 {\r\n      padding-left: 20px;\r\n    }\r\n  }\r\n}"
+      "innerStyle": ".wk-org-page {\r\n  height: 100%;\r\n  padding: 0 20px;\r\n  margin: 0;\r\n\r\n  .i-each__container__item {\r\n    background-color: var(--el-fill-color-lighter);\r\n    padding: 0 12px;\r\n    margin: 20px 0 10px 0;\r\n    border-radius: 8px;\r\n  }\r\n\r\n  .el-timeline-item__tail,\r\n  .el-timeline-item__node {\r\n    z-index: 10;\r\n  }\r\n\r\n  .el-tabs__nav-wrap {\r\n    padding: 0 10px;\r\n  }\r\n\r\n  .records-wrapper {\r\n    width: unset;\r\n    margin-left: -40px;\r\n    padding: 16px 10px 10px 40px;\r\n\r\n    &:hover {\r\n      background-color: var(--el-color-primary-light-9);\r\n    }\r\n  }\r\n\r\n  .comment-body__wrapper {\r\n    margin: 20px 0 0 0;\r\n  }\r\n\r\n  .is-edit {\r\n    position: absolute;\r\n    right: 20px;\r\n    margin-top: -26px;\r\n  }\r\n\r\n  .wk-org-form__render {\r\n    position: unset;\r\n    display: flex;\r\n    align-items: center;\r\n  }\r\n\r\n  .wk-org-form__dropdown {\r\n    position: absolute;\r\n    right: -10px;\r\n  }\r\n\r\n  .wk-org-header {\r\n    line-height: 42px;\r\n    text-align: right;\r\n\r\n    &.with-collapse {\r\n      .i-wrapper__container__footer {\r\n        border-left: 1px solid var(--el-border-color-lighter);\r\n      }\r\n    }\r\n\r\n    & > .i-wrapper__container__body {\r\n      position: fixed;\r\n      top: calc(var(--i-admin-tags-height) + var(--i-admin-header-height));\r\n      width: -webkit-fill-available;\r\n      height: 45px;\r\n      margin-left: -19px;\r\n      z-index: 10;\r\n      background: var(--el-disabled-bg-color);\r\n      padding: 0 20px;\r\n    }\r\n\r\n    & > .i-wrapper__container__footer {\r\n      position: fixed;\r\n      right: 0;\r\n      top: 139px;\r\n      width: 260px;\r\n\r\n      .el-tab-pane {\r\n        height: calc(100vh - 230px);\r\n        overflow-y: auto;\r\n      }\r\n    }\r\n  }\r\n\r\n  .wk-org-header.with-collapse + .wk-org-form__wrapper {\r\n    padding-right: 260px;\r\n  }\r\n\r\n  .wk-org-header__title {\r\n    font-size: 16px;\r\n    font-weight: bold;\r\n  }\r\n\r\n  .wk-org-form__wrapper {\r\n    padding-top: 40px;\r\n  }\r\n\r\n  .wk-org__languages__wrapper {\r\n    height: calc(100vh - 180px);\r\n    padding: 0 10px 50px 10px;\r\n\r\n    .i-each__container__item {\r\n      margin: 0 0 6px 0;\r\n      padding: 0;\r\n      border-radius: var(--el-border-radius-base);\r\n    }\r\n  }\r\n\r\n  .wk-org__version-cards {\r\n    padding: 0 10px 50px 10px;\r\n\r\n    .el-col {\r\n   position: relative;\r\n   margin-bottom: 0;\r\n    }\r\n\r\n    .el-card {\r\n      border: none;\r\n    }\r\n\r\n    .el-pagination {\r\n      position: fixed;\r\n      bottom: 50px;\r\n      background: var(--el-bg-color);\r\n    }\r\n\r\n    .i-card__body {\r\n      padding: 0;\r\n    }\r\n\r\n    .el-card {\r\n      &.active {\r\n        .el-collapse-item__header,\r\n        .el-collapse-item__wrap {\r\n          background: var(--el-color-primary-light-9);\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n  .wk-org__version-tags {\r\n    position: absolute;\r\n    right: 30px;\r\n    top: 12px;\r\n  }\r\n\r\n  .wk-org__version-collapse {\r\n    border-bottom: 0;\r\n    overflow: hidden;\r\n\r\n    .i-collapse__container__title {\r\n      display: none;\r\n    }\r\n\r\n    .i-collapse__container__actions {\r\n      left: -10px;\r\n      text-align: left;\r\n    }\r\n\r\n    .el-collapse-item {\r\n      &:hover {\r\n        .el-collapse-item__header,\r\n        .el-collapse-item__wrap {\r\n          background: var(--el-color-primary-light-9);\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n  .wk-org__language-item {\r\n    padding: 0 20px;\r\n    text-align: left;\r\n    cursor: pointer;\r\n\r\n    &:hover {\r\n      background: var(--el-color-primary-light-9);\r\n    }\r\n  }\r\n\r\n  .wk-org__language-name {\r\n    font-weight: bold;\r\n  }\r\n\r\n  .wk-org__language-icon {\r\n    border: 1px solid var(--el-border-color-lighter);\r\n    font-size: 12px;\r\n    padding: 4px;\r\n    margin-right: 10px;\r\n  }\r\n\r\n  .wk-org__language-tag {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 10px;\r\n  }\r\n\r\n  .wk-org__history-icon {\r\n    position: absolute;\r\n    right: 20px;\r\n    top: 12px;\r\n  }\r\n\r\n  .wk-org__history-text {\r\n    padding: 0 10px 10px 20px;\r\n  }\r\n\r\n  .demo-grid-form {\r\n    .i-form__container__fieldset__items {\r\n      display: grid;\r\n      grid-template-columns: repeat(3, 33.3%);\r\n    }\r\n\r\n    .field-1,\r\n    .field-4,\r\n    .field-7,\r\n    .field-10 {\r\n      padding-right: 20px;\r\n    }\r\n\r\n    .field-2,\r\n    .field-5,\r\n    .field-8,\r\n    .field-11 {\r\n      padding: 0 10px;\r\n    }\r\n\r\n    .field-3,\r\n    .field-6,\r\n    .field-9,\r\n    .field-12 {\r\n      padding-left: 20px;\r\n    }\r\n  }\r\n}"
     },
     "version": 0,
     "status": 1,

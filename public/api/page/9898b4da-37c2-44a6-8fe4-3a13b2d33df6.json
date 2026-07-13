@@ -761,7 +761,7 @@
                   "plain": true,
                   "size": "small",
                   "actionType": "trigger",
-                  "triggered": "FilterForm"
+                  "triggered": "FilterForm.submit"
                 }
               ],
               "text": "筛选",
