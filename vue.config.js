@@ -201,6 +201,7 @@ module.exports = {
       devServer.app.put('/v1/ajax/users', async (req, res) => {
         const params = req.body || {};
         const user = params['users'][0];
+        delete user.isEditing;
         await sleep();
         res.json({
           message: 'success',

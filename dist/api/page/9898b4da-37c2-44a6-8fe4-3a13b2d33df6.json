@@ -365,7 +365,7 @@
                   "title": "更新姓名",
                   "isText": true,
                   "popupType": "over",
-                  "popperWidth": 310
+                  "popperWidth": 322
                 }
               ],
               "align": "right",
@@ -424,13 +424,8 @@
                         "footer": [
                           {
                             "renderer": "action",
-                            "text": "更新",
+                            "text": "保存并编辑下一个",
                             "actionType": "trigger",
-                            "actionApi": {
-                              "url": "/api/demo",
-                              "method": "post",
-                              "params": {}
-                            },
                             "triggered": "UpdateForm"
                           }
                         ],
@@ -468,14 +463,10 @@
                         ],
                         "fullscreen": false,
                         "center": false,
+                        "closable": true,
                         "autoNext": true,
-                        "draggable": false,
+                        "draggable": true,
                         "renderer": "dialog"
-                      },
-                      "actionApi": {
-                        "url": "",
-                        "method": "post",
-                        "params": {}
                       }
                     },
                     {
@@ -770,6 +761,58 @@
               "popoverTitle": "筛选条件",
               "popupType": "over",
               "popperWidth": 300
+            },
+            {
+              "renderer": "action",
+              "text": "新增",
+              "size": "small",
+              "actionType": "dialog",
+              "body": {
+                "body": [
+                  {
+                    "renderer": "form",
+                    "name": "CreateForm",
+                    "inherit": {
+                      "type": "replace"
+                    },
+                    "actionApi": {
+                      "url": "/v1/ajax/submit",
+                      "method": "post",
+                      "params": {
+                        "*": "*"
+                      }
+                    },
+                    "controls": [
+                      {
+                        "renderer": "input",
+                        "name": "owner",
+                        "label": "姓名",
+                        "placeholder": "占位符",
+                        "type": "text",
+                        "validType": "normal"
+                      },
+                      {
+                        "renderer": "input",
+                        "name": "title",
+                        "label": "标题",
+                        "placeholder": "占位符",
+                        "type": "text",
+                        "validType": "normal"
+                      }
+                    ],
+                    "reload": "UserTable"
+                  }
+                ],
+                "footer": [
+                  {
+                    "renderer": "action",
+                    "actionType": "trigger",
+                    "triggered": "CreateForm",
+                    "text": "保存并继续新增"
+                  }
+                ],
+                "autoNext": true
+              }
             },
             {
               "renderer": "action",
