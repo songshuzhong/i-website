@@ -63,7 +63,7 @@ export default defineComponent({
         });
     };
     onBeforeMount(() => {
-      updateLang(proxy.$iRenderConfig.language);
+      updateLang(proxy.$env.language);
     });
     onMounted(() => {
       const color = ['primary', 'success', 'danger'][Math.floor(Math.random() * 3)];

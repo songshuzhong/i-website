@@ -24,7 +24,7 @@ const onLogin = (proxy, config, context, onActionFeedback, formdata, options) =>
     .catch((e) => {
       let proxy = {
         $notify: app.config.globalProperties.$notify,
-        $iRenderConfig: app.config.globalProperties.$iRenderConfig,
+        $env: app.config.globalProperties.$env,
         $: {
           appContext: app._context
         }

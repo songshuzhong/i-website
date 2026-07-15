@@ -10,7 +10,7 @@ const registrySw = (contextPath, app) => {
       try {
         let proxy = {
           $notify: app.config.globalProperties.$notify,
-          $iRenderConfig: app.config.globalProperties.$iRenderConfig,
+          $env: app.config.globalProperties.$env,
           $: {
             appContext: app._context
           }
@@ -37,7 +37,7 @@ const registrySw = (contextPath, app) => {
       try {
         let proxy = {
           $notify: app.config.globalProperties.$notify,
-          $iRenderConfig: app.config.globalProperties.$iRenderConfig,
+          $env: app.config.globalProperties.$env,
           $: {
             appContext: app._context
           }

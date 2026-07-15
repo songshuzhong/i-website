@@ -84,14 +84,14 @@ export default defineComponent({
         });
     };
     onBeforeMount(() => {
-      proxy.$.appContext.$IRenderer = {
+      proxy.$page = {
         pageSchema: DEFAULT_SCHEMA
       };
       uaManager.setWidth(window.innerHeight);
       notice = proxy.$message.success('编辑器加载中，请稍等...');
     });
     onMounted(() => {
-      updateLang(proxy.$iRenderConfig.language);
+      updateLang(proxy.$env.language);
       loadEditor().then(res => {
         const {Editor} = res;
         proxy.$.appContext.components['i-editor'] = Editor;

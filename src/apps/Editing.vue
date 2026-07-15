@@ -40,8 +40,8 @@ export default defineComponent({
         });
     };
     onBeforeMount(() => {
-      updateLang(proxy.$iRenderConfig.language);
-      proxy.$.appContext.$IRenderer = {
+      updateLang(proxy.$env.language);
+      proxy.$page = {
         pageInfo: {
           assets: []
         },

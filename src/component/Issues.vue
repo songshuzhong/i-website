@@ -32,7 +32,7 @@ export default defineComponent({
       script.src = 'https://utteranc.es/client.js';
       script.setAttribute('repo', props.repo);
       script.setAttribute('issue-term', 1);
-      script.setAttribute('theme', `github-${proxy.$iRenderConfig.isDarkness? 'dark': 'light'}`);
+      script.setAttribute('theme', `github-${proxy.$env.isDarkness? 'dark': 'light'}`);
       script.setAttribute('crossorigin', 'anonymous');
       script.setAttribute('async', 'true');
       script.onload = script.onreadystatechange = function() {

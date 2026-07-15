@@ -37,7 +37,7 @@ export default defineComponent({
           height
         }
       }];
-      formData.value.code = JSON.stringify(proxy.$.appContext.$IRenderer.pageSchema);
+      formData.value.code = JSON.stringify(proxy.$page.pageSchema);
       show.value = true;
     });
     return {

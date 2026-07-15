@@ -39,7 +39,7 @@ export default defineComponent({
         });
     };
     onBeforeMount(() => {
-      updateLang(proxy.$iRenderConfig.language);
+      updateLang(proxy.$env.language);
     });
     onMounted(() => {
       document.title = '欢迎使用百搭云平台';
