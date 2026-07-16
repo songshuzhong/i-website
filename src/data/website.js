@@ -382,7 +382,7 @@ export default {
               "label": "",
               "width": 670,
               "height": 360,
-              "desc": "100w条数据压测（500w压测请跳转到【表格编辑压测】）",
+              "desc": "500w压测请跳转到【表格编辑压测】",
               "updateOnRowId": "uid",
               "hasPageInfo": false,
               "inherit": {
