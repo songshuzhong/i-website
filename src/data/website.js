@@ -572,7 +572,7 @@ export default {
                 {
                   "name": "date",
                   "label": " 日期",
-                  "width": 140,
+                  "width": 180,
                   "body": {
                     "renderer": "datepicker",
                     "name": "date",
