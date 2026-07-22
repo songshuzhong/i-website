@@ -41,7 +41,7 @@ export default defineComponent({
     };
     onBeforeMount(() => {
       updateLang(proxy.$env.language);
-      proxy.$page = {
+      Object.assign(proxy.$page, {
         pageInfo: {
           assets: []
         },
@@ -51,7 +51,7 @@ export default defineComponent({
           renderer: 'page',
           body: []
         }
-      };
+      });
     });
     onMounted(() => {
       loadEditor().then(res => {
