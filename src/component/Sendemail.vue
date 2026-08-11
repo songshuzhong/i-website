@@ -53,7 +53,7 @@ export default defineComponent({
       if (intervalId) {
         stopCountdown();
       }
-      proxy.$dispatchAction(
+      proxy.$action(
         proxy,
         {
           renderer: 'action',

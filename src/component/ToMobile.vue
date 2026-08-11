@@ -13,7 +13,7 @@ export default defineComponent({
       if (proxy.$page.pageInfo && proxy.$page.pageInfo.pageId) {
         pageId = proxy.$page.pageInfo.pageId;
       }
-      proxy.$dispatchAction(
+      proxy.$action(
         proxy,
         {
           renderer: 'action',

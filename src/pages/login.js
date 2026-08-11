@@ -19,7 +19,7 @@ const onLogin = (proxy, config, context, onActionFeedback, formdata, options) =>
     .then((res) => {
       localStorage.setItem('token', `Bearer ${res.data}`);
       const url = process.env.VUE_APP_PAGE_WEBSITE;
-      proxy.$dispatchAction(proxy, {url, actionType: 'url'}, {}, () => {});
+      proxy.$action(proxy, {url, actionType: 'url'}, {}, () => {});
     })
     .catch((e) => {
       let proxy = {
@@ -32,7 +32,7 @@ const onLogin = (proxy, config, context, onActionFeedback, formdata, options) =>
       app
         .config
         .globalProperties
-        .createMessage(proxy, {
+        .$msg(proxy, {
           type: 'error',
           title: `错误${e?.data?.code || e?.response?.data?.code || e.code}`,
           message: e?.data?.message || e?.response?.data?.message || e.message,

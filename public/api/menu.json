@@ -7,6 +7,7 @@
         "name": "demo",
         "title": "牛刀小试",
         "icon": "Star",
+        "assets": ["https://at.alicdn.com/t/c/font_4229861_ysa0rqdsw0e.js"],
         "body": [
           {
             "renderer": "menuitem",

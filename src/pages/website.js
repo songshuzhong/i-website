@@ -32,7 +32,7 @@ const config = {
     logout: function(proxy, config, context, onActionFeedback) {
       localStorage.removeItem('token');
       onActionFeedback&&onActionFeedback('CANCEL_LOADING');
-      proxy.$dispatchAction(proxy, {url: process.env.VUE_APP_PAGE_LOGIN, actionType: 'url'}, {}, () => {});
+      proxy.$action(proxy, {url: process.env.VUE_APP_PAGE_LOGIN, actionType: 'url'}, {}, () => {});
     },
   },
   request: function(req) {
@@ -111,7 +111,7 @@ api()
     app
       .config
       .globalProperties
-      .createMessage(proxy, {
+      .$msg(proxy, {
         type: 'error',
         title: `错误${e?.data?.code || e?.response?.data?.code || e.code}`,
         message: e?.data?.message || e?.response?.data?.message || e.message,
