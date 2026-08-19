@@ -74,6 +74,9 @@
               "type": "custom",
               "border": false,
               "labelWidth": 0,
+              "fieldStyle": {
+                "margin-bottom": "-6px"
+              },
               "controls": [
                 {
                   "renderer": "number",
@@ -150,6 +153,80 @@
               "type": "textarea",
               "validType": "normal",
               "rows": 1
+            },
+            {
+              "renderer": "input",
+              "name": "amount",
+              "label": "金额",
+              "header": [
+                {
+                  "renderer": "select",
+                  "name": "currency",
+                  "value": "rmb",
+                  "options": [
+                    {
+                      "text": "人民币",
+                      "value": "rmb"
+                    },
+                    {
+                      "text": "美元",
+                      "value": "dollar"
+                    }
+                  ],
+                  "target": "DemoForm",
+                  "style": {
+                    "width": "80px"
+                  },
+                  "clearable": false
+                }
+              ],
+              "footer": [
+                {
+                  "renderer": "select",
+                  "name": "unit",
+                  "value": "yuan",
+                  "options": [
+                    {
+                      "text": "元",
+                      "value": "yuan",
+                      "disabledOn": "$.currency == 'dollar'"
+                    },
+                    {
+                      "text": "万元",
+                      "value": "wanYuan",
+                      "disabledOn": "$.currency == 'dollar'"
+                    },
+                    {
+                      "text": "美元",
+                      "value": "meiYuan",
+                      "disabledOn": "$.currency == 'rmb'"
+                    },
+                    {
+                      "text": "万美元",
+                      "value": "wanMeiYuan",
+                      "disabledOn": "$.currency == 'rmb'"
+                    }
+                  ],
+                  "target": "DemoForm",
+                  "style": {
+                    "width": "60px"
+                  }
+                }
+              ],
+              "rules": [
+                {
+                  "trigger": "blur",
+                  "type": "exp",
+                  "exp": "!$.unit",
+                  "message": "请选择货币单位"
+                },
+                {
+                  "trigger": "blur",
+                  "type": "exp",
+                  "exp": "!$.amount",
+                  "message": "请选择货币"
+                }
+              ]
             },
             {
               "renderer": "computed",
