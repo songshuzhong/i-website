@@ -16,7 +16,572 @@
     "assets": [],
     "visible": [],
     "pageDesc": null,
-    "pageSchema": "{\n  \"renderer\": \"page\",\n  \"initData\": {},\n  \"body\": [\n    {\n      \"renderer\": \"form\",\n      \"name\": \"projectselector\",\n      \"target\": \"Pagetable\",\n      \"inline\": true,\n      \"controls\": [\n        {\n          \"renderer\": \"select\",\n          \"name\": \"searchProjectId\",\n          \"clearable\": true,\n          \"placeholder\": \"请选择项目组\",\n          \"initApi\": {\n            \"method\": \"get\",\n            \"url\": \"/api/projects/combo\"\n          },\n          \"optionConfig\": {\n            \"text\": \"text\",\n            \"value\": \"value\"\n          }\n        },\n        {\n          \"renderer\": \"action\",\n          \"name\": \"submit\",\n          \"actionType\": \"submit\",\n          \"text\": \"按项目搜索\",\n          \"body\": {}\n        }\n      ]\n    },\n    {\n      \"renderer\": \"table\",\n      \"name\": \"Pagetable\",\n      \"maxHeight\": 600,\n      \"initApi\": {\n        \"url\": \"/api/pages?id=${searchProjectId}\",\n        \"method\": \"get\",\n        \"params\": {}\n      },\n      \"columns\": [\n        {\n          \"name\": \"pageName\",\n          \"label\": \" 页面路径\",\n          \"fixed\": false,\n          \"body\": [],\n          \"width\": \"200\"\n        },\n        {\n          \"name\": \"pageTitle\",\n          \"label\": \"页面标题\",\n          \"fixed\": false,\n          \"body\": []\n        },\n        {\n          \"name\": \"pageIcon\",\n          \"label\": \"图标\",\n          \"body\": [\n            {\n              \"renderer\": \"html\",\n              \"html\": \"<i class='${ data.pageIcon }' />\"\n            }\n          ]\n        },\n        {\n          \"name\": \"status\",\n          \"label\": \"状态\",\n          \"fixed\": false,\n          \"body\": [\n            {\n              \"renderer\": \"mapping\",\n              \"name\": \"status\",\n              \"status\": \"status\",\n              \"inline\": true\n            },\n            {\n              \"renderer\": \"html\",\n              \"html\": \"${data.status? '已上线': '已下线'}\",\n              \"inline\": true\n            }\n          ]\n        },\n        {\n          \"name\": \"version\",\n          \"label\": \"版本\",\n          \"fixed\": false,\n          \"body\": []\n        },\n        {\n          \"name\": \"updatedBy\",\n          \"label\": \"更新人\",\n          \"fixed\": false,\n          \"body\": []\n        },\n        {\n          \"name\": \"updatedCause\",\n          \"label\": \"更新原因\",\n          \"fixed\": false,\n          \"body\": []\n        },\n        {\n          \"name\": \"groupBy\",\n          \"label\": \"分组\",\n          \"fixed\": false,\n          \"body\": []\n        },\n        {\n          \"name\": \"assets\",\n          \"label\": \"资源树\",\n          \"fixed\": false,\n          \"body\": [\n            {\n              \"renderer\": \"action\",\n              \"text\": \" \",\n              \"plain\": true,\n              \"size\": \"small\",\n              \"icon\": \"Flag\",\n              \"actionType\": \"dialog\",\n              \"actionApi\": {\n                \"url\": \"\",\n                \"method\": \"put\",\n                \"params\": {}\n              },\n              \"body\": {\n                \"body\": [\n                  {\n                    \"renderer\": \"form\",\n                    \"controls\": [\n                      {\n                        \"renderer\": \"tree\",\n                        \"name\": \"assets\",\n                        \"label\": \"依赖库\",\n                        \"tip\": \"请选择一个版本\",\n                        \"initApi\": {\n                          \"url\": \"/api/mock/libs\",\n                          \"method\": \"get\",\n                          \"params\": {}\n                        },\n                        \"body\": [\n                          {\n                            \"renderer\": \"html\",\n                            \"html\": \"${data.label}\"\n                          }\n                        ]\n                      }\n                    ],\n                    \"actionApi\": {\n                      \"url\": \"/api/page?pageId=${pageId}\",\n                      \"method\": \"put\",\n                      \"params\": {\n                        \"*\": \"*\"\n                      }\n                    },\n                    \"name\": \"UpdateForm\",\n                    \"reload\": \"IWebsiteContainer\"\n                  }\n                ],\n                \"footer\": [\n                  {\n                    \"renderer\": \"action\",\n                    \"text\": \"确定\",\n                    \"actionType\": \"submit\",\n                    \"actionApi\": {\n                      \"url\": \"\",\n                      \"method\": \"post\",\n                      \"params\": {}\n                    },\n                    \"params\": {},\n                    \"body\": {},\n                    \"triggered\": \"UpdateForm\"\n                  }\n                ],\n                \"closeOnClickModal\": true,\n                \"title\": \"请选择资源版本\",\n                \"closeOnPressEscape\": true,\n                \"renderer\": \"dialog\"\n              },\n              \"isText\": true\n            }\n          ],\n          \"type\": \"-\",\n          \"align\": \"none\"\n        },\n        {\n          \"name\": \"assets\",\n          \"label\": \"可见性\",\n          \"fixed\": false,\n          \"body\": [\n            {\n              \"renderer\": \"action\",\n              \"plain\": true,\n              \"size\": \"small\",\n              \"icon\": \"View\",\n              \"trustOn\": -2,\n              \"actionType\": \"dialog\",\n              \"actionApi\": {\n                \"url\": \"\",\n                \"method\": \"put\",\n                \"params\": {}\n              },\n              \"body\": {\n                \"body\": [\n                  {\n                    \"renderer\": \"form\",\n                    \"controls\": [\n                      {\n                        \"renderer\": \"select\",\n                        \"name\": \"visible\",\n                        \"placeholder\": \"请输入\",\n                        \"multiple\": true,\n                        \"optionConfig\": {\n                          \"text\": \"name\",\n                          \"value\": \"id\"\n                        },\n                        \"options\": [],\n                        \"rules\": [],\n                        \"initApi\": {\n                          \"url\": \"/api/roles?type=list\",\n                          \"method\": \"get\",\n                          \"cached\": false,\n                          \"params\": {}\n                        },\n                        \"label\": \"角色\"\n                      }\n                    ],\n                    \"actionApi\": {\n                      \"url\": \"/api/page?pageId=${pageId}\",\n                      \"method\": \"put\",\n                      \"params\": {\n                        \"*\": \"*\"\n                      }\n                    },\n                    \"name\": \"UpdateForm\",\n                    \"reload\": \"IWebsiteContainer\"\n                  }\n                ],\n                \"footer\": [\n                  {\n                    \"renderer\": \"action\",\n                    \"text\": \"确定\",\n                    \"actionType\": \"submit\",\n                    \"actionApi\": {\n                      \"url\": \"\",\n                      \"method\": \"post\",\n                      \"params\": {}\n                    },\n                    \"params\": {},\n                    \"body\": {},\n                    \"triggered\": \"UpdateForm\"\n                  }\n                ],\n                \"closeOnClickModal\": true,\n                \"title\": \"请选择页面可见角色\",\n                \"closeOnPressEscape\": true,\n                \"renderer\": \"dialog\"\n              },\n              \"isText\": true,\n              \"text\": \" \"\n            }\n          ],\n          \"type\": \"-\",\n          \"align\": \"none\"\n        },\n        {\n          \"label\": \"操作\",\n          \"body\": [\n            {\n              \"renderer\": \"action\",\n              \"text\": \" \",\n              \"plain\": true,\n              \"size\": \"small\",\n              \"icon\": \"Edit\",\n              \"actionType\": \"dialog\",\n              \"actionApi\": {\n                \"url\": \"\",\n                \"method\": \"put\",\n                \"params\": {}\n              },\n              \"body\": {\n                \"body\": [\n                  {\n                    \"renderer\": \"form\",\n                    \"controls\": [\n                      {\n                        \"renderer\": \"input\",\n                        \"name\": \"pageTitle\",\n                        \"label\": \"页面标题\",\n                        \"placeholder\": \"例：用户列表\",\n                        \"type\": \"text\",\n                        \"validType\": \"normal\",\n                        \"rules\": []\n                      },\n                      {\n                        \"renderer\": \"input\",\n                        \"name\": \"pageName\",\n                        \"label\": \"页面路径\",\n                        \"placeholder\": \"例：users或users/:userId\",\n                        \"type\": \"text\",\n                        \"validType\": \"normal\",\n                        \"rules\": []\n                      },\n                      {\n                        \"renderer\": \"input\",\n                        \"name\": \"groupBy\",\n                        \"label\": \"分组\",\n                        \"readonly\": false,\n                        \"placeholder\": \"例：分组1\",\n                        \"type\": \"text\",\n                        \"showWordLimit\": false,\n                        \"showPassword\": false,\n                        \"clearable\": true,\n                        \"rules\": []\n                      },\n                      {\n                        \"renderer\": \"switch\",\n                        \"name\": \"hidden\",\n                        \"label\": \"隐藏\",\n                        \"defaultValue\": false\n                      }\n                    ],\n                    \"actionApi\": {\n                      \"url\": \"/api/page?pageId=${pageId}\",\n                      \"method\": \"put\",\n                      \"params\": {\n                        \"*\": \"*\"\n                      }\n                    },\n                    \"name\": \"UpdateForm\",\n                    \"reload\": \"IWebsiteContainer\"\n                  }\n                ],\n                \"footer\": [\n                  {\n                    \"renderer\": \"action\",\n                    \"text\": \"确定\",\n                    \"actionType\": \"submit\",\n                    \"actionApi\": {\n                      \"url\": \"\",\n                      \"method\": \"post\",\n                      \"params\": {}\n                    },\n                    \"params\": {},\n                    \"body\": {},\n                    \"triggered\": \"UpdateForm\"\n                  }\n                ],\n                \"title\": \"\",\n                \"closeOnClickModal\": true,\n                \"renderer\": \"dialog\"\n              },\n              \"isText\": true\n            },\n            {\n              \"renderer\": \"action\",\n              \"text\": \" \",\n              \"type\": \"danger\",\n              \"size\": \"small\",\n              \"popupType\": \"confirm\",\n              \"actionType\": \"ajax\",\n              \"actionApi\": {\n                \"url\": \"/api/page/${id}\",\n                \"method\": \"delete\",\n                \"params\": {}\n              },\n              \"body\": {},\n              \"icon\": \"Delete\",\n              \"reload\": \"IWebsiteContainer\",\n              \"confirmTitle\": \"确定要删除吗？\",\n              \"isText\": true\n            },\n            {\n              \"renderer\": \"action\",\n              \"text\": \" \",\n              \"type\": \"danger\",\n              \"size\": \"small\",\n              \"popupType\": \"confirm\",\n              \"actionType\": \"ajax\",\n              \"actionApi\": {\n                \"url\": \"/api/page/offline\",\n                \"method\": \"put\",\n                \"params\": {\n                  \"*\": \"*\"\n                }\n              },\n              \"body\": {},\n              \"icon\": \"VideoPause\",\n              \"reload\": \"IWebsiteContainer\",\n              \"visibleOn\": \"data.status == 1\",\n              \"confirmTitle\": \"确定要下线吗？\",\n              \"isText\": true\n            },\n            {\n              \"renderer\": \"action\",\n              \"text\": \" \",\n              \"type\": \"danger\",\n              \"size\": \"small\",\n              \"popupType\": \"confirm\",\n              \"actionType\": \"ajax\",\n              \"actionApi\": {\n                \"url\": \"/api/page/online\",\n                \"method\": \"put\",\n                \"params\": {\n                  \"*\": \"*\"\n                }\n              },\n              \"body\": {},\n              \"icon\": \"VideoPlay\",\n              \"reload\": \"IWebsiteContainer\",\n              \"visibleOn\": \"data.status == 0\",\n              \"confirmTitle\": \"确定要上线吗？\",\n              \"isText\": true\n            }\n          ],\n          \"width\": \"200\"\n        }\n      ],\n      \"actions\": [\n        {\n          \"renderer\": \"action\",\n          \"actionType\": \"dialog\",\n          \"type\": \"success\",\n          \"size\": \"small\",\n          \"text\": \"新建空白页\",\n          \"body\": {\n            \"size\": \"45%\",\n            \"header\": {\n              \"renderer\": \"html\",\n              \"html\": \"新建任务\"\n            },\n            \"body\": {\n              \"renderer\": \"form\",\n              \"name\": \"Pageform\",\n              \"actionApi\": {\n                \"url\": \"/api/page\",\n                \"params\": {\n                  \"*\": \"*\"\n                },\n                \"method\": \"post\"\n              },\n              \"controls\": [\n                {\n                  \"renderer\": \"select\",\n                  \"name\": \"projectId\",\n                  \"label\": \"所属项目\",\n                  \"placeholder\": \"请选择页面所属项目\",\n                  \"joinValue\": false,\n                  \"initApi\": {\n                    \"url\": \"/api/projects/combo\",\n                    \"method\": \"get\"\n                  },\n                  \"requiredOn\": \"true\",\n                  \"optionConfig\": {\n                    \"text\": \"text\",\n                    \"value\": \"value\"\n                  },\n                  \"options\": [\n                    {\n                      \"text\": \"文案1\",\n                      \"value\": \"value1\"\n                    },\n                    {\n                      \"text\": \"文案2\",\n                      \"value\": \"value2\"\n                    }\n                  ]\n                },\n                {\n                  \"renderer\": \"input\",\n                  \"name\": \"pageName\",\n                  \"label\": \"路径\",\n                  \"rules\": [\n                    {\n                      \"exp\": \"!/^[a-zA-Z]+(\\\\/\\\\:\\\\w+)*$/.test(data.name)\",\n                      \"type\": \"exp\",\n                      \"trigger\": \"blur\"\n                    },\n                    {\n                      \"type\": \"api\",\n                      \"trigger\": \"blur\",\n                      \"exp\": \"/api/page/${projectId}/${pageName}/valid\"\n                    }\n                  ],\n                  \"requiredOn\": \"true\",\n                  \"visibleOn\": \"data.projectId\",\n                  \"placeholder\": \"例：users或users/:userId\",\n                  \"type\": \"text\",\n                  \"validType\": \"normal\"\n                },\n                {\n                  \"renderer\": \"input\",\n                  \"name\": \"pageTitle\",\n                  \"label\": \"标题\",\n                  \"rules\": [\n                    {\n                      \"exp\": \"!/^([\\\\u4e00-\\\\u9fa5]|[a-zA-Z0-9]){1,10}$/.test(data.label)\",\n                      \"message\": \"不允许输入除字母、数字、中文外的特殊字符\",\n                      \"type\": \"exp\",\n                      \"trigger\": \"blur\"\n                    }\n                  ],\n                  \"requiredOn\": \"true\",\n                  \"placeholder\": \"例：用户列表\",\n                  \"type\": \"text\",\n                  \"validType\": \"normal\"\n                },\n                {\n                  \"renderer\": \"input\",\n                  \"name\": \"groupBy\",\n                  \"label\": \"分组\",\n                  \"requiredOn\": \"false\",\n                  \"placeholder\": \"例：分组1\",\n                  \"type\": \"text\",\n                  \"rules\": []\n                },\n                {\n                  \"renderer\": \"switch\",\n                  \"name\": \"hidden\",\n                  \"label\": \"隐藏\",\n                  \"defaultValue\": false\n                },\n                {\n                  \"renderer\": \"input\",\n                  \"name\": \"icon\",\n                  \"label\": \"图标\",\n                  \"placeholder\": \"例：Edit\",\n                  \"type\": \"text\",\n                  \"rules\": []\n                }\n              ],\n              \"reload\": \"IWebsiteContainer\"\n            },\n            \"footer\": [\n              {\n                \"renderer\": \"action\",\n                \"actionType\": \"submit\",\n                \"triggered\": \"Pageform\",\n                \"closable\": true,\n                \"text\": \"创建\"\n              },\n              {\n                \"renderer\": \"action\",\n                \"actionType\": \"reset\",\n                \"triggered\": \"Pageform\",\n                \"text\": \"重置\"\n              }\n            ],\n            \"renderer\": \"dialog\"\n          },\n          \"icon\": \"Plus\"\n        }\n      ],\n      \"showExport\": true,\n      \"height\": 490,\n      \"showDynamicColumn\": true,\n      \"reactive\": true,\n      \"lazy\": true,\n      \"loadMore\": \"/api/pages?pageId=${pageId}\",\n      \"updateOnRowId\": \"id\",\n      \"selectableOn\": \"pageId\",\n      \"rowKey\": \"updatedAt\"\n    }\n  ],\n  \"res\": \"if(url.includes('/api/pages?id=')) {\\n  res.data.rows.forEach(i => {\\n    i.hasChildren = true;\\n  });\\n}\"\n}",
+    "pageSchema": {
+      "renderer": "page",
+      "initData": {},
+      "body": [
+        {
+          "renderer": "form",
+          "name": "projectselector",
+          "target": "Pagetable",
+          "inline": true,
+          "controls": [
+            {
+              "renderer": "select",
+              "name": "searchProjectId",
+              "clearable": true,
+              "placeholder": "请选择项目组",
+              "initApi": {
+                "method": "get",
+                "url": "/api/projects/combo"
+              },
+              "optionConfig": {
+                "text": "text",
+                "value": "value"
+              }
+            },
+            {
+              "renderer": "action",
+              "name": "submit",
+              "actionType": "submit",
+              "text": "按项目搜索",
+              "body": {}
+            }
+          ]
+        },
+        {
+          "renderer": "table",
+          "name": "Pagetable",
+          "maxHeight": 600,
+          "initApi": {
+            "url": "/api/pages?id=${searchProjectId}",
+            "method": "get",
+            "params": {}
+          },
+          "columns": [
+            {
+              "name": "pageName",
+              "label": " 页面路径",
+              "fixed": false,
+              "body": [],
+              "width": "200"
+            },
+            {
+              "name": "pageTitle",
+              "label": "页面标题",
+              "fixed": false,
+              "body": []
+            },
+            {
+              "name": "pageIcon",
+              "label": "图标",
+              "body": [
+                {
+                  "renderer": "html",
+                  "html": "<i class='${ data.pageIcon }' />"
+                }
+              ]
+            },
+            {
+              "name": "status",
+              "label": "状态",
+              "fixed": false,
+              "body": [
+                {
+                  "renderer": "mapping",
+                  "name": "status",
+                  "status": "status",
+                  "inline": true
+                },
+                {
+                  "renderer": "html",
+                  "html": "${data.status? '已上线': '已下线'}",
+                  "inline": true
+                }
+              ]
+            },
+            {
+              "name": "version",
+              "label": "版本",
+              "fixed": false,
+              "body": []
+            },
+            {
+              "name": "updatedBy",
+              "label": "更新人",
+              "fixed": false,
+              "body": []
+            },
+            {
+              "name": "updatedCause",
+              "label": "更新原因",
+              "fixed": false,
+              "body": []
+            },
+            {
+              "name": "groupBy",
+              "label": "分组",
+              "fixed": false,
+              "body": []
+            },
+            {
+              "name": "assets",
+              "label": "资源树",
+              "fixed": false,
+              "body": [
+                {
+                  "renderer": "action",
+                  "text": " ",
+                  "plain": true,
+                  "size": "small",
+                  "icon": "Flag",
+                  "actionType": "dialog",
+                  "actionApi": {
+                    "url": "",
+                    "method": "put",
+                    "params": {}
+                  },
+                  "body": {
+                    "body": [
+                      {
+                        "renderer": "form",
+                        "controls": [
+                          {
+                            "renderer": "tree",
+                            "name": "assets",
+                            "label": "依赖库",
+                            "tip": "请选择一个版本",
+                            "initApi": {
+                              "url": "/api/mock/libs",
+                              "method": "get",
+                              "params": {}
+                            },
+                            "body": [
+                              {
+                                "renderer": "html",
+                                "html": "${data.label}"
+                              }
+                            ]
+                          }
+                        ],
+                        "actionApi": {
+                          "url": "/api/page?pageId=${pageId}",
+                          "method": "put",
+                          "params": {
+                            "*": "*"
+                          }
+                        },
+                        "name": "UpdateForm",
+                        "reload": "IWebsiteContainer"
+                      }
+                    ],
+                    "footer": [
+                      {
+                        "renderer": "action",
+                        "text": "确定",
+                        "actionType": "submit",
+                        "actionApi": {
+                          "url": "",
+                          "method": "post",
+                          "params": {}
+                        },
+                        "params": {},
+                        "body": {},
+                        "triggered": "UpdateForm"
+                      }
+                    ],
+                    "closeOnClickModal": true,
+                    "title": "请选择资源版本",
+                    "closeOnPressEscape": true,
+                    "renderer": "dialog"
+                  },
+                  "isText": true
+                }
+              ],
+              "type": "-",
+              "align": "none"
+            },
+            {
+              "name": "assets",
+              "label": "可见性",
+              "fixed": false,
+              "body": [
+                {
+                  "renderer": "action",
+                  "plain": true,
+                  "size": "small",
+                  "icon": "View",
+                  "trustOn": -2,
+                  "actionType": "dialog",
+                  "actionApi": {
+                    "url": "",
+                    "method": "put",
+                    "params": {}
+                  },
+                  "body": {
+                    "body": [
+                      {
+                        "renderer": "form",
+                        "controls": [
+                          {
+                            "renderer": "select",
+                            "name": "visible",
+                            "placeholder": "请输入",
+                            "multiple": true,
+                            "optionConfig": {
+                              "text": "name",
+                              "value": "id"
+                            },
+                            "options": [],
+                            "rules": [],
+                            "initApi": {
+                              "url": "/api/roles?type=list",
+                              "method": "get",
+                              "cached": false,
+                              "params": {}
+                            },
+                            "label": "角色"
+                          }
+                        ],
+                        "actionApi": {
+                          "url": "/api/page?pageId=${pageId}",
+                          "method": "put",
+                          "params": {
+                            "*": "*"
+                          }
+                        },
+                        "name": "UpdateForm",
+                        "reload": "IWebsiteContainer"
+                      }
+                    ],
+                    "footer": [
+                      {
+                        "renderer": "action",
+                        "text": "确定",
+                        "actionType": "submit",
+                        "actionApi": {
+                          "url": "",
+                          "method": "post",
+                          "params": {}
+                        },
+                        "params": {},
+                        "body": {},
+                        "triggered": "UpdateForm"
+                      }
+                    ],
+                    "closeOnClickModal": true,
+                    "title": "请选择页面可见角色",
+                    "closeOnPressEscape": true,
+                    "renderer": "dialog"
+                  },
+                  "isText": true,
+                  "text": " "
+                }
+              ],
+              "type": "-",
+              "align": "none"
+            },
+            {
+              "label": "操作",
+              "body": [
+                {
+                  "renderer": "action",
+                  "text": " ",
+                  "plain": true,
+                  "size": "small",
+                  "icon": "Edit",
+                  "actionType": "dialog",
+                  "actionApi": {
+                    "url": "",
+                    "method": "put",
+                    "params": {}
+                  },
+                  "body": {
+                    "body": [
+                      {
+                        "renderer": "form",
+                        "controls": [
+                          {
+                            "renderer": "input",
+                            "name": "pageTitle",
+                            "label": "页面标题",
+                            "placeholder": "例：用户列表",
+                            "type": "text",
+                            "validType": "normal",
+                            "rules": []
+                          },
+                          {
+                            "renderer": "input",
+                            "name": "pageName",
+                            "label": "页面路径",
+                            "placeholder": "例：users或users/:userId",
+                            "type": "text",
+                            "validType": "normal",
+                            "rules": []
+                          },
+                          {
+                            "renderer": "input",
+                            "name": "groupBy",
+                            "label": "分组",
+                            "readonly": false,
+                            "placeholder": "例：分组1",
+                            "type": "text",
+                            "showWordLimit": false,
+                            "showPassword": false,
+                            "clearable": true,
+                            "rules": []
+                          },
+                          {
+                            "renderer": "switch",
+                            "name": "hidden",
+                            "label": "隐藏",
+                            "defaultValue": false
+                          }
+                        ],
+                        "actionApi": {
+                          "url": "/api/page?pageId=${pageId}",
+                          "method": "put",
+                          "params": {
+                            "*": "*"
+                          }
+                        },
+                        "name": "UpdateForm",
+                        "reload": "IWebsiteContainer"
+                      }
+                    ],
+                    "footer": [
+                      {
+                        "renderer": "action",
+                        "text": "确定",
+                        "actionType": "submit",
+                        "actionApi": {
+                          "url": "",
+                          "method": "post",
+                          "params": {}
+                        },
+                        "params": {},
+                        "body": {},
+                        "triggered": "UpdateForm"
+                      }
+                    ],
+                    "title": "",
+                    "closeOnClickModal": true,
+                    "renderer": "dialog"
+                  },
+                  "isText": true
+                },
+                {
+                  "renderer": "action",
+                  "text": " ",
+                  "type": "danger",
+                  "size": "small",
+                  "popupType": "confirm",
+                  "actionType": "ajax",
+                  "actionApi": {
+                    "url": "/api/page/${id}",
+                    "method": "delete",
+                    "params": {}
+                  },
+                  "body": {},
+                  "icon": "Delete",
+                  "reload": "IWebsiteContainer",
+                  "confirmTitle": "确定要删除吗？",
+                  "isText": true
+                },
+                {
+                  "renderer": "action",
+                  "text": " ",
+                  "type": "danger",
+                  "size": "small",
+                  "popupType": "confirm",
+                  "actionType": "ajax",
+                  "actionApi": {
+                    "url": "/api/page/offline",
+                    "method": "put",
+                    "params": {
+                      "*": "*"
+                    }
+                  },
+                  "body": {},
+                  "icon": "VideoPause",
+                  "reload": "IWebsiteContainer",
+                  "visibleOn": "data.status == 1",
+                  "confirmTitle": "确定要下线吗？",
+                  "isText": true
+                },
+                {
+                  "renderer": "action",
+                  "text": " ",
+                  "type": "danger",
+                  "size": "small",
+                  "popupType": "confirm",
+                  "actionType": "ajax",
+                  "actionApi": {
+                    "url": "/api/page/online",
+                    "method": "put",
+                    "params": {
+                      "*": "*"
+                    }
+                  },
+                  "body": {},
+                  "icon": "VideoPlay",
+                  "reload": "IWebsiteContainer",
+                  "visibleOn": "data.status == 0",
+                  "confirmTitle": "确定要上线吗？",
+                  "isText": true
+                }
+              ],
+              "width": "200"
+            }
+          ],
+          "actions": [
+            {
+              "renderer": "action",
+              "actionType": "dialog",
+              "type": "success",
+              "size": "small",
+              "text": "新建空白页",
+              "body": {
+                "size": "45%",
+                "header": {
+                  "renderer": "html",
+                  "html": "新建任务"
+                },
+                "body": {
+                  "renderer": "form",
+                  "name": "Pageform",
+                  "actionApi": {
+                    "url": "/api/page",
+                    "params": {
+                      "*": "*"
+                    },
+                    "method": "post"
+                  },
+                  "controls": [
+                    {
+                      "renderer": "select",
+                      "name": "projectId",
+                      "label": "所属项目",
+                      "placeholder": "请选择页面所属项目",
+                      "joinValue": false,
+                      "initApi": {
+                        "url": "/api/projects/combo",
+                        "method": "get"
+                      },
+                      "requiredOn": "true",
+                      "optionConfig": {
+                        "text": "text",
+                        "value": "value"
+                      },
+                      "options": [
+                        {
+                          "text": "文案1",
+                          "value": "value1"
+                        },
+                        {
+                          "text": "文案2",
+                          "value": "value2"
+                        }
+                      ]
+                    },
+                    {
+                      "renderer": "input",
+                      "name": "pageName",
+                      "label": "路径",
+                      "rules": [
+                        {
+                          "exp": "!/^[a-zA-Z]+(\\/\\:\\w+)*$/.test(data.name)",
+                          "type": "exp",
+                          "trigger": "blur"
+                        },
+                        {
+                          "type": "api",
+                          "trigger": "blur",
+                          "exp": "/api/page/${projectId}/${pageName}/valid"
+                        }
+                      ],
+                      "requiredOn": "true",
+                      "visibleOn": "data.projectId",
+                      "placeholder": "例：users或users/:userId",
+                      "type": "text",
+                      "validType": "normal"
+                    },
+                    {
+                      "renderer": "input",
+                      "name": "pageTitle",
+                      "label": "标题",
+                      "rules": [
+                        {
+                          "exp": "!/^([\\u4e00-\\u9fa5]|[a-zA-Z0-9]){1,10}$/.test(data.label)",
+                          "message": "不允许输入除字母、数字、中文外的特殊字符",
+                          "type": "exp",
+                          "trigger": "blur"
+                        }
+                      ],
+                      "requiredOn": "true",
+                      "placeholder": "例：用户列表",
+                      "type": "text",
+                      "validType": "normal"
+                    },
+                    {
+                      "renderer": "input",
+                      "name": "groupBy",
+                      "label": "分组",
+                      "requiredOn": "false",
+                      "placeholder": "例：分组1",
+                      "type": "text",
+                      "rules": []
+                    },
+                    {
+                      "renderer": "switch",
+                      "name": "hidden",
+                      "label": "隐藏",
+                      "defaultValue": false
+                    },
+                    {
+                      "renderer": "input",
+                      "name": "icon",
+                      "label": "图标",
+                      "placeholder": "例：Edit",
+                      "type": "text",
+                      "rules": []
+                    }
+                  ],
+                  "reload": "IWebsiteContainer"
+                },
+                "footer": [
+                  {
+                    "renderer": "action",
+                    "actionType": "submit",
+                    "triggered": "Pageform",
+                    "closable": true,
+                    "text": "创建"
+                  },
+                  {
+                    "renderer": "action",
+                    "actionType": "reset",
+                    "triggered": "Pageform",
+                    "text": "重置"
+                  }
+                ],
+                "renderer": "dialog"
+              },
+              "icon": "Plus"
+            }
+          ],
+          "showExport": true,
+          "height": 490,
+          "showDynamicColumn": true,
+          "reactive": true,
+          "lazy": true,
+          "loadMore": "/api/pages?pageId=${pageId}",
+          "updateOnRowId": "id",
+          "selectableOn": "pageId",
+          "rowKey": "updatedAt"
+        }
+      ],
+      "res": "if(url.includes('/api/pages?id=')) {\n  res.data.rows.forEach(i => {\n    i.hasChildren = true;\n  });\n}"
+    },
     "version": 2,
     "status": 1,
     "createdAt": "2021-09-24T06:45:08.000Z",
