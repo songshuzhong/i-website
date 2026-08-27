@@ -84,7 +84,7 @@ if (${isGPOrDev} && url.includes("/api/mock")) {
 let user = `${process.env.VUE_APP_API_BASE}/api/user${isGPOrDev? '.json': ''}`;
 
 api()
-  .useApi({headers: {Authorization: localStorage.getItem('token')}})
+  .useApi({cached: true, headers: {Authorization: localStorage.getItem('token')}})
   .get(user)
   .then(res => {
     const routers = createRoutes();

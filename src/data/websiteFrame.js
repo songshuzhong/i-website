@@ -247,7 +247,8 @@ export default {
           {
             renderer: 'dropdown',
             text: '${$.username || "guest"}',
-            popperClass: 'i-website__header__dropdown',
+            popperClass: 'i-website__header__dropdown-popover',
+            class: 'i-website__header__dropdown',
             name: 'IWebsiteDropdown',
             body: [
               {

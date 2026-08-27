@@ -1,0 +1,162 @@
+{
+  "status": 0,
+  "message": "success",
+  "data": {
+    "rows": [
+      {
+        "id": 1,
+        "date": "2016-05-02",
+        "name": "wangxiaohu",
+        "address": "No. 189, Grove St, Los Angeles"
+      },
+      {
+        "id": 2,
+        "date": "2016-05-04",
+        "name": "wangxiaohu",
+        "address": "No. 189, Grove St, Los Angeles",
+        "children": [
+          {
+            "id": 21,
+            "date": "2016-05-01",
+            "name": "wangxiaohu",
+            "address": "No. 189, Grove St, Los Angeles"
+          },
+          {
+            "id": 22,
+            "date": "2016-05-01",
+            "name": "wangxiaohu",
+            "address": "No. 189, Grove St, Los Angeles",
+            "children": [
+              {
+                "id": 221,
+                "date": "2016-05-01",
+                "name": "wangxiaohu",
+                "address": "No. 189, Grove St, Los Angeles"
+              },
+              {
+                "id": 222,
+                "date": "2016-05-01",
+                "name": "wangxiaohu",
+                "address": "No. 189, Grove St, Los Angeles"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2016-05-01",
+        "name": "wangxiaohu",
+        "address": "No. 189, Grove St, Los Angeles",
+        "hasChildren": true,
+        "children": [
+          {
+            "id": 31,
+            "date": "2016-05-01",
+            "name": "wangxiaohu",
+            "address": "No. 189, Grove St, Los Angeles",
+            "children": [
+              {
+                "id": 311,
+                "date": "2016-05-01",
+                "name": "wangxiaohu",
+                "address": "No. 189, Grove St, Los Angeles"
+              },
+              {
+                "id": 321,
+                "date": "2016-05-01",
+                "name": "wangxiaohu",
+                "address": "No. 189, Grove St, Los Angeles",
+                "children": [
+                  {
+                    "id": 3211,
+                    "date": "2016-05-01",
+                    "name": "wangxiaohu",
+                    "address": "No. 189, Grove St, Los Angeles",
+                    "children": [
+                      {
+                        "id": 32111,
+                        "date": "2016-05-01",
+                        "name": "wangxiaohu",
+                        "address": "No. 189, Grove St, Los Angeles",
+                        "children": [
+                          {
+                            "id": 321111,
+                            "date": "2016-05-01",
+                            "name": "wangxiaohu",
+                            "address": "No. 189, Grove St, Los Angeles"
+                          },
+                          {
+                            "id": 321112,
+                            "date": "2016-05-01",
+                            "name": "wangxiaohu",
+                            "address": "No. 189, Grove St, Los Angeles",
+                            "children": [
+                              {
+                                "id": 3211121,
+                                "date": "2016-05-01",
+                                "name": "wangxiaohu",
+                                "address": "No. 189, Grove St, Los Angeles"
+                              },
+                              {
+                                "id": 3211122,
+                                "date": "2016-05-01",
+                                "name": "wangxiaohu",
+                                "address": "No. 189, Grove St, Los Angeles"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": 32112,
+                        "date": "2016-05-01",
+                        "name": "wangxiaohu",
+                        "address": "No. 189, Grove St, Los Angeles",
+                        "children": [
+                          {
+                            "id": 321121,
+                            "date": "2016-05-01",
+                            "name": "wangxiaohu",
+                            "address": "No. 189, Grove St, Los Angeles"
+                          },
+                          {
+                            "id": 321122,
+                            "date": "2016-05-01",
+                            "name": "wangxiaohu",
+                            "address": "No. 189, Grove St, Los Angeles"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": 3212,
+                    "date": "2016-05-01",
+                    "name": "wangxiaohu",
+                    "address": "No. 189, Grove St, Los Angeles"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": 32,
+            "date": "2016-05-01",
+            "name": "wangxiaohu",
+            "address": "No. 189, Grove St, Los Angeles"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2016-05-03",
+        "name": "wangxiaohu",
+        "address": "No. 189, Grove St, Los Angeles"
+      }
+    ],
+    "total": 4
+  },
+  "requestId": "0R4SC5W5AMJ43",
+  "error": null
+}

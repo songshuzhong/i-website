@@ -7,6 +7,7 @@
         "name": "demo",
         "title": "牛刀小试",
         "icon": "Star",
+        "assets": ["https://at.alicdn.com/t/c/font_4229861_ysa0rqdsw0e.js"],
         "body": [
           {
             "renderer": "menuitem",
@@ -210,6 +211,21 @@
             "assets": [],
             "pageDesc": null,
             "schemaUrl": "/api/page/d50ffc69-3e09-41d7-a50e-a0342e16cdd4"
+          },
+          {
+            "renderer": "menuitem",
+            "name": "tableTree",
+            "title": "树状表格",
+            "icon": "",
+            "pageId": "1f149d6d-5b2b-4f9b-a2f2-054dd75a832a",
+            "groupBy": "crud",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/1f149d6d-5b2b-4f9b-a2f2-054dd75a832a"
           },
           {
             "renderer": "menuitem",

@@ -18,7 +18,113 @@
     ],
     "visible": null,
     "pageDesc": null,
-    "pageSchema": "{\n  \"renderer\": \"page\",\n  \"body\": [\n    {\n      \"renderer\": \"Test\"\n    },\n    {\n      \"renderer\": \"Test2\"\n    },\n    {\n      \"renderer\": \"Test3\"\n    }\n  ]\n}",
+    "pageSchema": {
+      "renderer": "page",
+      "body": [
+        {
+          "renderer": "Test"
+        },
+        {
+          "renderer": "Test2"
+        },
+        {
+          "renderer": "Test3"
+        },
+        {
+          "renderer": "divider",
+          "text": "来自Icon Font线上图标库"
+        },
+        {
+          "renderer": "grid",
+          "span": "3,3,3,3",
+          "style": {
+            "text-align": "center"
+          },
+          "body": [
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-duoyun"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-xiaoyu"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-dayu"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-yin"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-bingbao"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-zhongyu"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-yujiaxue"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-leizhenyu"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-dabaoyu"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-qiangleizhenyu"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-qingdumai"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-zhongdumai"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-yanzhongmai"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-zhongdumai1"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi"
+            },
+            {
+              "renderer": "icon",
+              "size": 100,
+              "icon": "#icon-tianqi-xiaoxue"
+            }
+          ]
+        }
+      ]
+    },
     "version": 0,
     "status": 1,
     "createdAt": "2023-11-25T15:24:06.000Z",

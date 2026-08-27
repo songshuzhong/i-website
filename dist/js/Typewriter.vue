@@ -33,7 +33,7 @@ export default defineComponent({
   setup(props) {
     const {proxy} = getCurrentInstance();
     const content = computed(() => {
-      return proxy.$renderTpl(props.text, props.initData);
+      return proxy.$tpl(props.text, props.initData);
     });
     const displayText = ref('');
     const currentIndex = ref(0);

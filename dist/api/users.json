@@ -1,0 +1,171 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "data": {
+    "rows": [
+      {
+        "id": "405228242364512842",
+        "username": "方勇",
+        "gender": 2,
+        "user": {
+          "detail": {
+            "age": 15
+          }
+        },
+        "idCard": "405228242364512842",
+        "email": "v.ecbyskxki@oebtvxr.ve",
+        "address": "湖北省 孝感市",
+        "createTime": "2010-11-10 03:49:09",
+        "status": 1,
+        "avatar": "https://i.imgtg.com/2023/01/16/QRBHS.jpg"
+      },
+      {
+        "id": "534526571724267577",
+        "username": "邹霞",
+        "gender": 2,
+        "user": {
+          "detail": {
+            "age": 13
+          }
+        },
+        "idCard": "534526571724267577",
+        "email": "v.lykckjbxdo@isi.as",
+        "address": "陕西省 咸阳市",
+        "createTime": "1998-08-28 23:48:08",
+        "status": 1,
+        "avatar": "https://i.imgtg.com/2023/01/16/QRBHS.jpg"
+      },
+      {
+        "id": "473238554327418413",
+        "username": "孟刚",
+        "gender": 1,
+        "user": {
+          "detail": {
+            "age": 15
+          }
+        },
+        "idCard": "473238554327418413",
+        "email": "i.hbskhfyenc@slsneeucnt.fk",
+        "address": "海外 海外",
+        "createTime": "2013-08-12 16:54:33",
+        "status": 1,
+        "avatar": "https://i.imgtg.com/2023/01/16/QRqMK.jpg"
+      },
+      {
+        "id": "702248075096443376",
+        "username": "李杰",
+        "gender": 2,
+        "user": {
+          "detail": {
+            "age": 17
+          }
+        },
+        "idCard": "702248075096443376",
+        "email": "f.jbusywbb@phekyjp.om",
+        "address": "香港特别行政区 九龙",
+        "createTime": "1993-10-28 23:02:43",
+        "status": 0,
+        "avatar": "https://i.imgtg.com/2023/01/16/QR57a.jpg"
+      },
+      {
+        "id": "949346093591516894",
+        "username": "何静",
+        "gender": 1,
+        "user": {
+          "detail": {
+            "age": 18
+          }
+        },
+        "idCard": "949346093591516894",
+        "email": "u.sdxpnf@xiqivud.ng",
+        "address": "贵州省 安顺市",
+        "createTime": "2017-08-14 00:48:49",
+        "status": 0,
+        "avatar": "https://i.imgtg.com/2023/01/16/QR57a.jpg"
+      },
+      {
+        "id": "740377817382517240",
+        "username": "沈超",
+        "gender": 2,
+        "user": {
+          "detail": {
+            "age": 10
+          }
+        },
+        "idCard": "740377817382517240",
+        "email": "f.docecbpf@cddxgtag.mo",
+        "address": "山东省 滨州市",
+        "createTime": "1999-09-23 10:12:29",
+        "status": 1,
+        "avatar": "https://i.imgtg.com/2023/01/16/QRqMK.jpg"
+      },
+      {
+        "id": "603178341150736382",
+        "username": "钱强",
+        "gender": 2,
+        "user": {
+          "detail": {
+            "age": 28
+          }
+        },
+        "idCard": "603178341150736382",
+        "email": "u.havkwwt@beyeb.中国互联.公司",
+        "address": "江西省 南昌市",
+        "createTime": "2007-11-02 15:08:14",
+        "status": 1,
+        "avatar": "https://i.imgtg.com/2023/01/16/QRa0s.jpg"
+      },
+      {
+        "id": "769525254249452065",
+        "username": "石艳",
+        "gender": 1,
+        "user": {
+          "detail": {
+            "age": 15
+          }
+        },
+        "idCard": "769525254249452065",
+        "email": "w.owgfpgn@lkjh.hr",
+        "address": "黑龙江省 双鸭山市",
+        "createTime": "2005-07-02 00:55:10",
+        "status": 0,
+        "avatar": "https://i.imgtg.com/2023/01/16/QRqMK.jpg"
+      },
+      {
+        "id": "246389496154184661",
+        "username": "孟静",
+        "gender": 2,
+        "user": {
+          "detail": {
+            "age": 15
+          }
+        },
+        "idCard": "246389496154184661",
+        "email": "i.qfafhr@sfuexu.io",
+        "address": "新疆维吾尔自治区 吐鲁番地区",
+        "createTime": "1978-03-17 15:04:40",
+        "status": 0,
+        "avatar": "https://i.imgtg.com/2023/01/16/QR57a.jpg"
+      },
+      {
+        "id": "398223580111075755",
+        "username": "龚刚",
+        "gender": 1,
+        "user": {
+          "detail": {
+            "age": 18
+          }
+        },
+        "idCard": "398223580111075755",
+        "email": "q.uxlc@ahcpzstpe.qa",
+        "address": "宁夏回族自治区 吴忠市",
+        "createTime": "2005-04-28 21:41:48",
+        "status": 0,
+        "avatar": "https://i.imgtg.com/2023/01/16/QRqMK.jpg"
+      }
+    ],
+    "pageNum": 1,
+    "pageSize": 10,
+    "count": 2000
+  }
+}

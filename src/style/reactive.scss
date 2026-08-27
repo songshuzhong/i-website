@@ -23,6 +23,12 @@ html {
   }
   &.pc {
     .i-website__header__dropdown {
+      padding-left: 8px;
+      .el-button {
+        --el-button-text-color: var(--el-color-white);
+      }
+    }
+    .i-website__header__dropdown-popover {
       .el-dropdown-menu {
         .el-dropdown-menu__item {
           &:nth-of-type(1),

@@ -1,0 +1,135 @@
+{
+  "code": 200,
+  "data": {
+    "pageId": "1f149d6d-5b2b-4f9b-a2f2-054dd75a832a",
+    "id": 112,
+    "projectId": "4",
+    "pageTitle": "树状表格",
+    "pageName": "antdUsers",
+    "namespace": "联通",
+    "pageIcon": null,
+    "groupBy": "crud",
+    "updatedBy": "admin",
+    "updatedCause": null,
+    "hidden": false,
+    "assets": [],
+    "visible": [
+      8
+    ],
+    "pageDesc": null,
+    "pageSchema": {
+      "renderer": "page",
+      "body": [
+        {
+          "renderer": "table",
+          "columns": [
+            {
+              "label": "id",
+              "name": "id"
+            },
+            {
+              "label": "name",
+              "name": "name"
+            },
+            {
+              "label": "date",
+              "name": "date"
+            },
+            {
+              "label": "address",
+              "name": "address"
+            }
+          ],
+          "initApi": {
+            "url": "/api/mock/tableTree",
+            "method": "get",
+            "params": {}
+          },
+          "header": [
+            {
+              "renderer": "dropdown",
+              "events": {
+                "click": {
+                  "actions": [
+                    {
+                      "actionType": "extends",
+                      "triggered": "unfold"
+                    }
+                  ]
+                }
+              },
+              "body": [
+                {
+                  "renderer": "html",
+                  "html": "展开到第一行"
+                },
+                {
+                  "renderer": "html",
+                  "html": "展开到第二行"
+                },
+                {
+                  "renderer": "html",
+                  "html": "展开到第三行"
+                },
+                {
+                  "renderer": "html",
+                  "html": "展开到第四行"
+                },
+                {
+                  "renderer": "html",
+                  "html": "展开到第五行"
+                }
+              ],
+              "name": "level",
+              "text": "展开行"
+            },
+            {
+              "renderer": "dropdown",
+              "events": {
+                "click": {
+                  "actions": [
+                    {
+                      "actionType": "extends",
+                      "triggered": "fold"
+                    }
+                  ]
+                }
+              },
+              "body": [
+                {
+                  "renderer": "html",
+                  "html": "折叠到第一行"
+                },
+                {
+                  "renderer": "html",
+                  "html": "折叠到第二行"
+                },
+                {
+                  "renderer": "html",
+                  "html": "折叠到第三行"
+                },
+                {
+                  "renderer": "html",
+                  "html": "折叠到第四行"
+                },
+                {
+                  "renderer": "html",
+                  "html": "折叠到第五行"
+                }
+              ],
+              "name": "level",
+              "text": "折叠行"
+            }
+          ],
+          "sticky": true,
+          "scrollbar": ".i-renderer-app__container"
+        }
+      ]
+    },
+    "version": 0,
+    "status": 1,
+    "createdAt": "2025-01-17T11:42:39.000Z",
+    "updatedAt": "2025-01-17T11:43:57.000Z"
+  },
+  "describe": "请求成功"
+}
