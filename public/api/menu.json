@@ -214,6 +214,21 @@
           },
           {
             "renderer": "menuitem",
+            "name": "tableTree",
+            "title": "树状表格",
+            "icon": "",
+            "pageId": "1f149d6d-5b2b-4f9b-a2f2-054dd75a832a",
+            "groupBy": "crud",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/1f149d6d-5b2b-4f9b-a2f2-054dd75a832a"
+          },
+          {
+            "renderer": "menuitem",
             "name": "dataColumn",
             "title": "数据列",
             "icon": "",
