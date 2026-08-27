@@ -115,188 +115,190 @@ module.exports = {
   devServer: {
     port: 8080,
     setupMiddlewares: (middlewares, devServer) => {
-      const app = devServer.app;
-      const sleep = () => new Promise(resolve => setTimeout(resolve, Math.floor(Math.random() * (2000 - 50 + 1)) + 50));
-      app.use(bodyParser.json());
-      devServer.app.get('/ajax/stream', (req, res) => {
-        res.writeHead(200, {
-          'Content-Type': 'text/event-stream',
-          'Cache-Control': 'no-cache',
-          Connection: 'keep-alive'
-        });
+      if (process.env.NODE_ENV === 'dev') {
+        const app = devServer.app;
+        const sleep = () => new Promise(resolve => setTimeout(resolve, Math.floor(Math.random() * (2000 - 50 + 1)) + 50));
+        app.use(bodyParser.json());
+        devServer.app.get('/ajax/stream', (req, res) => {
+          res.writeHead(200, {
+            'Content-Type': 'text/event-stream',
+            'Cache-Control': 'no-cache',
+            Connection: 'keep-alive'
+          });
 
-        let count = 0;
-        const interval = setInterval(() => {
-          count++;
-          const data = {
-            event: 'conversation',
-            content: `count ${count}`
-          };
-          res.write('data: ' + JSON.stringify(data) + '\\r\\n');
+          let count = 0;
+          const interval = setInterval(() => {
+            count++;
+            const data = {
+              event: 'conversation',
+              content: `count ${count}`
+            };
+            res.write('data: ' + JSON.stringify(data) + '\\r\\n');
 
-          if (count === 6) {
+            if (count === 6) {
+              clearInterval(interval);
+              res.end();
+            }
+          }, 1000);
+
+          req.on('close', () => {
             clearInterval(interval);
             res.end();
+          });
+        });
+        devServer.app.use('/v1/ajax/tree', async (req, res) => {
+          await sleep();
+          const code = req.query.code;
+          if (code) {
+            res.json({
+              message: true,
+              code: 200,
+              data: [
+                {
+                  code: code + '1001',
+                  label: '研发' + code + '1001' + '部',
+                  isLeaf: true,
+                },
+                {
+                  code: code + '1002',
+                  label: '研发' + code + '1002' + '部',
+                  isLeaf: true,
+                },
+              ],
+            });
+          } else {
+            res.json({
+              message: true,
+              code: 200,
+              data: [
+                {
+                  code: '1001',
+                  label: '集团1号',
+                  isLeaf: false,
+                  children: []
+                },
+                {
+                  code: '1002',
+                  label: '集团2号',
+                  isLeaf: false,
+                  children: []
+                },
+              ],
+            });
           }
-        }, 1000);
-
-        req.on('close', () => {
-          clearInterval(interval);
-          res.end();
         });
-      });
-      devServer.app.use('/v1/ajax/tree', async (req, res) => {
-        await sleep();
-        const code = req.query.code;
-        if (code) {
+        devServer.app.post('/v1/ajax/submit', async(req, res) => {
+          const params = req.body || {};
+          await sleep();
           res.json({
-            message: true,
+            message: 'success',
             code: 200,
-            data: [
-              {
-                code: code + '1001',
-                label: '研发' + code + '1001' + '部',
-                isLeaf: true,
-              },
-              {
-                code: code + '1002',
-                label: '研发' + code + '1002' + '部',
-                isLeaf: true,
-              },
-            ],
+            data: {
+              from: 'dev server',
+              ...params,
+            },
           });
-        } else {
+        });
+        devServer.app.put('/v1/ajax/users', async (req, res) => {
+          const params = req.body || {};
+          const user = params['users'][0];
+          delete user.isEditing;
+          await sleep();
           res.json({
-            message: true,
+            message: 'success',
             code: 200,
-            data: [
-              {
-                code: '1001',
-                label: '集团1号',
-                isLeaf: false,
-                children: []
-              },
-              {
-                code: '1002',
-                label: '集团2号',
-                isLeaf: false,
-                children: []
-              },
-            ],
+            data: {
+              from: 'dev server',
+              ...user,
+            },
           });
-        }
-      });
-      devServer.app.post('/v1/ajax/submit', async(req, res) => {
-        const params = req.body || {};
-        await sleep();
-        res.json({
-          message: 'success',
-          code: 200,
-          data: {
-            from: 'dev server',
-            ...params,
-          },
         });
-      });
-      devServer.app.put('/v1/ajax/users', async (req, res) => {
-        const params = req.body || {};
-        const user = params['users'][0];
-        delete user.isEditing;
-        await sleep();
-        res.json({
-          message: 'success',
-          code: 200,
-          data: {
-            from: 'dev server',
-            ...user,
-          },
+        devServer.app.post('/v1/ajax/upload/zip', async (req, res) => {
+          await sleep();
+          res.json({
+            message: 'success',
+            code: 200,
+            data: {
+              src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
+              name: 'i-renderer-sample.zip'
+            },
+          });
         });
-      });
-      devServer.app.post('/v1/ajax/upload/zip', async (req, res) => {
-        await sleep();
-        res.json({
-          message: 'success',
-          code: 200,
-          data: {
-            src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
-            name: 'i-renderer-sample.zip'
-          },
+        devServer.app.post('/v1/ajax/upload/doc', async (req, res) => {
+          await sleep();
+          res.json({
+            message: 'success',
+            code: 200,
+            data: {
+              src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
+              name: 'i-renderer-sample.doc'
+            },
+          });
         });
-      });
-      devServer.app.post('/v1/ajax/upload/doc', async (req, res) => {
-        await sleep();
-        res.json({
-          message: 'success',
-          code: 200,
-          data: {
-            src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
-            name: 'i-renderer-sample.doc'
-          },
+        devServer.app.post('/v1/ajax/upload/ppt', async (req, res) => {
+          await sleep();
+          res.json({
+            message: 'success',
+            code: 200,
+            data: {
+              src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
+              name: 'i-renderer-sample.ppt'
+            },
+          });
         });
-      });
-      devServer.app.post('/v1/ajax/upload/ppt', async (req, res) => {
-        await sleep();
-        res.json({
-          message: 'success',
-          code: 200,
-          data: {
-            src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
-            name: 'i-renderer-sample.ppt'
-          },
+        devServer.app.post('/v1/ajax/upload/pdf', async (req, res) => {
+          await sleep();
+          res.json({
+            message: 'success',
+            code: 200,
+            data: {
+              src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
+              name: 'i-renderer-sample.pdf'
+            },
+          });
         });
-      });
-      devServer.app.post('/v1/ajax/upload/pdf', async (req, res) => {
-        await sleep();
-        res.json({
-          message: 'success',
-          code: 200,
-          data: {
-            src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
-            name: 'i-renderer-sample.pdf'
-          },
+        devServer.app.post('/v1/ajax/upload/xls', async (req, res) => {
+          await sleep();
+          res.json({
+            message: 'success',
+            code: 200,
+            data: {
+              src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
+              name: 'i-renderer-sample.xls'
+            },
+          });
         });
-      });
-      devServer.app.post('/v1/ajax/upload/xls', async (req, res) => {
-        await sleep();
-        res.json({
-          message: 'success',
-          code: 200,
-          data: {
-            src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
-            name: 'i-renderer-sample.xls'
-          },
+        devServer.app.post('/v1/ajax/upload/txt', async (req, res) => {
+          await sleep();
+          res.json({
+            message: 'success',
+            code: 200,
+            data: {
+              src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
+              name: 'i-renderer-sample.txt'
+            },
+          });
         });
-      });
-      devServer.app.post('/v1/ajax/upload/txt', async (req, res) => {
-        await sleep();
-        res.json({
-          message: 'success',
-          code: 200,
-          data: {
-            src: 'https: //codeload.github.com/songshuzhong/i-renderer-sample/zip/refs/heads/master',
-            name: 'i-renderer-sample.txt'
-          },
+        devServer.app.post('/v1/ajax/upload/img', async (req, res) => {
+          await sleep();
+          res.json({
+            message: 'success',
+            code: 200,
+            data: 'http://localhost:8080/logo/me.jpg',
+          });
         });
-      });
-      devServer.app.post('/v1/ajax/upload/img', async (req, res) => {
-        await sleep();
-        res.json({
-          message: 'success',
-          code: 200,
-          data: 'http://localhost:8080/logo/me.jpg',
+        devServer.app.post('/v1/ajax/upload/video', async (req, res) => {
+          await sleep();
+          res.json({
+            message: 'success',
+            code: 200,
+            data: {
+              cover: 'https://songshuzhong.github.io/i-assets/public/ironMan.jpeg',
+              src: 'https://songshuzhong.github.io/i-assets/public/IronMan.mp4'
+            },
+          });
         });
-      });
-      devServer.app.post('/v1/ajax/upload/video', async (req, res) => {
-        await sleep();
-        res.json({
-          message: 'success',
-          code: 200,
-          data: {
-            cover: 'https://songshuzhong.github.io/i-assets/public/ironMan.jpeg',
-            src: 'https://songshuzhong.github.io/i-assets/public/IronMan.mp4'
-          },
-        });
-      });
+      }
       return middlewares;
     },
     client: {
