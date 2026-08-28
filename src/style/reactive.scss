@@ -25,7 +25,7 @@ html {
     .i-website__header__dropdown {
       padding-left: 8px;
       .el-button {
-        --el-button-text-color: var(--el-color-white);
+        --el-button-text-color: inherit;
       }
     }
     .i-website__header__dropdown-popover {
