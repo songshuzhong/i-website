@@ -151,37 +151,57 @@ module.exports = {
           const code = req.query.code;
           if (code) {
             res.json({
-              message: true,
+              message: 'success',
               code: 200,
               data: [
                 {
                   code: code + '1001',
+                  id: code + '1001',
                   label: '研发' + code + '1001' + '部',
+                  name: '研发' + code + '1001' + '部',
                   isLeaf: true,
+                  hasChildren: true,
+                  date: '2016-05-02',
+                  address: 'No. 189, Grove St, Los Angeles'
                 },
                 {
                   code: code + '1002',
+                  id: code + '1002',
                   label: '研发' + code + '1002' + '部',
+                  name: '研发' + code + '1002' + '部',
                   isLeaf: true,
+                  hasChildren: true,
+                  date: '2016-05-02',
+                  address: 'No. 189, Grove St, Los Angeles'
                 },
               ],
             });
           } else {
             res.json({
-              message: true,
+              message: 'success',
               code: 200,
               data: [
                 {
+                  id: '1001',
                   code: '1001',
                   label: '集团1号',
+                  name: '集团1号',
                   isLeaf: false,
-                  children: []
+                  hasChildren: true,
+                  children: [],
+                  date: '2016-05-02',
+                  address: 'No. 189, Grove St, Los Angeles'
                 },
                 {
+                  id: '1002',
                   code: '1002',
                   label: '集团2号',
+                  name: '集团2号',
                   isLeaf: false,
-                  children: []
+                  date: '2016-05-02',
+                  hasChildren: true,
+                  children: [],
+                  address: 'No. 189, Grove St, Los Angeles'
                 },
               ],
             });
