@@ -31,11 +31,13 @@
             "connect": true,
             "mail": "fasdgre@jl.com",
             "phone": "4665432465",
-            "createdAt": 1,
+            "time": {
+              "createdAt": 1,
+              "updatedAt": 2
+            },
             "adult": true,
             "color": "#BE3F1F",
             "textarea": "234",
-            "updatedAt": 1,
             "richtxt": "eee1",
             "rate": 1
           },
@@ -45,33 +47,18 @@
             "syncValid": 123,
             "sex": "1",
             "role": [],
+            "time": {
+              "createdAt": 3,
+              "updatedAt": 4
+            },
             "connect": false,
             "mail": "fasdgre@jl.com",
             "phone": "4665432465",
-            "createdAt": 2,
             "adult": false,
             "color": "#D6E810",
             "textarea": "234",
-            "updatedAt": 2,
             "richtxt": "eee2",
             "rate": 3
-          },
-          {
-            "id": 3,
-            "name": "zhong",
-            "syncValid": 123,
-            "sex": "1",
-            "role": [],
-            "connect": false,
-            "mail": "fasdgre@jl.com",
-            "phone": "4665432465",
-            "createdAt": 3,
-            "adult": true,
-            "color": "#2817E5",
-            "textarea": "234",
-            "updatedAt": 3,
-            "richtxt": "eee3",
-            "rate": 5
           }
         ]
       },
@@ -79,7 +66,9 @@
         {
           "renderer": "form",
           "size": "small",
+          "classname": "actions-fixed--top",
           "readOnly": true,
+          "border": false,
           "actionApi": {
             "url": "/v1/ajax/users",
             "params": {
@@ -107,7 +96,6 @@
               "desc": "双击行退出编辑时不会远程保存数据",
               "showExport": true,
               "hasPageInfo": false,
-              "height": 390,
               "initApi": {
                 "url": "",
                 "method": "get",
@@ -128,35 +116,69 @@
                   "type": "index"
                 },
                 {
-                  "label": "sex",
-                  "name": "uid",
+                  "label": "性别",
                   "body": [
                     {
                       "renderer": "radio",
                       "name": "sex",
                       "options": [
                         {
-                          "text": "文案1",
+                          "text": "女",
                           "value": "0",
                           "disabledOn": ""
                         },
                         {
-                          "text": "文案2",
+                          "text": "男",
                           "value": "1",
                           "disabledOn": ""
                         }
                       ],
                       "editableOn": "$.isEditing"
+                    },
+                    {
+                      "renderer": "computed",
+                      "name": "$relation",
+                      "useWorker": false,
+                      "immediate": false,
+                      "exp": "$.relation",
+                      "deps": [
+                        "relation"
+                      ]
+                    },
+                    {
+                      "renderer": "computed",
+                      "name": "$relationValue",
+                      "useWorker": false,
+                      "immediate": false,
+                      "exp": "$.relationValue",
+                      "deps": [
+                        "relationValue"
+                      ]
+                    },
+                    {
+                      "renderer": "computed",
+                      "name": "$index",
+                      "useWorker": false,
+                      "immediate": false,
+                      "exp": "$.index",
+                      "deps": [
+                        "index"
+                      ]
+                    },
+                    {
+                      "renderer": "switch",
+                      "name": "editable",
+                      "hiddenOn": true
                     }
                   ],
                   "align": "center",
-                  "width": "200px"
+                  "width": "100px"
                 },
                 {
                   "name": "name",
                   "label": " rate",
                   "align": "right",
-                  "width": "200px",
+                  "width": "180px",
                   "body": [
                     {
                       "renderer": "rate",
@@ -279,119 +301,67 @@
                   ]
                 },
                 {
-                  "type": "none",
-                  "align": "center",
-                  "name": "connect",
-                  "label": "connect",
+                  "label": "深层数据",
                   "body": [
                     {
-                      "renderer": "switch",
-                      "name": "connect",
-                      "editableOn": "$.isEditing"
-                    },
-                    {
-                      "renderer": "html",
-                      "html": "${'connect: ' + $.connect}"
-                    },
-                    {
-                      "renderer": "computed",
-                      "name": "$relation",
-                      "useWorker": false,
-                      "immediate": false,
-                      "exp": "$.relation",
-                      "deps": [
-                        "relation"
+                      "renderer": "combo",
+                      "type": "custom",
+                      "name": "time",
+                      "extends": true,
+                      "border": false,
+                      "editableOn": "$.isEditing",
+                      "controls": [
+                        {
+                          "renderer": "computed",
+                          "name": "_isEditing",
+                          "exp": "$.isEditing"
+                        },
+                        {
+                          "renderer": "input",
+                          "name": "createdAt",
+                          "requiredOn": 1,
+                          "editableOn": "$._isEditing"
+                        }
                       ]
-                    },
-                    {
-                      "renderer": "computed",
-                      "name": "$relationValue",
-                      "useWorker": false,
-                      "immediate": false,
-                      "exp": "$.relationValue",
-                      "deps": [
-                        "relationValue"
-                      ]
-                    },
-                    {
-                      "renderer": "computed",
-                      "name": "$index",
-                      "useWorker": false,
-                      "immediate": false,
-                      "exp": "$.index",
-                      "deps": [
-                        "index"
-                      ]
-                    },
-                    {
-                      "renderer": "switch",
-                      "name": "editable",
-                      "hiddenOn": true
-                    }
-                  ],
-                  "width": "160px"
-                },
-                {
-                  "label": "createdAt",
-                  "name": "createdAt",
-                  "type": "",
-                  "align": "center",
-                  "sortable": true,
-                  "body": [
-                    {
-                      "renderer": "input",
-                      "name": "createdAt",
-                      "label": "createdAt",
-                      "requiredOn": true,
-                      "flexible": false,
-                      "editableOn": "$.isEditing"
-                    },
-                    {
-                      "renderer": "input",
-                      "name": "richtxt",
-                      "html": "${$.richtxt}",
-                      "type": "textarea",
-                      "flexible": false,
-                      "editableOn": "$.isEditing"
                     }
                   ],
                   "width": "240px"
                 },
                 {
-                  "label": "updatedAt",
-                  "name": "updatedAt",
-                  "type": "",
-                  "align": "center",
-                  "width": "160px",
+                  "label": "多级表头",
                   "body": [
                     {
-                      "renderer": "switch",
-                      "label": "adult",
-                      "name": "adult",
-                      "type": "checkbox",
-                      "editableOn": "$.isEditing"
+                      "renderer": "column",
+                      "label": "文本1",
+                      "width": "210px",
+                      "body": [
+                        {
+                          "renderer": "input",
+                          "name": "textarea",
+                          "requiredOn": true,
+                          "flexible": false,
+                          "editableOn": "$.isEditing"
+                        }
+                      ]
                     },
                     {
-                      "text": "${$.createdAt}",
-                      "renderer": "action",
-                      "isText": true,
-                      "actionType": "dialog",
-                      "body": {
-                        "body": [
-                          {
-                            "renderer": "data"
-                          }
-                        ]
-                      },
-                      "inherit": {
-                        "type": "replace",
-                        "value": []
-                      },
-                      "initData": {}
+                      "renderer": "column",
+                      "label": "文本2",
+                      "width": "210px",
+                      "body": [
+                        {
+                          "renderer": "input",
+                          "name": "richtxt",
+                          "html": "${$.richtxt}",
+                          "type": "textarea",
+                          "flexible": false,
+                          "rows": 1,
+                          "editableOn": "$.isEditing"
+                        }
+                      ]
                     }
                   ],
-                  "selectableOn": "",
-                  "sortable": true
+                  "width": "240px"
                 },
                 {
                   "header": [
