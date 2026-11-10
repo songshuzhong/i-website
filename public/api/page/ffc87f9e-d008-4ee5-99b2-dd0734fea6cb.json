@@ -153,60 +153,6 @@
             },
             {
               "renderer": "combo",
-              "name": "tabs",
-              "label": "选项卡",
-              "requiredOn": 1,
-              "isTab": true,
-              "unique": true,
-              "controls": [
-                {
-                  "renderer": "checkbox",
-                  "label": "",
-                  "labelWidth": "50px",
-                  "name": "defaultValue",
-                  "namePath": "defaultValue",
-                  "disabledOn": "!$.value",
-                  "options": [
-                    {
-                      "value": "$.value",
-                      "text": ""
-                    }
-                  ]
-                },
-                {
-                  "renderer": "input",
-                  "label": "label",
-                  "name": "label",
-                  "requiredOn": "1"
-                },
-                {
-                  "renderer": "input",
-                  "label": "value",
-                  "name": "value",
-                  "requiredOn": "1"
-                },
-                {
-                  "renderer": "action",
-                  "category": "icon",
-                  "icon": "Delete",
-                  "actionType": "extends",
-                  "triggered": "delete",
-                  "labelWidth": "50px",
-                  "size": 12,
-                  "header": {
-                    "renderer": "action",
-                    "category": "icon",
-                    "icon": "Plus",
-                    "actionType": "extends",
-                    "triggered": "add",
-                    "size": 12
-                  }
-                }
-              ],
-              "category": "table"
-            },
-            {
-              "renderer": "combo",
               "name": "custom",
               "label": "复合字典",
               "requiredOn": "1",
@@ -518,65 +464,6 @@
                 }
               ],
               "extends": true
-            },
-            {
-              "renderer": "combo",
-              "name": "cron",
-              "label": "执行日期",
-              "border": false,
-              "inline": true,
-              "extends": true,
-              "type": "multiple",
-              "controls": [
-                {
-                  "renderer": "computed",
-                  "name": "cronIndex",
-                  "exp": "$.comboIndex"
-                },
-                {
-                  "renderer": "radio",
-                  "name": "cronType",
-                  "namePath": "cronType",
-                  "options": [
-                    {
-                      "text": "",
-                      "value": "$.cronIndex"
-                    }
-                  ]
-                },
-                {
-                  "renderer": "html",
-                  "html": "每一年",
-                  "visibleOn": "$.cronIndex == 0"
-                },
-                {
-                  "renderer": "html",
-                  "html": "每隔",
-                  "visibleOn": "$.cronIndex == 1"
-                },
-                {
-                  "renderer": "input",
-                  "name": "year",
-                  "label": "",
-                  "visibleOn": "$.cronIndex == 1"
-                },
-                {
-                  "renderer": "html",
-                  "html": "年执行 从",
-                  "visibleOn": "$.cronIndex == 1"
-                },
-                {
-                  "renderer": "input",
-                  "name": "yearStart",
-                  "label": "",
-                  "visibleOn": "$.cronIndex == 1"
-                },
-                {
-                  "renderer": "html",
-                  "html": "年开始",
-                  "visibleOn": "$.cronIndex == 1"
-                }
-              ]
             },
             {
               "renderer": "combo",

@@ -172,7 +172,7 @@
                     }
                   ],
                   "align": "center",
-                  "width": "100px"
+                  "width": "140px"
                 },
                 {
                   "name": "name",
@@ -301,7 +301,7 @@
                   ]
                 },
                 {
-                  "label": "深层数据",
+                  "label": "深层数据编辑",
                   "body": [
                     {
                       "renderer": "combo",

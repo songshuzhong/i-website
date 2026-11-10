@@ -126,9 +126,9 @@
                         "renderer": "form",
                         "controls": [
                           {
-                            "renderer": "list",
+                            "renderer": "checkbox",
                             "initApi": {
-                              "url": "/api/roles?type=list",
+                              "url": "/api/mock/roles?type=list",
                               "method": "get",
                               "cached": false,
                               "params": {}
@@ -152,7 +152,7 @@
                         ],
                         "name": "UpdateUser",
                         "initApi": {
-                          "url": "/api/user?id=${id}",
+                          "url": "/api/mock/user?id=${id}",
                           "method": "get",
                           "cached": false,
                           "params": {}
@@ -297,8 +297,7 @@
           "showDynamicColumn": true
         }
       ],
-      "mergeUrlQuery": true,
-      "innerStyle": ".role_list_text {\n  padding: 14px 28px;\n}"
+      "mergeUrlQuery": true
     },
     "version": 3,
     "status": 1,

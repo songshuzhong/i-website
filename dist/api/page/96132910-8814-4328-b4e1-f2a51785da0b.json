@@ -56,7 +56,7 @@
                           {
                             "renderer": "dropdown",
                             "classname": "wk-org-form__dropdown",
-                            "text": {
+                            "header": {
                               "renderer": "icon",
                               "icon": "Timer"
                             },

@@ -90,43 +90,6 @@
               ],
               "name": "level",
               "text": "展开行"
-            },
-            {
-              "renderer": "dropdown",
-              "events": {
-                "click": {
-                  "actions": [
-                    {
-                      "actionType": "extends",
-                      "triggered": "fold"
-                    }
-                  ]
-                }
-              },
-              "body": [
-                {
-                  "renderer": "html",
-                  "html": "折叠到第一行"
-                },
-                {
-                  "renderer": "html",
-                  "html": "折叠到第二行"
-                },
-                {
-                  "renderer": "html",
-                  "html": "折叠到第三行"
-                },
-                {
-                  "renderer": "html",
-                  "html": "折叠到第四行"
-                },
-                {
-                  "renderer": "html",
-                  "html": "折叠到第五行"
-                }
-              ],
-              "name": "level",
-              "text": "折叠行"
             }
           ],
           "sticky": true,
