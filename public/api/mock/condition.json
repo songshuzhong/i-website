@@ -1,0 +1,17 @@
+{
+  "status": 0,
+  "message": "success",
+  "data": {
+    "id": 78,
+    "title": "蚂蚁信息",
+    "method": "get",
+    "path": "/condition",
+    "namespace": "联通",
+    "description": "0",
+    "delay": 0,
+    "createdBy": "admin",
+    "createdAt": "2025-01-17T11:50:39.000Z",
+    "updatedAt": "2025-01-17T11:50:39.000Z",
+    "schema": "({_req}) => {\n  return Math.random() > 0.5\n    ? { flow: [] }\n    : {\n      flow: [\n        {\n          value: 1,\n          label: '流程测试数据1'\n        },\n        {\n          value: 2,\n          label: '流程测试数据2'\n        }\n    ] }\n}"
+  }
+}

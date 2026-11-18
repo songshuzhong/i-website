@@ -80,6 +80,22 @@
           },
           {
             "renderer": "menuitem",
+            "name": "conditionSubmit",
+            "title": "分支提交表单",
+            "icon": "",
+            "pageId": "96932910-8814-4128-b4e1-f2a91785da0b",
+            "groupBy": "form",
+            "hidden": null,
+            "visible": [
+              0
+            ],
+            "assets": [
+            ],
+            "pageDesc": null,
+            "schemaUrl": "/api/page/96932910-8814-4128-b4e1-f2a91785da0b"
+          },
+          {
+            "renderer": "menuitem",
             "name": "gridForm",
             "title": "栅栏表单",
             "icon": "",

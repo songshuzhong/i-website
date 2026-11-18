@@ -1,0 +1,114 @@
+{
+  "status": 0,
+  "message": "success",
+  "data": {
+    "pageId": "96932910-8814-4128-b4e1-f2a91785da0b",
+    "id": 2,
+    "projectId": "4",
+    "pageTitle": "分支提交表单",
+    "pageName": "conditionForm",
+    "namespace": "联通",
+    "pageIcon": "",
+    "groupBy": "form",
+    "updatedBy": "admin",
+    "updatedCause": null,
+    "hidden": null,
+    "version": 0,
+    "status": 1,
+    "createdAt": "2023-11-25T15:13:53.000Z",
+    "updatedAt": "2023-11-27T06:14:44.000Z",
+    "visible": null,
+    "pageDesc": null,
+    "pageSchema": {
+      "renderer": "page",
+      "body": [
+        {
+          "renderer": "form",
+          "name": "ConditionForm",
+          "controls": [
+            {
+              "renderer": "input",
+              "name": "name",
+              "label": "名称",
+              "requiredOn": "1"
+            },
+            {
+              "renderer": "action",
+              "actionType": "ajax",
+              "actionApi": {
+                "url": "/api/mock/condition",
+                "method": "get",
+                "params": {},
+                "silentMessage": true
+              },
+              "popupType": "valid",
+              "text": "获取流程信息",
+              "target": "ConditionForm"
+            },
+            {
+              "renderer": "action",
+              "text": "直接提交表单",
+              "actionType": "extends",
+              "triggered": "submit",
+              "immediateOn": "$.flow && !$.flow.length && $.timestamp",
+              "style": {
+                "visibility": "hidden"
+              }
+            },
+            {
+              "renderer": "action",
+              "text": "流程选择弹窗",
+              "actionType": "dialog",
+              "immediateOn": "$.flow && $.flow.length && $.timestamp",
+              "style": {
+                "visibility": "hidden"
+              },
+              "body": {
+                "body": [
+                  {
+                    "renderer": "form",
+                    "controls": [
+                      {
+                        "renderer": "radio",
+                        "silentMessage": false,
+                        "initApi": {
+                          "url": "/api/mock/mapSelect",
+                          "method": "get",
+                          "params": {},
+                          "silentMessage": true
+                        },
+                        "name": "flowId",
+                        "label": "流程编号",
+                        "options": [],
+                        "requiredOn": "1"
+                      }
+                    ],
+                    "name": "FlowDialogForm",
+                    "actionApi": {
+                      "url": "/v1/ajax/submit",
+                      "method": "post",
+                      "params": {"*": "*"}
+                    }
+                  }
+                ],
+                "footer": [
+                  {
+                    "renderer": "action",
+                    "text": "保存",
+                    "actionType": "trigger",
+                    "triggered": "FlowDialogForm"
+                  }
+                ]
+              }
+            }
+          ],
+          "actionApi": {
+            "url": "/api/mock/submit",
+            "method": "post",
+            "params": {}
+          }
+        }
+      ]
+    }
+  }
+}
